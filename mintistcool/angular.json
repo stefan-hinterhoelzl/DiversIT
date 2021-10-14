@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "girlsonly": {
+    "mintistcool": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/girlsonly",
+            "outputPath": "dist/mintistcool",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "girlsonly:build"
+            "browserTarget": "mintistcool:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "girlsonly:build:production"
+              "browserTarget": "mintistcool:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "girlsonly:build"
+            "browserTarget": "mintistcool:build"
           }
         },
         "test": {
@@ -114,15 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "girlsonly:serve"
+            "devServerTarget": "mintistcool:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "girlsonly:serve:production"
+              "devServerTarget": "mintistcool:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "girlsonly"
+  "defaultProject": "mintistcool"
 }
