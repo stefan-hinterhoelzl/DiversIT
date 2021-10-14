@@ -1,1 +1,1 @@
-# GirlsOnly
+#MINT ist cool
