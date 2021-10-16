@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import * as firebase from "./../../node_modules/firebase/app";
 import { environment } from 'src/environments/environment';
+import { initializeApp } from '@firebase/app';
 
-const app = firebase.initializeApp(environment.firebaseConfig);
+const app = initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [
