@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import * as firebase from "./../../node_modules/firebase/app";
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material-module';
+import { initializeApp } from '@firebase/app';
 
-const app = firebase.initializeApp(environment.firebaseConfig);
+const app = initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [
