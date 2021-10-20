@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$mintistcool-primary: mat-palette($mat-indigo);
+$mintistcool-primary: mat-palette($mat-green, 800);
 $mintistcool-accent: mat-palette($mat-pink, A200, A100, A400);
 $mintistcool-warn: mat-palette($mat-red);
 
