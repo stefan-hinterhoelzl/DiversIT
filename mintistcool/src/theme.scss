@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$mintistcool-primary: mat-palette($mat-indigo);
+$mintistcool-accent: mat-palette($mat-pink, A200, A100, A400);
+$mintistcool-warn: mat-palette($mat-red);
+
+$mintistcool-theme: mat-light-theme((
+  color: (
+    primary: $mintistcool-primary,
+    accent: $mintistcool-accent,
+    warn: $mintistcool-warn,
+  )
+));
+
+@include angular-material-theme($mintistcool-theme);
+$primary: map-get($mintistcool-primary, default);
+$accent-light: map-get($mintistcool-accent, lighter);
+$acent-dark: map-get($mintistcool-accent, darker);
+$accent: map-get($mintistcool-accent, default);
+$warn: map-get($mintistcool-warn, default);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
