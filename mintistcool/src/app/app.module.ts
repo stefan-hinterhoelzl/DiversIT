@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
@@ -10,11 +9,7 @@ import { initializeApp } from '@firebase/app';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginBoxComponent } from './login-box/login-box.component';
 import { MainComponent } from './main/main.component';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider,
-  } from 'angularx-social-login'
+import { AuthService } from './services/auth.service';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -30,7 +25,6 @@ const app = initializeApp(environment.firebaseConfig);
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    SocialLoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
