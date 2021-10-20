@@ -9,7 +9,7 @@ import { initializeApp } from '@firebase/app';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginBoxComponent } from './login-box/login-box.component';
 import { MainComponent } from './main/main.component';
-import { AuthService } from './services/auth.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -25,6 +25,7 @@ const app = initializeApp(environment.firebaseConfig);
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

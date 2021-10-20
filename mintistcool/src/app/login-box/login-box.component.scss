@@ -1,0 +1,14 @@
+.btn {
+    padding: 8px 12px;
+}
+
+
+
+
+.btn::before {
+    content: url(https://commons.wikimedia.org/wiki/Category:Google_SVG_logos#/media/File:Google_%22G%22_Logo.svg);
+   width: 20px;
+   float: left;
+   margin-right: 5px;
+   margin-top: -2px;
+}

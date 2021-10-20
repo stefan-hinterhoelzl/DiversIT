@@ -1,13 +1,15 @@
-<div style = "height:100%">
-    <mat-card style = "width: 20%; background-color: whitesmoke;">
-        <mat-card-title>
-            Login
-        </mat-card-title>
-        <div style = "margin-top: 5%;">
-            <button  mat-raised-button color = "primary" (click) = "loginWithGoogle()" >Mit Google anmelden</button>
-        </div>
-        <div style = "margin-top: 5%;">
-            <button mat-raised-button color = "primary">Mit Facebook anmelden</button>
+<div class = "main-wrapper">
+    <mat-card style =  "background-color: whitesmoke">
+        <div fxLayout = "column" fxLayoutAlign = "center center">
+            <mat-card-title>
+                Login
+            </mat-card-title>
+            <div style = "margin-top: 5%;">
+                <button   mat-raised-button  (click) = "loginWithGoogle()" >Mit Google anmelden</button>
+            </div>
+            <div style = "margin-top: 5%;">
+                <button  mat-raised-button>Mit Facebook anmelden</button>
+            </div>
         </div>
     </mat-card>
 </div>
