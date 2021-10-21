@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, setDoc } from "firebase/firestore";
+import { OUser } from '../models/users.model'
+import { getFirestore, collection, doc, where, query, getDocs, setDoc, onSnapshot } from "firebase/firestore";
+import {getAuth, onAuthStateChanged, User} from "firebase/auth";
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -8,9 +10,28 @@ import { getFirestore, collection, doc, where, query, getDocs, setDoc } from "fi
 })
 export class FirestoreService {
 
-  constructor() { }
+  constructor() {
+    this.authStatusListener();
+   }
 
   db = getFirestore();
+  auth = getAuth();
+  usersub;
+
+  private currentUser: BehaviorSubject<OUser> = new BehaviorSubject<OUser>(null);
+  currentUserStatus = this.currentUser.asObservable();
+
+
+  authStatusListener() {
+    this.auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.getCurrentUser(user);
+      } else {
+        this.currentUser.next(null);
+        if (this.usersub != null) this.usersub();
+      }
+    });
+  }
 
   async CreateUserDataForNewAccount(uid: string, email: string) {
     const q = query(collection(this.db, "users"), where("uid", "==", uid));
@@ -23,6 +44,14 @@ export class FirestoreService {
         //fields to add here
       });
     }
+  }
+
+  getCurrentUser(user: User) {
+    this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
+      if (doc.exists) {
+        this.currentUser.next(doc.data())
+      }
+    });
   }
 
 
