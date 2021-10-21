@@ -13,17 +13,10 @@ export class LoginBoxComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginWithGoogle() {
-    this.auth.loginWithGoogle();
+  socialLogin(provider: string) {
+    this.auth.socialLogin(provider);
   }
 
-  loginWithGitHub() {
-    this.auth.loginWithGitHub();
-  }
-
-  loginWithFacebook() {
-    this.auth.loginWithFacebook();
-  }
 
   
 

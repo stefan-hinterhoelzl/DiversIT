@@ -13,15 +13,23 @@ export class AuthService {
   constructor(private router: Router, private firestore: FirestoreService) { }
 
 
-  loginWithGoogle() {
+  socialLogin(socialProvider: string) {
 
     const auth = getAuth();
-    const provider = new GoogleAuthProvider();
+
+    let provider: any;
+    if (socialProvider == "facebook") {
+      provider = new FacebookAuthProvider();
+    } 
+    else if (socialProvider == "google") {
+      provider = new GoogleAuthProvider();
+    } 
+    else if (socialProvider == "github") {
+      provider = new GithubAuthProvider();
+    } 
 
     signInWithPopup(auth, provider)
     .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
       const user = result.user;
       this.firestore.CreateUserDataForNewAccount(user.uid, user.email);
       this.router.navigate(['/app']);
@@ -30,56 +38,8 @@ export class AuthService {
       if (errorCode == "auth/account-exists-with-different-credential") {
         console.error("Email exisitiert schon mit anderer Sign-In Methode!")
       }
-      const errorMessage = error.message;
-      const email = error.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
     });
   }
-
-  loginWithGitHub() {
-    const authGithub = getAuth();
-    const providerGithub = new GithubAuthProvider();
-
-    signInWithPopup(authGithub, providerGithub)
-    .then((result) => {
-      const credential = GithubAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-      this.firestore.CreateUserDataForNewAccount(user.uid, user.email);
-      this.router.navigate(['/app']);
-    }).catch((error) => {
-      const errorCode = error.code;
-      if (errorCode == "auth/account-exists-with-different-credential") {
-        console.error("Email exisitiert schon mit anderer Sign-In Methode!")
-      }
-      const errorMessage = error.message;
-      const email = error.email;
-      const credential = GithubAuthProvider.credentialFromError(error);
-    });
-  }
-
-  loginWithFacebook() {
-    const authGithub = getAuth();
-    const providerGithub = new FacebookAuthProvider();
-
-    signInWithPopup(authGithub, providerGithub)
-    .then((result) => {
-      const credential = FacebookAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-      this.firestore.CreateUserDataForNewAccount(user.uid, user.email);
-      this.router.navigate(['/app']);
-    }).catch((error) => {
-      const errorCode = error.code;
-      if (errorCode == "auth/account-exists-with-different-credential") {
-        console.error("Email exisitiert schon mit anderer Sign-In Methode!")
-      }
-      const errorMessage = error.message;
-      const email = error.email;
-      const credential = FacebookAuthProvider.credentialFromError(error);
-    });
-  }
-
 
   logout() {
     const auth = getAuth();
