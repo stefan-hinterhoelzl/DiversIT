@@ -17,6 +17,10 @@ export class LoginBoxComponent implements OnInit {
     this.auth.loginWithGoogle();
   }
 
+  loginWithGitHub() {
+    this.auth.loginWithGitHub();
+  }
+
   
 
 
