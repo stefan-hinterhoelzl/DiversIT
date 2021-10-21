@@ -21,6 +21,10 @@ export class LoginBoxComponent implements OnInit {
     this.auth.loginWithGitHub();
   }
 
+  loginWithFacebook() {
+    this.auth.loginWithFacebook();
+  }
+
   
 
 

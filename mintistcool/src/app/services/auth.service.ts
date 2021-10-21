@@ -26,8 +26,10 @@ export class AuthService {
       this.firestore.CreateUserDataForNewAccount(user.uid, user.email);
       this.router.navigate(['/app']);
     }).catch((error) => {
-      console.log("error")
       const errorCode = error.code;
+      if (errorCode == "auth/account-exists-with-different-credential") {
+        console.error("Email exisitiert schon mit anderer Sign-In Methode!")
+      }
       const errorMessage = error.message;
       const email = error.email;
       const credential = GoogleAuthProvider.credentialFromError(error);
@@ -40,7 +42,6 @@ export class AuthService {
 
     signInWithPopup(authGithub, providerGithub)
     .then((result) => {
-      console.log("hallo")
       const credential = GithubAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
@@ -48,9 +49,34 @@ export class AuthService {
       this.router.navigate(['/app']);
     }).catch((error) => {
       const errorCode = error.code;
+      if (errorCode == "auth/account-exists-with-different-credential") {
+        console.error("Email exisitiert schon mit anderer Sign-In Methode!")
+      }
       const errorMessage = error.message;
       const email = error.email;
       const credential = GithubAuthProvider.credentialFromError(error);
+    });
+  }
+
+  loginWithFacebook() {
+    const authGithub = getAuth();
+    const providerGithub = new FacebookAuthProvider();
+
+    signInWithPopup(authGithub, providerGithub)
+    .then((result) => {
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      this.firestore.CreateUserDataForNewAccount(user.uid, user.email);
+      this.router.navigate(['/app']);
+    }).catch((error) => {
+      const errorCode = error.code;
+      if (errorCode == "auth/account-exists-with-different-credential") {
+        console.error("Email exisitiert schon mit anderer Sign-In Methode!")
+      }
+      const errorMessage = error.message;
+      const email = error.email;
+      const credential = FacebookAuthProvider.credentialFromError(error);
     });
   }
 
