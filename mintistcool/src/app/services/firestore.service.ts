@@ -46,6 +46,9 @@ export class FirestoreService {
     }
   }
 
+
+  //helloooo
+
   getCurrentUser(user: User) {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
       if (doc.exists) {
