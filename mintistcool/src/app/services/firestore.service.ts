@@ -23,7 +23,7 @@ export class FirestoreService {
 
 
   authStatusListener() {
-    this.auth.onAuthStateChanged((user) => {
+    onAuthStateChanged(this.auth, (user) => {
       if (user) {
         this.getCurrentUser(user);
       } else {
@@ -46,14 +46,10 @@ export class FirestoreService {
     }
   }
 
-
-  //helloooo
-  //helloo again
-
   getCurrentUser(user: User) {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
       if (doc.exists) {
-        this.currentUser.next(doc.data())
+        this.currentUser.next(doc.data() as OUser)
       }
     });
   }
