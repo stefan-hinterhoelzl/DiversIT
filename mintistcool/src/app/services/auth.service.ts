@@ -47,4 +47,10 @@ export class AuthService {
       this.router.navigate(["/landing"])
     });
   }
+
+  getAuthUserObject() {
+    const auth = getAuth();
+    return auth.currentUser;
+  }
+
 }
