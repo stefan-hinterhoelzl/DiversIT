@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider} from "firebase/auth";
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { FirestoreService } from './firestore.service';
 
 
@@ -10,7 +11,7 @@ import { FirestoreService } from './firestore.service';
 })
 export class AuthService {
 
-  constructor(private router: Router, private firestore: FirestoreService) { }
+  constructor(private router: Router, private firestore: FirestoreService, private snackbar: SnackbarComponent) { }
 
 
   socialLogin(socialProvider: string) {
@@ -31,12 +32,14 @@ export class AuthService {
     signInWithPopup(auth, provider)
     .then((result) => {
       const user = result.user;
+      //Only on first Login
       this.firestore.CreateUserDataForNewAccount(user.uid, user.email);
       this.router.navigate(['/app']);
+      let snackbarRef = this.snackbar.openSnackBar("Eingeloggt!", "green-snackbar");
     }).catch((error) => {
       const errorCode = error.code;
       if (errorCode == "auth/account-exists-with-different-credential") {
-        console.error("Email exisitiert schon mit anderer Sign-In Methode!")
+        this.snackbar.openSnackBar("Email existiert bereits.", "red-snackbar");
       }
     });
   }
@@ -45,6 +48,7 @@ export class AuthService {
     const auth = getAuth();
     auth.signOut().then(()=> {
       this.router.navigate(["/landing"])
+      this.snackbar.openSnackBar("Abgemeldet!", "green-snackbar");
     });
   }
 
