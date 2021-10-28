@@ -1,1 +1,1 @@
-#MINT ist cool
+diversIT Social Platform
