@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mintistcool": {
+    "diversIT": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -71,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "mintistcool:build"
+            "browserTarget": "diversIT:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mintistcool:build:production"
+              "browserTarget": "diversIT:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mintistcool:build"
+            "browserTarget": "diversIT:build"
           }
         },
         "test": {
@@ -115,18 +115,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "mintistcool:serve"
+            "devServerTarget": "diversIT:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "mintistcool:serve:production"
+              "devServerTarget": "diversIT:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "mintistcool",
+  "defaultProject": "diversIT",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }
