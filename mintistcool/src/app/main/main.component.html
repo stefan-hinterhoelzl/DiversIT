@@ -1,1 +1,9 @@
+<div>
+    <h2>Eingeloggter User:</h2>
+    <p>{{currentUserFirebase?.email}}</p>
+    <img src="{{currentUserFirebase?.photoURL}}" alt="">
+</div>
+
+
+
 <button mat-raised-button (click) = "logout()">Ausloggen</button>
