@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import {User} from 'firebase/auth';
 
@@ -7,7 +7,7 @@ import {User} from 'firebase/auth';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
 
   currentUserFirebase: User;
 
@@ -16,7 +16,6 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.currentUserFirebase = this.auth.getAuthUserObject();
   }
-
 
   logout() {
     this.auth.logout();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -6,19 +6,12 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login-box.component.html',
   styleUrls: ['./login-box.component.scss']
 })
-export class LoginBoxComponent implements OnInit {
+export class LoginBoxComponent {
 
   constructor(private auth: AuthService) { }
-
-  ngOnInit(): void {
-  }
 
   socialLogin(provider: string) {
     this.auth.socialLogin(provider);
   }
-
-
-  
-
 
 }
