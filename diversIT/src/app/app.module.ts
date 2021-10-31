@@ -10,6 +10,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginBoxComponent } from './login-box/login-box.component';
 import { MainComponent } from './main/main.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -18,7 +19,8 @@ const app = initializeApp(environment.firebaseConfig);
     AppComponent,
     LandingPageComponent,
     LoginBoxComponent,
-    MainComponent
+    MainComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ const app = initializeApp(environment.firebaseConfig);
     AngularMaterialModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [SnackbarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
