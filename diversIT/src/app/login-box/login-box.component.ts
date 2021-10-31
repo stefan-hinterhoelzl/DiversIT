@@ -14,7 +14,6 @@ export class LoginBoxComponent {
     this.auth.socialLogin(provider);
   }
 
-//tEST
 
 
 }
