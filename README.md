@@ -18,4 +18,4 @@ g) Angular Compiler (in Commandline: npm install --save-dev @angular/compiler) \
 \
 Starten der Angular-Web-App (ACHTUNG: Darauf achten dass man im Terminal im richtigen Ordner ist): \
 h) Node_Modules installieren --> npm install \
-i) Webserver starten --> ng serve (Default-Host: http://localhost:4200) \
+i) Webserver starten --> ng serve (Default-Host: http://localhost:4200)
