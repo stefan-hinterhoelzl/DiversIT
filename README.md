@@ -3,9 +3,9 @@ diversIT Social Platform
 Aufrufbar unter: https://mintistcool-be74c.web.app/
 
 ## Entwickler Installationsanleitung
-Was muss installiert werden um mitentwickelt zu können? (verwendeter Quelltext-Editor --> VS Code):
-a) Node.js (https://nodejs.org/en/)
-b) Angular CLI (in Commandline: npm install -g @angular/cli)
+Was muss installiert werden um mitentwickelt zu können? (verwendeter Quelltext-Editor --> VS Code): \
+a) Node.js (https://nodejs.org/en/) \
+b) Angular CLI (in Commandline: npm install -g @angular/cli) \
 c) Visual Studio Code (https://code.visualstudio.com/)
 d) git (https://git-scm.com/downloads) --> (user.email und user.name konfigurieren!)
 d1) In Commandline: git config --global user.email "..."
