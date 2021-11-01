@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import {User} from 'firebase/auth';
+import {CUser, OUser} from '../models/users.model'
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-main',
@@ -9,12 +11,17 @@ import {User} from 'firebase/auth';
 })
 export class MainComponent {
 
-  currentUserFirebase: User;
+  currentUser: CUser;
 
-  constructor(private auth: AuthService) { }
+  constructor(private firestore: FirestoreService, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.currentUserFirebase = this.auth.getAuthUserObject();
+    this.firestore.currentUserStatus.subscribe((user) => {
+      if (user != null) {
+        this.currentUser = user;
+      }
+    });
+
   }
 
   logout() {

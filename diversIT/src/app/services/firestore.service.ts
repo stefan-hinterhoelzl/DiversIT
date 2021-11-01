@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OUser } from '../models/users.model'
+import { CUser, OUser } from '../models/users.model'
 import { getFirestore, collection, doc, where, query, getDocs, setDoc, onSnapshot } from "firebase/firestore";
 import {getAuth, onAuthStateChanged, User} from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
@@ -18,7 +18,7 @@ export class FirestoreService {
   auth = getAuth();
   usersub;
 
-  private currentUser: BehaviorSubject<OUser> = new BehaviorSubject<OUser>(null);
+  private currentUser: BehaviorSubject<CUser> = new BehaviorSubject<CUser>(null);
   currentUserStatus = this.currentUser.asObservable();
 
 
@@ -49,7 +49,11 @@ export class FirestoreService {
   getCurrentUser(user: User) {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
       if (doc.exists) {
-        this.currentUser.next(doc.data() as OUser)
+        const combinedUser = <CUser> {
+          firebaseUser: user,
+          customUser: doc.data() as OUser
+        };
+        this.currentUser.next(combinedUser);
       }
     });
   }
