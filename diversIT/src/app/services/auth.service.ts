@@ -11,7 +11,9 @@ import { FirestoreService } from './firestore.service';
 })
 export class AuthService {
 
-  constructor(private router: Router, private firestore: FirestoreService, private snackbar: SnackbarComponent) { }
+  constructor(private router: Router, 
+    private firestore: FirestoreService, 
+    private snackbar: SnackbarComponent) { }
 
 
   socialLogin(socialProvider: string) {
