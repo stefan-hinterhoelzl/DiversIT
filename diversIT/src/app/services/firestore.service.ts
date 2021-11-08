@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { OUser } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, setDoc, onSnapshot } from "firebase/firestore";
+import { CUser, Mentee, OUser } from '../models/users.model'
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp } from "firebase/firestore";
 import {getAuth, onAuthStateChanged, User} from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
 
@@ -18,7 +18,7 @@ export class FirestoreService {
   auth = getAuth();
   usersub;
 
-  private currentUser: BehaviorSubject<OUser> = new BehaviorSubject<OUser>(null);
+  private currentUser: BehaviorSubject<CUser> = new BehaviorSubject<CUser>(null);
   currentUserStatus = this.currentUser.asObservable();
 
 
@@ -39,9 +39,19 @@ export class FirestoreService {
 
     if (querySnapshot.empty) {
       await setDoc(doc(this.db, "users", uid), {
-        uid: uid,
+        role: 3,
         email: email,
-        //fields to add here
+        firstname: "",
+        lastname: "",
+        gender: "",
+        primaryEducation: "",
+        secondaryEducation: "",
+        universityEducation: "",
+        job: "",
+        uid: uid,
+        lastloggedIn: Timestamp.now(),
+        creationTime: Timestamp.now(),
+        mentors: [],
       });
     }
   }
@@ -49,11 +59,27 @@ export class FirestoreService {
   getCurrentUser(user: User) {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
       if (doc.exists) {
-        this.currentUser.next(doc.data() as OUser)
+        const combinedUser = <CUser> {
+          firebaseUser: user,
+          customUser: doc.data() as OUser
+        };
+        this.currentUser.next(combinedUser);
       }
     });
   }
 
+  async getUserPerIDPromise(uid: string) {
+    return new Promise<any>(async (resolve, reject) => {
+      const docRef = doc(this.db, "users", uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        resolve(docSnap.data())
+      } else {
+        reject("User existiert nicht")
+      }
+    });
+  }
 
 
 }

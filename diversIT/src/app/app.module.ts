@@ -11,6 +11,7 @@ import { LoginBoxComponent } from './login-box/login-box.component';
 import { MainComponent } from './main/main.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -20,7 +21,8 @@ const app = initializeApp(environment.firebaseConfig);
     LandingPageComponent,
     LoginBoxComponent,
     MainComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
