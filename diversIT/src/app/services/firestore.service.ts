@@ -22,13 +22,17 @@ export class FirestoreService {
   private currentUser: BehaviorSubject<DiversITUser> = new BehaviorSubject<DiversITUser>(null);
   currentUserStatus = this.currentUser.asObservable();
 
+  private currentUserMentors: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>(null);
+  currentUserMentorsStatus = this. currentUserMentors.asObservable()
+
 
   authStatusListener() {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
-        this.getCurrentUser(user);
+        this.getCurrentUser(user);        
       } else {
         this.currentUser.next(null);
+        this.currentUserMentors.next(null);
         if (this.usersub != null) this.usersub();
       }
     });
@@ -62,9 +66,23 @@ export class FirestoreService {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
       if (doc.exists()) {
         this.currentUser.next(doc.data() as DiversITUser)
+        this.getCurrentUserMentors(doc.data() as DiversITUser);
       }
     });
+    
   }
+
+
+  async getCurrentUserMentors(user: DiversITUser) {     
+    let listOfMentors: DiversITUser[] = [];
+    
+    for(let i = 0; i < user.mentors.length; i++){
+      var data = await this.getUserPerIDPromise(user.mentors[i])
+      listOfMentors.push(data)              
+    }
+    this.currentUserMentors.next(listOfMentors) 
+  }
+
 
   async getUserPerIDPromise(uid: string): Promise<any> {
     return new Promise<any>(async (resolve, reject) => {
@@ -94,10 +112,7 @@ export class FirestoreService {
       querySnapshot.forEach((doc) => {
         array.push(doc.data() as Post)
       });
-      resolve(array);
-
-
-      
+      resolve(array);      
     });
   }
 

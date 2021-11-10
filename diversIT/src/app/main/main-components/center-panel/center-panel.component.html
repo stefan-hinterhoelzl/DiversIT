@@ -1,4 +1,5 @@
 <div class="center-panel">
-    <div>center-panel works!</div>
-    <app-post-card></app-post-card>
+    <div  >
+        <app-post-card *ngFor="let post of posts" userid= "{{post.userID}}" name="{{post.userName}}" profileImg="{{post.userImgURL}}" time="{{post.timestamp.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}"></app-post-card>
+    </div>
 </div>

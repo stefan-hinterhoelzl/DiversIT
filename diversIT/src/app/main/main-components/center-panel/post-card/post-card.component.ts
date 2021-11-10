@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,12 @@ export class PostCardComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  userid: string = "f0fi5AyuXMSlFcmmJTzErrRqFvx1";
+  @Input() userid: string;
+  @Input() name: string;
+  @Input() time: string;
+  @Input() profileImg: string;
+  @Input() content: string;
+  @Input() contentImg: string;
 
   ngOnInit(): void {
   }
