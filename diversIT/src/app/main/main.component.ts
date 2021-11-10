@@ -4,6 +4,7 @@ import {User} from 'firebase/auth';
 import {CUser, OUser} from '../models/users.model'
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 @Component({
   selector: 'app-main',

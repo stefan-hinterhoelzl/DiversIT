@@ -1,2 +1,7 @@
 <button mat-raised-button routerLink="/profile/{{currentUser?.firebaseUser.uid}}">Zum Profil</button>
 <button mat-raised-button (click) = "logout()">Ausloggen</button>
+<div class="main">
+    <app-left-panel class="left-panel"></app-left-panel>
+    <app-center-panel class="center-panel"></app-center-panel>
+    <app-right-panel class="right-panel"></app-right-panel>
+</div>
