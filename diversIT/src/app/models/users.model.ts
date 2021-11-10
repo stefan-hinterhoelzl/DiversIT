@@ -30,3 +30,5 @@ export interface Mentee extends DiversITUser {
     mentors: string[];
 }
 
+export interface Admin extends DiversITUser {}
+
