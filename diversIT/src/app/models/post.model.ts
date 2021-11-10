@@ -8,6 +8,7 @@ export interface Post {
 }
 
 export interface PostDisplay {
+    userID: string,
     userName: string,
     userImgURL: string,
     text: string,

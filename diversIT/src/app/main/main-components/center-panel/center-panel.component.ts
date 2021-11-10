@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { Post, PostDisplay } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -14,7 +15,7 @@ export class CenterPanelComponent implements OnInit {
 
   currentUser: DiversITUser;
   mentors: DiversITUser[];
-  posts: PostDisplay[];
+  posts: PostDisplay[] = [];
 
   ngOnInit(): void {    
     this.firestore.currentUserStatus.subscribe((data) => {
@@ -28,35 +29,28 @@ export class CenterPanelComponent implements OnInit {
 
   initializeMentee(){
     this.firestore.currentUserMentorsStatus.subscribe(async (data) => {
-      console.log(data)
       if(data == null) return;
       this.mentors = data;
-      console.log(this.mentors)
-      this.mentors.forEach((mentor: DiversITUser)=>{
-        console.log(mentor)
-      })
 
-
+      // loop through all mentors and get all posts of each mentor
       for( let i = 0; i< this.mentors.length; i++){
-        console.log(this.mentors[i])
         let postsOfMentor: Post[] = await this.firestore.getPostUser(this.mentors[i].uid)
-        let postForDisplay: PostDisplay[];
-        console.log(postsOfMentor)
+        // remodel the post to contain all necessary data
         for( let j = 0; j < postsOfMentor.length; j++){
           const newDisplayPost = <PostDisplay>{
+            userID: postsOfMentor[j].userID,
             userName: this.mentors[i].firstname + " " + this.mentors[i].lastname,
             userImgURL: this.mentors[i].photoURL,
             text: postsOfMentor[j].text,
             timestamp: postsOfMentor[j].timestamp,
             photoURL: postsOfMentor[j].photoURL
-          }
-          console.log(newDisplayPost)
-          postForDisplay.push(newDisplayPost)
+          }          
+          this.posts.push(newDisplayPost)          
         }
-
-        this.posts.concat(postForDisplay)
       }
-      console.log(this.posts)
+      // all posts should be loaded
+      this.posts.sort((a,b) => b.timestamp.toMillis() - a.timestamp.toMillis())
+      
     })
   }
 

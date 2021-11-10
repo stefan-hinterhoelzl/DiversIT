@@ -1,6 +1,5 @@
 <div class="center-panel">
-    <app-post-card userid= "f0fi5AyuXMSlFcmmJTzErrRqFvx1" name="Peter" profileImg="https://material.angular.io/assets/img/examples/shiba1.jpg" time="11:30 10.10.2021" content="Hallo Welt!" contentImg="https://material.angular.io/assets/img/examples/shiba1.jpg"></app-post-card>
-    <app-post-card userid= "f0fi5AyuXMSlFcmmJTzErrRqFvx1" name="Peter" profileImg="https://material.angular.io/assets/img/examples/shiba1.jpg" time="11:30 10.10.2021" content="Hallo Welt!" contentImg="https://material.angular.io/assets/img/examples/shiba1.jpg"></app-post-card>
-    <app-post-card userid= "f0fi5AyuXMSlFcmmJTzErrRqFvx1" name="Peter" profileImg="https://material.angular.io/assets/img/examples/shiba1.jpg" time="11:30 10.10.2021" content="Hallo Welt!" contentImg="https://material.angular.io/assets/img/examples/shiba1.jpg"></app-post-card>
-
+    <div  >
+        <app-post-card *ngFor="let post of posts" userid= "{{post.userID}}" name="{{post.userName}}" profileImg="{{post.userImgURL}}" time="{{post.timestamp.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}"></app-post-card>
+    </div>
 </div>

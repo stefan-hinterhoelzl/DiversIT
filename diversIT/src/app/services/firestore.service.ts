@@ -73,17 +73,15 @@ export class FirestoreService {
   }
 
 
-  getCurrentUserMentors(user: DiversITUser) {     
+  async getCurrentUserMentors(user: DiversITUser) {     
     let listOfMentors: DiversITUser[] = [];
     
     for(let i = 0; i < user.mentors.length; i++){
-      this.getUserPerIDPromise(user.mentors[i]).then((data) => {
-        listOfMentors.push(data)
-      })
+      var data = await this.getUserPerIDPromise(user.mentors[i])
+      listOfMentors.push(data)              
     }
-    this.currentUserMentors.next(listOfMentors)      
+    this.currentUserMentors.next(listOfMentors) 
   }
-
 
 
   async getUserPerIDPromise(uid: string): Promise<any> {
