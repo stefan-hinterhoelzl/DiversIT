@@ -3,6 +3,7 @@ import { Mentee, DiversITUser } from '../models/users.model'
 import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp, updateDoc } from "firebase/firestore";
 import {getAuth, onAuthStateChanged, User} from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
+import { Post } from '../models/post.model';
 
 
 @Injectable({
@@ -76,6 +77,28 @@ export class FirestoreService {
       } else {
         reject("User existiert nicht")
       }
+    });
+  }
+
+
+  getPostUser(userID: string) {
+    return new Promise<Post[]>(async (resolve, reject) => {
+      const q = query(collection(this.db, "posts"), where("userID", "==", userID));
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.empty) {
+        reject("Keine Posts gefunden");
+      }
+
+      let array: Post[] = [];
+
+      querySnapshot.forEach((doc) => {
+        array.push(doc.data() as Post)
+      });
+      resolve(array);
+
+
+      
     });
   }
 
