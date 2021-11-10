@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CUser, Mentee, OUser } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp } from "firebase/firestore";
+import { Mentee, DiversITUser } from '../models/users.model'
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp, updateDoc } from "firebase/firestore";
 import {getAuth, onAuthStateChanged, User} from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
+import { Post } from '../models/post.model';
 
 
 @Injectable({
@@ -18,7 +19,7 @@ export class FirestoreService {
   auth = getAuth();
   usersub;
 
-  private currentUser: BehaviorSubject<CUser> = new BehaviorSubject<CUser>(null);
+  private currentUser: BehaviorSubject<DiversITUser> = new BehaviorSubject<DiversITUser>(null);
   currentUserStatus = this.currentUser.asObservable();
 
 
@@ -33,11 +34,11 @@ export class FirestoreService {
     });
   }
 
-  async CreateUserDataForNewAccount(uid: string, email: string) {
-    const q = query(collection(this.db, "users"), where("uid", "==", uid));
-    const querySnapshot = await getDocs(q);
+  async UpdateUserAccount(uid: string, email: string) {
+    const docRef = doc(this.db, "users", uid);
+    const docSnap = await getDoc(docRef);
 
-    if (querySnapshot.empty) {
+    if (!docSnap.exists()) {
       await setDoc(doc(this.db, "users", uid), {
         role: 3,
         email: email,
@@ -53,17 +54,15 @@ export class FirestoreService {
         creationTime: Timestamp.now(),
         mentors: [],
       });
+   
     }
   }
 
   getCurrentUser(user: User) {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
-      if (doc.exists) {
-        const combinedUser = <CUser> {
-          firebaseUser: user,
-          customUser: doc.data() as OUser
-        };
-        this.currentUser.next(combinedUser);
+      if (doc.exists()) {
+        const currentUser = doc.data() as DiversITUser
+        this.currentUser.next(currentUser);
       }
     });
   }
@@ -78,6 +77,28 @@ export class FirestoreService {
       } else {
         reject("User existiert nicht")
       }
+    });
+  }
+
+
+  getPostUser(userID: string) {
+    return new Promise<Post[]>(async (resolve, reject) => {
+      const q = query(collection(this.db, "posts"), where("userID", "==", userID));
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.empty) {
+        reject("Keine Posts gefunden");
+      }
+
+      let array: Post[] = [];
+
+      querySnapshot.forEach((doc) => {
+        array.push(doc.data() as Post)
+      });
+      resolve(array);
+
+
+      
     });
   }
 
