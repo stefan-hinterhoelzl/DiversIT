@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import {User} from 'firebase/auth';
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { DiversITUser } from '../models/users.model';
 
 @Component({
