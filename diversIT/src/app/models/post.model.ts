@@ -6,3 +6,11 @@ export interface Post {
     timestamp: Timestamp,
     photoURL?: string,
 }
+
+export interface PostDisplay {
+    userName: string,
+    userImgURL: string,
+    text: string,
+    timestamp: Timestamp,
+    photoURL?: string,
+}
