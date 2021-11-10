@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Mentee, DiversITUser, Mentor, Admin } from '../models/users.model'
+import {DiversITUser} from '../models/users.model'
 import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp, updateDoc } from "firebase/firestore";
 import {getAuth, onAuthStateChanged, User} from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
@@ -19,7 +19,7 @@ export class FirestoreService {
   auth = getAuth();
   usersub;
 
-  private currentUser: BehaviorSubject<Admin | Mentor | Mentee> = new BehaviorSubject<Admin | Mentor | Mentee>(null);
+  private currentUser: BehaviorSubject<DiversITUser> = new BehaviorSubject<DiversITUser>(null);
   currentUserStatus = this.currentUser.asObservable();
 
 
@@ -61,24 +61,18 @@ export class FirestoreService {
   getCurrentUser(user: User) {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
       if (doc.exists()) {
-        const currentUser = doc.data() as DiversITUser
-        if (currentUser.role == 2) this.currentUser.next(currentUser as Mentor);
-        else if (currentUser.role == 3) this.currentUser.next(currentUser as Mentee);
-        else if (currentUser.role == 1) this.currentUser.next(currentUser as Admin)
+        this.currentUser.next(doc.data() as DiversITUser)
       }
     });
   }
 
-  async getUserPerIDPromise(uid: string): Promise<Admin | Mentor | Mentee> {
-    return new Promise<Admin | Mentor | Mentee>(async (resolve, reject) => {
+  async getUserPerIDPromise(uid: string): Promise<any> {
+    return new Promise<any>(async (resolve, reject) => {
       const docRef = doc(this.db, "users", uid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        const currentUser = docSnap.data() as DiversITUser
-        if (currentUser.role == 2) this.currentUser.next(currentUser as Mentor);
-        else if (currentUser.role == 3) this.currentUser.next(currentUser as Mentee);
-        else if (currentUser.role == 1) this.currentUser.next(currentUser as Admin)
+        resolve(docSnap.data() as DiversITUser)
       } else {
         reject("User existiert nicht")
       }

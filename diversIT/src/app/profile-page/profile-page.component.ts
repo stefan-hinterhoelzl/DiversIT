@@ -4,7 +4,7 @@ import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 import { ActivatedRoute, UrlSerializer } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
 import { Post } from '../models/post.model';
-import { Admin, Mentee, Mentor } from '../models/users.model';
+import { DiversITUser } from '../models/users.model';
 import { FirestoreService } from '../services/firestore.service';
 
 @Component({
@@ -18,8 +18,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
   currentUserSubscription: Subscription;
   currentRouteSubscription: Subscription;
-  currentUser: Admin | Mentor | Mentee;
-  alternateUser: Admin | Mentor | Mentee;
+  currentUser: DiversITUser; 
+  alternateUser: DiversITUser;
   ownProfile: boolean;
   posts: Post[];
 
@@ -31,8 +31,6 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     this.currentUserSubscription = this.firestore.currentUserStatus.subscribe((user) => {
       if (user != null) {
         this.currentUser = user;
-        
-        
         this.currentRouteSubscription = this.route.params.subscribe(params => {
           let id: string = params['id'];
           this.initialize(id);

@@ -15,20 +15,9 @@ export interface DiversITUser {
     uid: string;
     creationTime: Timestamp;
     lastLoggedIn: Timestamp;
+    mentees?: string[];
+    company?: string;
+    maxMentees?: number;
+    girlsOnlyMentor?: boolean;
+    mentors?: string[];
 }
-
-
-export interface Mentor extends DiversITUser {
-    mentees: string[];
-    company: string;
-    maxMentees: number;
-    girlsOnlyMentor: boolean;
-}
-
-
-export interface Mentee extends DiversITUser {
-    mentors: string[];
-}
-
-export interface Admin extends DiversITUser {}
-
