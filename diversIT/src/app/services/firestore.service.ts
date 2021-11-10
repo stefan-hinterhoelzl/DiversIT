@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Mentee, DiversITUser } from '../models/users.model'
+import {DiversITUser} from '../models/users.model'
 import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp, updateDoc } from "firebase/firestore";
 import {getAuth, onAuthStateChanged, User} from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
@@ -61,19 +61,18 @@ export class FirestoreService {
   getCurrentUser(user: User) {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
       if (doc.exists()) {
-        const currentUser = doc.data() as DiversITUser
-        this.currentUser.next(currentUser);
+        this.currentUser.next(doc.data() as DiversITUser)
       }
     });
   }
 
-  async getUserPerIDPromise(uid: string) {
+  async getUserPerIDPromise(uid: string): Promise<any> {
     return new Promise<any>(async (resolve, reject) => {
       const docRef = doc(this.db, "users", uid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        resolve(docSnap.data())
+        resolve(docSnap.data() as DiversITUser)
       } else {
         reject("User existiert nicht")
       }
