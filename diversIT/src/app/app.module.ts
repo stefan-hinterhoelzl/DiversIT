@@ -18,6 +18,8 @@ import { PostCardComponent } from './main/main-components/center-panel/post-card
 import { CenterPanelComponent } from './main/main-components/center-panel/center-panel.component';
 import { LeftPanelComponent } from './main/main-components/left-panel/left-panel.component';
 import { RightPanelComponent } from './main/main-components/right-panel/right-panel.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -34,7 +36,9 @@ const app = initializeApp(environment.firebaseConfig);
     PostCardComponent,
     CenterPanelComponent,
     LeftPanelComponent,
-    RightPanelComponent
+    RightPanelComponent,
+    AdminPageComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
