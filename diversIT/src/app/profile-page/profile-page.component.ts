@@ -1,7 +1,10 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 import { ActivatedRoute } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
-import { CUser } from '../models/users.model';
+import { Post } from '../models/post.model';
+import { Mentee, Mentor } from '../models/users.model';
 import { FirestoreService } from '../services/firestore.service';
 
 @Component({
@@ -15,9 +18,10 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
   currentUserSubscription: Subscription;
   currentRouteSubscription: Subscription;
-  currentUser: CUser;
-  alternateUser: CUser;
+  currentUser: any;
+  alternateUser: any;
   ownProfile: boolean;
+  posts: Post[];
 
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe();
@@ -26,7 +30,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.currentUserSubscription = this.firestore.currentUserStatus.subscribe((user) => {
       if (user != null) {
-        this.currentUser = user;
+        if (user.role == 2) this.currentUser = user as Mentor;
+        else this.currentUser = user as Mentee;
 
         this.currentRouteSubscription = this.route.params.subscribe(params => {
           let id: string = params['id'];
@@ -37,13 +42,22 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   }
 
   async initialize(id) {
-    if (this.currentUser.customUser.uid == id) {
+    if (this.currentUser.uid == id) {
       this.ownProfile = true;
+
     }
     else {
       this.alternateUser = await this.firestore.getUserPerIDPromise(id).catch(error => console.log(error));
       this.ownProfile = false;
     }
+
+    this.firestore.getPostUser(id).then(async (data:Post[]) => {
+      this.posts = data;
+      console.log(data);
+      var user = await this.firestore.getUserPerIDPromise(data[0].userID)
+      console.log(user);
+    }).catch((error) => console.error(error))
+
 
   }
 

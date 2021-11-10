@@ -1,7 +1,7 @@
 import { Timestamp } from "@firebase/firestore";
-import {User} from "firebase/auth";
 
-export interface OUser {
+
+export interface DiversITUser {
     role: number; //1=admin; 2=mentor; 3=mentee
     email: string;
     firstname: string;
@@ -18,7 +18,7 @@ export interface OUser {
 }
 
 
-export interface Mentor extends OUser {
+export interface Mentor extends DiversITUser {
     mentees: string[];
     company: string;
     maxMentees: number;
@@ -26,15 +26,7 @@ export interface Mentor extends OUser {
 }
 
 
-export interface Mentee extends OUser{
+export interface Mentee extends DiversITUser {
     mentors: string[];
 }
-
-
-
-export interface CUser {
-    firebaseUser: User;
-    customUser: OUser;
-}
-
 

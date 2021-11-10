@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import {User} from 'firebase/auth';
-import {CUser, OUser} from '../models/users.model'
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { DiversITUser } from '../models/users.model';
 
 @Component({
   selector: 'app-main',
@@ -13,7 +13,7 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
 })
 export class MainComponent implements OnInit, OnDestroy {
 
-  currentUser: CUser;
+  currentUser: DiversITUser;
   currentUserSubscription: Subscription;
 
   constructor(private firestore: FirestoreService, private auth: AuthService) { }
