@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DiversITUser } from 'src/app/models/users.model';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-center-panel',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CenterPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private firestore: FirestoreService) { }
 
-  ngOnInit(): void {
+  currentUser: DiversITUser;
+  mentors: string[];
+
+
+  ngOnInit(): void {    
+    this.firestore.currentUserStatus.subscribe((data) => {
+      if (data != null) {
+        this.currentUser = data
+        this.initialize()
+      }
+    });
+  }
+
+  initialize(){
+    this.mentors = this.currentUser.mentors
+    
   }
 
 }
