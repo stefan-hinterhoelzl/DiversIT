@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
-import { CUser } from '../models/users.model';
+import { DiversITUser } from '../models/users.model';
 import { FirestoreService } from '../services/firestore.service';
 
 @Component({
@@ -15,8 +15,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
   currentUserSubscription: Subscription;
   currentRouteSubscription: Subscription;
-  currentUser: CUser;
-  alternateUser: CUser;
+  currentUser: DiversITUser;
+  alternateUser: DiversITUser;
   ownProfile: boolean;
 
   ngOnDestroy(): void {
@@ -37,7 +37,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   }
 
   async initialize(id) {
-    if (this.currentUser.customUser.uid == id) {
+    if (this.currentUser.uid == id) {
       this.ownProfile = true;
     }
     else {
