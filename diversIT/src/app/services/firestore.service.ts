@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {DiversITUser} from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp, updateDoc } from "firebase/firestore";
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp, updateDoc, serverTimestamp, arrayUnion } from "firebase/firestore";
 import {getAuth, onAuthStateChanged, User} from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/post.model';
@@ -54,11 +54,19 @@ export class FirestoreService {
         universityEducation: "",
         job: "",
         uid: uid,
-        lastloggedIn: Timestamp.now(),
-        creationTime: Timestamp.now(),
+        lastLoggedIn: serverTimestamp(),
+        creationTime: serverTimestamp(),
         mentors: [],
+        mentees: [],
+        company: "",
+        maxMentees: -1,
+        girlsOnlyMentor: false,
+
       });
-   
+    } else {
+      updateDoc(docRef, {
+        lastloggedIn: serverTimestamp()
+      });
     }
   }
 
@@ -84,35 +92,49 @@ export class FirestoreService {
   }
 
 
-  async getUserPerIDPromise(uid: string): Promise<any> {
-    return new Promise<any>(async (resolve, reject) => {
-      const docRef = doc(this.db, "users", uid);
-      const docSnap = await getDoc(docRef);
+  async getUserPerIDPromise(uid: string): Promise<DiversITUser> {
+    const docRef = doc(this.db, "users", uid);
+    const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        resolve(docSnap.data() as DiversITUser)
-      } else {
-        reject("User existiert nicht")
-      }
-    });
+    if (docSnap.exists()) {
+      return docSnap.data() as DiversITUser
+    } else {
+      return null
+    }
+    
   }
 
 
-  getPostUser(userID: string) {
-    return new Promise<Post[]>(async (resolve, reject) => {
-      const q = query(collection(this.db, "posts"), where("userID", "==", userID));
-      const querySnapshot = await getDocs(q);
+  async getAllUsersPromise(): Promise<DiversITUser[]> {
+    const querySnapshot = await getDocs(collection(this.db, "users"));
+    let array: DiversITUser[] = []
+    querySnapshot.forEach((doc) => {
+      array.push(doc.data() as DiversITUser)
+    });
+    return array;
+  }
 
-      if (querySnapshot.empty) {
-        reject("Keine Posts gefunden");
-      }
 
-      let array: Post[] = [];
+  async getPostUser(userID: string): Promise<Post[]> {
+    const q = query(collection(this.db, "posts"), where("userID", "==", userID));
+    const querySnapshot = await getDocs(q);
+    let array: Post[] = [];
+    querySnapshot.forEach((doc) => {
+      array.push(doc.data() as Post)
+    });
+    return array;
+  }
 
-      querySnapshot.forEach((doc) => {
-        array.push(doc.data() as Post)
-      });
-      resolve(array);      
+  async addRelationship(mentee: string, mentor: string) {
+    const docRefMentor = doc(this.db, "users", mentor);
+    const docRefMentee = doc(this.db, "users", mentee)
+
+    await updateDoc(docRefMentor, {
+      mentees: arrayUnion(mentee)
+    });
+
+    await updateDoc(docRefMentee, {
+      mentors: arrayUnion(mentor)
     });
   }
 

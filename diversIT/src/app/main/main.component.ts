@@ -36,4 +36,8 @@ export class MainComponent implements OnInit, OnDestroy {
     this.auth.logout();
   }
 
+  testAddRelationship() {
+    this.firestore.addRelationship("test", this.currentUser.uid);
+  }
+
 }

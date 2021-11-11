@@ -1,0 +1,89 @@
+<div class = "main-wrapper" fxLayout = column fxLayoutAlign = "start center">
+
+    <h2>Admins</h2>
+    <mat-form-field style = "width: 60%;">
+        <mat-label>Email</mat-label>
+        <input matInput (keyup)="applyFilterAdmins($event)"  #input>
+    </mat-form-field>
+
+    <table style = "width: 60%;" mat-table [dataSource]="dataSourceAdmins" class="mat-elevation-z8">
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element" > {{element.email}} </td>
+          </ng-container>
+        <!-- Letzter Login Column -->
+        <ng-container matColumnDef="lastLogin">
+            <th mat-header-cell *matHeaderCellDef> Letzter Login </th>
+            <td mat-cell *matCellDef="let element" > {{element.lastLoggedIn.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+          </ng-container>
+        <!-- Letzter Login Column -->
+        <ng-container matColumnDef="creationDate">
+            <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
+            <td mat-cell *matCellDef="let element" > {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsAdmins;"></tr>
+    </table>
+
+
+    <h2 style = "margin-top: 5%">Registrierte Mentoren</h2>
+    <mat-form-field style = "width: 60%;">
+        <mat-label>Email</mat-label>
+        <input matInput (keyup)="applyFilterMentors($event)" #input>
+    </mat-form-field>
+
+    <table style = "width: 60%;" mat-table [dataSource]="dataSourceMentors" class="mat-elevation-z8">
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element" > {{element.email}} </td>
+          </ng-container>
+        <!-- Letzter Login Column -->
+        <ng-container matColumnDef="lastLogin">
+            <th mat-header-cell *matHeaderCellDef> Letzter Login </th>
+            <td mat-cell *matCellDef="let element" > {{element.lastLoggedIn.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+          </ng-container>
+        <!-- Letzter Login Column -->
+        <ng-container matColumnDef="creationDate">
+            <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
+            <td mat-cell *matCellDef="let element" > {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+    <h2 style = "margin-top: 5%">Registrierte Mentees</h2>
+    <mat-form-field style = "width: 60%;">
+        <mat-label>Email</mat-label>
+        <input matInput (keyup)="applyFilterMentee($event)" #input>
+    </mat-form-field>
+
+    <table style = "width: 60%;" mat-table [dataSource]="dataSourceMentees" class="mat-elevation-z8">
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element" > {{element.email}} </td>
+          </ng-container>
+        <!-- Letzter Login Column -->
+        <ng-container matColumnDef="lastLogin">
+            <th mat-header-cell *matHeaderCellDef> Letzter Login </th>
+            <td mat-cell *matCellDef="let element" > {{element.lastLoggedIn.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+          </ng-container>
+        <!-- Letzter Login Column -->
+        <ng-container matColumnDef="creationDate">
+            <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
+            <td mat-cell *matCellDef="let element" > {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    
+
+
+</div>
