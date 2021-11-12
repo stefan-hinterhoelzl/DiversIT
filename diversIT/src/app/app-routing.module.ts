@@ -1,3 +1,4 @@
+import { ForumComponent } from './forum/forum.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminPageComponent } from './admin-page/admin-page.component';
@@ -10,28 +11,37 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 const routes: Routes = [
 
-  {path: '', pathMatch: 'full', redirectTo: 'app'},
+  { path: '', pathMatch: 'full', redirectTo: 'app' },
 
-  {path: 'landing',
-  component: LandingPageComponent
+  {
+    path: 'landing',
+    component: LandingPageComponent
   },
-  {path: 'app',
-  component: MainComponent,
-  canActivate: [AuthguardService]
+  {
+    path: 'forum',
+    component: ForumComponent
   },
-  {path: 'admin',
-  component: AdminPageComponent,
-  canActivate: [AuthguardService, AdminguardService]
+  {
+    path: 'app',
+    component: MainComponent,
+    canActivate: [AuthguardService]
   },
-  {path: 'unauthorized',
-  component: UnauthorizedComponent,
-  canActivate: [AuthguardService]
+  {
+    path: 'admin',
+    component: AdminPageComponent,
+    canActivate: [AuthguardService, AdminguardService]
   },
-  {path: 'profile/:id',
-  component: ProfilePageComponent,
-  canActivate: [AuthguardService]
+  {
+    path: 'unauthorized',
+    component: UnauthorizedComponent,
+    canActivate: [AuthguardService]
   },
-  
+  {
+    path: 'profile/:id',
+    component: ProfilePageComponent,
+    canActivate: [AuthguardService]
+  },
+
 
 
 ];

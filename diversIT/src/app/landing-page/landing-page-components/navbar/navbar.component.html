@@ -14,23 +14,31 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('home')">Home</span></li>
-                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('services')">Dienste</span>
-                </li>
                 <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('mentor-spotlight')">Mentor
                         Spotlight</span></li>
+                <li class="nav-item"><span class="nav-link"
+                        (click)="toggleClass(); onClick('job-profiles')">Job-Profile</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('services')">Dienste</span>
+                </li>
                 <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('team')">Team</span></li>
-                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('forum')">Forum</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass()"
+                        [routerLink]="['../forum']">Forum</span>
+                </li>
                 <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('login')">Login</span></li>
             </ul>
 
             <ul class="navbar-nav ml-auto for-responsive">
                 <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('home')">Home</span></li>
-                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('services')">Dienste</span>
-                </li>
                 <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('mentor-spotlight')">Mentor
                         Spotlight</span></li>
+                <li class="nav-item"><span class="nav-link"
+                        (click)="toggleClass(); onClick('job-profiles')">Job-Profile</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('services')">Dienste</span>
+                </li>
                 <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('team')">Team</span></li>
-                <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('forum')">Forum</span></li>
+                <li class="nav-item"><span class="nav-link" (click)="toggleClass()"
+                        [routerLink]="['../forum']">Forum</span>
+                </li>
                 <li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('login')">Login</span></li>
             </ul>
         </div>

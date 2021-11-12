@@ -20,6 +20,12 @@ import { LeftPanelComponent } from './main/main-components/left-panel/left-panel
 import { RightPanelComponent } from './main/main-components/right-panel/right-panel.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { ServicesComponent } from './landing-page/landing-page-components/services/services.component';
+import { TeamComponent } from './landing-page/landing-page-components/team/team.component';
+import { MentorSpotlightComponent } from './landing-page/landing-page-components/mentor-spotlight/mentor-spotlight.component';
+import { NavbarComponent } from './landing-page/landing-page-components/navbar/navbar.component';
+import { StickyNavModule } from 'ng2-sticky-nav';
+import { JobProfilesComponent } from './landing-page/landing-page-components/job-profiles/job-profiles.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -38,14 +44,20 @@ const app = initializeApp(environment.firebaseConfig);
     LeftPanelComponent,
     RightPanelComponent,
     AdminPageComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    NavbarComponent,
+    ServicesComponent,
+    TeamComponent,
+    MentorSpotlightComponent,
+    JobProfilesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    StickyNavModule
   ],
   providers: [SnackbarComponent],
   bootstrap: [AppComponent]

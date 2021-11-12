@@ -1,7 +1,8 @@
+import { JobProfile } from './../models/job-profile.model';
 import { Injectable } from '@angular/core';
-import {DiversITUser} from '../models/users.model'
+import { DiversITUser } from '../models/users.model'
 import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp, updateDoc, serverTimestamp, arrayUnion } from "firebase/firestore";
-import {getAuth, onAuthStateChanged, User} from "firebase/auth";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/post.model';
 
@@ -13,7 +14,7 @@ export class FirestoreService {
 
   constructor() {
     this.authStatusListener();
-   }
+  }
 
   db = getFirestore();
   auth = getAuth();
@@ -23,13 +24,13 @@ export class FirestoreService {
   currentUserStatus = this.currentUser.asObservable();
 
   private currentUserMentors: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>(null);
-  currentUserMentorsStatus = this. currentUserMentors.asObservable()
+  currentUserMentorsStatus = this.currentUserMentors.asObservable()
 
 
   authStatusListener() {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
-        this.getCurrentUser(user);        
+        this.getCurrentUser(user);
       } else {
         this.currentUser.next(null);
         this.currentUserMentors.next(null);
@@ -77,18 +78,18 @@ export class FirestoreService {
         this.getCurrentUserMentors(doc.data() as DiversITUser);
       }
     });
-    
+
   }
 
 
-  async getCurrentUserMentors(user: DiversITUser) {     
+  async getCurrentUserMentors(user: DiversITUser) {
     let listOfMentors: DiversITUser[] = [];
-    
-    for(let i = 0; i < user.mentors.length; i++){
+
+    for (let i = 0; i < user.mentors.length; i++) {
       var data = await this.getUserPerIDPromise(user.mentors[i])
-      listOfMentors.push(data)              
+      listOfMentors.push(data)
     }
-    this.currentUserMentors.next(listOfMentors) 
+    this.currentUserMentors.next(listOfMentors)
   }
 
 
@@ -101,7 +102,7 @@ export class FirestoreService {
     } else {
       return null
     }
-    
+
   }
 
 
@@ -138,5 +139,24 @@ export class FirestoreService {
     });
   }
 
+  async getJobProfilePerIDPromise(jobProfileID: string): Promise<JobProfile> {
+    const docRef = doc(this.db, "jobProfiles", jobProfileID);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return docSnap.data() as JobProfile
+    } else {
+      return null
+    }
+  }
+
+  async getAllJobProfilesPromise(): Promise<JobProfile[]> {
+    const querySnapshot = await getDocs(collection(this.db, "jobProfiles"));
+    let array: JobProfile[] = []
+    querySnapshot.forEach((doc) => {
+      array.push(doc.data() as JobProfile)
+    });
+    return array;
+  }
 
 }
