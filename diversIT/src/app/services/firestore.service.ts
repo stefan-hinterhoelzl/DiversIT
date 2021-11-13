@@ -65,7 +65,7 @@ export class FirestoreService {
       });
     } else {
       updateDoc(docRef, {
-        lastloggedIn: serverTimestamp()
+        lastLoggedIn: serverTimestamp()
       });
     }
   }
