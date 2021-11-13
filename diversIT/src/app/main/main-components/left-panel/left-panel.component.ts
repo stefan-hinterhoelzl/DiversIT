@@ -24,7 +24,6 @@ export class LeftPanelComponent implements OnInit {
     this.firestore.currentUserStatus.subscribe(data => {
       if(data == null) return;
       this.currentUser = data;
-      
     })
 
   }
