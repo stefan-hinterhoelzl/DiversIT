@@ -26,6 +26,7 @@ import { MentorSpotlightComponent } from './landing-page/landing-page-components
 import { NavbarComponent } from './landing-page/landing-page-components/navbar/navbar.component';
 import { StickyNavModule } from 'ng2-sticky-nav';
 import { JobProfilesComponent } from './landing-page/landing-page-components/job-profiles/job-profiles.component';
+import { JobCardComponent } from './landing-page/landing-page-components/job-profiles/job-card/job-card.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -49,7 +50,8 @@ const app = initializeApp(environment.firebaseConfig);
     ServicesComponent,
     TeamComponent,
     MentorSpotlightComponent,
-    JobProfilesComponent
+    JobProfilesComponent,
+    JobCardComponent
   ],
   imports: [
     BrowserModule,

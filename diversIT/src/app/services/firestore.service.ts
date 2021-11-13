@@ -140,7 +140,7 @@ export class FirestoreService {
   }
 
   async getJobProfilePerIDPromise(jobProfileID: string): Promise<JobProfile> {
-    const docRef = doc(this.db, "jobProfiles", jobProfileID);
+    const docRef = doc(this.db, "job-profiles", jobProfileID);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -151,7 +151,7 @@ export class FirestoreService {
   }
 
   async getAllJobProfilesPromise(): Promise<JobProfile[]> {
-    const querySnapshot = await getDocs(collection(this.db, "jobProfiles"));
+    const querySnapshot = await getDocs(collection(this.db, "job-profiles"));
     let array: JobProfile[] = []
     querySnapshot.forEach((doc) => {
       array.push(doc.data() as JobProfile)

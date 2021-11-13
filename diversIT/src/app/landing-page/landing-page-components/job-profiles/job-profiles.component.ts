@@ -11,15 +11,11 @@ import { JobProfile } from 'src/app/models/job-profile.model';
 export class JobProfilesComponent implements OnInit {
 
   jobProfiles: JobProfile[]
-  dataSourceJobProfiles: any
-  displayedColumns: string[] = ['title', 'shortDescription', 'tasks'];
 
   constructor(private firestore: FirestoreService) { }
 
   async ngOnInit(): Promise<void> {
     this.jobProfiles = await this.firestore.getAllJobProfilesPromise();
-
-    this.dataSourceJobProfiles = new MatTableDataSource(this.jobProfiles);
   }
 
 }
