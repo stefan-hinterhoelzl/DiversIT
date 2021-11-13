@@ -23,7 +23,7 @@
             <td mat-cell *matCellDef="let element" > {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
           </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsAdmins"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumnsAdmins;"></tr>
     </table>
 
@@ -50,6 +50,13 @@
             <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
             <td mat-cell *matCellDef="let element" > {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
           </ng-container>
+          <!-- Button Column -->
+        <ng-container matColumnDef="button">
+          <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
+          <td mat-cell *matCellDef="let element" >
+            <button mat-raised-button (click) = "demoteUserToMentee(element)"> Zum Mentee machen</button>
+          </td>
+        </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -78,6 +85,13 @@
             <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
             <td mat-cell *matCellDef="let element" > {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
           </ng-container>
+           <!-- Button Column -->
+        <ng-container matColumnDef="button">
+          <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
+          <td mat-cell *matCellDef="let element"> 
+            <button mat-raised-button (click) = "promoteUserToMentor(element)"> Zum Mentor machen</button>  
+          </td>
+        </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
