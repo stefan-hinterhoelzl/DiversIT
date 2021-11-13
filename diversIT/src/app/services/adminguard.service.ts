@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { getAuth, onAuthStateChanged, User } from '@firebase/auth';
 import { Observable } from 'rxjs';
 import { DiversITUser } from '../models/users.model';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { FirestoreService } from './firestore.service';
 
 @Injectable({
@@ -10,7 +11,7 @@ import { FirestoreService } from './firestore.service';
 })
 export class AdminguardService implements CanActivate {
 
-  constructor(private router: Router, private firestore: FirestoreService) { }
+  constructor(private router: Router, private firestore: FirestoreService, private snackbar: SnackbarComponent) { }
 
 
 
@@ -23,7 +24,8 @@ export class AdminguardService implements CanActivate {
           let u: DiversITUser = await this.firestore.getUserPerIDPromise(user.uid);
           if (u.role == 1) resolve(true);
           else { 
-            this.router.navigate(["/unauthorized"]);
+            this.router.navigate(["/app"]);
+            this.snackbar.openSnackBar("Sie sind nicht eingeloggt!", "red-snackbar")
             resolve(false);
           }
         }

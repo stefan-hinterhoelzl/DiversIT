@@ -139,4 +139,23 @@ export class FirestoreService {
   }
 
 
+  async promoteMenteeToMentor(user: DiversITUser) {
+    const docRef = doc(this.db, 'users', user.uid)
+
+    return updateDoc(docRef, {
+      role: 2,
+      mentors: []
+    });
+  }
+
+  async demoteMenteeToMentor(user: DiversITUser) {
+    const docRef = doc(this.db, 'users', user.uid)
+
+    return updateDoc(docRef, {
+      role: 3,
+      mentees: []
+    });
+  }
+
+
 }
