@@ -1,0 +1,21 @@
+mat-card{
+    margin-top: 10px;
+    width: 50%;
+    background-size: 100% 65px ;
+    background-image: url('./../../../../../assets/Images/title-background-profile.png');
+    background-repeat: no-repeat;
+}
+
+mat-card-content{
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.mat-card-avatar{
+    height: 90px; 
+    width: 90px;
+    margin: 0px auto;
+    background-size: cover;
+    box-shadow: 2px 4px 3px #888888;
+    margin-bottom: 10px;
+}

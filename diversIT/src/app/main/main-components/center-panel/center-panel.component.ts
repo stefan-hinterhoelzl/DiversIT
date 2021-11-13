@@ -31,6 +31,7 @@ export class CenterPanelComponent implements OnInit {
     this.firestore.currentUserMentorsStatus.subscribe(async (data) => {
       if(data == null) return;
       this.mentors = data;
+      this.posts = [];
 
       // loop through all mentors and get all posts of each mentor
       for( let i = 0; i< this.mentors.length; i++){

@@ -18,6 +18,7 @@ export class PostCardComponent implements OnInit {
   @Input() contentImg: string;
 
   ngOnInit(): void {
+    console.log(this.time)
   }
 
 

@@ -20,6 +20,7 @@ import { LeftPanelComponent } from './main/main-components/left-panel/left-panel
 import { RightPanelComponent } from './main/main-components/right-panel/right-panel.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { ProfileCardComponent } from './main/main-components/left-panel/profile-card/profile-card.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -38,7 +39,8 @@ const app = initializeApp(environment.firebaseConfig);
     LeftPanelComponent,
     RightPanelComponent,
     AdminPageComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    ProfileCardComponent
   ],
   imports: [
     BrowserModule,

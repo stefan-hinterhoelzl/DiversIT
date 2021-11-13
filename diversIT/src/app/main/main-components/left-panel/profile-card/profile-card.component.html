@@ -1,1 +1,9 @@
-<p>profile-card works!</p>
+<mat-card>
+    <div class="background-image"></div>
+        <!-- <div *ngIf="profileImg == ''" mat-card-avatar class="header-image" (click)="navigateToProfile()" style="cursor: pointer; background-image: url('{{profileImg}}'); background-size: cover;"></div> -->
+        <div mat-card-avatar style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');"></div>
+    <mat-card-content>
+        <h2>Thomas Deutsch</h2>
+        <p> Masterstudent an der Johannes Kepler Universität Linz. </p>
+    </mat-card-content>
+  </mat-card>
