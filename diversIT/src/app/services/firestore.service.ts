@@ -65,7 +65,7 @@ export class FirestoreService {
       });
     } else {
       updateDoc(docRef, {
-        lastloggedIn: serverTimestamp()
+        lastLoggedIn: serverTimestamp()
       });
     }
   }
@@ -135,6 +135,25 @@ export class FirestoreService {
 
     await updateDoc(docRefMentee, {
       mentors: arrayUnion(mentor)
+    });
+  }
+
+
+  async promoteMenteeToMentor(user: DiversITUser) {
+    const docRef = doc(this.db, 'users', user.uid)
+
+    return updateDoc(docRef, {
+      role: 2,
+      mentors: []
+    });
+  }
+
+  async demoteMenteeToMentor(user: DiversITUser) {
+    const docRef = doc(this.db, 'users', user.uid)
+
+    return updateDoc(docRef, {
+      role: 3,
+      mentees: []
     });
   }
 
