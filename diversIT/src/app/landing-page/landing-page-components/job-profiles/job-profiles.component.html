@@ -1,6 +1,806 @@
-<h2>Job<span>-</span>Profile</h2>
+<h2>Job-Profile in der IT</h2>
 
-<div style="display:flex">
-    <app-job-card *ngFor="let job of jobProfiles" title="{{job.title}}" shortDescription="{{job.shortDescription}}"
-        tasks={{job.tasks}} mentorUids={{job.mentorUids}}></app-job-card>
-</div>
+<mat-grid-list [cols]="breakpoint" rowHeight="1.5:1" (window:resize)="onResize($event)">
+
+    <mat-grid-tile>
+        <mat-card class="job-card-finetuning">
+            <mat-card-header>
+                <mat-card-title>IT-Systemadministrator</mat-card-title>
+                <div mat-card-avatar class="header-image" routerLink="/profile/zLccCJEzSGap7BlhefDT0xTyi9I3"
+                    style="cursor: pointer; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); background-size: cover;">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-tab-group>
+                    <mat-tab label="Kurzbeschreibung">
+                        <p>
+                            Ein IT-Systemadministrator oder IT-Manager verwaltet die Netzwerk- und Serverinfrastruktur
+                            eines Unternehmens. Die Hauptaufgaben sind die Sicherheit der Computersysteme und der
+                            elektronischen Daten des Unternehmens, die Entwicklung und Implementierung
+                            kundenspezifischer Systeme sowie die Überwachung aller computerbezogenen Aktivitäten.
+                        </p>
+                    </mat-tab>
+                    <mat-tab label="Typische Aufgaben">
+                        <mat-list>
+                            <mat-list-item>
+                                <p>Überwachung des täglichen Betriebs der Netzwerk- und Serverinfrastruktur</p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p>Ausrichtung der IT-Infrastruktur auf aktuelle und zukünftige
+                                    Geschäftsanforderungen
+                                    und -ziele</p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p>Verwalten von IT-Budgets, Forecasting, Cashflow-Handling und Durchsetzung der
+                                    Kosteneffizienz</p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p>Bewertung von Risiken, Entwicklung von Netzwerkwiederherstellungs- und
+                                    Backup-Prozessen
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p>Begutachtung und Kauf von Neu- und Ersatzhardware
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p>Sicherstellen, dass die IT-Aktivitäten innerhalb der Grenzen der geltenden
+                                    Gesetze, Kodizes
+                                    und Vorschriften liegen</p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p>Testen, Fehlersuche und Anpassen von Informationssystemen für einen
+                                    effektiven
+                                    Betrieb</p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Implementierung der Sicherheit des Netzwerks, der Daten und seiner Speicher-
+                                    und
+                                    Kommunikationssysteme </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Fähigkeiten">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Fähigkeit, Kandidaten einzuschätzen und zu rekrutieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Fähigkeit, neue IT-Mitarbeiter
+                                    auszubilden, Teammitglieder zu leiten und zu motivieren </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Erfahrung in der Koordination von Installationen, Upgrades und Wartung </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Fähigkeit, Softwareanforderungen zu identifizieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Kenntnisse von Architekturprozessen und Leistungsberichten von
+                                    Betriebssystemen </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Ausgeprägte Fähigkeiten zum kritischen Denken </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Fähigkeiten, die Codeentwicklung zu verstehen und zu überwachen </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Ansprechperson">
+                        <h3>Cornelia Eysn</h3>
+                        <p> DiversIT-Mentorin</p>
+                        <button mat-raised-button routerLink="/profile/zLccCJEzSGap7BlhefDT0xTyi9I3"> Zum Profil
+                        </button>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-card class="job-card-finetuning">
+            <mat-card-header>
+                <mat-card-title> IT-Techniker </mat-card-title>
+                <div mat-card-avatar class="header-image" routerLink="/profile/jbZWHG9F8XRDMdtDrQ6hzLZFUz52"
+                    style="cursor: pointer; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); background-size: cover;">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-tab-group>
+                    <mat-tab label="Kurzbeschreibung">
+                        <p> Ein IT-Techniker oder IT-Support-Techniker ist für die Wartung von Computersystemen und
+                            anderen
+                            Technologien
+                            in einer geschäftlichen Umgebung verantwortlich. Zu ihren Aufgaben gehört es, mit anderen
+                            IT-Technikern
+                            zusammenzuarbeiten, um Hardware zu installieren und Computerprobleme zu beheben, auf
+                            IT-Fragen von
+                            Unternehmensmitarbeitern zu antworten und Malware-Schutzgeräte zu aktualisieren, um Viren
+                            oder
+                            Computer-Hacking zu verhindern.
+                        </p>
+                    </mat-tab>
+                    <mat-tab label="Typische Aufgaben">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Erhaltung funktionsfähiger Komponenten durch Reparatur oder Austausch </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Unterstützung bei Anrufen oder Live-Chat bei technischen Schwierigkeiten </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Vorbereitung der Website mit korrekter Codierung und Inhalten, die für die
+                                    Geschäftsanforderungen des Unternehmens relevant sind </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Überwachung von Klicks, Links, Benutzerfreundlichkeit und Gesamtstatus der
+                                    Unternehmenswebseite, Zielseiten und unterstützenden Seiten. </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Unterstützung von Kunden und Mitarbeitern bei Hardware- und
+                                    Softwareherausforderungen
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Fähigkeiten">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Problemlösung: IT-Techniker müssen oft ein Problem interpretieren und den
+                                    besten Weg
+                                    zu
+                                    einer Lösung finden. Dies erfordert kritisches Denken, da der IT-Techniker
+                                    möglicherweise
+                                    zusätzliche Informationen benötigt, die nicht bereitgestellt werden.
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Geduld: IT-Techniker arbeiten eng mit ihren Kunden zusammen. Geduld ist für
+                                    dieses
+                                    Feld erforderlich. Die Kunden verstehen oft nicht, was mit ihrem System passiert und
+                                    beschreiben es möglicherweise nicht richtig. </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Kommunikation: Die Kommunikation mit Kunden, Vorgesetzten und Mitarbeitern
+                                    hilft
+                                    allen, das Problem und mögliche Lösungen zu verstehen. Eine klare Darstellung der
+                                    Situation,
+                                    das Befolgen von E-Mails und Telefonaten sorgen für
+                                    einen
+                                    reibungslosen Prozessablauf.
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Ausdauer: Da IT-Techniker viele Stunden mit komplizierten Projekten arbeiten
+                                    können,
+                                    ist die Fähigkeit, sich auf das Ziel zu konzentrieren, von entscheidender Bedeutung.
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Ansprechperson">
+                        <h3> Stefan Hinterhölzl </h3>
+                        <p> DiversIT-Mentor </p>
+                        <button mat-raised-button routerLink="/profile/jbZWHG9F8XRDMdtDrQ6hzLZFUz52"> Zum Profil
+                        </button>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-card class="job-card-finetuning">
+            <mat-card-header>
+                <mat-card-title> UX-Designer </mat-card-title>
+                <div mat-card-avatar class="header-image" routerLink="/profile/f0fi5AyuXMSlFcmmJTzErrRqFvx1"
+                    style="cursor: pointer; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); background-size: cover;">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-tab-group>
+                    <mat-tab label="Kurzbeschreibung">
+                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge
+                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die
+                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an
+                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.
+                        </p>
+                    </mat-tab>
+                    <mat-tab label="Typische Aufgaben">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und
+                                    Bannern durchführen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,
+                                    was für beides funktionieren könnte
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Fähigkeiten">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Analytischer Verstand mit Geschäftssinn
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Liebe zum Detail und Beherrschung des IT-Designs
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Ansprechperson">
+                        <h3> Thomas Deutsch </h3>
+                        <p> DiversIT-Mentor </p>
+                        <button mat-raised-button routerLink="/profile/f0fi5AyuXMSlFcmmJTzErrRqFvx1"> Zum Profil
+                        </button>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-card class="job-card-finetuning">
+            <mat-card-header>
+                <mat-card-title> Software Engineer </mat-card-title>
+                <div mat-card-avatar class="header-image" routerLink="/profile/0jiOV3Ihtjg2Gwu3NovseuGTnm02"
+                    style="cursor: pointer; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); background-size: cover;">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-tab-group>
+                    <mat-tab label="Kurzbeschreibung">
+                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge
+                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die
+                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an
+                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.
+                        </p>
+                    </mat-tab>
+                    <mat-tab label="Typische Aufgaben">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und
+                                    Bannern durchführen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,
+                                    was für beides funktionieren könnte
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Fähigkeiten">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Analytischer Verstand mit Geschäftssinn
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Liebe zum Detail und Beherrschung des IT-Designs
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Ansprechperson">
+                        <h3> Gerald Roither </h3>
+                        <p> DiversIT-Mentor </p>
+                        <button mat-raised-button routerLink="/profile/0jiOV3Ihtjg2Gwu3NovseuGTnm02"> Zum Profil
+                        </button>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-card class="job-card-finetuning">
+            <mat-card-header>
+                <mat-card-title> Scrum Master </mat-card-title>
+                <div mat-card-avatar class="header-image" routerLink="/profile/f0fi5AyuXMSlFcmmJTzErrRqFvx1"
+                    style="cursor: pointer; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); background-size: cover;">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-tab-group>
+                    <mat-tab label="Kurzbeschreibung">
+                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge
+                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die
+                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an
+                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.
+                        </p>
+                    </mat-tab>
+                    <mat-tab label="Typische Aufgaben">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und
+                                    Bannern durchführen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,
+                                    was für beides funktionieren könnte
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Fähigkeiten">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Analytischer Verstand mit Geschäftssinn
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Liebe zum Detail und Beherrschung des IT-Designs
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Ansprechperson">
+                        <h3> Thomas Deutsch </h3>
+                        <p> DiversIT-Mentor </p>
+                        <button mat-raised-button routerLink="/profile/f0fi5AyuXMSlFcmmJTzErrRqFvx1"> Zum Profil
+                        </button>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-card class="job-card-finetuning">
+            <mat-card-header>
+                <mat-card-title> Software Engineer </mat-card-title>
+                <div mat-card-avatar class="header-image" routerLink="/profile/zLccCJEzSGap7BlhefDT0xTyi9I3"
+                    style="cursor: pointer; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); background-size: cover;">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-tab-group>
+                    <mat-tab label="Kurzbeschreibung">
+                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge
+                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die
+                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an
+                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.
+                        </p>
+                    </mat-tab>
+                    <mat-tab label="Typische Aufgaben">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und
+                                    Bannern durchführen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,
+                                    was für beides funktionieren könnte
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Fähigkeiten">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Analytischer Verstand mit Geschäftssinn
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Liebe zum Detail und Beherrschung des IT-Designs
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Ansprechperson">
+                        <h3> Cornelia Eysn </h3>
+                        <p> DiversIT-Mentorin </p>
+                        <button mat-raised-button routerLink="/profile/zLccCJEzSGap7BlhefDT0xTyi9I3"> Zum Profil
+                        </button>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-card class="job-card-finetuning">
+            <mat-card-header>
+                <mat-card-title> Universitätsprofessor für Informatik </mat-card-title>
+                <div mat-card-avatar class="header-image" routerLink="/profile/0jiOV3Ihtjg2Gwu3NovseuGTnm02"
+                    style="cursor: pointer; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); background-size: cover;">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-tab-group>
+                    <mat-tab label="Kurzbeschreibung">
+                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln.
+                        </p>
+                    </mat-tab>
+                    <mat-tab label="Typische Aufgaben">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Fähigkeiten">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Analytischer Verstand mit Geschäftssinn
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Ansprechperson">
+                        <h3> Gerald Roither </h3>
+                        <p> DiversIT-Mentor </p>
+                        <button mat-raised-button routerLink="/profile/0jiOV3Ihtjg2Gwu3NovseuGTnm02"> Zum Profil
+                        </button>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-card class="job-card-finetuning">
+            <mat-card-header>
+                <mat-card-title> DevOps Engineer </mat-card-title>
+                <div mat-card-avatar class="header-image" routerLink="/profile/jbZWHG9F8XRDMdtDrQ6hzLZFUz52"
+                    style="cursor: pointer; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); background-size: cover;">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-tab-group>
+                    <mat-tab label="Kurzbeschreibung">
+                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln.
+                        </p>
+                    </mat-tab>
+                    <mat-tab label="Typische Aufgaben">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Fähigkeiten">
+                        <mat-list>
+                            <mat-list-item>
+                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p> Analytischer Verstand mit Geschäftssinn
+                                </p>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="Ansprechperson">
+                        <h3> Stefan Hinterhölzl </h3>
+                        <p> DiversIT-Mentor </p>
+                        <button mat-raised-button routerLink="/profile/jbZWHG9F8XRDMdtDrQ6hzLZFUz52"> Zum Profil
+                        </button>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+</mat-grid-list>

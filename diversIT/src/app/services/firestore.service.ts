@@ -1,7 +1,6 @@
-import { JobProfile } from './../models/job-profile.model';
 import { Injectable } from '@angular/core';
 import { DiversITUser } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp, updateDoc, serverTimestamp, arrayUnion } from "firebase/firestore";
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/post.model';
@@ -137,26 +136,6 @@ export class FirestoreService {
     await updateDoc(docRefMentee, {
       mentors: arrayUnion(mentor)
     });
-  }
-
-  async getJobProfilePerIDPromise(jobProfileID: string): Promise<JobProfile> {
-    const docRef = doc(this.db, "job-profiles", jobProfileID);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      return docSnap.data() as JobProfile
-    } else {
-      return null
-    }
-  }
-
-  async getAllJobProfilesPromise(): Promise<JobProfile[]> {
-    const querySnapshot = await getDocs(collection(this.db, "job-profiles"));
-    let array: JobProfile[] = []
-    querySnapshot.forEach((doc) => {
-      array.push(doc.data() as JobProfile)
-    });
-    return array;
   }
 
 }

@@ -1,7 +1,4 @@
-import { MatTableDataSource } from '@angular/material/table';
-import { FirestoreService } from 'src/app/services/firestore.service';
 import { Component, OnInit } from '@angular/core';
-import { JobProfile } from 'src/app/models/job-profile.model';
 
 @Component({
   selector: 'app-job-profiles',
@@ -10,12 +7,16 @@ import { JobProfile } from 'src/app/models/job-profile.model';
 })
 export class JobProfilesComponent implements OnInit {
 
-  jobProfiles: JobProfile[]
+  breakpoint: number;
 
-  constructor(private firestore: FirestoreService) { }
+  constructor() { }
 
-  async ngOnInit(): Promise<void> {
-    this.jobProfiles = await this.firestore.getAllJobProfilesPromise();
+  ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 1363) ? 1 : 2;
+  }
+
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 1363) ? 1 : 2;
   }
 
 }

@@ -51,6 +51,7 @@ ul {
     
     li {
         list-style: none;
+        list-style-type: circle;
     }
 }
 :focus {
@@ -351,6 +352,11 @@ Landing Page Header CSS
 	width: 100%;
 	position: fixed !important;
 	background: transparent !important;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; // allow us to do the line break for collapsing content
+    align-items: center;
+    justify-content: space-between; // space out brand from logo
     padding: {
         top: 30px;
         bottom: 30px;
@@ -734,4 +740,21 @@ Main Banner CSS
     position: absolute;
     right: 50px;
     bottom: 0;
+}
+
+/*==============================
+Job Profiles CSS
+==============================*/
+
+.job-card-finetuning {
+    height: 100%;
+    width: min-content;
+
+    mat-card-title {
+        margin-top: 18px;
+    }
+
+    .header-image {
+        margin-top: 6px;
+    }
 }
