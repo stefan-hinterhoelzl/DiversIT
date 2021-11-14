@@ -20,8 +20,7 @@ import { LeftPanelComponent } from './main/main-components/left-panel/left-panel
 import { RightPanelComponent } from './main/main-components/right-panel/right-panel.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { ServicesComponent } from './landing-page/landing-page-components/services/services.component';
-import { TeamComponent } from './landing-page/landing-page-components/team/team.component';
+import { MissionComponent } from './landing-page/landing-page-components/mission/mission.component';
 import { MentorSpotlightComponent } from './landing-page/landing-page-components/mentor-spotlight/mentor-spotlight.component';
 import { NavbarComponent } from './landing-page/landing-page-components/navbar/navbar.component';
 import { StickyNavModule } from 'ng2-sticky-nav';
@@ -46,8 +45,7 @@ const app = initializeApp(environment.firebaseConfig);
     AdminPageComponent,
     UnauthorizedComponent,
     NavbarComponent,
-    ServicesComponent,
-    TeamComponent,
+    MissionComponent,
     MentorSpotlightComponent,
     JobProfilesComponent
   ],
