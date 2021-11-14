@@ -15,7 +15,13 @@ export class NavbarComponent {
   }
 
   classApplied = false;
+  loginApplied = false;
+
   toggleClass() {
     this.classApplied = !this.classApplied;
+  }
+
+  toggleLogin() {
+    this.loginApplied = !this.loginApplied;
   }
 }

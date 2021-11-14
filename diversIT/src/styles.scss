@@ -360,7 +360,14 @@ Landing Page Header CSS
     padding: {
         top: 30px;
         bottom: 30px;
-    };
+    }
+    .container {
+        display: flex;
+        width: 100%;
+        margin-left: 30px;
+        margin-right: 30px;
+        }
+     
     &.sticky-box-shadow {
         top: 0;
         left: 0;
@@ -376,7 +383,9 @@ Landing Page Header CSS
         };
     }
 }
+
 .navbar-light {
+    justify-content: right;
     .navbar-brand {
         color: var(--whiteColor);
         // text-transform: uppercase;
@@ -398,9 +407,22 @@ Landing Page Header CSS
         }
         &:focus, &:hover {
             color: var(--whiteColor);
+            text-decoration: underline, none, null;
         }
+
+        text-decoration: none, null, none;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+
     }
     .navbar-nav {
+        display: flex;
+            flex-direction: row;
+            justify-content: right;
+            align-items: center;
         .nav-item {
             padding: {
                 right: 15px;
@@ -408,6 +430,9 @@ Landing Page Header CSS
                 top: 0;
                 bottom: 0;
             };
+        
+            margin-bottom: 0;
+            list-style: none;
             &:last-child {
                 padding-right: 0;
             }
@@ -470,6 +495,15 @@ Landing Page Header CSS
         }
     }
 }
+
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    // For always expanded or extra full navbars, ensure content aligns itself
+    // properly vertically. Can be easily overridden with flex utilities.
+    align-items: center;
+  }
+
 // Mobile and iPad Navbar
 @media only screen and (max-width: 991px) {
 
