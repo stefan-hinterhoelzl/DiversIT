@@ -804,15 +804,25 @@ Job Profiles CSS
     }
 
     mat-card-title {
-        margin-top: 22px;
+        margin-top: 28px;
     }
 
     .header-image {
         margin-top: 12px;
     }
 
+    .mat-card-avatar {
+        height: 55px;
+        width: 55px;
+        margin-right: 10px;
+    }
+
     mat-tab-group p {
         margin: 12px 12px 12px 12px;
+    }
+
+    .mat-tab-labels {
+        padding-top: 5px;
     }
 }
 
@@ -833,9 +843,9 @@ Job Profiles CSS
 }
 
 /*==============================
-CTA Area CSS
+Mission CSS
 ==============================*/
-.cta-area {
+.mission {
     position: relative;
     z-index: 1;
     background: {
@@ -856,7 +866,7 @@ CTA Area CSS
         opacity: .15;
     }
 }
-.cta-content {
+.mission-content {
     text-align: center;
 
     .section-title {
@@ -896,3 +906,34 @@ CTA Area CSS
     }
 }
 
+/*==============================
+Mentor Spotlight CSS
+==============================*/
+
+.mentor-card-finetuning {
+    height: 100%;
+
+    ul {
+        padding: 0px 0px 20px 20px;
+
+        li {
+            list-style-type: square;
+        }
+
+        li::marker {
+            font-size: 20px;
+            color: var(--mainColor);
+        }
+    }
+
+    .mat-card-avatar {
+        height: 250px;
+        width: 250px;
+        margin-right: 30px;
+    }
+
+    mat-card-actions {
+        margin: 10px 10px 10px 10px!important;
+        text-align: right;
+    }
+}
