@@ -384,6 +384,7 @@ Landing Page Header CSS
 
 .navbar-light {
     justify-content: right;
+    padding-top: 10px;
     .navbar-brand {
         color: var(--whiteColor);
         // text-transform: uppercase;
@@ -431,9 +432,6 @@ Landing Page Header CSS
         
             margin-bottom: 0;
             list-style: none;
-            &:last-child {
-                padding-right: 0;
-            }
             &:first-child {
                 padding-left: 0;
             }
@@ -783,6 +781,19 @@ Job Profiles CSS
 .job-card-finetuning {
     height: 100%;
 
+    ul {
+        padding: 0px 0px 20px 20px;
+
+        li {
+            list-style-type: square;
+        }
+
+        li::marker {
+            font-size: 20px;
+            color: var(--mainColor);
+        }
+    }
+
     mat-card-title {
         margin-top: 22px;
     }
@@ -802,4 +813,12 @@ Job Profiles CSS
 
 .mat-grid-tile .mat-figure {
     display: block!important;
+}
+
+.mat-pseudo-checkbox-checked {
+    background: var(--mainColor)!important;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: var(--blackColor);
 }

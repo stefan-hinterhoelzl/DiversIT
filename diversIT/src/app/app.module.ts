@@ -1,3 +1,4 @@
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +26,7 @@ import { MentorSpotlightComponent } from './landing-page/landing-page-components
 import { NavbarComponent } from './landing-page/landing-page-components/navbar/navbar.component';
 import { StickyNavModule } from 'ng2-sticky-nav';
 import { JobProfilesComponent } from './landing-page/landing-page-components/job-profiles/job-profiles.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -55,7 +57,10 @@ const app = initializeApp(environment.firebaseConfig);
     BrowserAnimationsModule,
     AngularMaterialModule,
     FlexLayoutModule,
-    StickyNavModule
+    StickyNavModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [SnackbarComponent],
   bootstrap: [AppComponent]
