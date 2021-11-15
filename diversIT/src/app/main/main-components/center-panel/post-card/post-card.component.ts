@@ -17,6 +17,12 @@ export class PostCardComponent {
   @Input() content: string;
   @Input() contentImg: string;
 
+  ngOnInit(): void {
+    console.log(this.time)
+  }
+
+
+
   navigateToProfile() {
     this.router.navigate(["profile/" + this.userid])
   }

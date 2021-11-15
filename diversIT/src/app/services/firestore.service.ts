@@ -65,7 +65,7 @@ export class FirestoreService {
       });
     } else {
       updateDoc(docRef, {
-        lastloggedIn: serverTimestamp()
+        lastLoggedIn: serverTimestamp()
       });
     }
   }
@@ -114,6 +114,24 @@ export class FirestoreService {
     return array;
   }
 
+  async getAllInterestingMentorsPromise(): Promise<DiversITUser[]> {
+    const q = query(collection(this.db, "users"), where("role", "==", 2));
+    const querySnapshot = await getDocs(q);
+    let array: DiversITUser[] = []
+    querySnapshot.forEach((doc) => {
+      let mentor = doc.data() as DiversITUser;
+      // Check if user/mentee is already in contact with mentor
+      let currentUser: DiversITUser = null;
+      this.currentUserStatus.subscribe((user) => {
+        if (user != null) currentUser = user;
+      });
+      if (mentor.mentees.includes(currentUser.uid)) return;
+      // Check if mentor has already reached max mentee number
+      if (mentor.mentees.length == mentor.maxMentees) return;
+      array.push(mentor);
+    });
+    return array;
+  }
 
   async getPostUser(userID: string): Promise<Post[]> {
     const q = query(collection(this.db, "posts"), where("userID", "==", userID));
@@ -137,5 +155,25 @@ export class FirestoreService {
       mentors: arrayUnion(mentor)
     });
   }
+
+
+  async promoteMenteeToMentor(user: DiversITUser) {
+    const docRef = doc(this.db, 'users', user.uid)
+
+    return updateDoc(docRef, {
+      role: 2,
+      mentors: []
+    });
+  }
+
+  async demoteMenteeToMentor(user: DiversITUser) {
+    const docRef = doc(this.db, 'users', user.uid)
+
+    return updateDoc(docRef, {
+      role: 3,
+      mentees: []
+    });
+  }
+
 
 }

@@ -1,14 +1,19 @@
 <mat-card class="card-finetuning">
-    <mat-card-header>
-      <div *ngIf="profileImg !== ''" mat-card-avatar class="header-image" (click)="navigateToProfile()" style="cursor: pointer; background-image: url('{{profileImg}}'); background-size: cover;"></div>
-      <div *ngIf="profileImg === ''" mat-card-avatar class="header-image" (click)="navigateToProfile()" style="cursor: pointer; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); background-size: cover;"></div>
-      <mat-card-title (click)="navigateToProfile()" style="cursor: pointer;">{{name !== " " ? name : "Kein Name"}}</mat-card-title>
-      <mat-card-subtitle (click)="navigateToProfile()" style="cursor: pointer;">{{time | date: 'dd.MM.yyyy hh:mm:ss'}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        {{content}}
-      </p>
-    </mat-card-content>
-    <img src="{{contentImg}}" onerror="style='display: none; height: 0px'" style="width: 100%; border-radius: 10px;">
-  </mat-card>
+  <mat-card-header *ngIf="profileImg != undefined || name != undefined || time != undefined">
+    <div *ngIf="profileImg != ''" mat-card-avatar (click)="navigateToProfile()"
+      style="cursor: pointer; background-image: url('{{profileImg}}'); background-size: cover;"></div>
+    <div *ngIf="profileImg == ''" mat-card-avatar (click)="navigateToProfile()"
+      style="cursor: pointer; background-image: url('./../../../../../assets/Images/User-Placeholder.png'); background-size: cover;">
+    </div>
+    <mat-card-title (click)="navigateToProfile()" style="cursor: pointer;">{{name != " " ? name : "Kein Name"}}
+    </mat-card-title>
+    <mat-card-subtitle (click)="navigateToProfile()" style="cursor: pointer;">{{time | date: 'dd.MM.yyyy hh:mm:ss'}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content [ngClass]="{'empty-post': (time == undefined && name == undefined && profileImg == undefined)}">
+    <p>
+      {{content}}
+    </p>
+  </mat-card-content>
+  <img src="{{contentImg}}" onerror="style='display: none; height: 0px'" style="width: 100%; border-radius: 10px;">
+</mat-card>

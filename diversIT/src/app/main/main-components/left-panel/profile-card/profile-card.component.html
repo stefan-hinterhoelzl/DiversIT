@@ -1,1 +1,9 @@
-<p>profile-card works!</p>
+<mat-card (click)="redirectToProfile()">
+    <div class="background-image"></div>
+        <div *ngIf="profileImg == ''" mat-card-avatar style="background-image: url('./../../../../../assets/Images/User-Placeholder.png');"></div>
+        <div *ngIf="profileImg != ''" mat-card-avatar style="background-image: url('{{profileImg}}');"></div>
+    <mat-card-content>
+        <h2>{{name}}</h2>
+        <p> {{description}} </p>
+    </mat-card-content>
+  </mat-card>

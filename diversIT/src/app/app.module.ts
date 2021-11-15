@@ -27,6 +27,7 @@ import { NavbarComponent } from './landing-page/landing-page-components/navbar/n
 import { StickyNavModule } from 'ng2-sticky-nav';
 import { JobProfilesComponent } from './landing-page/landing-page-components/job-profiles/job-profiles.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileCardComponent } from './main/main-components/left-panel/profile-card/profile-card.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -49,7 +50,8 @@ const app = initializeApp(environment.firebaseConfig);
     NavbarComponent,
     MissionComponent,
     MentorSpotlightComponent,
-    JobProfilesComponent
+    JobProfilesComponent,
+    ProfileCardComponent
   ],
   imports: [
     BrowserModule,
