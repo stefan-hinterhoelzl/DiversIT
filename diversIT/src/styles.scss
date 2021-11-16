@@ -1,4 +1,9 @@
 @import "./theme.scss";
+
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     background-color: #F3F2EF;
 }

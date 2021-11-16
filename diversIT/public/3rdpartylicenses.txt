@@ -142,6 +142,9 @@ firebase/auth
 
 firebase/firestore
 
+ng2-sticky-nav
+MIT
+
 rxjs
 Apache-2.0
                                Apache License

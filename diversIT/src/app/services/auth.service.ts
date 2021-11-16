@@ -36,7 +36,6 @@ export class AuthService {
       const user = result.user;
       //Only on first Login
       this.firestore.UpdateUserAccount(user.uid, user.email);
-      this.router.navigate(['/app']);
       let snackbarRef = this.snackbar.openSnackBar("Eingeloggt!", "green-snackbar");
     }).catch((error) => {
       const errorCode = error.code;

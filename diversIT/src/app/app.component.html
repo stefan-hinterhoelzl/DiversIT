@@ -1,9 +1,6 @@
 <main class="app-body">
     <mat-toolbar color="accent" *ngIf="!isLandingPage()">
-        <span>DiversIT</span>
+        <span style = "cursor:pointer;" routerLink = "/landing" >DiversIT</span>
     </mat-toolbar>
-
-
     <router-outlet></router-outlet>
-
 </main>
