@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './profile-card.component.html',
   styleUrls: ['./profile-card.component.scss']
 })
-export class ProfileCardComponent implements OnInit {
+export class ProfileCardComponent {
 
   constructor(private router: Router) { }
 
@@ -19,8 +19,8 @@ export class ProfileCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  redirectToProfile(){
-    this.router.navigate(['/profile/'+this.userID])
+  redirectToProfile() {
+    this.router.navigate(['/profile/' + this.userID])
   }
 
 }

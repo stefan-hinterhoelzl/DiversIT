@@ -13,17 +13,17 @@ export class InterestingMentorsComponent implements OnInit {
   constructor(private firestore: FirestoreService) { }
 
   mentors: DiversITUser[] = [];
-  tempMentors: DiversITUser[] = []; 
+  tempMentors: DiversITUser[] = [];
 
   ngOnInit(): void {
     this.firestore.getAllInterestingMentorsPromise().then(data => {
-      this.tempMentors = data; 
-      if(this.tempMentors != null){
+      this.tempMentors = data;
+      if (this.tempMentors != null) {
         for (let i = 0; i < 3; i++) {
-          if(this.tempMentors.length > 0) {
+          if (this.tempMentors.length > 0) {
             let randomNumber = Math.floor(Math.random() * this.tempMentors.length);
             this.mentors.push(this.tempMentors[randomNumber]);
-            this.tempMentors.splice(randomNumber,1);
+            this.tempMentors.splice(randomNumber, 1);
           }
         }
       }

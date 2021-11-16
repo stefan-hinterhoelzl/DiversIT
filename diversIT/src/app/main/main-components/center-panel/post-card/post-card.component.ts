@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './post-card.component.html',
   styleUrls: ['./post-card.component.scss']
 })
-export class PostCardComponent implements OnInit {
+export class PostCardComponent {
 
   constructor(private router: Router) { }
 
@@ -23,7 +23,7 @@ export class PostCardComponent implements OnInit {
 
 
 
-  navigateToProfile(){
+  navigateToProfile() {
     this.router.navigate(["profile/" + this.userid])
   }
 }

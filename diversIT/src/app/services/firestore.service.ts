@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {DiversITUser} from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, Timestamp, updateDoc, serverTimestamp, arrayUnion } from "firebase/firestore";
-import {getAuth, onAuthStateChanged, User} from "firebase/auth";
+import { DiversITUser } from '../models/users.model'
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion } from "firebase/firestore";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/post.model';
 
@@ -13,7 +13,7 @@ export class FirestoreService {
 
   constructor() {
     this.authStatusListener();
-   }
+  }
 
   db = getFirestore();
   auth = getAuth();
@@ -23,13 +23,13 @@ export class FirestoreService {
   currentUserStatus = this.currentUser.asObservable();
 
   private currentUserMentors: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>(null);
-  currentUserMentorsStatus = this. currentUserMentors.asObservable()
+  currentUserMentorsStatus = this.currentUserMentors.asObservable()
 
 
   authStatusListener() {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
-        this.getCurrentUser(user);        
+        this.getCurrentUser(user);
       } else {
         this.currentUser.next(null);
         this.currentUserMentors.next(null);
@@ -77,18 +77,18 @@ export class FirestoreService {
         this.getCurrentUserMentors(doc.data() as DiversITUser);
       }
     });
-    
+
   }
 
 
-  async getCurrentUserMentors(user: DiversITUser) {     
+  async getCurrentUserMentors(user: DiversITUser) {
     let listOfMentors: DiversITUser[] = [];
-    
-    for(let i = 0; i < user.mentors.length; i++){
+
+    for (let i = 0; i < user.mentors.length; i++) {
       var data = await this.getUserPerIDPromise(user.mentors[i])
-      listOfMentors.push(data)              
+      listOfMentors.push(data)
     }
-    this.currentUserMentors.next(listOfMentors) 
+    this.currentUserMentors.next(listOfMentors)
   }
 
 
@@ -101,7 +101,7 @@ export class FirestoreService {
     } else {
       return null
     }
-    
+
   }
 
 
@@ -123,11 +123,11 @@ export class FirestoreService {
       // Check if user/mentee is already in contact with mentor
       let currentUser: DiversITUser = null;
       this.currentUserStatus.subscribe((user) => {
-        if(user != null) currentUser = user;
+        if (user != null) currentUser = user;
       });
-      if(mentor.mentees.includes(currentUser.uid)) return;
+      if (mentor.mentees.includes(currentUser.uid)) return;
       // Check if mentor has already reached max mentee number
-      if(mentor.mentees.length == mentor.maxMentees) return;
+      if (mentor.mentees.length == mentor.maxMentees) return;
       array.push(mentor);
     });
     return array;

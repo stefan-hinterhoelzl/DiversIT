@@ -1,5 +1,23 @@
-<div class = "center">
-    
-    <app-login-box></app-login-box>
+<app-navbar></app-navbar>
+<div class="main-banner item-bg-one" id="home">
+    <div style="display: flex; height: 100%; width: 100%;">
+        <div class="main-banner-text">
+            <h4>Die IT braucht dich - nimm die Herausforderung an!</h4>
+            <h1>Die <span>IT</span>-Branche ist vielseitiger, als du denkst.</h1>
+            <p>Finde auch du deinen Platz.</p>
+            <p>Vernetze dich mit IT-Interessierten mit einem ähnlichen Background und
+                finde eine Mentorin oder einen Mentor, der zu dir passt.</p>
+            <p>Geh deinen eigenen Weg in der IT.</p>
+            <a [routerLink]="['../app']" class="btn btn-primary">Los geht's</a>
+        </div>
+    </div>
+</div>
+<div>
+
+    <app-mentor-spotlight id="mentor-spotlight">
+    </app-mentor-spotlight>
+    <app-job-profiles id="job-profiles"></app-job-profiles>
+    <app-mission id="mission">
+    </app-mission>
 
 </div>

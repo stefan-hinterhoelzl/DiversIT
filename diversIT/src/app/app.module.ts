@@ -1,3 +1,4 @@
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,12 @@ import { LeftPanelComponent } from './main/main-components/left-panel/left-panel
 import { RightPanelComponent } from './main/main-components/right-panel/right-panel.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { MissionComponent } from './landing-page/landing-page-components/mission/mission.component';
+import { MentorSpotlightComponent } from './landing-page/landing-page-components/mentor-spotlight/mentor-spotlight.component';
+import { NavbarComponent } from './landing-page/landing-page-components/navbar/navbar.component';
+import { StickyNavModule } from 'ng2-sticky-nav';
+import { JobProfilesComponent } from './landing-page/landing-page-components/job-profiles/job-profiles.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileCardComponent } from './main/main-components/left-panel/profile-card/profile-card.component';
 
 const app = initializeApp(environment.firebaseConfig);
@@ -40,6 +47,10 @@ const app = initializeApp(environment.firebaseConfig);
     RightPanelComponent,
     AdminPageComponent,
     UnauthorizedComponent,
+    NavbarComponent,
+    MissionComponent,
+    MentorSpotlightComponent,
+    JobProfilesComponent,
     ProfileCardComponent
   ],
   imports: [
@@ -47,7 +58,11 @@ const app = initializeApp(environment.firebaseConfig);
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    StickyNavModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [SnackbarComponent],
   bootstrap: [AppComponent]
