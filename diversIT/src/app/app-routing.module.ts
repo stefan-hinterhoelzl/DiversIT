@@ -8,6 +8,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { AdminguardService } from './services/adminguard.service';
 import { AuthguardService } from './services/authguard.service';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
 
@@ -30,6 +31,11 @@ const routes: Routes = [
     path: 'admin',
     component: AdminPageComponent,
     canActivate: [AuthguardService, AdminguardService]
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
+    canActivate: [AuthguardService]
   },
   {
     path: 'unauthorized',

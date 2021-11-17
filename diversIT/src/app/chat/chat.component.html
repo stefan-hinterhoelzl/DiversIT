@@ -1,0 +1,14 @@
+<div *ngFor = "let user of currentMentors">
+    <div style = "cursor: pointer;" #user  (click) = "openChat(user)">{{user.email}}</div>
+</div>
+
+
+<div *ngIf = "chatOpen === true">
+
+    <div>Chat mit {{chatUser.email}}</div>
+
+
+</div>
+
+
+

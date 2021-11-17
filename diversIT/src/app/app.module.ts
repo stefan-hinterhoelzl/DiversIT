@@ -28,6 +28,7 @@ import { StickyNavModule } from 'ng2-sticky-nav';
 import { JobProfilesComponent } from './landing-page/landing-page-components/job-profiles/job-profiles.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileCardComponent } from './main/main-components/left-panel/profile-card/profile-card.component';
+import { ChatComponent } from './chat/chat.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -51,7 +52,8 @@ const app = initializeApp(environment.firebaseConfig);
     MissionComponent,
     MentorSpotlightComponent,
     JobProfilesComponent,
-    ProfileCardComponent
+    ProfileCardComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
