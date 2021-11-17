@@ -19,7 +19,7 @@ export class InterestingMentorsComponent implements OnInit {
   ngOnInit(): void {
     this.firestore.getAllInterestingMentorsPromise().then(data => {
       this.tempMentors = data;
-      if (this.tempMentors != null) {
+      if (this.tempMentors !== null) {
         for (let i = 0; i < 3; i++) {
           if (this.tempMentors.length > 0) {
             let randomNumber = Math.floor(Math.random() * this.tempMentors.length);
