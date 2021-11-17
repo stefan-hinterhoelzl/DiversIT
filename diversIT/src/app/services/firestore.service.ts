@@ -222,7 +222,10 @@ export class FirestoreService {
 
     const newColRef = collection(this.db, "chats/"+newUid+"/messages");
 
-    await addDoc(newColRef, {});
+    await addDoc(newColRef, {
+      timestamp: serverTimestamp(),
+      text: "Start des Chats"
+    });
   }
 
 
