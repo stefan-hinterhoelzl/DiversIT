@@ -1,13 +1,10 @@
 <mat-card class="card-finetuning">
     <h2>Interessante Mentoren</h2>
     <div *ngFor="let mentor of mentors" class="mentor-display">
-      <mat-card-header>
-        <img *ngIf="mentor.photoURL != null"
-          src="{{mentor.photoURL}}"
-          mat-card-avatar />
-        <img *ngIf="mentor.photoURL == null"
-          src="./../../../../../assets/Images/User-Placeholder.png"
-          mat-card-avatar />
+      <mat-card-header routerLink="/profile/{{mentor.uid}}">
+        <!-- Photo -->
+        <img *ngIf="mentor.photoURL != null"src="{{mentor.photoURL}}"mat-card-avatar />
+        <img *ngIf="mentor.photoURL == null"src="./../../../../../assets/Images/User-Placeholder.png"mat-card-avatar />
 
         <!-- Name -->
         <mat-card-title *ngIf="mentor.firstname !==  '' && mentor.lastname !== ''">{{mentor.firstname}} {{mentor.lastname}}</mat-card-title>
