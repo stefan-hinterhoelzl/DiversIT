@@ -6,9 +6,18 @@
 <div *ngIf = "chatOpen === true">
 
     <div>Chat mit {{chatUser.email}}</div>
+    <h3>Nachrichten:</h3>
+    <div *ngFor = "let message of activeChat">
 
+        {{message.text}}
+
+    </div>
 
 </div>
 
+
+<div>
+    <button mat-raised-button (click) = "sendMessage()" >Nachricht absenden</button>
+</div>
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Chat, Message } from '../models/chat.model';
 import { DiversITUser } from '../models/users.model';
 import { FirestoreService } from '../services/firestore.service';
 
@@ -16,6 +17,10 @@ export class ChatComponent implements OnInit {
   currentMentorsSubscription: Subscription
   chatOpen: boolean = false;
   chatUser: DiversITUser;
+  chatSubscription: Subscription;
+  activeChat: Message[];
+
+
 
   constructor(private firestore: FirestoreService) { }
 
@@ -36,8 +41,20 @@ export class ChatComponent implements OnInit {
   }
 
   openChat(user: DiversITUser) {
+    this.firestore.activateChatListener('hj5ZQxmORwhr8noxi3DH')
+    this.chatSubscription = this.firestore.messagesStatus.subscribe((data) => {
+      this.activeChat = data;
+      console.log(data);
+    });
+
     this.chatUser = user;
     this.chatOpen = true;
+
+  }
+
+
+  sendMessage() {
+    this.firestore.sendMessage();
   }
 
 }

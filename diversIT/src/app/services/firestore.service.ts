@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { DiversITUser } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion } from "firebase/firestore";
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/post.model';
+import { Chat, Message } from '../models/chat.model';
 
 
 @Injectable({
@@ -24,6 +25,9 @@ export class FirestoreService {
 
   private currentUserMentors: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>(null);
   currentUserMentorsStatus = this.currentUserMentors.asObservable()
+
+  private messages: BehaviorSubject<Message[]> = new BehaviorSubject<Message[]>(null);
+  messagesStatus = this.messages.asObservable();
 
 
   authStatusListener() {
@@ -175,5 +179,30 @@ export class FirestoreService {
     });
   }
 
+  activateChatListener(uid: string) {
+    const colRef = collection(this.db, 'chats/hj5ZQxmORwhr8noxi3DH/messages')
+
+    onSnapshot(colRef, (data) => {
+      let messages = [];
+      data.forEach((doc) => {
+        messages.push(doc.data());
+      });
+      this.messages.next(messages);
+    });
+  }
+
+  async sendMessage() { //just a testmethod
+    const colRef = collection(this.db, 'chats/hj5ZQxmORwhr8noxi3DH/messages')
+
+    const message = <Message> {
+      text: "Neue Nachrijlöjklöht",
+      read: false,
+      sender: "Thooomas",
+      timestamp: serverTimestamp(),
+    }
+    
+    await addDoc(colRef, {...message});
+
+  }
 
 }
