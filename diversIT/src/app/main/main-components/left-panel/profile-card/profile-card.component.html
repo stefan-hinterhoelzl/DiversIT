@@ -4,6 +4,8 @@
         <div *ngIf="profileImg !== ''" mat-card-avatar style="background-image: url('{{profileImg}}');"></div>
     <mat-card-content>
         <h2>{{name}}</h2>
-        <p> {{description}} </p>
+        <p *ngIf="company !== ''"> {{job}} bei {{company}} </p>
+        <p *ngIf="company === '' && job !== ''"> {{job}} </p>
+        <p *ngIf="company === '' && job === ''"> Keine Jobinformationen verfügbar. </p>
     </mat-card-content>
   </mat-card>
