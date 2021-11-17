@@ -3,7 +3,7 @@
     <mat-toolbar color="primary" *ngIf="!isLandingPage()" style="height: 60px; box-shadow: 1px 2px 5px #d3d0d0; position: fixed; z-index: 2;">
         <span class="outer-spacer"></span>
 
-        <a style = "cursor:pointer; font-weight: 600; font-size: xx-large;" routerLink = "/app" >Divers<span class="accent-color">IT</span></a>
+        <a style = "cursor:pointer; font-weight: 600; font-size: xx-large;" (click)="diversIT()" >Divers<span class="accent-color">IT</span></a>
         <span class="spacer"></span>
         <button mat-icon-button class = "icon-label" style="margin-right: 40px;">
             <mat-icon class="icon" id="search" color="accent">search</mat-icon>

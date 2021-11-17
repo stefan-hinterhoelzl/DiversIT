@@ -30,4 +30,13 @@ export class AppComponent implements OnInit {
   logout(){
     this.auth.logout();
   }
+
+  diversIT(){
+    if(this.router.url === '/app'){
+      window.location.reload();
+    }
+    else{
+      this.router.navigate(['/app'])
+    }
+  }
 }
