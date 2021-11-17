@@ -56,7 +56,7 @@ export class ChatComponent implements OnInit {
     this.messageSubscription = this.firestore.messagesStatus.subscribe((data) => {
       this.messages = data;
       console.log(data);
-      if (this.messages != null) this.messages.sort((a,b) => b.timestamp.toMillis() - a.timestamp.toMillis())
+      if (this.messages != null) this.messages.sort((a,b) => a.timestamp.toMillis() - b.timestamp.toMillis())
     });
     this.chatOpen = true;
     this.activeChat = chat.uid;
