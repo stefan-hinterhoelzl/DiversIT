@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DiversITUser } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc } from "firebase/firestore";
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc, SnapshotOptions } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/post.model';
@@ -252,7 +252,7 @@ export class FirestoreService {
     return onSnapshot(colRef, (data) => {
       let messages = [];
       data.forEach((doc) => {
-        messages.push(doc.data());
+        messages.push(doc.data({serverTimestamps: 'estimate'}));
       });
       this.messages.next(messages);
     });
