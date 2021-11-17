@@ -18,14 +18,19 @@
 }
 
 .icon-label{
-    // display: inline-block;
-    // text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;  
+    cursor: pointer;  
 }
 
 .icon{
     margin-top: -20px;
     transform: scale(1.25);
+}
+
+.lable{
+    display:block; 
+    margin-top: -25px; 
+    cursor: pointer;
 }
