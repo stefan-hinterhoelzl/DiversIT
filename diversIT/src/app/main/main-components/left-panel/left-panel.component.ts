@@ -8,9 +8,9 @@ import { InterestingMentorsComponent } from '../right-panel/interesting-mentors/
   templateUrl: './left-panel.component.html',
   styleUrls: ['./left-panel.component.scss']
 })
-export class LeftPanelComponent {
+export class LeftPanelComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService) { }
+  constructor(private firestore: FirestoreService)  { }
 
   currentUser: DiversITUser = <DiversITUser>{
     firstname: "",
@@ -22,7 +22,7 @@ export class LeftPanelComponent {
 
   ngOnInit(): void {
     this.firestore.currentUserStatus.subscribe(data => {
-      if (data == null) return;
+      if (data === null) return;
       this.currentUser = data;
     })
 

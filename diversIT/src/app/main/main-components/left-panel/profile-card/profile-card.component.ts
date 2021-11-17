@@ -16,8 +16,6 @@ export class ProfileCardComponent {
   @Input() description: string;
 
 
-  ngOnInit(): void {
-  }
 
   redirectToProfile() {
     this.router.navigate(['/profile/' + this.userID])

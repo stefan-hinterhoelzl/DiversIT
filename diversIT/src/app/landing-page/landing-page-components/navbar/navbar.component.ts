@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(private viewportScroller: ViewportScroller, private firestore: FirestoreService, private auth: AuthService) { }
 
   ngOnDestroy(): void {
-    
+    this.currentUserSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
