@@ -38,7 +38,7 @@ export class FirestoreService {
     });
   }
 
-  async UpdateUserAccount(uid: string, email: string) {
+  async UpdateUserAccount(uid: string, email: string, photoURL: string) {
     const docRef = doc(this.db, "users", uid);
     const docSnap = await getDoc(docRef);
 
@@ -61,7 +61,7 @@ export class FirestoreService {
         company: "",
         maxMentees: -1,
         girlsOnlyMentor: false,
-
+        photoURL: photoURL,
       });
     } else {
       updateDoc(docRef, {

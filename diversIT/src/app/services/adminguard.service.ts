@@ -25,7 +25,7 @@ export class AdminguardService implements CanActivate {
           if (u.role == 1) resolve(true);
           else { 
             this.router.navigate(["/app"]);
-            this.snackbar.openSnackBar("Sie sind nicht eingeloggt!", "red-snackbar")
+            this.snackbar.openSnackBar("Unauthorisierter Zugriff", "red-snackbar")
             resolve(false);
           }
         }
