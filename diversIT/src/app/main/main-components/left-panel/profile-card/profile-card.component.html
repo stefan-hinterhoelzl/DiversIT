@@ -3,7 +3,10 @@
         <div *ngIf="profileImg === ''" mat-card-avatar style="background-image: url('./../../../../../assets/Images/User-Placeholder.png');"></div>
         <div *ngIf="profileImg !== ''" mat-card-avatar style="background-image: url('{{profileImg}}');"></div>
     <mat-card-content>
-        <h2>{{name}}</h2>
-        <p> {{description}} </p>
+        <h2 *ngIf="name !== ''">{{name}}</h2>
+        <h2 *ngIf="name === ' '">Name nicht abrufbar.</h2>
+        <p *ngIf="company !== ''"> {{job}} bei {{company}} </p>
+        <p *ngIf="company === '' && job !== ''"> {{job}} </p>
+        <p *ngIf="company === '' && job === ''"> Keine Jobinformationen verfügbar. </p>
     </mat-card-content>
   </mat-card>

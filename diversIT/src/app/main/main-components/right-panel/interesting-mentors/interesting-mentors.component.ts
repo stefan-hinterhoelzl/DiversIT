@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DiversITUser } from 'src/app/models/users.model';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -10,7 +11,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 
 export class InterestingMentorsComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService) { }
+  constructor(private firestore: FirestoreService, private router: Router) { }
 
   mentors: DiversITUser[] = [];
   tempMentors: DiversITUser[] = [];
@@ -18,7 +19,7 @@ export class InterestingMentorsComponent implements OnInit {
   ngOnInit(): void {
     this.firestore.getAllInterestingMentorsPromise().then(data => {
       this.tempMentors = data;
-      if (this.tempMentors != null) {
+      if (this.tempMentors !== null) {
         for (let i = 0; i < 3; i++) {
           if (this.tempMentors.length > 0) {
             let randomNumber = Math.floor(Math.random() * this.tempMentors.length);

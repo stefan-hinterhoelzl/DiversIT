@@ -13,7 +13,8 @@ export class ProfileCardComponent {
   @Input() userID: string;
   @Input() name: string;
   @Input() profileImg: string;
-  @Input() description: string;
+  @Input() job: string;
+  @Input() company: string;
 
 
 
