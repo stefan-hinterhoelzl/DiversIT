@@ -1,23 +1,26 @@
-<div *ngFor = "let user of currentMentors">
-    <div style = "cursor: pointer;"  (click) = "openChat(user)">{{user.email}}</div>
+<div *ngFor = "let chat of currentChats">
+    <div style = "cursor: pointer;"  (click) = "openChat(chat)">{{chat.uid}}</div>
 </div>
 
 
 <div *ngIf = "chatOpen === true">
 
-    <div>Chat mit {{chatUser.email}}</div>
+    <div>Chat</div>
     <h3>Nachrichten:</h3>
-    <div *ngFor = "let message of activeChat">
-
-        {{message.text}}
-
+    <div *ngFor = "let message of messages, let i = index">
+        <div *ngIf = "i != 0">
+            {{message.sender}}: {{message.text}}
+        </div>
     </div>
-
+    <mat-form-field>
+        <input matInput placeholder="Hallo, wie gehts?" type = "text" [formControl] = "textInput">
+      </mat-form-field>
+      <div>
+        <button mat-raised-button [disabled] = "!textInput.valid" (click) = "sendMessage()" >Nachricht absenden</button>
+    </div>
 </div>
 
 
-<div>
-    <button mat-raised-button (click) = "sendMessage()" >Nachricht absenden</button>
-</div>
+
 
 

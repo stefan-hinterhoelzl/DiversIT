@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Chat, Message } from '../models/chat.model';
 import { DiversITUser } from '../models/users.model';
@@ -13,24 +14,33 @@ export class ChatComponent implements OnInit {
 
   currentUser: DiversITUser
   currentUserSubscription: Subscription
-  currentMentors: DiversITUser[]
-  currentMentorsSubscription: Subscription
+  currentChats: Chat[]
+  currentChatsSubscription: Subscription
+
+  
+  messageSubscription: Subscription;
+  messages: Message[];
+
+  
   chatOpen: boolean = false;
-  chatUser: DiversITUser;
-  chatSubscription: Subscription;
-  activeChat: Message[];
+  activeChat: string;
+
+  chatunsub
+
+  textInput: FormControl
 
 
-
-  constructor(private firestore: FirestoreService) { }
+  constructor(private firestore: FirestoreService) {
+    this.textInput = new FormControl('', Validators.required);
+   }
 
   ngOnInit(): void {
     this.currentUserSubscription = this.firestore.currentUserStatus.subscribe((data) => {
       if(data !== null) {
         this.currentUser = data;
-        this.currentMentorsSubscription = this.firestore.currentUserMentorsStatus.subscribe((mentors) => {
-          this.currentMentors = mentors;
-        });
+        this.currentChatsSubscription = this.firestore.chatStatus.subscribe((data) => {
+          this.currentChats = data;
+        })
         this.initialize(data);
       }
     });
@@ -40,21 +50,21 @@ export class ChatComponent implements OnInit {
 
   }
 
-  openChat(user: DiversITUser) {
-    this.firestore.activateChatListener('hj5ZQxmORwhr8noxi3DH')
-    this.chatSubscription = this.firestore.messagesStatus.subscribe((data) => {
-      this.activeChat = data;
+  openChat(chat: Chat) {
+    if (this.chatunsub != null) this.chatunsub();
+    this.chatunsub = this.firestore.activateMessageListener(chat.uid)
+    this.messageSubscription = this.firestore.messagesStatus.subscribe((data) => {
+      this.messages = data;
       console.log(data);
     });
-
-    this.chatUser = user;
     this.chatOpen = true;
+    this.activeChat = chat.uid;
 
   }
 
 
   sendMessage() {
-    this.firestore.sendMessage();
+    this.firestore.sendMessage(this.activeChat, this.textInput.value, this.currentUser.firstname);
   }
 
 }

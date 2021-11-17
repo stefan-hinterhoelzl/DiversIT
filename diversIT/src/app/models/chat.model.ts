@@ -9,7 +9,6 @@ export interface Message {
 
 export interface Chat {
     uid: string,
-    messages: Message[],
     participantA: string,
     participantB: string,
     lastMessage: string,

@@ -15,6 +15,7 @@ export interface DiversITUser {
     uid: string;
     creationTime: Timestamp;
     lastLoggedIn: Timestamp;
+    chats: string[];
     mentees?: string[];
     company?: string;
     maxMentees?: number;

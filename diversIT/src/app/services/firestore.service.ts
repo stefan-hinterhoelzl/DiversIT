@@ -19,6 +19,7 @@ export class FirestoreService {
   db = getFirestore();
   auth = getAuth();
   usersub;
+  chatsub;
 
   private currentUser: BehaviorSubject<DiversITUser> = new BehaviorSubject<DiversITUser>(null);
   currentUserStatus = this.currentUser.asObservable();
@@ -26,9 +27,14 @@ export class FirestoreService {
   private currentUserMentors: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>(null);
   currentUserMentorsStatus = this.currentUserMentors.asObservable()
 
+  private currentUserMentees: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>(null);
+  currentUserMenteesStatus = this.currentUserMentors.asObservable()
+
   private messages: BehaviorSubject<Message[]> = new BehaviorSubject<Message[]>(null);
   messagesStatus = this.messages.asObservable();
 
+  private chats: BehaviorSubject<Chat[]> = new BehaviorSubject<Chat[]>(null);
+  chatStatus = this.chats.asObservable();
 
   authStatusListener() {
     onAuthStateChanged(this.auth, (user) => {
@@ -37,7 +43,9 @@ export class FirestoreService {
       } else {
         this.currentUser.next(null);
         this.currentUserMentors.next(null);
+        this.currentUserMentees.next(null);
         if (this.usersub != null) this.usersub();
+        if (this.chatsub != null) this.chatsub();
       }
     });
   }
@@ -78,12 +86,17 @@ export class FirestoreService {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
       if (doc.exists()) {
         this.currentUser.next(doc.data() as DiversITUser)
-        this.getCurrentUserMentors(doc.data() as DiversITUser);
+        if ((doc.data() as DiversITUser).role == 3) {
+          this.getCurrentUserMentors(doc.data() as DiversITUser);
+        }
+        else {
+          this.getCurrentUserMentees(doc.data() as DiversITUser)
+        }
+        this.activateChatListener((doc.data() as DiversITUser).chats)
       }
     });
 
   }
-
 
   async getCurrentUserMentors(user: DiversITUser) {
     let listOfMentors: DiversITUser[] = [];
@@ -93,6 +106,16 @@ export class FirestoreService {
       listOfMentors.push(data)
     }
     this.currentUserMentors.next(listOfMentors)
+  }
+
+  async getCurrentUserMentees(user: DiversITUser) {
+    let listOfMentees: DiversITUser[] = [];
+
+    for (let i = 0; i < user.mentees.length; i++) {
+      var data = await this.getUserPerIDPromise(user.mentees[i])
+      listOfMentees.push(data)
+    }
+    this.currentUserMentors.next(listOfMentees)
   }
 
 
@@ -158,6 +181,48 @@ export class FirestoreService {
     await updateDoc(docRefMentee, {
       mentors: arrayUnion(mentor)
     });
+
+    this.createChat(mentee, mentor);
+
+  }
+
+  async createChat(mentee: string, mentor: string) {
+    const colRef = collection(this.db, "chats");
+    const docRefMentor = doc(this.db, "users", mentor);
+    const docRefMentee = doc(this.db, "users", mentee)
+
+    const chat = <Chat> {
+      uid: null,
+      participantA: mentee,
+      participantB: mentor,
+      lastMessage: "",
+      newMessage: false,
+    }
+
+    const docRef = await addDoc(colRef, {...chat});
+
+    const docSnap = await getDoc(docRef);
+
+    let newUid = "";
+    if (docSnap.exists()) {
+        newUid = docSnap.id;
+    }
+
+    await updateDoc(docRef, {
+      uid: newUid
+    });
+
+    await updateDoc(docRefMentor, {
+      chats: arrayUnion(newUid)
+    });
+
+    await updateDoc(docRefMentee, {
+      chats: arrayUnion(newUid)
+    });
+
+    const newColRef = collection(this.db, "chats/"+newUid+"/messages");
+
+    await addDoc(newColRef, {});
   }
 
 
@@ -179,10 +244,9 @@ export class FirestoreService {
     });
   }
 
-  activateChatListener(uid: string) {
-    const colRef = collection(this.db, 'chats/hj5ZQxmORwhr8noxi3DH/messages')
-
-    onSnapshot(colRef, (data) => {
+  activateMessageListener(uid: string) {
+    const colRef = collection(this.db, 'chats/'+uid+'/messages')
+    return onSnapshot(colRef, (data) => {
       let messages = [];
       data.forEach((doc) => {
         messages.push(doc.data());
@@ -191,13 +255,26 @@ export class FirestoreService {
     });
   }
 
-  async sendMessage() { //just a testmethod
-    const colRef = collection(this.db, 'chats/hj5ZQxmORwhr8noxi3DH/messages')
+  activateChatListener(chats: string[]) {
+    if (chats != null && chats.length > 0) {
+      const q = query(collection(this.db, "chats"), where("uid", "in", chats));
+      this.chatsub = onSnapshot(q, (querySnapshot) => {
+        const chats = [];
+        querySnapshot.forEach((doc) => {
+          chats.push(doc.data() as Chat);
+        });
+        this.chats.next(chats);
+      });
+    }
+  }
+
+  async sendMessage(chat: string, text: string, sender: string) { //just a testmethod
+    const colRef = collection(this.db, 'chats/'+chat+'/messages')
 
     const message = <Message> {
-      text: "Neue Nachrijlöjklöht",
+      text: text,
       read: false,
-      sender: "Thooomas",
+      sender: sender,
       timestamp: serverTimestamp(),
     }
     
