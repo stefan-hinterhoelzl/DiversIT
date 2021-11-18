@@ -66,6 +66,7 @@ export class ChatComponent implements OnInit {
   sendMessage() {
     this.firestore.sendMessage(this.activeChat, this.textInput.value, this.currentUser.firstname).then(() => {
       this.textInput.setValue("");
+      this.textInput.reset();
     })
   }
 
