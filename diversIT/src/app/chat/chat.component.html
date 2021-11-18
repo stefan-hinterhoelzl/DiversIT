@@ -1,4 +1,4 @@
-<div *ngFor = "let chat of currentChats">
+<!-- <div *ngFor = "let chat of currentChats">
     <div style = "cursor: pointer;"  (click) = "openChat(chat)">{{chat.uid}}</div>
 </div>
 
@@ -18,9 +18,46 @@
       <div>
         <button mat-raised-button [disabled] = "!textInput.valid" (click) = "sendMessage()" >Nachricht absenden</button>
     </div>
+</div> -->
+
+<div class = "main-wrapper">
+    <div class = "chat-window">
+        <div class = "chat-box-header">
+            
+        </div>
+
+        <div class = "flex-wrapper">
+            <div class = "chat-list">
+                <div class = "chat-box-unselected" (click) = "openChat(chat)" *ngFor = "let chat of currentChats">
+                    <div>
+                        {{chat.uid}}
+                    </div>
+                </div>
+            </div>
+            <div *ngIf = "chatOpen" class = "message-window">
+                <div *ngFor = "let message of messages, let i = index">
+                    <div>
+                        {{message.sender}}: {{message.text}}
+                    </div>
+                </div>
+                
+                <div class = "response-box">
+                    <!-- <mat-form-field>
+                        <input matInput placeholder="Hallo, wie gehts?" type = "text" [formControl] = "textInput">
+                    </mat-form-field>
+                    <button mat-raised-button [disabled] = "!textInput.valid" (click) = "sendMessage()" >Nachricht absenden</button>
+                </div> -->
+                <div class = "typing-box">
+                    <mat-form-field appearance = "none" class = "form-field">
+                        <input matInput placeholder="Hier schreiben..." type = "text" [formControl] = "textInput" autocomplete="off">
+                    </mat-form-field>
+                    <button class = "send-button" mat-raised-button [disabled] = "!textInput.valid" (click) = "sendMessage()" >senden</button>
+                </div>
+            </div>
+        </div>
+           
+
+       
+
+    </div>
 </div>
-
-
-
-
-

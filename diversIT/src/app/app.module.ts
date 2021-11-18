@@ -53,7 +53,7 @@ const app = initializeApp(environment.firebaseConfig);
     MentorSpotlightComponent,
     JobProfilesComponent,
     ProfileCardComponent,
-    ChatComponent
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
