@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DiversITUser } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc, SnapshotOptions } from "firebase/firestore";
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc, SnapshotOptions, orderBy } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/post.model';
@@ -219,13 +219,6 @@ export class FirestoreService {
     await updateDoc(docRefMentee, {
       chats: arrayUnion(newUid)
     });
-
-    const newColRef = collection(this.db, "chats/"+newUid+"/messages");
-
-    await addDoc(newColRef, {
-      timestamp: serverTimestamp(),
-      text: "Start des Chats"
-    });
   }
 
 
@@ -248,14 +241,18 @@ export class FirestoreService {
   }
 
   activateMessageListener(uid: string) {
-    const colRef = collection(this.db, 'chats/'+uid+'/messages')
-    return onSnapshot(colRef, (data) => {
-      let messages = [];
-      data.forEach((doc) => {
-        messages.push(doc.data({serverTimestamps: 'estimate'}));
+    const q = query(collection(this.db, 'chats/'+uid+'/messages'), orderBy("timestamp", "asc"))
+
+    if (q != null) {
+
+      return onSnapshot(q, (data) => {
+        let messages = [];
+        data.forEach((doc) => {
+          messages.push(doc.data({serverTimestamps: 'estimate'}));
+        });
+        this.messages.next(messages);
       });
-      this.messages.next(messages);
-    });
+    }
   }
 
   activateChatListener(chats: string[]) {
