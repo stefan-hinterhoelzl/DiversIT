@@ -8,7 +8,7 @@
     <div>Chat</div>
     <h3>Nachrichten:</h3>
     <div *ngFor = "let message of messages, let i = index">
-        <div *ngIf = "i != 0">
+        <div>
             {{message.sender}}: {{message.text}}
         </div>
     </div>

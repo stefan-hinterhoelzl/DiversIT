@@ -248,7 +248,7 @@ export class FirestoreService {
       return onSnapshot(q, (data) => {
         let messages = [];
         data.forEach((doc) => {
-          messages.push(doc.data({serverTimestamps: 'estimate'}));
+          messages.push(doc.data());
         });
         this.messages.next(messages);
       });
