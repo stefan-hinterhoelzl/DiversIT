@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DiversITUser } from 'src/app/models/users.model';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -12,7 +12,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class InterestingMentorsComponent implements OnInit {
 
   constructor(private firestore: FirestoreService, private router: Router) { }
-
+  @Input() width: "16%";
   mentors: DiversITUser[] = [];
   tempMentors: DiversITUser[] = [];
 

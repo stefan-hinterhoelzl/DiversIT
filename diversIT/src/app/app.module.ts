@@ -29,6 +29,12 @@ import { JobProfilesComponent } from './landing-page/landing-page-components/job
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileCardComponent } from './main/main-components/left-panel/profile-card/profile-card.component';
 import { ChatComponent } from './chat/chat.component';
+import { LeftSpacerComponent } from './profile-page/left-spacer/left-spacer.component';
+import { RightSpacerComponent } from './profile-page/right-spacer/right-spacer.component';
+import { MainPanelComponent } from './profile-page/main-panel/main-panel.component';
+import { RightPanelProfileComponent } from './profile-page/right-panel/right-panel.component';
+import { ProfileHeadComponent } from './profile-page/main-panel/profile-head/profile-head.component';
+import { ProfileNewPostComponent } from './profile-page/main-panel/profile-new-post/profile-new-post.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -53,7 +59,13 @@ const app = initializeApp(environment.firebaseConfig);
     MentorSpotlightComponent,
     JobProfilesComponent,
     ProfileCardComponent,
-    ChatComponent
+    ChatComponent,
+    LeftSpacerComponent,
+    RightSpacerComponent,
+    MainPanelComponent,
+    RightPanelProfileComponent,
+    ProfileHeadComponent,
+    ProfileNewPostComponent
   ],
   imports: [
     BrowserModule,
