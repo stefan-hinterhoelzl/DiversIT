@@ -69,12 +69,12 @@ export class ChatComponent implements OnInit {
 
 
   sendMessage() {
-    if (this.textInput.value != "") {
-      let x = this.textInput.value 
-      this.textInput.setValue("");
-      this.textInput.reset();
-      this.firestore.sendMessage(this.activeChat, x, this.currentUser.firstname)
+    let trimmed = this.textInput.value.trim();
+    if (trimmed != "") {
+      this.firestore.sendMessage(this.activeChat, trimmed , this.currentUser.firstname)
     }
+    this.textInput.setValue("");
+    this.textInput.reset();
   }
 
   onKeydown(event) {
