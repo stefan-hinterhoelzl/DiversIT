@@ -26,6 +26,7 @@
     height: 90%;
     width: 25%;
     min-width: 25%;
+    overflow-y: scroll;
 }
 
 .chat-box-unselected{
@@ -77,7 +78,7 @@
 }
 
 .form-field{
-    width: 95%;
+    width: 93%;
     display: flex;
     margin-left: 1%;
     word-wrap: break-word;

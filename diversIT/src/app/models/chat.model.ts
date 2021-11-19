@@ -12,5 +12,6 @@ export interface Chat {
     participantA: string,
     participantB: string,
     lastMessage: string,
-    newMessage: boolean
+    newMessage: boolean,
+    lastMessageTime: Timestamp
 }

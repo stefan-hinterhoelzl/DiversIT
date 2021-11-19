@@ -257,7 +257,7 @@ export class FirestoreService {
 
   activateChatListener(chats: string[]) {
     if (chats != null && chats.length > 0) {
-      const q = query(collection(this.db, "chats"), where("uid", "in", chats));
+      const q = query(collection(this.db, "chats"), where("uid", "in", chats), orderBy("lastMessageTime", "desc"))
       this.chatsub = onSnapshot(q, (querySnapshot) => {
         const chats = [];
         querySnapshot.forEach((doc) => {
@@ -268,8 +268,9 @@ export class FirestoreService {
     }
   }
 
-  async sendMessage(chat: string, text: string, sender: string) { //just a testmethod
+  async sendMessage(chat: string, text: string, sender: string) {
     const colRef = collection(this.db, 'chats/'+chat+'/messages')
+    const docRef = doc(this.db, 'chats/'+chat)
 
     const message = <Message> {
       text: text,
@@ -279,6 +280,11 @@ export class FirestoreService {
     }
     
     await addDoc(colRef, {...message});
+
+    await updateDoc(docRef, {
+      lastMessageTime: serverTimestamp(),
+      lastMessage: text,
+    });
 
   }
 
