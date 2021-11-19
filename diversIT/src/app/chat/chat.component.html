@@ -28,7 +28,7 @@
 
         <div class="flex-wrapper">
             <div class="chat-list">
-                <div class="chat-box-unselected" (click)="openChat(chat)" *ngFor="let chat of currentChats">
+                <div [ngClass] ="chat.uid === activeChat ? 'chat-box-selected' : 'chat-box-unselected'"  (click)="openChat(chat)" *ngFor="let chat of currentChats">
                     <div>
                         {{chat.uid}}
                     </div>
