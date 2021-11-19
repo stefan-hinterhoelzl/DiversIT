@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ContentChild, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AngularMaterialModule } from '../angular-material-module';
@@ -31,6 +31,7 @@ export class ChatComponent implements OnInit {
   textInput: FormControl
 
   @ViewChild('myInput') input: ElementRef;
+  @ViewChild('messageList') myList: ElementRef;
 
   constructor(private firestore: FirestoreService, private cd: ChangeDetectorRef) {
     this.textInput = new FormControl('', Validators.required);
@@ -59,11 +60,14 @@ export class ChatComponent implements OnInit {
     this.chatunsub = this.firestore.activateMessageListener(chat.uid)
     this.messageSubscription = this.firestore.messagesStatus.subscribe((data) => {
       this.messages = data;
-      console.log(data);
+      if (data != null) {
+        this.chatOpen = true;
+        if (this.input != undefined) this.input.nativeElement.focus();
+        setTimeout(()=> this.scrollToBottom(), 0)
+        this.activeChat = chat.uid;
+      }
     });
-    this.chatOpen = true;
-    if (this.input != undefined) this.input.nativeElement.focus();
-    this.activeChat = chat.uid;
+    
 
   }
 
@@ -81,6 +85,10 @@ export class ChatComponent implements OnInit {
     if (event.key === "Enter") {
       this.sendMessage();
     }
+  }
+
+  scrollToBottom() {
+    this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight - this.myList.nativeElement.clientHeight
   }
 
 }
