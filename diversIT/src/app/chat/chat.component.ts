@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ContentChild, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { AngularMaterialModule } from '../angular-material-module';
 import { Chat, Message } from '../models/chat.model';
 import { DiversITUser } from '../models/users.model';
 import { FirestoreService } from '../services/firestore.service';
@@ -29,8 +30,9 @@ export class ChatComponent implements OnInit {
 
   textInput: FormControl
 
+  @ViewChild('myInput') input: ElementRef;
 
-  constructor(private firestore: FirestoreService) {
+  constructor(private firestore: FirestoreService, private cd: ChangeDetectorRef) {
     this.textInput = new FormControl('', Validators.required);
    }
 
@@ -40,8 +42,10 @@ export class ChatComponent implements OnInit {
         this.currentUser = data;
         this.currentChatsSubscription = this.firestore.chatStatus.subscribe((data) => {
           this.currentChats = data;
+          if (this.currentChats != null) {
+            this.initialize(this.currentUser);
+          }
         })
-        this.initialize(data);
       }
     });
   }
@@ -58,16 +62,25 @@ export class ChatComponent implements OnInit {
       console.log(data);
     });
     this.chatOpen = true;
+    if (this.input != undefined) this.input.nativeElement.focus();
     this.activeChat = chat.uid;
 
   }
 
 
   sendMessage() {
-    this.firestore.sendMessage(this.activeChat, this.textInput.value, this.currentUser.firstname).then(() => {
+    if (this.textInput.value != "") {
+      let x = this.textInput.value 
       this.textInput.setValue("");
       this.textInput.reset();
-    })
+      this.firestore.sendMessage(this.activeChat, x, this.currentUser.firstname)
+    }
+  }
+
+  onKeydown(event) {
+    if (event.key === "Enter") {
+      this.sendMessage();
+    }
   }
 
 }
