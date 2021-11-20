@@ -41,12 +41,12 @@
         line-height: 10px;
         transition: var(--transition);
         font: {
-            size: 23px;
-            weight: 600;
+            size: 28px;
+            weight: 500;
         }
         span {
             color: var(--mainColor);
-            line-height: 10px;
+            line-height: 6px;
             transition: var(--transition);
             font: {
                 size: 30px;
@@ -71,7 +71,7 @@
             flex-direction: row;
             justify-content: right;
             align-items: center;
-            margin-top: 0;
+            margin: 0;
         .nav-item {
             padding: {
                 right: 15px;

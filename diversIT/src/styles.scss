@@ -58,12 +58,13 @@ body {
     }
 }
 ul {
-    padding-left: 0;
-    margin-bottom: 0;
-    
     li {
-        list-style: none;
-        list-style-type: circle;
+        list-style-type: square;
+    }
+
+    li::marker {
+        font-size: 20px;
+        color: var(--mainColor);
     }
 }
 :focus {
@@ -220,7 +221,7 @@ img {
 }
 
 /*==============================
-Job Profiles Overlay CSS
+Job Profiles Global CSS
 ==============================*/
 
 .cdk-overlay-container {
@@ -231,4 +232,8 @@ Job Profiles Overlay CSS
     .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
         color: var(--blackColor);
     }
+}
+
+app-job-profiles .mat-grid-tile .mat-figure {
+    display: block!important;
 }
