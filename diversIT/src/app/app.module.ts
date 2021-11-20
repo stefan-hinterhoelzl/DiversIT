@@ -37,6 +37,8 @@ import { ProfileHeadComponent } from './profile-page/main-panel/profile-head/pro
 import { ProfileNewPostComponent } from './profile-page/main-panel/profile-new-post/profile-new-post.component';
 import { NgxScrollTopModule } from 'ngx-scrolltop';
 import { FooterComponent } from './footer/footer.component';
+import { ImprintComponent } from './imprint/imprint.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -68,7 +70,9 @@ const app = initializeApp(environment.firebaseConfig);
     RightPanelProfileComponent,
     ProfileHeadComponent,
     ProfileNewPostComponent,
-    FooterComponent
+    FooterComponent,
+    ImprintComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
