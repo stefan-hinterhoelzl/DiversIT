@@ -1,0 +1,27 @@
+.mentor-card-finetuning {
+    height: 100%;
+
+    ul {
+        padding: 0px 0px 20px 20px;
+
+        li {
+            list-style-type: square;
+        }
+
+        li::marker {
+            font-size: 20px;
+            color: var(--mainColor);
+        }
+    }
+
+    .mat-card-avatar {
+        height: 250px;
+        width: 250px;
+        margin-right: 30px;
+    }
+
+    mat-card-actions {
+        margin: 10px 10px 10px 10px!important;
+        text-align: right;
+    }
+}

@@ -1,35 +1,38 @@
 <main class="app-body">
     <!-- navbar -->
-    <mat-toolbar color="primary" *ngIf="!isLandingPage()" style="height: 60px; box-shadow: 1px 2px 5px #d3d0d0; position: fixed; z-index: 2;">
+    <mat-toolbar color="primary" *ngIf="!isLandingPage()"
+        style="height: 60px; box-shadow: 1px 2px 5px #d3d0d0; position: fixed; z-index: 2;">
         <span class="outer-spacer"></span>
 
-        <a style = "cursor:pointer; font-weight: 600; font-size: xx-large;" (click)="diversIT()" >Divers<span class="accent-color">IT</span></a>
+        <a style="cursor:pointer; font-weight: 600; font-size: xx-large;" (click)="diversIT()">Divers<span
+                class="accent-color">IT</span></a>
         <span class="spacer"></span>
-        <button mat-icon-button class = "icon-label" style="margin-right: 40px;">
+        <button mat-icon-button class="icon-label" style="margin-right: 40px;">
             <mat-icon class="icon" id="search" color="accent">search</mat-icon>
             <label for="search" class="lable">Suche</label>
         </button>
-        <button mat-icon-button class = "icon-label" style="margin-right: 50px;" routerLink = "/landing">
+        <button mat-icon-button class="icon-label" style="margin-right: 50px;" routerLink="/landing">
             <mat-icon class="icon" id="info" color="accent">info</mat-icon>
             <label for="info" class="lable">Informationen</label>
         </button>
-        <button mat-icon-button class = "icon-label" style="margin-right: 30px; ">
+        <button mat-icon-button class="icon-label" style="margin-right: 30px; ">
             <mat-icon class="icon" id="supervisor_account" color="accent">supervisor_account</mat-icon>
             <label for="supervisor_account" class="lable">Mentoren</label>
         </button>
-        <button mat-icon-button class = "icon-label" style="margin-right: 60px;" routerLink = "/profile/{{currentUser?.uid}}">
+        <button mat-icon-button class="icon-label" style="margin-right: 60px;"
+            routerLink="/profile/{{currentUser?.uid}}">
             <mat-icon class="icon" id="person" color="accent">person</mat-icon>
             <label for="person" class="lable">Profil</label>
         </button>
-        <button mat-icon-button class = "icon-label" style="margin-right: 60px; ">
+        <button mat-icon-button class="icon-label" style="margin-right: 60px; ">
             <mat-icon class="icon" id="notifications" color="accent">notifications</mat-icon>
             <label for="notifications" class="lable">Benachrichtigungen</label>
         </button>
-        <button mat-icon-button class = "icon-label" style="margin-right: 30px;" routerLink = "/chat">
+        <button mat-icon-button class="icon-label" style="margin-right: 30px;" routerLink="/chat">
             <mat-icon class="icon" id="forum" color="accent">forum</mat-icon>
             <label for="forum" class="lable">Chat</label>
         </button>
-        <button mat-icon-button class = "icon-label" (click)="logout()">
+        <button mat-icon-button class="icon-label" (click)="logout()">
             <mat-icon class="icon" id="exit_to_app" color="accent">exit_to_app</mat-icon>
             <label for="exit_to_app" class="lable">Logout</label>
         </button>
@@ -40,4 +43,6 @@
 
     <!-- content -->
     <router-outlet></router-outlet>
+    <app-footer id="footer"></app-footer>
 </main>
+<ngx-scrolltop></ngx-scrolltop>
