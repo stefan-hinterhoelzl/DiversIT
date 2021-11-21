@@ -11,7 +11,7 @@ export class JobProfilesComponent implements OnInit {
   breakpoint: number;
   jobProfiles = new FormControl();
   jobProfilesList: string[] = ['IT-Systemadministrator', 'IT-Techniker', 'UX-Designer', 'Software Engineer', 'Universitätsprofessor für Informatik', 'Scrum Master', 'DevOps Engineer', 'Product Owner'].sort();
-  selectedItems: string[] = ['DevOps Engineer', 'IT-Systemadministrator'];
+  selectedItems: string[] = ['DevOps Engineer', 'IT-Systemadministrator', 'Product Owner', 'UX-Designer'];
 
 
   constructor() { }
