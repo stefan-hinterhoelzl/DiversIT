@@ -1,0 +1,33 @@
+.job-card-finetuning {
+    height: 100%;
+
+    mat-card-title {
+        margin-top: 28px;
+    }
+
+    .header-image {
+        margin-top: 12px;
+    }
+
+    .mat-card-avatar {
+        height: 55px;
+        width: 55px;
+        margin-right: 10px;
+    }
+
+    mat-tab-group p {
+        margin: 12px 12px 12px 12px;
+    }
+
+    .mat-tab-labels {
+        padding-top: 5px;
+    }
+
+    li p {
+        margin-left: 0;
+    }
+}
+
+.job-grid-tile {
+    width: 100%;
+}

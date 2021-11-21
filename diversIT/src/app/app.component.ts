@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { FirestoreService } from './services/firestore.service';
 import { DiversITUser } from './models/users.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
   title = 'mintistcool';
   currentUser: DiversITUser;
 
-  constructor(private router: Router, private auth: AuthService, private firestore: FirestoreService) {
+  constructor(private router: Router, private auth: AuthService, private firestore: FirestoreService, private location: Location) {
   }
 
 
@@ -27,16 +28,24 @@ export class AppComponent implements OnInit {
     return this.router.url == '/landing';
   }
 
-  logout(){
+  isLegalPage() {
+    return this.router.url == '/impressum' || this.router.url == '/datenschutz';
+  }
+
+  logout() {
     this.auth.logout();
   }
 
-  diversIT(){
-    if(this.router.url === '/app'){
+  diversIT() {
+    if (this.router.url === '/app') {
       window.location.reload();
     }
-    else{
+    else {
       this.router.navigate(['/app'])
     }
+  }
+
+  back() {
+    this.location.back();
   }
 }

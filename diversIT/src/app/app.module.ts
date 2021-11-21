@@ -35,6 +35,10 @@ import { MainPanelComponent } from './profile-page/main-panel/main-panel.compone
 import { RightPanelProfileComponent } from './profile-page/right-panel/right-panel.component';
 import { ProfileHeadComponent } from './profile-page/main-panel/profile-head/profile-head.component';
 import { ProfileNewPostComponent } from './profile-page/main-panel/profile-new-post/profile-new-post.component';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
+import { FooterComponent } from './footer/footer.component';
+import { ImprintComponent } from './imprint/imprint.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -65,7 +69,10 @@ const app = initializeApp(environment.firebaseConfig);
     MainPanelComponent,
     RightPanelProfileComponent,
     ProfileHeadComponent,
-    ProfileNewPostComponent
+    ProfileNewPostComponent,
+    FooterComponent,
+    ImprintComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +83,8 @@ const app = initializeApp(environment.firebaseConfig);
     StickyNavModule,
     MatAutocompleteModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxScrollTopModule
   ],
   providers: [SnackbarComponent],
   bootstrap: [AppComponent]

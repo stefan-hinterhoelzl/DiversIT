@@ -1,3 +1,5 @@
+import { PrivacyComponent } from './privacy/privacy.component';
+import { ImprintComponent } from './imprint/imprint.component';
 import { ForumComponent } from './forum/forum.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -21,6 +23,14 @@ const routes: Routes = [
   {
     path: 'forum',
     component: ForumComponent
+  },
+  {
+    path: 'impressum',
+    component: ImprintComponent
+  },
+  {
+    path: 'datenschutz',
+    component: PrivacyComponent
   },
   {
     path: 'app',

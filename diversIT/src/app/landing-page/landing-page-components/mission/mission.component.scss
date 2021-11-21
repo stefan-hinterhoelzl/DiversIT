@@ -1,0 +1,60 @@
+.mission {
+    position: relative;
+    z-index: 1;
+    background: {
+        image: url(/assets/Images/landing-page_1920x1080.png);
+        position: center center;
+        size: cover;
+        repeat: no-repeat;
+    };
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background: var(--blackColor);
+        opacity: .15;
+    }
+}
+.mission-content {
+    text-align: center;
+
+    .section-title {
+        padding-left: 0;
+
+        &::after, &::before {
+            display: none;
+        }
+        h2 {
+            color: var(--whiteColor);
+            font-weight: 400;
+            margin: {
+                top: 25px;
+                bottom: 25px;
+            };
+        }
+        h3 {
+            color: var(--whiteColor);
+            opacity: .95;
+            margin: {
+                left: auto;
+                right: auto;
+                bottom: 30px;
+            };
+        }
+        .btn {
+            margin: {
+                left: 8px;
+                right: 8px;
+            };
+            &.btn-primary {
+                &:hover, &:focus {
+                    border-color: var(--whiteColor);
+                }
+            }
+        }
+    }
+}
