@@ -1,8 +1,11 @@
 .job-card-finetuning {
     height: 100%;
+    overflow: auto;
+    padding: 0;
 
     .mat-card-header {
         align-items: center;
+        padding: 12px;
     }
 
     .mat-card-title {
@@ -15,8 +18,12 @@
         margin-right: 10px;
     }
 
-    mat-tab-group p {
-        margin: 12px 12px 12px 12px;
+    .mat-tab-group {
+        padding: 12px;
+
+        p {
+            margin: 12px 12px 12px 12px;
+        }
     }
 
     .mat-tab-labels {

@@ -17,11 +17,11 @@ export class JobProfilesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.breakpoint = (window.innerWidth <= 1363) ? 1 : 2;
+    this.breakpoint = (window.innerWidth <= 1220) ? 1 : 2;
   }
 
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 1363) ? 1 : 2;
+    this.breakpoint = (event.target.innerWidth <= 1220) ? 1 : 2;
   }
 
   changeSelection(item: string) {

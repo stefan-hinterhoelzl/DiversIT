@@ -164,6 +164,23 @@ img {
     }
 }
 
+/*Chip Chip-Primary*/
+.chip {
+	padding: 10px 20px;
+    margin: 10px;
+	border-radius: 30px;
+    transition: var(--transition);
+    font: {
+        size: 16px;
+        weight: 500;
+    };
+}
+.chip-primary {
+	color: var(--whiteColor);
+	background-color: var(--mainColor);
+    border-color: var(--mainColor);
+}
+
 // Section Title
 .section-title {
     margin: 30px;
