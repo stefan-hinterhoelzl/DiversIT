@@ -11,6 +11,10 @@
     mat-card-actions {
         margin: 10px 10px 10px 10px!important;
         text-align: right;
+
+        .mat-raised-button {
+            margin-right: 0;
+        }
     }
 
     .mat-card-title {
