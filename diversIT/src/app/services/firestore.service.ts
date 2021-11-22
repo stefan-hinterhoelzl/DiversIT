@@ -147,11 +147,14 @@ export class FirestoreService {
     let array: DiversITUser[] = []
     querySnapshot.forEach((doc) => {
       let mentor = doc.data() as DiversITUser;
-      // Check if user/mentee is already in contact with mentor
+
       let currentUser: DiversITUser = null;
       this.currentUserStatus.subscribe((user) => {
         if (user != null) currentUser = user;
       });
+      // Check if user is the same as the mentor
+      if (mentor.uid == currentUser.uid) return;
+      // Check if user/mentee is already in contact with mentor
       if (mentor.mentees.includes(currentUser.uid)) return;
       // Check if mentor has already reached max mentee number
       if (mentor.mentees.length == mentor.maxMentees) return;
