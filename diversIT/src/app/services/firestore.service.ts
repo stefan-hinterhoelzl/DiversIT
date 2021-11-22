@@ -74,7 +74,7 @@ export class FirestoreService {
         maxMentees: -1,
         girlsOnlyMentor: false,
         photoURL: photoURL,
-        backgroundInfo: [],
+        backgroundInfos: [],
       });
     } else {
       updateDoc(docRef, {
