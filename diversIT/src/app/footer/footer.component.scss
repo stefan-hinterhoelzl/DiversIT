@@ -1,0 +1,55 @@
+.footer-area {
+	text-align: center;
+	padding: 40px 0;
+    background: var(--blackColor);
+    
+    h3 {
+        line-height: 22px;
+        margin-bottom: 30px;
+
+        a {
+            color: var(--whiteColor);
+            display: inline-block;
+            font: {
+                size: 35px;
+                weight: 400;
+            };
+        }
+        span {
+            color: var(--mainColor);
+            font: {
+                size: 35px;
+                weight: 600;
+            };
+        }
+    }
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
+        li {
+            display: inline-block;
+            margin: {
+                left: 4px;
+                right: 4px;
+            };
+            a { 
+                text-align: center;
+                color: var(--whiteColor);
+                font-size: 14px;
+                display: block;
+
+                &:hover, &:focus {
+                    color: var(--mainColor);
+                }
+            }
+        }
+    }
+    p {
+        line-height: 1;
+        margin-top: 30px;
+        color: var(--whiteColor);
+    }
+}
