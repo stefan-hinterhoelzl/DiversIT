@@ -294,9 +294,11 @@ export class FirestoreService {
 
   async sendMessage(chat: Chat, text: string, sender: DiversITUser) {
     const colRef = collection(this.db, 'messages')
-    const docRef = doc(this.db, 'chats/'+chat.uid)
+    const docRefOwnChat = doc(this.db, 'chats/'+chat.uid)
+    const docRefOtherChat = doc(this.db, 'chats/'+chat.connectedChat)
     
-    const chatDoc: Chat = (await getDoc(docRef)).data() as Chat
+    const ownChatDoc: Chat = (await getDoc(docRefOwnChat)).data() as Chat
+    const otherChatDoc: Chat = (await getDoc( docRefOtherChat)).data() as Chat
 
     const message = <Message> {
       text: text,
@@ -307,21 +309,24 @@ export class FirestoreService {
     
     const newMessageRef = await addDoc(colRef, {...message});
 
-    const MessageDoc: Message = (await getDoc(newMessageRef)).data() as Message
 
-    if (!chatDoc.currentlyOnline) {
-      await updateDoc(docRef, {
+    if (!otherChatDoc.currentlyOnline) {
+      await updateDoc(docRefOtherChat, {
         lastMessage: text,
         lastMessageTime: serverTimestamp(),
         amountNewMessages: increment(1),
       })
     } else {
-
-      await updateDoc(docRef, {
+      await updateDoc(docRefOtherChat, {
         lastMessage: text,
         lastMessageTime: serverTimestamp(),
       });
     }
+
+    await updateDoc(docRefOwnChat, {
+      lastMessage: text,
+      lastMessageTime: serverTimestamp(),
+    });
 
   }
 
