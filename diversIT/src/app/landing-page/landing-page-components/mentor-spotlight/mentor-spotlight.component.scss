@@ -1,5 +1,6 @@
 .mentor-card-finetuning {
     height: 100%;
+    padding: 30px 100px;
 
     .mat-card-avatar {
         height: 250px;
@@ -10,5 +11,13 @@
     mat-card-actions {
         margin: 10px 10px 10px 10px!important;
         text-align: right;
+
+        .mat-raised-button {
+            margin-right: 0;
+        }
+    }
+
+    .mat-card-title {
+        padding-top: 12px;
     }
 }

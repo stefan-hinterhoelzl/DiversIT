@@ -133,7 +133,6 @@ img {
 /*Btn Btn-Primary*/
 .btn {
 	padding: 10px 30px;
-	border-radius: 30px;
     transition: var(--transition);
     font: {
         size: 16px;
@@ -143,17 +142,14 @@ img {
 .btn-primary {
 	color: var(--whiteColor);
 	background-color: var(--mainColor);
-    border-color: var(--mainColor);
 
     &:hover, &:focus, &.disabled:hover, &.disabled:focus {
         color: var(--mainColor);
 	    background-color: var(--whiteColor);
-	    border-color: var(--mainColor);
     }
     &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active {
         color: var(--whiteColor);
 	    background-color: var(--mainColor);
-	    border-color: var(--mainColor);
     }
     &:not(:disabled):not(.disabled).active:focus, &:not(:disabled):not(.disabled):active:focus {
         box-shadow: none;
@@ -164,21 +160,37 @@ img {
     &.disabled, &:disabled {
         color: var(--whiteColor);
         background-color: var(--mainColor);
-        border-color: var(--mainColor);
         opacity: 1;
     }
 }
 
+/*Chip Chip-Primary*/
+.chip {
+	padding: 10px 20px;
+    margin: 10px;
+	border-radius: 30px;
+    transition: var(--transition);
+    font: {
+        size: 16px;
+        weight: 500;
+    };
+}
+.chip-primary {
+	color: var(--whiteColor);
+	background-color: var(--mainColor);
+    border-color: var(--mainColor);
+}
+
 // Section Title
 .section-title {
-	margin-bottom: 60px;
+    margin: 30px;
 	padding-left: 30px;
     position: relative;
 
     &::before, &::after {
         content: '';
         position: absolute;
-        width: 3px;
+        width: 4px;
         height: 100%;
         left: 10px;
         top: 0;
@@ -196,7 +208,6 @@ img {
         height: 100%;
     }
     h2 {
-        margin-bottom: 20px;
         font: {
             size: 40px;
             weight: 400;

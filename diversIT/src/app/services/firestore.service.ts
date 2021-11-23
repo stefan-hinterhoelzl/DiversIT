@@ -74,6 +74,7 @@ export class FirestoreService {
         maxMentees: -1,
         girlsOnlyMentor: false,
         photoURL: photoURL,
+        backgroundInfos: [],
       });
     } else {
       updateDoc(docRef, {
@@ -147,14 +148,28 @@ export class FirestoreService {
     let array: DiversITUser[] = []
     querySnapshot.forEach((doc) => {
       let mentor = doc.data() as DiversITUser;
-      // Check if user/mentee is already in contact with mentor
+
       let currentUser: DiversITUser = null;
       this.currentUserStatus.subscribe((user) => {
         if (user != null) currentUser = user;
       });
+      // Check if user is the same as the mentor
+      if (mentor.uid == currentUser.uid) return;
+      // Check if user/mentee is already in contact with mentor
       if (mentor.mentees.includes(currentUser.uid)) return;
       // Check if mentor has already reached max mentee number
       if (mentor.mentees.length == mentor.maxMentees) return;
+      array.push(mentor);
+    });
+    return array;
+  }
+
+  async getAllMentorsPromise(): Promise<DiversITUser[]> {
+    const q = query(collection(this.db, "users"), where("role", "==", 2));
+    const querySnapshot = await getDocs(q);
+    let array: DiversITUser[] = []
+    querySnapshot.forEach((doc) => {
+      let mentor = doc.data() as DiversITUser;
       array.push(mentor);
     });
     return array;
@@ -191,7 +206,7 @@ export class FirestoreService {
     const docRefMentor = doc(this.db, "users", mentor);
     const docRefMentee = doc(this.db, "users", mentee)
 
-    const chat = <Chat> {
+    const chat = <Chat>{
       uid: null,
       participantA: mentee,
       participantB: mentor,
@@ -199,13 +214,13 @@ export class FirestoreService {
       newMessage: false,
     }
 
-    const docRef = await addDoc(colRef, {...chat});
+    const docRef = await addDoc(colRef, { ...chat });
 
     const docSnap = await getDoc(docRef);
 
     let newUid = "";
     if (docSnap.exists()) {
-        newUid = docSnap.id;
+      newUid = docSnap.id;
     }
 
     await updateDoc(docRef, {
@@ -241,7 +256,7 @@ export class FirestoreService {
   }
 
   activateMessageListener(uid: string) {
-    const q = query(collection(this.db, 'chats/'+uid+'/messages'), orderBy("timestamp", "asc"))
+    const q = query(collection(this.db, 'chats/' + uid + '/messages'), orderBy("timestamp", "asc"))
 
     if (q != null) {
 
@@ -269,17 +284,17 @@ export class FirestoreService {
   }
 
   async sendMessage(chat: string, text: string, sender: string) {
-    const colRef = collection(this.db, 'chats/'+chat+'/messages')
-    const docRef = doc(this.db, 'chats/'+chat)
+    const colRef = collection(this.db, 'chats/' + chat + '/messages')
+    const docRef = doc(this.db, 'chats/' + chat)
 
-    const message = <Message> {
+    const message = <Message>{
       text: text,
       read: false,
       sender: sender,
       timestamp: serverTimestamp(),
     }
-    
-    await addDoc(colRef, {...message});
+
+    await addDoc(colRef, { ...message });
 
     await updateDoc(docRef, {
       lastMessageTime: serverTimestamp(),
