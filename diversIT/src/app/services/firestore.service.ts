@@ -328,16 +328,16 @@ export class FirestoreService {
   async openChat(chat: Chat) {
     const docRef = doc(this.db, 'chats/'+chat.uid)
     
-    await updateDoc(docRef, {
+     return updateDoc(docRef, {
       amountNewMessages: 0,
       currentlyOnline: true,
     });
   }
 
-  async closeChat(chat: Chat) {
+  closeChat(chat: Chat) {
     const docRef = doc(this.db, 'chats/'+chat.uid)
     
-    await updateDoc(docRef, {
+    return updateDoc(docRef, {
       amountNewMessages: 0,
       currentlyOnline: false,
       lastCheckedTime: serverTimestamp(),

@@ -1,5 +1,5 @@
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef, HostListener, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AngularMaterialModule } from '../angular-material-module';
@@ -52,7 +52,6 @@ export class ChatComponent implements OnInit {
         this.currentUser = data;
         this.currentChatsSubscription = this.firestore.chatStatus.subscribe((data) => {
           this.currentChats = data;
-          console.log(data)
           if (this.currentChats != null) {
             this.initialize(this.currentUser);
           }
@@ -65,20 +64,23 @@ export class ChatComponent implements OnInit {
 
   }
 
-  openChat(chat: Chat) {
-    if (this.chatunsub != null) this.chatunsub();
+  async openChat(chat: Chat) {
+    if (this.chatunsub != null) {
+      await this.firestore.closeChat(this.activeChat);
+      this.chatunsub();
+    } 
     this.chatunsub = this.firestore.activateMessageListener(chat)
-    this.messageSubscription = this.firestore.messagesStatus.subscribe((data) => {
+    this.messageSubscription = this.firestore.messagesStatus.subscribe(async (data) => {
       this.messages = data;
       if (data != null) {
-        this.firestore.openChat(chat);
         this.chatOpen = true;
-        if (this.input != undefined) this.input.nativeElement.focus();
         setTimeout(()=> this.scrollToBottom(), 0)
-        this.activeChat = chat;
-        this.activeChatUID = chat.uid
       }
     });
+    await this.firestore.openChat(chat);
+    this.activeChat = chat;
+    this.activeChatUID = chat.uid
+    if (this.input != undefined) this.input.nativeElement.focus();
 
   }
 
@@ -98,8 +100,13 @@ export class ChatComponent implements OnInit {
   }
 
   scrollToBottom() {
-    console.log(this.myList.nativeElement.scrollHeight + " + " + this.myList.nativeElement.clientHeight)
     this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight - this.myList.nativeElement.clientHeight
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  async beforeUnloadHandler(event) {
+    await this.firestore.closeChat(this.activeChat);
+    this.chatunsub();
   }
 
 }
