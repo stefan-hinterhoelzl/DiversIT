@@ -23,13 +23,13 @@
 <div class="main-wrapper">
     <div class="chat-window">
         <div class="chat-box-header">
-            <div><img class = "image" src="{{currentUser.photoURL}}" alt=""></div>
-            <div style = "margin-left: 2%;"><h2>{{currentUser.firstname}} {{currentUser.lastname}}</h2></div>
+            <div><img class = "image" src="{{currentUser?.photoURL}}" alt=""></div>
+            <div style = "margin-left: 2%;"><h2>{{currentUser?.firstname}} {{currentUser?.lastname}}</h2></div>
         </div>
 
         <div class="flex-wrapper">
             <div class="chat-list">
-                <div [ngClass]="chat.uid === activeChat ? 'chat-box-selected' : 'chat-box-unselected'"
+                <div [ngClass]="chat.uid === activeChatUID ? 'chat-box-selected' : 'chat-box-unselected'"
                     (click)="openChat(chat)" *ngFor="let chat of currentChats">
                     <div>
                         {{chat.uid}}
@@ -38,18 +38,27 @@
             </div>
             <div class = "flex-wrapper" style =  "height: 100%; flex-direction:column" *ngIf="chatOpen">
                 <div #messageList class="message-window">
-                    <div class = "message" *ngFor="let message of messages; let i = index; let last = last">
-                        <div style ="height: 100%">
-                            {{message.sender}}: {{message.text}}
+                    <div [ngClass]="message.senderUID === currentUser.uid ? 'own-message-wrapper' : 'other-message-wrapper'" *ngFor="let message of messages; let i = index; let last = last">
+                        <div [ngClass]="message.senderUID === currentUser.uid ? 'own-message' : 'other-message'">
+                            <p style = "margin-bottom: 0;">{{message.text}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="response-box">
-                    <div class="typing-box">
-                        <input class="form-field" placeholder="Hier schreiben..." type="text"
-                            (keydown.enter)="sendMessage()" [formControl]="textInput" autocomplete="off" autofocus #myInput>
+                        <mat-form-field class="form-field"  appearance="none">
+                                <textarea class = "form-field" matInput
+                                    #myInput
+                                    autofocus
+                                    placeholder="Hier schreiben..."
+                                    cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1"
+                                    cdkAutosizeMaxRows="10"
+                                    [formControl]="textInput"
+                                    (keydown.enter)="sendMessage()">
+                                </textarea>
+                            </mat-form-field>
                         <mat-icon class="send-button" (click)="sendMessage()">send</mat-icon>
-                    </div>
                 </div>
             </div>
            

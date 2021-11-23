@@ -2,16 +2,18 @@ import { Timestamp } from "@firebase/firestore";
 
 export interface Message {
     text: string,
-    sender: string,
-    read: boolean,
+    senderUID: string,
     timestamp: Timestamp,
+    sendingRelationship: string[],
 }
 
 export interface Chat {
     uid: string,
-    participantA: string,
-    participantB: string,
+    connectedChat: string,
+    recipientUser: string,
     lastMessage: string,
-    newMessage: boolean,
-    lastMessageTime: Timestamp
+    lastMessageTime: Timestamp,
+    amountNewMessages: number,
+    lastCheckedTime: Timestamp,
+    currentlyOnline: boolean,
 }

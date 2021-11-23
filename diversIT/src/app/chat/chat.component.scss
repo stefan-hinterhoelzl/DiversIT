@@ -22,7 +22,7 @@
     height: 10%;
     background-color: #DDD8D8;
     border-radius: 15px 15px 0px 0px;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -56,14 +56,62 @@
     width: 100%;
     height: 90%;
     min-width: 100%;
-    justify-content: flex-end;
     word-break: break-all;
     overflow-y: scroll;
+    //visibility: hidden;
 }
 
-.message{
+.own-message-wrapper {
     width: 100%;
-    height: 5%;
+    display: flex;
+    word-break: break-all;
+    align-items: flex-start;
+    margin-bottom: 5%;
+    flex-direction: column;
+   
+}
+
+.other-message-wrapper {
+    width: 100%;
+    display: flex;
+    word-break: break-all;
+    align-items: flex-end;
+    margin-bottom: 5%;
+    flex-direction: column;
+}
+
+.own-message{
+    width: 50%;
+    height: 10%;
+    background-color: rgba(221, 216, 216, 0.5);
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 10px 10px;
+    margin-left: 5%;
+    
+}
+
+.other-message{
+    width: 50%;
+    height: 10%;
+    background-color: rgba(236, 64, 122, 0.5);
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 10px 10px;
+    margin-right: 5%;
+
+}
+
+.own-timestamp{
+    margin-left: 5%;
+    margin-bottom: 0%;
+}
+
+.other-timestamp{
+    margin-left: 5%;
+    margin-bottom: 0%
 }
 
 .flex-wrapper{
@@ -76,30 +124,26 @@
 .response-box{
     width: 100%;
     min-width: 100%;
-    height: 10%;
-    min-height: 10%;
     background-color:#DDD8D8;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
-
-.typing-box{
-    width: 90%;
-    height: 60%;
-    background-color: #FAFAFA;
-    border-radius: 30px;
     align-items: center;
     justify-content: left;
     display: flex;
+    flex-direction: row;
 }
 
+// .typing-box{
+//     width: 90%;
+//     background-color: #FAFAFA;
+//     border-radius: 30px;
+//     align-items: center;
+//     justify-content: left;
+//     display: flex;
+// }
+
+
 .form-field{
-    width: 93%;
-    display: flex;
-    margin-left: 1%;
-    word-wrap: break-word;
-    word-break: break-all;
+    padding: 10px 10px 10px 10px;
+    width: 100%;
     
 }
 
@@ -107,6 +151,8 @@
     display: flex;
     cursor: pointer;
     color: $accent;
+    margin-right: 5%;
+    margin-left: 5%;
 }
 
 input {

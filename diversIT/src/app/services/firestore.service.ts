@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DiversITUser } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc, SnapshotOptions, orderBy } from "firebase/firestore";
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc, SnapshotOptions, orderBy, increment } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/post.model';
@@ -191,33 +191,58 @@ export class FirestoreService {
     const docRefMentor = doc(this.db, "users", mentor);
     const docRefMentee = doc(this.db, "users", mentee)
 
-    const chat = <Chat> {
+    const Mentor: DiversITUser = (await getDoc(docRefMentor)).data() as DiversITUser
+    const Mentee: DiversITUser = (await getDoc(docRefMentee)).data() as DiversITUser
+
+    const MentorChat = <Chat> {
       uid: null,
-      participantA: mentee,
-      participantB: mentor,
       lastMessage: "",
-      newMessage: false,
+      connectedChat: null,
+      recipientUser: Mentee.uid,
+      amountNewMessages: 0,
+      lastCheckedTime: serverTimestamp(),
+      lastMessageTime: serverTimestamp(),
+      currentlyOnline: false,
     }
 
-    const docRef = await addDoc(colRef, {...chat});
-
-    const docSnap = await getDoc(docRef);
-
-    let newUid = "";
-    if (docSnap.exists()) {
-        newUid = docSnap.id;
+    const MenteeChat = <Chat> {
+      uid: null,
+      lastMessage: "",
+      connectedChat: null,
+      recipientUser: Mentor.uid,
+      amountNewMessages: 0,
+      lastCheckedTime: serverTimestamp(),
+      lastMessageTime: serverTimestamp(),
+      currentlyOnline: false,
     }
 
-    await updateDoc(docRef, {
-      uid: newUid
+    const MentorChatRef = await addDoc(colRef, {...MentorChat});
+    const MenteeChatRef = await addDoc(colRef, {...MenteeChat});
+
+    const docSnapMentor = await getDoc(MentorChatRef);
+    const docSnapMentee = await getDoc(MenteeChatRef);
+
+    let mentorChatId = docSnapMentor.id;
+    let menteeChatId = docSnapMentee.id;
+
+
+    await updateDoc(MentorChatRef, {
+      uid: mentorChatId,
+      connectedChat: menteeChatId
     });
 
+    await updateDoc(MenteeChatRef, {
+      uid: menteeChatId,
+      connectedChat: mentorChatId
+    });
+
+
     await updateDoc(docRefMentor, {
-      chats: arrayUnion(newUid)
+      chats: arrayUnion(mentorChatId)
     });
 
     await updateDoc(docRefMentee, {
-      chats: arrayUnion(newUid)
+      chats: arrayUnion(menteeChatId)
     });
   }
 
@@ -240,15 +265,13 @@ export class FirestoreService {
     });
   }
 
-  activateMessageListener(uid: string) {
-    const q = query(collection(this.db, 'chats/'+uid+'/messages'), orderBy("timestamp", "asc"))
-
+  activateMessageListener(chat: Chat) {
+    const q = query(collection(this.db, 'messages'), where("sendingRelationship", "array-contains-any", [chat.uid, chat.connectedChat]), orderBy("timestamp", "asc"))
     if (q != null) {
-
       return onSnapshot(q, (data) => {
         let messages = [];
         data.forEach((doc) => {
-          messages.push(doc.data());
+          messages.push(doc.data({serverTimestamps: "estimate"}));
         });
         this.messages.next(messages);
       });
@@ -257,6 +280,7 @@ export class FirestoreService {
 
   activateChatListener(chats: string[]) {
     if (chats != null && chats.length > 0) {
+      console.log(chats)
       const q = query(collection(this.db, "chats"), where("uid", "in", chats), orderBy("lastMessageTime", "desc"))
       this.chatsub = onSnapshot(q, (querySnapshot) => {
         const chats = [];
@@ -268,24 +292,60 @@ export class FirestoreService {
     }
   }
 
-  async sendMessage(chat: string, text: string, sender: string) {
-    const colRef = collection(this.db, 'chats/'+chat+'/messages')
-    const docRef = doc(this.db, 'chats/'+chat)
+  async sendMessage(chat: Chat, text: string, sender: DiversITUser) {
+    const colRef = collection(this.db, 'messages')
+    const docRef = doc(this.db, 'chats/'+chat.uid)
+    
+    const chatDoc: Chat = (await getDoc(docRef)).data() as Chat
 
     const message = <Message> {
       text: text,
-      read: false,
-      sender: sender,
+      senderUID: sender.uid,
       timestamp: serverTimestamp(),
-    }
+      sendingRelationship: [chat.uid, chat.connectedChat]
+    };
     
-    await addDoc(colRef, {...message});
+    const newMessageRef = await addDoc(colRef, {...message});
 
+    const MessageDoc: Message = (await getDoc(newMessageRef)).data() as Message
+
+    if (!chatDoc.currentlyOnline) {
+      await updateDoc(docRef, {
+        lastMessage: text,
+        lastMessageTime: serverTimestamp(),
+        amountNewMessages: increment(1),
+      })
+    } else {
+
+      await updateDoc(docRef, {
+        lastMessage: text,
+        lastMessageTime: serverTimestamp(),
+      });
+    }
+
+  }
+
+  async openChat(chat: Chat) {
+    const docRef = doc(this.db, 'chats/'+chat.uid)
+    
     await updateDoc(docRef, {
-      lastMessageTime: serverTimestamp(),
-      lastMessage: text,
+      amountNewMessages: 0,
+      currentlyOnline: true,
+    });
+  }
+
+  async closeChat(chat: Chat) {
+    const docRef = doc(this.db, 'chats/'+chat.uid)
+    
+    await updateDoc(docRef, {
+      amountNewMessages: 0,
+      currentlyOnline: false,
+      lastCheckedTime: serverTimestamp(),
     });
 
   }
 
 }
+
+
+
