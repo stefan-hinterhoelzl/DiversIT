@@ -31,13 +31,17 @@
             <div class="chat-list">
                 <div [ngClass]="chat.uid === activeChatUID ? 'chat-box-selected' : 'chat-box-unselected'"
                     (click)="openChat(chat)" *ngFor="let chat of currentChats, let i = index">
-                    <div>
-                        <p style = "font-size: larger">{{currentChatUsers[i].firstname}} {{currentChatUsers[i].lastname}}</p>
-                    </div>
-                    
-                    <div>
-                        <p *ngIf = "chat.currentlyOnline"> online</p>
-                        <p *ngIf = "!chat.currentlyOnline"> zuletzt gesehen {{chat.lastCheckedTime  | date: 'dd.MM HH:mm'}}</p>
+                    <div style = "display: flex; flex-direction: column; width: 100%; margin-left:2%;">
+                        <div style = "display: flex; flex-direction: row; justify-content: space-between;">
+                            <div>
+                                <p style = "font-size: larger">{{currentChatUsers[i].firstname}} {{currentChatUsers[i].lastname}}</p>
+                            </div>
+                            
+                            <div style =  "margin-right: 5%;">
+                                <p style = "color: rgba(236, 64, 122, 0.5); font-size: small" *ngIf = "chat.currentlyOnline"> online</p>
+                                <p style = "font-size: x-small" *ngIf = "!chat.currentlyOnline"> zuletzt gesehen  {{chat.lastCheckedTime  | date: 'dd.MM - HH:mm'}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,7 +53,7 @@
                                 <p style = "margin-bottom: 0;">{{message.text}}</p>
                             </div>
                             <div style = "display:flex; margin-bottom: 0;">
-                                <p class = "date">{{message.timestamp | date: 'dd.MM HH:mm'}} </p>
+                                <p class = "date">{{message.timestamp | date: 'dd.MM - HH:mm'}} </p>
                             </div>  
                         </div>
                     </div>

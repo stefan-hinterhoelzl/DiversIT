@@ -1,5 +1,5 @@
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef, HostListener, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef, HostListener, NgZone, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AngularMaterialModule } from '../angular-material-module';
@@ -14,7 +14,7 @@ import { ChatService } from '../services/chat.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
 
   currentUser: DiversITUser
   currentUserSubscription: Subscription
@@ -42,6 +42,12 @@ export class ChatComponent implements OnInit {
   constructor(private user: UserService, private _ngZone: NgZone, private database: ChatService) {
     this.textInput = new FormControl('', Validators.required);
    }
+  async ngOnDestroy(): Promise<void> {
+    if (this.chatunsub != null) {
+      await this.database.closeChat(this.activeChat, this.currentUser);
+      this.chatunsub();
+    } 
+  }
 
    triggerResize() {
     this._ngZone.onStable.pipe(take(1))
