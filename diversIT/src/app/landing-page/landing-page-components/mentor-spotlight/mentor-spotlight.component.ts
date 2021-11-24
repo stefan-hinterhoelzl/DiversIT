@@ -1,13 +1,24 @@
-import { UserService } from '../../../services/user.service';
-import { Component } from '@angular/core';
+
+import { DiversITUser } from './../../../models/users.model';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-mentor-spotlight',
   templateUrl: './mentor-spotlight.component.html',
   styleUrls: ['./mentor-spotlight.component.scss']
 })
-export class MentorSpotlightComponent {
+export class MentorSpotlightComponent implements OnInit {
+
+  numberOfMentors = 1;
+  mentors: DiversITUser[];
 
   constructor(private firestore: UserService) { }
+
+  ngOnInit(): void {
+    this.firestore.getAllMentorsPromise().then(data => {
+      this.mentors = data.sort(() => .5 - Math.random()).slice(0, this.numberOfMentors);
+    });
+  }
 
 }

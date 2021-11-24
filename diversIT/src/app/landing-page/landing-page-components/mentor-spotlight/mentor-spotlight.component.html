@@ -1,30 +1,50 @@
-<div id="mentor-spotlight" >
-    <div  class="container" >
+<div id="mentor-spotlight">
+    <div class="container section-title">
         <h2>Mentor<span>innen</span> Spotlight</h2>
     </div>
 
-    <mat-card class="mentor-card-finetuning">
+    <mat-card *ngFor="let mentor of mentors" class="mentor-card-finetuning">
         <mat-card-header>
-            <mat-card-title>Cornelia <span>Eysn</span></mat-card-title>
+            <!-- Photo -->
+            <img *ngIf="mentor.photoURL !== unknown; else placeholder" src="{{mentor.photoURL}}" mat-card-avatar />
+            <ng-template #placeholder>
+                <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+            </ng-template>
+
+            <!-- Name -->
+            <mat-card-title>{{mentor.firstname}} {{mentor.lastname}}
+                <span *ngIf="mentor.girlsOnlyMentor" class="chip chip-primary">Girls only</span>
+            </mat-card-title>
+
+            <!-- Job And Company -->
             <mat-card-subtitle>
-                DiversIT-Mentorin, QA Engineer bei Avocodo
+                <p *ngIf="mentor.gender === 'Female'">DiversIT-Mentorin</p>
+                <p *ngIf="mentor.gender === 'Male'">DiversIT-Mentor</p>
+                <p *ngIf="mentor.gender !== 'Female' && mentor.gender !== 'Male'">DiversIT-Mentor*</p>
+                <p *ngIf="mentor.job !== '' && mentor.company !== ''">{{mentor.job}} bei {{mentor.company}}</p>
+                <p *ngIf="mentor.job ==='' || mentor.company === ''">{{mentor.job}}{{mentor.company}}</p>
+                <!-- Education and Background Infos -->
                 <ul>
-                    <li>Matura am Gymnasium</li>
-                    <li>BSc BWL an der JKU</li>
-                    <li>Mehrjährige Berufserfahrung im Marketing und Eventmanagement</li>
-                    <li>Studienbeginn MSc Wirtschaftsinformatik an der JKU in Bildungskarenz</li>
-                    <li>Quereinsteigerin mit 30+</li>
-                    <li>Einstieg als QA Engineer / Testautomation Engineer in Teilzeit</li>
-                    <li>Übergang zur Backend-Entwicklerin in Vollzeit 2022</li>
+                    <li *ngIf="mentor.primaryEducation !== ''">{{mentor.primaryEducation}}</li>
+                    <li *ngIf="mentor.secondaryEducation !== ''">{{mentor.secondaryEducation}}</li>
+                    <li *ngIf="mentor.universityEducation !== ''">{{mentor.universityEducation}}</li>
+                    <li *ngFor="let info of mentor.backgroundInfos">{{info}}</li>
                 </ul>
             </mat-card-subtitle>
-            <div mat-card-avatar class="header-image" routerLink="/profile/zLccCJEzSGap7BlhefDT0xTyi9I3"
-                style="cursor: pointer; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); background-size: cover;">
-            </div>
         </mat-card-header>
-        <mat-card-content>
-        </mat-card-content>
-        <mat-card-actions><button mat-raised-button routerLink="/profile/zLccCJEzSGap7BlhefDT0xTyi9I3"> Mentee werden
-            </button></mat-card-actions>
+
+        <!-- CTA and Mentoring Capacity Info -->
+        <mat-card-actions>
+            <div *ngIf="mentor.maxMentees &lt; mentor.mentees.length; else fullcapacity">
+                <p>Freie Mentoring-Plätze!</p>
+                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary"> Mentee werden
+                </button>
+            </div>
+            <ng-template #fullcapacity>
+                <p>Aktuell leider keine Mentoring-Kapazität frei.</p> <button mat-raised-button
+                    routerLink="/profile/{{mentor.uid}}" class="btn btn-primary"> Zum Profil
+                </button>
+            </ng-template>
+        </mat-card-actions>
     </mat-card>
 </div>

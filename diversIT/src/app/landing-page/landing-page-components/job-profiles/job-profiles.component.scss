@@ -1,22 +1,29 @@
 .job-card-finetuning {
     height: 100%;
+    overflow: auto;
+    padding: 0;
 
-    mat-card-title {
-        margin-top: 28px;
+    .mat-card-header {
+        align-items: center;
+        padding: 12px;
     }
 
-    .header-image {
-        margin-top: 12px;
+    .mat-card-title {
+        margin-bottom: 0;
     }
 
     .mat-card-avatar {
-        height: 55px;
-        width: 55px;
+        height: 100px;
+        width: 100px;
         margin-right: 10px;
     }
 
-    mat-tab-group p {
-        margin: 12px 12px 12px 12px;
+    .mat-tab-group {
+        padding: 12px;
+
+        p {
+            margin: 12px 12px 12px 12px;
+        }
     }
 
     .mat-tab-labels {
@@ -30,4 +37,12 @@
 
 .job-grid-tile {
     width: 100%;
+}
+
+.container {
+    padding: 12px;
+
+    p {
+        margin-left: 0!important;
+    }
 }

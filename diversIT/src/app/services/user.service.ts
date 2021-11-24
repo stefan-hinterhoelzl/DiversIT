@@ -74,6 +74,7 @@ export class UserService {
         maxMentees: -1,
         girlsOnlyMentor: false,
         photoURL: photoURL,
+        backgroundInfos: [],
       });
     } else {
       updateDoc(docRef, {
@@ -146,14 +147,28 @@ export class UserService {
     let array: DiversITUser[] = []
     querySnapshot.forEach((doc) => {
       let mentor = doc.data() as DiversITUser;
-      // Check if user/mentee is already in contact with mentor
+
       let currentUser: DiversITUser = null;
       this.currentUserStatus.subscribe((user) => {
         if (user != null) currentUser = user;
       });
+      // Check if user is the same as the mentor
+      if (mentor.uid == currentUser.uid) return;
+      // Check if user/mentee is already in contact with mentor
       if (mentor.mentees.includes(currentUser.uid)) return;
       // Check if mentor has already reached max mentee number
       if (mentor.mentees.length == mentor.maxMentees) return;
+      array.push(mentor);
+    });
+    return array;
+  }
+
+  async getAllMentorsPromise(): Promise<DiversITUser[]> {
+    const q = query(collection(this.db, "users"), where("role", "==", 2));
+    const querySnapshot = await getDocs(q);
+    let array: DiversITUser[] = []
+    querySnapshot.forEach((doc) => {
+      let mentor = doc.data() as DiversITUser;
       array.push(mentor);
     });
     return array;
