@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { Post, PostDisplay } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
-import { FirestoreService } from 'src/app/services/firestore.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-center-panel',
@@ -11,7 +11,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class CenterPanelComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService) { }
+  constructor(private firestore: UserService) { }
 
   currentUser: DiversITUser;
   mentors: DiversITUser[];

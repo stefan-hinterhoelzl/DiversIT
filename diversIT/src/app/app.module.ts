@@ -39,6 +39,9 @@ import { NgxScrollTopModule } from 'ngx-scrolltop';
 import { FooterComponent } from './footer/footer.component';
 import { ImprintComponent } from './imprint/imprint.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
+import { ChatService } from './services/chat.service';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -89,4 +92,7 @@ const app = initializeApp(environment.firebaseConfig);
   providers: [SnackbarComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(firestore: UserService, auth: AuthService, database: ChatService){}
+ }

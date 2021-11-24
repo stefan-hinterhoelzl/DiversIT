@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiversITUser } from 'src/app/models/users.model';
-import { FirestoreService } from 'src/app/services/firestore.service';
+import { UserService } from 'src/app/services/user.service';
 import { InterestingMentorsComponent } from '../right-panel/interesting-mentors/interesting-mentors.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { InterestingMentorsComponent } from '../right-panel/interesting-mentors/
 })
 export class LeftPanelComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService)  { }
+  constructor(private firestore: UserService)  { }
 
   currentUser: DiversITUser = <DiversITUser>{
     firstname: "",

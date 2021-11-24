@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DiversITUser } from '../models/users.model';
-import { FirestoreService } from '../services/firestore.service';
+import { UserService } from '../services/user.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 @Component({
@@ -21,7 +21,7 @@ export class AdminPageComponent implements OnInit {
   displayedColumnsAdmins: string[] = ['email', 'lastLogin', 'creationDate'];
   displayedColumns: string[] = ['email', 'lastLogin', 'creationDate', 'button'];
 
-  constructor(private firestore: FirestoreService, private snackbar: SnackbarComponent) { }
+  constructor(private firestore: UserService, private snackbar: SnackbarComponent) { }
 
   async ngOnInit(): Promise<void> {
     this.users = await this.firestore.getAllUsersPromise();

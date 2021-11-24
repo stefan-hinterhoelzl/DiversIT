@@ -5,7 +5,7 @@ import { ActivatedRoute, UrlSerializer } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
 import { Post } from '../models/post.model';
 import { DiversITUser } from '../models/users.model';
-import { FirestoreService } from '../services/firestore.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -14,7 +14,7 @@ import { FirestoreService } from '../services/firestore.service';
 })
 export class ProfilePageComponent implements OnInit, OnDestroy {
 
-  constructor(private firestore: FirestoreService, private route: ActivatedRoute) { }
+  constructor(private firestore: UserService, private route: ActivatedRoute) { }
 
   currentUserSubscription: Subscription;
   currentRouteSubscription: Subscription;

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider} from "firebase/auth";
 import { SnackbarComponent } from '../snackbar/snackbar.component';
-import { FirestoreService } from './firestore.service';
+import { UserService } from './user.service';
 
 
 
@@ -12,8 +12,8 @@ import { FirestoreService } from './firestore.service';
 export class AuthService {
 
   constructor(private router: Router, 
-    private firestore: FirestoreService, 
-    private snackbar: SnackbarComponent) { }
+    private firestore: UserService, 
+    private snackbar: SnackbarComponent) {}
 
 
   socialLogin(socialProvider: string) {

@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DiversITUser } from 'src/app/models/users.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { FirestoreService } from 'src/app/services/firestore.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentUser: DiversITUser
   currentUserSubscription: Subscription
 
-  constructor(private viewportScroller: ViewportScroller, private firestore: FirestoreService, private auth: AuthService) { }
+  constructor(private viewportScroller: ViewportScroller, private firestore: UserService, private auth: AuthService) { }
 
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe();

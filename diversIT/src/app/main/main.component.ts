@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import {User} from 'firebase/auth';
-import { FirestoreService } from '../services/firestore.service';
+import { UserService } from '../services/user.service';
 import { Subscription } from 'rxjs';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { DiversITUser } from '../models/users.model';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-main',
@@ -16,7 +17,7 @@ export class MainComponent implements OnInit, OnDestroy {
   currentUser: DiversITUser;
   currentUserSubscription: Subscription;
 
-  constructor(private firestore: FirestoreService, private auth: AuthService) { }
+  constructor(private firestore: UserService, private auth: AuthService, private rtdb: ChatService) { }
 
 
   ngOnDestroy(): void {
@@ -37,7 +38,7 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   addRelationship() {
-    this.firestore.addRelationship("f0fi5AyuXMSlFcmmJTzErrRqFvx1", this.currentUser.uid);
+    this.rtdb.addRelationship("mBEqh7GLs7RMXmEcL5u5dszw3p53", this.currentUser.uid);
   }
 
 }

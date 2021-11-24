@@ -5,8 +5,9 @@ import { Subscription } from 'rxjs';
 import { AngularMaterialModule } from '../angular-material-module';
 import { Chat, Message } from '../models/chat.model';
 import { DiversITUser } from '../models/users.model';
-import { FirestoreService } from '../services/firestore.service';
+import { UserService } from '../services/user.service';
 import { take } from 'rxjs/operators';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -37,7 +38,7 @@ export class ChatComponent implements OnInit {
   @ViewChild('messageList') myList: ElementRef;
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
-  constructor(private firestore: FirestoreService, private _ngZone: NgZone) {
+  constructor(private user: UserService, private _ngZone: NgZone, private database: ChatService) {
     this.textInput = new FormControl('', Validators.required);
    }
 
@@ -47,10 +48,11 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentUserSubscription = this.firestore.currentUserStatus.subscribe((data) => {
+    this.currentUserSubscription = this.user.currentUserStatus.subscribe((data) => {
       if(data !== null) {
         this.currentUser = data;
-        this.currentChatsSubscription = this.firestore.chatStatus.subscribe((data) => {
+        this.currentChatsSubscription = this.database.chatStatus.subscribe((data) => {
+          console.log(data);
           this.currentChats = data;
           if (this.currentChats != null) {
             this.initialize(this.currentUser);
@@ -66,18 +68,18 @@ export class ChatComponent implements OnInit {
 
   async openChat(chat: Chat) {
     if (this.chatunsub != null) {
-      await this.firestore.closeChat(this.activeChat);
+      await this.database.closeChat(this.activeChat, this.currentUser);
       this.chatunsub();
     } 
-    this.chatunsub = this.firestore.activateMessageListener(chat)
-    this.messageSubscription = this.firestore.messagesStatus.subscribe(async (data) => {
+    this.chatunsub = this.database.getMessages(chat)
+    this.messageSubscription = this.database.messagesStatus.subscribe(async (data) => {
       this.messages = data;
       if (data != null) {
         this.chatOpen = true;
         setTimeout(()=> this.scrollToBottom(), 0)
       }
     });
-    await this.firestore.openChat(chat);
+    await this.database.openChat(chat, this.currentUser);
     this.activeChat = chat;
     this.activeChatUID = chat.uid
     if (this.input != undefined) this.input.nativeElement.focus();
@@ -88,7 +90,7 @@ export class ChatComponent implements OnInit {
   sendMessage() {
     let trimmed = this.textInput.value.trim();
     if (trimmed != "") {
-      this.firestore.sendMessage(this.activeChat, trimmed , this.currentUser)
+      this.database.sendMessage(this.activeChat, trimmed , this.currentUser)
     }
     this.textInput.setValue("");
   }
@@ -107,9 +109,10 @@ export class ChatComponent implements OnInit {
 
   @HostListener('window:beforeunload', ['$event'])
   async beforeUnloadHandler(event) {
-    await this.firestore.closeChat(this.activeChat);
+    await this.database.closeChat(this.activeChat, this.currentUser);
     this.chatunsub();
   }
+
 
 }
 

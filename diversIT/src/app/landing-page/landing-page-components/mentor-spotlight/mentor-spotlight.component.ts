@@ -1,4 +1,4 @@
-import { FirestoreService } from './../../../services/firestore.service';
+import { UserService } from '../../../services/user.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class MentorSpotlightComponent {
 
-  constructor(private firestore: FirestoreService) { }
+  constructor(private firestore: UserService) { }
 
 }

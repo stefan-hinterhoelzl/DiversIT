@@ -4,14 +4,14 @@ import { getAuth, onAuthStateChanged, User } from '@firebase/auth';
 import { Observable } from 'rxjs';
 import { DiversITUser } from '../models/users.model';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
-import { FirestoreService } from './firestore.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminguardService implements CanActivate {
 
-  constructor(private router: Router, private firestore: FirestoreService, private snackbar: SnackbarComponent) { }
+  constructor(private router: Router, private firestore: UserService, private snackbar: SnackbarComponent) { }
 
 
 
