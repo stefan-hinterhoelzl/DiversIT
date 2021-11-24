@@ -52,7 +52,6 @@ export class ChatComponent implements OnInit {
       if(data !== null) {
         this.currentUser = data;
         this.currentChatsSubscription = this.database.chatStatus.subscribe((data) => {
-          console.log(data);
           this.currentChats = data;
           if (this.currentChats != null) {
             this.initialize(this.currentUser);
