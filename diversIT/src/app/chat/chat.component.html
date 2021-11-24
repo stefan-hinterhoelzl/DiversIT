@@ -23,15 +23,22 @@
 <div class="main-wrapper">
     <div class="chat-window">
         <div class="chat-box-header">
-            <div><img class = "image" src="{{currentUser?.photoURL}}" alt=""></div>
-            <div style = "margin-left: 2%;"><h2>{{currentUser?.firstname}} {{currentUser?.lastname}}</h2></div>
+            <div style ="flex-direction: row; display: flex; width: 100%; align-items: center;">
+                <div><img class = "image" src="{{currentUser?.photoURL}}" alt=""></div>
+                <div style = "margin-left: 2%;"><h2>{{currentUser?.firstname}} {{currentUser?.lastname}}</h2></div>
+            </div>
+
+            <div *ngIf = "chatOpen" style ="flex-direction: row; display: flex; width: 100%; align-items: center;">
+                <div><img class = "image" src="{{currentChatPartner?.photoURL}}" alt=""></div>
+                <div style = "margin-left: 2%;"><h2>{{currentChatPartner?.firstname}} {{currentChatPartner?.lastname}}</h2></div>
+            </div>
         </div>
 
         <div class="flex-wrapper">
             <div class="chat-list">
                 <div [ngClass]="chat.uid === activeChatUID ? 'chat-box-selected' : 'chat-box-unselected'"
                     (click)="openChat(chat)" *ngFor="let chat of currentChats, let i = index">
-                    <div style = "display: flex; flex-direction: column; width: 100%;">
+                    <div [ngClass] ="chat.amountNewMessages > 0 ? 'bold' : ''" style = "display: flex; flex-direction: column; width: 100%;">
                         <div style = "display: flex; flex-direction: row; justify-content: space-between; width: 95%; margin-left: 3%;">
                             <div>
                                 <p style = "font-size: larger">{{currentChatUsers[i].firstname}} {{currentChatUsers[i].lastname}}</p>
@@ -47,10 +54,9 @@
                                 <p style ="font-size: small;" *ngIf = "chat.lastMessage.length > 20">{{chat.lastMessageTime  | date: 'dd.MM - HH:mm'}}: {{chat.lastMessage.substring(0,20)}}...</p>
                                 <p style ="font-size: small;" *ngIf = "chat.lastMessage.length <= 20">{{chat.lastMessageTime  | date: 'dd.MM - HH:mm'}}: {{chat.lastMessage}}</p>
                             </div>
-                            
                             <div>
                                 <p>
-                                    <span matBadge = {{chat.amountNewMessages}}></span>
+                                    <span *ngIf = "chat.amountNewMessages > 0" matBadgeColor="accent" matBadge = {{chat.amountNewMessages}}></span>
                                 </p>
                             </div>
                             

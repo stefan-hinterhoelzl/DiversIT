@@ -20,6 +20,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   currentUserSubscription: Subscription
   currentChats: Chat[];
   currentChatUsers: DiversITUser[];
+  currentChatPartner: DiversITUser;
   currentChatsSubscription: Subscription
 
   
@@ -91,6 +92,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     await this.database.openChat(chat, this.currentUser);
     this.activeChat = chat;
     this.activeChatUID = chat.uid
+    this.currentChatPartner = this.currentChatUsers.find((user) => {return user.uid == chat.recipientUser})
     if (this.input != undefined) this.input.nativeElement.focus();
 
   }

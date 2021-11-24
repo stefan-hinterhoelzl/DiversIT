@@ -22,7 +22,7 @@
     height: 10%;
     background-color: #DDD8D8;
     border-radius: 15px 15px 0px 0px;
-    justify-content: flex-start;
+    justify-content: start;
     align-items: center;
 }
 
@@ -175,5 +175,9 @@ input {
     font-size: x-small;
     margin-top: 2%;
     margin-bottom: 0;
+}
+
+.bold {
+    font-weight: 600;
 }
 
