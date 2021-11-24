@@ -32,12 +32,12 @@
                 <div [ngClass]="chat.uid === activeChatUID ? 'chat-box-selected' : 'chat-box-unselected'"
                     (click)="openChat(chat)" *ngFor="let chat of currentChats, let i = index">
                     <div>
-                        <p>{{currentChatUsers[i].firstname}} {{currentChatUsers[i].lastname}}</p>
+                        <p style = "font-size: larger">{{currentChatUsers[i].firstname}} {{currentChatUsers[i].lastname}}</p>
                     </div>
                     
                     <div>
                         <p *ngIf = "chat.currentlyOnline"> online</p>
-                        <p *ngIf = "!chat.currentlyOnline"> {{chat.lastCheckedTime  | date: 'dd.MM HH:mm'}}</p>
+                        <p *ngIf = "!chat.currentlyOnline"> zuletzt gesehen {{chat.lastCheckedTime  | date: 'dd.MM HH:mm'}}</p>
                     </div>
                 </div>
             </div>
