@@ -123,6 +123,12 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatunsub();
   }
 
+  @HostListener('window:onunload', ['$event'])
+  async onUnloadHandler(event) {
+    await this.database.closeChat(this.activeChat, this.currentUser);
+    this.chatunsub();
+  }
+
 
 }
 
