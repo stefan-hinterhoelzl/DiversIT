@@ -151,8 +151,8 @@ export class ChatService {
 
     const updates = {}
 
-    const otherChatRef = ref(this.database, chat.recipientUser+"/"+chat.uid);
-    onValue(otherChatRef, (snapshot) => {
+    const ChatRef = ref(this.database, sender.uid+"/"+chat.uid);
+    onValue(ChatRef, (snapshot) => {
       const data = snapshot.val() as Chat;
 
       if (!data.currentlyOnline) {
