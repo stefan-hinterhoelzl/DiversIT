@@ -90,6 +90,7 @@
     padding: 10px 10px 10px 10px;
     margin-left: 5%;
     white-space: pre-wrap;
+    flex-direction: column;
     
 }
 
@@ -103,7 +104,7 @@
     padding: 10px 10px 10px 10px;
     margin-right: 5%;
     white-space: pre-wrap;
-
+    flex-direction: column;
 }
 
 .own-timestamp{
@@ -168,5 +169,11 @@ input {
     height: 50px;
     margin-left: 10%;
     border-radius: 50%;
+}
+
+.date {
+    font-size: x-small;
+    margin-top: 2%;
+    margin-bottom: 0;
 }
 

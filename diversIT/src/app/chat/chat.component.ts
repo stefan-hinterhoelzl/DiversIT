@@ -90,11 +90,13 @@ export class ChatComponent implements OnInit {
     if (trimmed != "") {
       this.firestore.sendMessage(this.activeChat, trimmed , this.currentUser)
     }
-    this.textInput.reset();
+    this.textInput.setValue("");
   }
 
   onKeydown(event) {
     if (event.key === "Enter") {
+      event.preventDefault()
+      console.log(this.textInput.value)
       this.sendMessage();
     }
   }

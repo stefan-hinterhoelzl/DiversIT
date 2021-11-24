@@ -40,7 +40,12 @@
                 <div #messageList class="message-window">
                     <div [ngClass]="message.senderUID === currentUser.uid ? 'own-message-wrapper' : 'other-message-wrapper'" *ngFor="let message of messages; let i = index; let last = last">
                         <div [ngClass]="message.senderUID === currentUser.uid ? 'own-message' : 'other-message'">
-                            <p style = "margin-bottom: 0;">{{message.text}}</p>
+                            <div style = "display:flex;">
+                                <p style = "margin-bottom: 0;">{{message.text}}</p>
+                            </div>
+                            <div style = "display:flex; margin-bottom: 0;">
+                                <p class = "date">{{message.timestamp.toMillis() | date: 'dd.MM HH:mm'}} </p>
+                            </div>  
                         </div>
                     </div>
                 </div>
@@ -55,7 +60,7 @@
                                     cdkAutosizeMinRows="1"
                                     cdkAutosizeMaxRows="10"
                                     [formControl]="textInput"
-                                    (keydown.enter)="sendMessage()">
+                                    (keydown.enter)="onKeydown($event)">
                                 </textarea>
                             </mat-form-field>
                         <mat-icon class="send-button" (click)="sendMessage()">send</mat-icon>
