@@ -30,9 +30,16 @@
         <div class="flex-wrapper">
             <div class="chat-list">
                 <div [ngClass]="chat.uid === activeChatUID ? 'chat-box-selected' : 'chat-box-unselected'"
-                    (click)="openChat(chat)" *ngFor="let chat of currentChats">
+                    (click)="openChat(chat)" *ngFor="let chat of currentChats, let i = index">
                     <div>
-                        {{chat.uid}}
+                        <p>{{currentChatUsers[i].firstname}} {{currentChatUsers[i].lastname}}</p>
+                    </div>
+                    <div>
+                        <p>{{chat.lastMessage}}</p>
+                    </div>
+                    <div>
+                        <p *ngIf = "chat.currentlyOnline"> online</p>
+                        <p *ngIf = "!chat.currentlyOnline"> nicht online</p>
                     </div>
                 </div>
             </div>

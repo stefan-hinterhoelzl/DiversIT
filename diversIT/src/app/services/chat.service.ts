@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { child, getDatabase, onValue, orderByChild, push, ref, serverTimestamp, set, update, query, increment } from 'firebase/database'
-import { doc, getFirestore, updateDoc } from '@firebase/firestore';
+import { collection, doc, getDocs, getFirestore, updateDoc, query as queryFirestore} from '@firebase/firestore';
 import { Chat, Message } from '../models/chat.model';
-import { arrayUnion} from 'firebase/firestore';
+import { arrayUnion, where} from 'firebase/firestore';
 import { BehaviorSubject } from 'rxjs';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { DiversITUser } from '../models/users.model';
@@ -24,7 +24,7 @@ export class ChatService {
   //Auth Instance to listen for auth changes
   auth = getAuth()
 
-  private chats: BehaviorSubject<Chat[]> = new BehaviorSubject<Chat[]>(null);
+  private chats: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   chatStatus = this.chats.asObservable();
   chatsub;
 
@@ -43,18 +43,45 @@ export class ChatService {
     });
   }
 
+  async getAllChatPartnerUsers(arr: string[]) {
+    const q = queryFirestore(collection(this.firestore, "users"), where("uid", "in", arr));
+    let array: DiversITUser[] = []
+    const querySnapshot = await getDocs(q)
+    querySnapshot.forEach((doc) => {
+      array.push(doc.data() as DiversITUser)
+    });
+    return array;
+  }
+
+
+
   getChatsOfUser(user: string) {
     const userChatsRef = query(ref(this.database, user), orderByChild("lastMessageTime"));
-    this.chatsub = onValue(userChatsRef, (snapshot) => {
+    this.chatsub = onValue(userChatsRef, async (snapshot) => {
         if (snapshot.exists()) {
           const chats: Chat[] = []
+          const users: string[] = []
           snapshot.forEach((childSnapshot) => {
             chats.push(childSnapshot.val() as Chat)
+            users.push((childSnapshot.val() as Chat).recipientUser)
           })
           chats.reverse()
-          this.chats.next(chats);
+          let array = await this.getAllChatPartnerUsers(users);
+          
+          const sortedarr: DiversITUser[] = []
+          for (let i = 0; i<chats.length; i++) {
+            let x = array.find((curr) => { return curr.uid == chats[i].recipientUser})
+            sortedarr.push(x)
+          }
+          
+          const payload = {
+            chats: chats,
+            users: sortedarr,
+          }
+
+          this.chats.next(payload);
         }
-      });
+      });  
   }
 
 
@@ -165,7 +192,7 @@ export class ChatService {
 
   openChat(chat: Chat, user: DiversITUser) {
     const updates = {}
-    updates[this.database, user.uid+"/"+chat.uid+"/currentlyOnline"] = true;
+    updates[this.database, chat.recipientUser+"/"+chat.uid+"/currentlyOnline"] = true;
     updates[this.database, user.uid+"/"+chat.uid+"/amountNewMessages"] = 0;
    
     return update(ref(this.database), updates);
@@ -174,8 +201,8 @@ export class ChatService {
 
   closeChat(chat: Chat, user: DiversITUser) {
     const updates = {}
-    updates[this.database, user.uid+"/"+chat.uid+"/currentlyOnline"] = false;
-    updates[this.database, user.uid+"/"+chat.uid+"/lastCheckedTime"] = serverTimestamp();
+    updates[this.database, chat.recipientUser+"/"+chat.uid+"/currentlyOnline"] = false;
+    updates[this.database, chat.recipientUser+"/"+chat.uid+"/lastCheckedTime"] = serverTimestamp();
    
     return update(ref(this.database), updates);
   }

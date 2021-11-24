@@ -18,7 +18,8 @@ export class ChatComponent implements OnInit {
 
   currentUser: DiversITUser
   currentUserSubscription: Subscription
-  currentChats: Chat[]
+  currentChats: Chat[];
+  currentChatUsers: DiversITUser[];
   currentChatsSubscription: Subscription
 
   
@@ -52,9 +53,12 @@ export class ChatComponent implements OnInit {
       if(data !== null) {
         this.currentUser = data;
         this.currentChatsSubscription = this.database.chatStatus.subscribe((data) => {
-          this.currentChats = data;
-          if (this.currentChats != null) {
-            this.initialize(this.currentUser);
+          if (data != null) {
+            this.currentChats = data.chats;
+            this.currentChatUsers = data.users;
+            if (this.currentChats != null) {
+              this.initialize(this.currentUser);
+            }
           }
         })
       }
@@ -97,7 +101,6 @@ export class ChatComponent implements OnInit {
   onKeydown(event) {
     if (event.key === "Enter") {
       event.preventDefault()
-      console.log(this.textInput.value)
       this.sendMessage();
     }
   }
