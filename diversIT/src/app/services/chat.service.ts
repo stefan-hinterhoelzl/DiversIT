@@ -29,7 +29,7 @@ export class ChatService {
   chatsub;
 
 
-  private messages: BehaviorSubject<Message[]> = new BehaviorSubject<Message[]>(null);
+  private messages: BehaviorSubject<Message[]> = new BehaviorSubject<Message[]>([]);
   messagesStatus = this.messages.asObservable();
 
 

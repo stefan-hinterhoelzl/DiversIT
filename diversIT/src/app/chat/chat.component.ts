@@ -83,6 +83,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     } 
     this.chatunsub = this.database.getMessages(chat)
     this.messageSubscription = this.database.messagesStatus.subscribe(async (data) => {
+      console.log(data)
       this.messages = data;
       if (data != null) {
         this.chatOpen = true;
