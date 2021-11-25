@@ -38,7 +38,7 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   addRelationship() {
-    this.rtdb.addRelationship("mBEqh7GLs7RMXmEcL5u5dszw3p53", this.currentUser.uid);
+    this.rtdb.addRelationship("f0fi5AyuXMSlFcmmJTzErrRqFvx1", this.currentUser.uid);
   }
 
 }

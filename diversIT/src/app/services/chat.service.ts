@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { child, getDatabase, onValue, orderByChild, push, ref, serverTimestamp, set, update, query, increment } from 'firebase/database'
+import { child, getDatabase, onValue, orderByChild, push, ref, serverTimestamp, set, update, query, increment, onDisconnect } from 'firebase/database'
 import { collection, doc, getDocs, getFirestore, updateDoc, query as queryFirestore} from '@firebase/firestore';
 import { Chat, Message } from '../models/chat.model';
 import { arrayUnion, where} from 'firebase/firestore';
@@ -194,6 +194,10 @@ export class ChatService {
     const updates = {}
     updates[this.database, chat.recipientUser+"/"+chat.uid+"/currentlyOnline"] = true;
     updates[this.database, user.uid+"/"+chat.uid+"/amountNewMessages"] = 0;
+
+    const r = ref(this.database, chat.recipientUser+"/"+chat.uid+"/currentlyOnline")
+    const o = onDisconnect(r);
+    o.set(false);
    
     return update(ref(this.database), updates);
   }

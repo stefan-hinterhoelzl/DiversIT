@@ -23,14 +23,14 @@
 <div class="main-wrapper">
     <div class="chat-window">
         <div class="chat-box-header">
-            <div style ="flex-direction: row; display: flex; width: 100%; align-items: center;">
+            <div style ="flex-direction: row; display: flex; width: 25%; align-items: center;">
                 <div><img class = "image" src="{{currentUser?.photoURL}}" alt=""></div>
-                <div style = "margin-left: 2%;"><h2>{{currentUser?.firstname}} {{currentUser?.lastname}}</h2></div>
+                <div style = "margin-left: 5%;"><h3 style="margin-bottom:0">{{currentUser?.firstname}} {{currentUser?.lastname}}</h3></div>
             </div>
 
-            <div *ngIf = "chatOpen" style ="flex-direction: row; display: flex; width: 100%; align-items: center;">
+            <div *ngIf = "chatOpen" style ="flex-direction: row; display: flex; width: 75%; align-items: center;">
                 <div><img class = "image" src="{{currentChatPartner?.photoURL}}" alt=""></div>
-                <div style = "margin-left: 2%;"><h2>{{currentChatPartner?.firstname}} {{currentChatPartner?.lastname}}</h2></div>
+                <div style = "margin-left: 2%;"><h3 style="margin-bottom:0">{{currentChatPartner?.firstname}} {{currentChatPartner?.lastname}}</h3></div>
             </div>
         </div>
 
