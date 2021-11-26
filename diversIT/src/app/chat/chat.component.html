@@ -31,8 +31,11 @@
 
             <div *ngIf = "chatOpen" style ="flex-direction: row; display: flex; width: 75%; align-items: center;">
                 <div><img class = "image" src="{{currentChatPartner?.photoURL}}" alt=""></div>
-                <div *ngIf = "currentChatPartnerCombinedName?.length > 100"  style = "margin-left: 2%;"><h3 matTooltip="{{currentChatPartnerCombinedName}}" style="margin-bottom:0">{{currentChatPartnerCombinedName?.substring(0,100)}}...</h3></div>
-                <div *ngIf = "currentChatPartnerCombinedName?.length < 100"  style = "margin-left: 2%;"><h3 style="margin-bottom:0">{{currentChatPartnerCombinedName}}</h3></div>
+                <div style = "display: flex; flex-direction: column; width: 100%;">
+                    <div *ngIf = "currentChatPartnerCombinedName?.length > 100"  style = "margin-left: 2%;"><h3 matTooltip="{{currentChatPartnerCombinedName}}" style="margin-bottom:0">{{currentChatPartnerCombinedName?.substring(0,100)}}...</h3></div>
+                    <div *ngIf = "currentChatPartnerCombinedName?.length < 100"  style = "margin-left: 2%;"><h3 style="margin-bottom:0">{{currentChatPartnerCombinedName}}</h3></div>
+                    <div *ngIf = "currentChatPartner?.job != '' && currentChatPartner?.company != ''" style = "margin-left: 2%;"><p style="margin-bottom: 0;">{{currentChatPartner?.job}} bei {{currentChatPartner?.company}}</p></div>
+                </div>
             </div>
         </div>
 
