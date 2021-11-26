@@ -1,5 +1,3 @@
-
-@import "././../theme.scss";
 .app-body{
     height: 100%;
     width: 100%;
@@ -14,7 +12,7 @@
 }
 
 .accent-color{
-    color: $accent;
+    color: rgba(221, 216, 216, 1);
 }
 
 .icon-label{

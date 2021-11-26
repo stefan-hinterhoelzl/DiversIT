@@ -1,5 +1,3 @@
-@import "../../theme.scss";
-
 .main-wrapper{
     width: 100%;
     height: 100%;
@@ -151,7 +149,7 @@
 .send-button{
     display: flex;
     cursor: pointer;
-    color: $accent;
+    color: rgba(221, 216, 216, 1);
     margin-right: 5%;
     margin-left: 5%;
 }
