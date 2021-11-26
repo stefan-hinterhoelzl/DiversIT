@@ -88,7 +88,12 @@ export class ChatService {
           this.number.next(number);
             if (this.lastamount < number) {
               if (!this.router.url.includes("chat")) {
-                if (number - this.lastamount == 1) this.snackbar.openSnackBar("Sie haben "+ (number-this.lastamount).toString() + " neue Nachricht", null, "zum Chat")
+                if (number - this.lastamount == 1) {
+                  let snackBarRef =  this.snackbar.openSnackBar("Sie haben "+ (number-this.lastamount).toString() + " neue Nachricht", null, "zum Chat")
+                  snackBarRef.onAction().subscribe(()=> {
+                    this.router.navigate(['/chat']);
+                  });
+                } 
                 else {
                   let snackBarRef = this.snackbar.openSnackBar("Sie haben "+ (number-this.lastamount).toString() + " neue Nachrichten", null, "zum Chat")
                   snackBarRef.onAction().subscribe(()=> {
