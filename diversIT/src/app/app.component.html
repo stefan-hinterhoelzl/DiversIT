@@ -30,7 +30,8 @@
             <label for="notifications" class="lable">Benachrichtigungen</label>
         </button>
         <button mat-icon-button class="icon-label" style="margin-right: 30px;" routerLink="/chat">
-            <mat-icon class="icon" id="forum" color="accent">forum</mat-icon>
+            <mat-icon *ngIf = "newMessages == 0"  class="icon" id="forum" color="accent">forum</mat-icon>
+            <mat-icon *ngIf = "newMessages != 0" matBadgeSize="small" matBadge="{{newMessages}}" matBadgePosition="below" matBadgeColor="accent" class="icon" id="forum" color="accent">forum</mat-icon>
             <label for="forum" class="lable">Chat</label>
         </button>
         <button mat-icon-button class="icon-label" (click)="logout()">

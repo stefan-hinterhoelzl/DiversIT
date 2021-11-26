@@ -87,7 +87,7 @@ const app = initializeApp(environment.firebaseConfig);
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxScrollTopModule
+    NgxScrollTopModule,
   ],
   providers: [SnackbarComponent],
   bootstrap: [AppComponent]
@@ -95,4 +95,4 @@ const app = initializeApp(environment.firebaseConfig);
 export class AppModule {
 
   constructor(firestore: UserService, auth: AuthService, database: ChatService){}
- }
+}

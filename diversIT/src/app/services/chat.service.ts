@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { child, getDatabase, onValue, orderByChild, push, ref, serverTimestamp, set, update, query, increment, onDisconnect } from 'firebase/database'
 import { collection, doc, getDocs, getFirestore, updateDoc, query as queryFirestore} from '@firebase/firestore';
 import { Chat, Message } from '../models/chat.model';
@@ -6,15 +6,18 @@ import { arrayUnion, where} from 'firebase/firestore';
 import { BehaviorSubject } from 'rxjs';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { DiversITUser } from '../models/users.model';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  constructor() {
+  constructor(private snackbar: SnackbarComponent, private router: Router) {
     this.authStatusListener();
    }
+  
 
   database = getDatabase()
 
@@ -28,6 +31,10 @@ export class ChatService {
   chatStatus = this.chats.asObservable();
   chatsub;
 
+  lastamount: number = 0;
+
+  private number: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  numberStatus = this.number.asObservable();
 
   private messages: BehaviorSubject<Message[]> = new BehaviorSubject<Message[]>([]);
   messagesStatus = this.messages.asObservable();
@@ -66,13 +73,36 @@ export class ChatService {
             users.push((childSnapshot.val() as Chat).recipientUser)
           })
           chats.reverse()
+
+          let number: number = 0;
+
           let array = await this.getAllChatPartnerUsers(users);
           
           const sortedarr: DiversITUser[] = []
+          const nameLengths: number[] = []
           for (let i = 0; i<chats.length; i++) {
             let x = array.find((curr) => { return curr.uid == chats[i].recipientUser})
             sortedarr.push(x)
+            number += chats[i].amountNewMessages
           }
+          this.number.next(number);
+            if (this.lastamount < number) {
+              if (!this.router.url.includes("chat")) {
+                if (number - this.lastamount == 1) this.snackbar.openSnackBar("Sie haben "+ (number-this.lastamount).toString() + " neue Nachricht", null, "zum Chat")
+                else {
+                  let snackBarRef = this.snackbar.openSnackBar("Sie haben "+ (number-this.lastamount).toString() + " neue Nachrichten", null, "zum Chat")
+                  snackBarRef.onAction().subscribe(()=> {
+                    this.router.navigate(['/chat']);
+                  });
+                }
+              }
+              let audio = new Audio();
+              audio.src = "../../assets/sounds/ringtone.mp3";
+              audio.load();
+              audio.play();
+            } else {
+              this.lastamount = 0;
+            }
           
           const payload = {
             chats: chats,

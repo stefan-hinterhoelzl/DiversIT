@@ -2,12 +2,12 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef, HostListener, NgZone, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AngularMaterialModule } from '../angular-material-module';
 import { Chat, Message } from '../models/chat.model';
 import { DiversITUser } from '../models/users.model';
 import { UserService } from '../services/user.service';
 import { take } from 'rxjs/operators';
 import { ChatService } from '../services/chat.service';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-chat',
@@ -18,9 +18,12 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   currentUser: DiversITUser
   currentUserSubscription: Subscription
+  combinedname: string;
   currentChats: Chat[];
   currentChatUsers: DiversITUser[];
+  currentChatNames: string[] = [];
   currentChatPartner: DiversITUser;
+  currentChatPartnerCombinedName: string;
   currentChatsSubscription: Subscription
 
   
@@ -35,6 +38,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   chatunsub
 
   textInput: FormControl
+
+  toggled: boolean = false;
 
   @ViewChild('myInput') input: ElementRef;
   @ViewChild('messageList') myList: ElementRef;
@@ -59,10 +64,20 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.currentUserSubscription = this.user.currentUserStatus.subscribe((data) => {
       if(data !== null) {
         this.currentUser = data;
+        this.combinedname = this.currentUser.firstname + " " + this.currentUser.lastname;
         this.currentChatsSubscription = this.database.chatStatus.subscribe((data) => {
           if (data != null) {
             this.currentChats = data.chats;
             this.currentChatUsers = data.users;
+            for (let i = 0; i<this.currentChatUsers.length; i++) {
+              console.log(this.currentChatUsers);
+              if (this.currentChatUsers[i].firstname.length + this.currentChatUsers[i].lastname.length > 25) {
+                this.currentChatNames[i] = this.currentChatUsers[i].firstname + " " + this.currentChatUsers[i].lastname.charAt(0) + ".";
+              } else {
+                this.currentChatNames[i] = this.currentChatUsers[i].firstname + " " + this.currentChatUsers[i].lastname;
+              }
+            }
+
             if (this.currentChats != null) {
               this.initialize(this.currentUser);
             }
@@ -94,6 +109,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.activeChat = chat;
     this.activeChatUID = chat.uid
     this.currentChatPartner = this.currentChatUsers.find((user) => {return user.uid == chat.recipientUser})
+    this.currentChatPartnerCombinedName = this.currentChatPartner.firstname + " " + this.currentChatPartner.lastname;
     if (this.input != undefined) this.input.nativeElement.focus();
 
   }
@@ -128,6 +144,10 @@ export class ChatComponent implements OnInit, OnDestroy {
   async onUnloadHandler(event) {
     await this.database.closeChat(this.activeChat, this.currentUser);
     this.chatunsub();
+  }
+
+  handleSelection(event) {
+    this.textInput.setValue(this.textInput.value+event.char);
   }
 
 

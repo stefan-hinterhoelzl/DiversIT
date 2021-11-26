@@ -4,6 +4,7 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { DiversITUser } from './models/users.model';
 import { Location } from '@angular/common';
+import { ChatService } from './services/chat.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,9 @@ import { Location } from '@angular/common';
 export class AppComponent implements OnInit {
   title = 'mintistcool';
   currentUser: DiversITUser;
+  newMessages: number;
 
-  constructor(private router: Router, private auth: AuthService, private firestore: UserService, private location: Location) {
+  constructor(private router: Router, private auth: AuthService, private firestore: UserService, private location: Location, private chat: ChatService) {
   }
 
 
@@ -22,6 +24,11 @@ export class AppComponent implements OnInit {
     this.firestore.currentUserStatus.subscribe((data) => {
       this.currentUser = data;
     })
+
+    this.chat.numberStatus.subscribe((data) => {
+      this.newMessages = data;
+    });
+
   }
 
   isLandingPage() {
