@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{data.header}}</h1>
+<div mat-dialog-content style="width: 100%;">
+  <p>{{data.text}} </p>
+  <mat-form-field *ngIf="data.placeholderForInput" appearance="fill" style="width: 100%;" >
+    <mat-label >{{data.placeholderForInput}}</mat-label>
+    <textarea  matInput [(ngModel)]="data.inputFieldValue" style="width: 100%;"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions style="display: flex; flex-direction: row; justify-content: space-around;">
+  <button  mat-raised-button (click)="onNoClick()">{{data.buttonTextAbort ? data.buttonTextAbort : "Abbrechen"}}</button>
+  <button  mat-raised-button color="accent" [mat-dialog-close]="data" cdkFocusInitial >{{data.buttonTextConfirm ? data.buttonTextConfirm : "Bestätigen"}}</button>
+</div>

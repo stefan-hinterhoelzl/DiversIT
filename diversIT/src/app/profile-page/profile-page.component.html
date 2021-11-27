@@ -2,7 +2,7 @@
 <div *ngIf="ownProfile === false"> Fremder User: {{alternateUser.email}}</div> -->
 <div class="wrapper">
     <app-left-spacer></app-left-spacer>
-    <app-main-panel></app-main-panel>
+    <app-main-panel [userOfProfile]="alternateUser" [postsOfUser]="posts" [currentUser]="currentUser"></app-main-panel>
     <app-right-panel-profile></app-right-panel-profile>
     <app-right-spacer></app-right-spacer>
 </div>

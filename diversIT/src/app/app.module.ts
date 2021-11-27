@@ -43,6 +43,7 @@ import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { ChatService } from './services/chat.service';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -77,7 +78,8 @@ const app = initializeApp(environment.firebaseConfig);
     FooterComponent,
     ImprintComponent,
     PrivacyComponent,
-    ProfileSettingsComponent
+    ProfileSettingsComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

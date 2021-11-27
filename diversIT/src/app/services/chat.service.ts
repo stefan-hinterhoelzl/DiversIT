@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { child, getDatabase, onValue, orderByChild, push, ref, serverTimestamp, set, update, query, increment, onDisconnect } from 'firebase/database'
-import { collection, doc, getDocs, getFirestore, updateDoc, query as queryFirestore} from '@firebase/firestore';
+import { collection, doc, getDocs, getFirestore, updateDoc, query as queryFirestore, arrayRemove} from '@firebase/firestore';
 import { Chat, Message } from '../models/chat.model';
 import { arrayUnion, where} from 'firebase/firestore';
 import { BehaviorSubject } from 'rxjs';
@@ -8,6 +8,7 @@ import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { DiversITUser } from '../models/users.model';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { Router } from '@angular/router';
+import { DomElementSchemaRegistry } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -135,6 +136,26 @@ export class ChatService {
     this.createChat(mentee, mentor);
 
   }
+
+  async revokeRelationship(mentee: string, mentor: string) {
+    const docRefMentor = doc(this.firestore, "users", mentor);
+    const docRefMentee = doc(this.firestore, "users", mentee)
+
+    await updateDoc(docRefMentor, {
+      mentees: arrayRemove(mentee)
+    });
+
+    await updateDoc(docRefMentee, {
+      mentors: arrayRemove(mentor)
+    });
+
+    this.deleteChat()
+  }
+
+  async deleteChat(){
+    // TODO: delete Chat - danke Stefan
+  }
+
 
   async createChat(mentee: string, mentor: string) {
     let newKey = push(child(ref(this.database), mentee)).key;

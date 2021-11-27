@@ -1,11 +1,19 @@
-<mat-card>
+<mat-card *ngIf="userOfProfile && userOfProfile.role === 2">
     <div class="background-image"></div>
-        <div mat-card-avatar style="background-image: url('https://s3-alpha-sig.figma.com/img/22c2/393b/f4990f67bc81db3c88cce491ad1d8ea5?Expires=1638144000&Signature=huiZHejJpupZnqBG3w0DC8Il~WLZokJhK-x5IsJuVsYOJ5o2Iz0k3rBVGsIEjiLPBGUf0HiiXR1PBmEERFvMG-ON8C0KJL7Su9rcT5vx6yFt4LOq7O7SDpES-8lv23Gz-dmC97u0pjR9zrg5QYmpRGRoiHGcGo0iW42w49SfH0QJQY7UUfHSxXBN9PJD-zHsyQOxRnFJPMyt~CHywPeqpJo8D9WUpqO~LH-6q61rBP79kBhU3xx-XxYT4~qXOJqOlQI5qrygwFHdAsSRjL8DLbSlgSR6DGePRxonEC~-T-zP~ahmj29X34VI6mAyuOlHd9RBrpCz34qu8ky9L9yYFA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA');"></div>
+        <div mat-card-avatar style="background-image: url('{{userOfProfile.photoURL}}');"></div>
     <mat-card-content>
-        <h1>Name nicht abrufbar.</h1>
-        <h3> Student an der JKU </h3>
-        <button mat-raised-button color="accent">Nachricht</button>
-        <button mat-raised-button>Mehr</button>
+        <h1 >{{userOfProfile.firstname + " " + userOfProfile.lastname}}</h1>
+        <h3 *ngIf="userOfProfile.job === null  && userOfProfile.company === null">Keine Jobinformationen verfügbar. </h3>
+        <h3 *ngIf="userOfProfile.job  && userOfProfile.company === null">{{userOfProfile.job}} </h3>
+        <h3 *ngIf="userOfProfile.job && userOfProfile.company">{{userOfProfile.job + " bei " + userOfProfile.company}} </h3>
+        <button *ngIf="currentUser.mentors.includes(userOfProfile.uid)" mat-raised-button color="accent">Nachricht</button>
+        <button *ngIf="!currentUser.mentors.includes(userOfProfile.uid)" mat-raised-button color="accent" (click)="addMentor()">Verknüpfen</button>
+        
+        <button mat-raised-button [matMenuTriggerFor]="menu">Mehr</button>
+        <mat-menu #menu="matMenu" >
+            <button mat-menu-item (click)="cancleMentorship()">Mentorschaft beenden</button>
+            <button mat-menu-item>Details ansehen</button>
+          </mat-menu>
     </mat-card-content>
 </mat-card>
 

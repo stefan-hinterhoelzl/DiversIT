@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Post } from 'src/app/models/post.model';
+import { DiversITUser } from 'src/app/models/users.model';
 
 @Component({
   selector: 'app-main-panel',
@@ -8,8 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class MainPanelComponent implements OnInit {
 
   constructor() { }
+  @Input() currentUser: DiversITUser;
+  @Input() userOfProfile: DiversITUser;
+  @Input() postsOfUser: Post[];
 
   ngOnInit(): void {
+    console.log(this.currentUser)
   }
+
 
 }
