@@ -11,6 +11,7 @@ import { AdminguardService } from './services/adminguard.service';
 import { AuthguardService } from './services/authguard.service';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { ChatComponent } from './chat/chat.component';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 
 const routes: Routes = [
 
@@ -57,7 +58,11 @@ const routes: Routes = [
     component: ProfilePageComponent,
     canActivate: [AuthguardService]
   },
-
+  {
+    path: 'profilesettings',
+    component: ProfileSettingsComponent,
+    canActivate: [AuthguardService]
+  },
 
 
 ];

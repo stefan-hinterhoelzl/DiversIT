@@ -42,6 +42,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { ChatService } from './services/chat.service';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -75,7 +76,8 @@ const app = initializeApp(environment.firebaseConfig);
     ProfileNewPostComponent,
     FooterComponent,
     ImprintComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    ProfileSettingsComponent
   ],
   imports: [
     BrowserModule,
