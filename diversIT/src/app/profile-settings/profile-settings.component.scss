@@ -1,0 +1,20 @@
+.centerPanel{
+    height: max-content;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.matcard-profilesettings {
+    margin: 10px 10px;
+    width: 50%;
+    left: 25%
+}
+
+::ng-deep .mat-form-field-wrapper{
+    margin: 3px;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: grey;
+}
