@@ -1,59 +1,57 @@
 <div class="centerPanel">
     <mat-card class="matcard-profilesettings" *ngIf="currentUser !== undefined">
         <h2>Profileinstellungen</h2>
-        <form #profileSettings = "ngForm" (ngSubmit) = "onSubmit()" >
+        <form [formGroup]="profileSettingsForm" (ngSubmit)="onSubmit()" >
             <div>
                 <mat-form-field>
-                    <mat-label>Rolle:</mat-label>
-                    <input matInput name="role" [(ngModel)]="currentUserRoleText" readonly>
+                    <mat-label for="role">Rolle:</mat-label>
+                    <input matInput id="role" formControlName="role" readonly>
                 </mat-form-field>
                 <mat-form-field>
-                    <mat-label>E-Mail-Adresse:</mat-label>
-                    <input matInput name="email" [(ngModel)]="currentUser.email" readonly>
+                    <mat-label for="email">E-Mail-Adresse:</mat-label>
+                    <input matInput id="email" formControlName="email" readonly>
                 </mat-form-field>
             </div>
             <div>
                 <mat-form-field appearance="fill">
-                    <mat-label>Vorname:</mat-label>
-                    <input matInput name="firstname" [(ngModel)]="currentUser.firstname" required>
-                    <!--                
-                    <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert">
-                        <div *ngIf="firstname.errors?.['required']"> firstname is required. </div>
-                    </div>
-                    -->
+                    <mat-label for="firstname">Vorname:</mat-label>
+                    <input matInput id="firstname" formControlName="firstName" required>
+                    <mat-error *ngIf="this.profileSettingsForm.get('firstName').errors?.['required']">Vorname muss eingegeben werden</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
-                    <mat-label>Nachname:</mat-label>
-                    <input matInput name="lastname" [(ngModel)]="currentUser.lastname" required>
+                    <mat-label for="lastname">Nachname:</mat-label>
+                    <input matInput id="lastname" formControlName="lastName" required>
+                    <mat-error *ngIf="this.profileSettingsForm.get('lastName').errors?.['required']">Nachname muss eingegeben werden</mat-error>
                 </mat-form-field>
             </div>
             <div>
                 <mat-form-field appearance="fill">
-                    <mat-label>Geschlecht:</mat-label>
-                    <mat-select name="selectedGender" [(ngModel)]="currentUser.gender" required>
+                    <mat-label for="selectedGender">Geschlecht:</mat-label>
+                    <mat-select id="selectedGender" formControlName="gender" required>
                         <mat-option *ngFor="let g of gender" [value]="g">{{g}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="this.profileSettingsForm.get('gender').errors?.['required']">Geschlecht muss ausgewählt werden</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill" width="100%">
-                    <mat-label>Photo-URL:</mat-label>
-                    <input matInput name="photoURL" [(ngModel)]="currentUser.photoURL">
+                    <mat-label for="photoURL">Photo-URL:</mat-label>
+                    <input matInput id="photoURL" formControlName="photoURL">
                 </mat-form-field>
             </div>
             <div *ngIf="currentUser.role === 2">
-                <mat-checkbox name="girlsOnlyMentor" [(ngModel)]="currentUser.girlsOnlyMentor">Nur Frauen</mat-checkbox>
+                <mat-checkbox name="girlsOnlyMentor" formControlName="girlsOnlyMentor">Nur Frauen</mat-checkbox>
                 <mat-form-field appearance="fill">
-                    <mat-label>Max Mentees (-1 = Kein Limit):</mat-label>
-                    <input matInput type="number" min="-1" max="100" name="maxMentees" [(ngModel)]="currentUser.maxMentees">
+                    <mat-label for="maxMentees">Max Mentees (-1 = Kein Limit):</mat-label>
+                    <input matInput type="number" min="-1" max="100" id="maxMentees" formControlName="maxMentees">
                 </mat-form-field>
             </div>
             <div>
                 <mat-form-field appearance="fill">
-                    <mat-label>Firma:</mat-label>
-                    <input matInput name="company" [(ngModel)]="currentUser.company">
+                    <mat-label for="company">Firma:</mat-label>
+                    <input matInput id="company" formControlName="company">
                 </mat-form-field>
                 <mat-form-field appearance="fill">
-                    <mat-label>Job:</mat-label>
-                    <mat-select name="selectedJob" [(ngModel)]="currentUser.job">
+                    <mat-label for="selectedJob">Job:</mat-label>
+                    <mat-select id="selectedJob" formControlName="job">
                         <mat-option [value]="">Keine Angabe</mat-option>
                         <mat-option *ngFor="let j of job" [value]="j">{{j}}</mat-option>
                     </mat-select>
@@ -61,28 +59,28 @@
             </div>
             <div>
                 <mat-form-field appearance="fill">
-                    <mat-label>Grundschulausbildung:</mat-label>
-                    <mat-select name="selectedPrimaryEducation" [(ngModel)]="currentUser.primaryEducation">
+                    <mat-label for="selectedPrimaryEducation">Grundschulausbildung:</mat-label>
+                    <mat-select id="selectedPrimaryEducation" formControlName="primaryEducation">
                         <mat-option [value]="">Keine Angabe</mat-option>
                         <mat-option *ngFor="let pe of primaryEducation" [value]="pe">{{pe}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
-                    <mat-label>Sekundarschulausbildung:</mat-label>
-                    <mat-select name="selectedSecondaryEducation" [(ngModel)]="currentUser.secondaryEducation">
+                    <mat-label for="selectedSecondaryEducation">Sekundarschulausbildung:</mat-label>
+                    <mat-select id="selectedSecondaryEducation" formControlName="secondaryEducation">
                         <mat-option [value]="">Keine Angabe</mat-option>
                         <mat-option *ngFor="let se of secondaryEducation" [value]="se">{{se}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
-                    <mat-label>Hochschulausbildung:</mat-label>
-                    <mat-select name="selectedUniversityEducation" [(ngModel)]="currentUser.universityEducation">
+                    <mat-label for="universityEducation">Hochschulausbildung:</mat-label>
+                    <mat-select id="selectedUniversityEducation" formControlName="universityEducation">
                         <mat-option [value]="">Keine Angabe</mat-option>
                         <mat-option *ngFor="let ue of universityEducation" [value]="ue">{{ue}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <button mat-raised-button color="accent" type = "submit">Speichern</button>
+            <button mat-raised-button color="accent" type="submit">Speichern</button>
         </form>
     </mat-card>
 </div>
