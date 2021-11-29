@@ -25,10 +25,7 @@ export class ProfileHeadComponent implements OnInit {
   profileIdSubscription;
   visible = true;
   ngOnInit(): void {
-    this.profileIdSubscription = this.route.params.subscribe( params => {
-      this.loadUserInformation(params['id'])
-    })
-    
+    this.profileIdSubscription = this.route.snapshot.paramMap.get('id')
 
   }
 
