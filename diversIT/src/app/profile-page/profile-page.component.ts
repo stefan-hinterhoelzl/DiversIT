@@ -18,7 +18,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
   currentUserSubscription: Subscription;
   currentRouteSubscription: Subscription;
-  currentUser: DiversITUser; 
+  currentUser: DiversITUser;
   alternateUser: DiversITUser;
   ownProfile: boolean;
   posts: Post[];
@@ -36,7 +36,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
           this.initialize(id);
         });
       }
-    });    
+    });
   }
 
   async initialize(id) {
@@ -51,11 +51,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
       this.ownProfile = false;
     }
 
-    this.firestore.getPostUser(id).then(async (data:Post[]) => {
+    this.firestore.getPostUser(id).then(async (data: Post[]) => {
       this.posts = data;
     }).catch((error) => console.error(error))
-
-
   }
-
 }

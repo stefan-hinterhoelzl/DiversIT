@@ -1,9 +1,9 @@
 <div class="wrapper"> 
     <mat-card class="card">
-        <form [formGroup]="postForm" class="example-form" #formDirective="ngForm" >  
+        <form [formGroup]="postForm" class="example-form">  
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Sag etwas:</mat-label>
-            <textarea type="text" matInput placeholder="Ein guter Tipp ist es...." required formControlName="text"></textarea>
+            <textarea type="text" matInput placeholder="Ein guter Tipp ist es...." formControlName="text"></textarea>
             <!-- <div  *ngIf="postForm.get('text').errors?.['required']">Ein Text ist <strong>notwendig</strong></div> -->
           </mat-form-field>
       

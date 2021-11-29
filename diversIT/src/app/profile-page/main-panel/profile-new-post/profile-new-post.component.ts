@@ -4,6 +4,7 @@ import { Firestore, serverTimestamp } from '@firebase/firestore';
 import { Post } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
 import { UserService } from 'src/app/services/user.service';
+import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-profile-new-post',
@@ -13,20 +14,19 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileNewPostComponent implements OnInit {
   @Input() currentUser: DiversITUser;
   postForm: FormGroup;
-  @ViewChild('formDirective') private formDirective: NgForm;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private snackbar: SnackbarComponent) { }
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
-      text: new FormControl('', Validators.required),
+      text: new FormControl(''),
       photoURL: new FormControl('')
     })
   }
 
 
   addPost(){
-    if(this.postForm.valid){
+    if((this.postForm.get('text').value !== null && this.postForm.get('text').value.trim() !== '') || (this.postForm.get('photoURL').value !== null && this.postForm.get('photoURL').value.trim() !== '')){
       let postPayload = <Post>{
         text: this.postForm.get('text').value,
         timestamp: serverTimestamp(),
@@ -38,13 +38,14 @@ export class ProfileNewPostComponent implements OnInit {
       this.userService.addPost(postPayload)
 
       // this.postForm.updateValueAndValidity()
-      this.formDirective.resetForm()
+      // this.formDirective.resetForm()
       this.postForm.reset()
       // this.postForm.markAsUntouched()
       this.userService.UpdateUserAccount(this.currentUser.uid, this.currentUser.email, this.currentUser.photoURL)
     }
     else{
-
+      this.snackbar.openSnackBar("Eingaben dürfen nicht leer sein!", "snackbar-red")
+      this.postForm.reset()
     }
 
   }
