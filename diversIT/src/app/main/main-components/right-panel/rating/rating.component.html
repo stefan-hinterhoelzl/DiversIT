@@ -1,0 +1,20 @@
+<div class="wrapper">
+    <mat-card class="card-finetuning">
+        <mat-card-title>
+            <h2>Dein Erfahrungsbericht</h2>
+        </mat-card-title>
+        <app-star-rating [rating]="rating" [starCount]="starCount" [color]="color"
+            (ratingUpdated)="onRatingChanged($event)"></app-star-rating>
+
+        <form [formGroup]="ratingForm" class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Gib uns Feedback:</mat-label>
+                <textarea type="text" matInput placeholder="DiversIT hat mir geholfen,..."
+                    formControlName="text"></textarea>
+            </mat-form-field>
+            <div mat-dialog-actions align="end">
+                <a mat-raised-button [href]="emailString+ratingForm.get('text').value">Abschicken</a>
+            </div>
+        </form>
+    </mat-card>
+</div>
