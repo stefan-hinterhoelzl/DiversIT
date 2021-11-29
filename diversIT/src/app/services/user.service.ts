@@ -24,6 +24,8 @@ export class UserService implements OnDestroy {
   db = getFirestore();
   auth = getAuth();
   usersub;
+  // chatsub;
+  postssub;
 
   private currentUser: BehaviorSubject<DiversITUser> = new BehaviorSubject<DiversITUser>(null);
   currentUserStatus = this.currentUser.asObservable();
@@ -39,6 +41,9 @@ export class UserService implements OnDestroy {
 
   private chats: BehaviorSubject<Chat[]> = new BehaviorSubject<Chat[]>(null);
   chatStatus = this.chats.asObservable();
+
+  private posts: BehaviorSubject<Post[]> = new BehaviorSubject<Post[]>(null);
+  postStatus = this.posts.asObservable();
 
   authStatusListener() {
     onAuthStateChanged(this.auth, (user) => {
@@ -121,6 +126,7 @@ export class UserService implements OnDestroy {
         }
         else {
           this.getCurrentUserMentees(doc.data() as DiversITUser)
+          this.getPostOfUserObservable(user.uid)
         }
       }
     });
@@ -210,6 +216,18 @@ export class UserService implements OnDestroy {
     });
     return array;
   }
+
+  async getPostOfUserObservable(userID: string) {
+    this.postssub = onSnapshot(query(collection(this.db, "posts"), where("userID", "==", userID), orderBy("timestamp", "desc")), (q) => {
+      let arr: Post[] = []
+      q.forEach((doc) => {
+        arr.push(doc.data() as Post)
+        }
+      )
+      this.posts.next(arr)
+    })
+  }
+
 
   async addPost(post: Post) {
     const docRef = doc(collection(this.db, 'posts'))

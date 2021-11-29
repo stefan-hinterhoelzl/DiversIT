@@ -13,9 +13,13 @@ export class MainPanelComponent implements OnInit {
   @Input() currentUser: DiversITUser;
   @Input() userOfProfile: DiversITUser;
   @Input() postsOfUser: Post[];
-
+  showDetails: boolean = false;
   ngOnInit(): void {
     console.log(this.currentUser)
+  }
+
+  setDetailState(){
+    this.showDetails = !this.showDetails
   }
 
 

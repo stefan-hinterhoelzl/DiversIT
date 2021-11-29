@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DiversITUser } from '../models/users.model';
 import { UserService } from '../services/user.service';
@@ -13,11 +14,11 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 export class ProfileSettingsComponent implements OnInit {
 
-  constructor(private firestore: UserService, private snackbar: SnackbarComponent) { }
+  constructor(private firestore: UserService, private snackbar: SnackbarComponent, private router: Router) { }
 
   // variables for possible values
   gender = ['Männlich', 'Weiblich', 'Divers'];
-  job = ['IT-Systemadministrator', 'IT-Techniker', 'UX-Designer', 'Software Engineer', 'Universitätsprofessor für Informatik', 'Scrum Master', 'DevOps Engineer', 'Product Owner'].sort();;
+  job = ['Schüler', 'Student', 'IT-Systemadministrator', 'IT-Techniker', 'UX-Designer', 'Software Engineer', 'Universitätsprofessor für Informatik', 'Scrum Master', 'DevOps Engineer', 'Product Owner'].sort();;
   primaryEducation = ['Hauptschule', 'Gymnasium'];
   secondaryEducation = ['Gymnasium', 'HAK', 'HTL'];
   universityEducation = ['Bachelorstudium', 'Masterstudium', 'Doktorat'];
@@ -107,6 +108,7 @@ export class ProfileSettingsComponent implements OnInit {
     }
     this.firestore.UpdateCurrentUserAccount(this.currentUser);
     this.snackbar.openSnackBar("Die Benutzerdaten wurden erfolgreich aktualisiert!", "snackbar-green");
+    this.router.navigate(['/profile/' + this.currentUser.uid])
   }
 
 }
