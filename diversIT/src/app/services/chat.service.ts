@@ -108,6 +108,7 @@ export class ChatService {
                 }
               }
 
+              //set the new lastamount after the if conditions for the snackbar
               this.lastamount = number;
 
               //Play Message Sound
