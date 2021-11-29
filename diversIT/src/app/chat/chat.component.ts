@@ -102,6 +102,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   async openChat(chat: Chat) {
+    if (this.activeChat != undefined && this.activeChat.uid === chat.uid) return;
     this.messagesVisible = false;
     this.chatOpen = true;
     if (this.chatunsub != null) {
