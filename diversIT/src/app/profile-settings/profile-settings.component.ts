@@ -18,7 +18,7 @@ export class ProfileSettingsComponent implements OnInit {
 
   // variables for possible values
   gender = ['Männlich', 'Weiblich', 'Divers'];
-  job = ['IT-Systemadministrator', 'IT-Techniker', 'UX-Designer', 'Software Engineer', 'Universitätsprofessor für Informatik', 'Scrum Master', 'DevOps Engineer', 'Product Owner'].sort();;
+  job = ['Schüler', 'Student', 'IT-Systemadministrator', 'IT-Techniker', 'UX-Designer', 'Software Engineer', 'Universitätsprofessor für Informatik', 'Scrum Master', 'DevOps Engineer', 'Product Owner'].sort();;
   primaryEducation = ['Hauptschule', 'Gymnasium'];
   secondaryEducation = ['Gymnasium', 'HAK', 'HTL'];
   universityEducation = ['Bachelorstudium', 'Masterstudium', 'Doktorat'];

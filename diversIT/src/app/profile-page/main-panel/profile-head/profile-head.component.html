@@ -17,7 +17,7 @@
             <button mat-raised-button [matMenuTriggerFor]="menu">Mehr</button>
             <mat-menu #menu="matMenu" >
                 <button *ngIf="currentUser.mentors.includes(userOfProfile.uid)" mat-menu-item (click)="cancleMentorship()">Mentorschaft beenden</button>
-                <button mat-menu-item>Details ansehen</button>
+                <button mat-menu-item (click)="showDetails()">{{showUserDetails ? "Posts anzeigen" : "Details anzeigen"}}</button>
             </mat-menu>
         </wrapper>
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
@@ -21,7 +21,8 @@ export class ProfileHeadComponent implements OnInit {
   @Input() userOfProfile: DiversITUser;
   @Input() currentUser: DiversITUser;
   @Input() posts: Post[];
-
+  @Output() changeDetailsBoolean = new EventEmitter<boolean>();
+  showUserDetails = false
   profileIdSubscription;
   visible = true;
   ngOnInit(): void {
@@ -104,6 +105,9 @@ export class ProfileHeadComponent implements OnInit {
     this.router.navigate(['/profilesettings'])
   }
 
-  
+  showDetails(){
+    this.showUserDetails = !this.showUserDetails
+    this.changeDetailsBoolean.emit()
+  }
     
 }
