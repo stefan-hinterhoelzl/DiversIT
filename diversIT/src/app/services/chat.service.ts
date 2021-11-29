@@ -108,11 +108,14 @@ export class ChatService {
                 }
               }
 
+              this.lastamount = number;
+
               //Play Message Sound
               let audio = new Audio();
               audio.src = "../../assets/sounds/ringtone.mp3";
               audio.load();
               audio.play();
+
             } else {
               this.lastamount = 0;
             }
