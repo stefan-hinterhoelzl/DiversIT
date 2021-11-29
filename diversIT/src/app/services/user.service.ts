@@ -84,6 +84,29 @@ export class UserService {
     }
   }
 
+  UpdateCurrentUserAccount(user: DiversITUser) {
+    updateDoc(doc(this.db, "users", user.uid), {
+      role: user.role,
+      email: user.email,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      gender: user.gender,
+      primaryEducation: user.primaryEducation,
+      secondaryEducation: user.secondaryEducation,
+      universityEducation: user.universityEducation,
+      job: user.job,
+      uid: user.uid,
+      lastLoggedIn: user.lastLoggedIn,
+      creationTime: user.creationTime,
+      mentors: user.mentors,
+      mentees: user.mentees,
+      company: user.company,
+      maxMentees: user.maxMentees,
+      girlsOnlyMentor: user.girlsOnlyMentor,
+      photoURL: user.photoURL
+    });
+  }
+
   getCurrentUser(user: User) {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
       if (doc.exists()) {
