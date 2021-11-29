@@ -71,16 +71,19 @@ export class ChatService {
           let array: DiversITUser[];
           
           //Can't Check whether user is mentee or mentor here easily, should however work fine like this. 
-
           this.user.currentUserMentorsStatus.pipe(take(1)).subscribe((value) => {
+            console.log("Mentors" + value)
             if (value == null) {
               this.user.currentUserMenteesStatus.pipe(take(1)).subscribe((innervalue) => {
+                console.log("Mentees" + innervalue)
                 array = innervalue;
               });
             } else {
               array = value;
             }
           });
+
+          console.log(array);
           
           const sortedarr: DiversITUser[] = []
           const nameLengths: number[] = []
