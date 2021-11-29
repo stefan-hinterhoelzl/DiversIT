@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { DiversITUser } from '../models/users.model'
 import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc, SnapshotOptions, orderBy, increment, Timestamp } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { Post } from '../models/post.model';
 import { Chat, Message } from '../models/chat.model';
 
@@ -10,16 +10,21 @@ import { Chat, Message } from '../models/chat.model';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnDestroy {
 
   constructor() {
     this.authStatusListener();
   }
 
+
+  ngOnDestroy(): void {
+   if (this.usersub != null) this.usersub();
+  }
+
   db = getFirestore();
   auth = getAuth();
   usersub;
-  chatsub;
+  // chatsub;
   postssub;
 
   private currentUser: BehaviorSubject<DiversITUser> = new BehaviorSubject<DiversITUser>(null);
@@ -49,7 +54,6 @@ export class UserService {
         this.currentUserMentors.next(null);
         this.currentUserMentees.next(null);
         if (this.usersub != null) this.usersub();
-        if (this.chatsub != null) this.chatsub();
       }
     });
   }

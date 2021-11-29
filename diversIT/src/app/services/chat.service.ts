@@ -3,19 +3,21 @@ import { child, getDatabase, onValue, orderByChild, push, ref, serverTimestamp, 
 import { collection, doc, getDocs, getFirestore, updateDoc, query as queryFirestore, arrayRemove} from '@firebase/firestore';
 import { Chat, Message } from '../models/chat.model';
 import { arrayUnion, where} from 'firebase/firestore';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, pipe } from 'rxjs';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { DiversITUser } from '../models/users.model';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { Router } from '@angular/router';
 import { DomElementSchemaRegistry } from '@angular/compiler';
+import { UserService } from './user.service';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  constructor(private snackbar: SnackbarComponent, private router: Router) {
+  constructor(private snackbar: SnackbarComponent, private router: Router, private user: UserService) {
     this.authStatusListener();
    }
   
@@ -51,17 +53,6 @@ export class ChatService {
     });
   }
 
-  async getAllChatPartnerUsers(arr: string[]) {
-    const q = queryFirestore(collection(this.firestore, "users"), where("uid", "in", arr));
-    let array: DiversITUser[] = []
-    const querySnapshot = await getDocs(q)
-    querySnapshot.forEach((doc) => {
-      array.push(doc.data() as DiversITUser)
-    });
-    return array;
-  }
-
-
 
   getChatsOfUser(user: string) {
     const userChatsRef = query(ref(this.database, user), orderByChild("lastMessageTime"));
@@ -77,7 +68,22 @@ export class ChatService {
 
           let number: number = 0;
 
-          let array = await this.getAllChatPartnerUsers(users);
+          let array: DiversITUser[];
+          
+          //Can't Check whether user is mentee or mentor here easily, should however work fine like this. 
+          this.user.currentUserMentorsStatus.pipe(take(1)).subscribe((value) => {
+            console.log("Mentors" + value)
+            if (value == null) {
+              this.user.currentUserMenteesStatus.pipe(take(1)).subscribe((innervalue) => {
+                console.log("Mentees" + innervalue)
+                array = innervalue;
+              });
+            } else {
+              array = value;
+            }
+          });
+
+          console.log(array);
           
           const sortedarr: DiversITUser[] = []
           const nameLengths: number[] = []
@@ -86,6 +92,8 @@ export class ChatService {
             sortedarr.push(x)
             number += chats[i].amountNewMessages
           }
+
+
           this.number.next(number);
             if (this.lastamount < number) {
               if (!this.router.url.includes("chat")) {
@@ -240,8 +248,10 @@ export class ChatService {
           snapshot.forEach((childSnapshot) => {
             messages.push(childSnapshot.val() as Message)
           })
-          messages.sort((value1: any , value2: any) => {return value2.timestamp - value1.timestamp})
+          messages.reverse();
           this.messages.next(messages);
+        } else {
+          this.messages.next([]);
         }
       });
   }
