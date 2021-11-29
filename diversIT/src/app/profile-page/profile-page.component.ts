@@ -46,7 +46,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
       this.alternateUser = this.currentUser
 
       // meine posts
-      this.firestore.postStatus.subscribe((data) => {
+      this.observer.currentUserPostsStatus.subscribe((data) => {
         this.posts = data;
         console.log(data)
       })

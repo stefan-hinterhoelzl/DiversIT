@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Chat, Message } from '../models/chat.model';
+import { Post } from '../models/post.model';
 import { DiversITUser } from '../models/users.model';
 
 @Injectable({
@@ -32,6 +33,10 @@ export class ObserversService {
   currentUserMentees: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>([]);
   currentUserMenteesStatus = this.currentUserMentors.asObservable()
 
+  //The Posts of the currently loggedIn User
+  currentUserPosts: BehaviorSubject<Post[]> = new BehaviorSubject<Post[]>(null);
+  currentUserPostsStatus = this.currentUserPosts.asObservable()
+
   
   constructor() { }
 
@@ -59,6 +64,10 @@ export class ObserversService {
 
   get getCurrentUserMenteesValue(): DiversITUser[] {
     return this.currentUserMentees.value;
+  }
+
+  get getCurrentUserPostsValue(): Post[] {
+    return this.currentUserPosts.value;
   }
 
 }
