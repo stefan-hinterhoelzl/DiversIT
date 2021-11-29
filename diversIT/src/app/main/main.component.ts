@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { DiversITUser } from '../models/users.model';
 import { ChatService } from '../services/chat.service';
+import { ObserversService } from '../services/observers.service';
 
 @Component({
   selector: 'app-main',
@@ -17,7 +18,7 @@ export class MainComponent implements OnInit, OnDestroy {
   currentUser: DiversITUser;
   currentUserSubscription: Subscription;
 
-  constructor(private firestore: UserService, private auth: AuthService, private rtdb: ChatService) { }
+  constructor(private firestore: UserService, private auth: AuthService, private rtdb: ChatService, private observer: ObserversService) { }
 
 
   ngOnDestroy(): void {
@@ -25,7 +26,7 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.currentUserSubscription = this.firestore.currentUserStatus.subscribe((user) => {
+    this.currentUserSubscription = this.observer.currentUserStatus.subscribe((user) => {
       if (user != null) {
         this.currentUser = user;
       }

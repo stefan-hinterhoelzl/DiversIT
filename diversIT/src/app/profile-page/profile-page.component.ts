@@ -5,6 +5,7 @@ import { ActivatedRoute, UrlSerializer } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
 import { Post } from '../models/post.model';
 import { DiversITUser } from '../models/users.model';
+import { ObserversService } from '../services/observers.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ import { UserService } from '../services/user.service';
 })
 export class ProfilePageComponent implements OnInit, OnDestroy {
 
-  constructor(private firestore: UserService, private route: ActivatedRoute) { }
+  constructor(private firestore: UserService, private route: ActivatedRoute, private observer: ObserversService) { }
 
   currentUserSubscription: Subscription;
   currentRouteSubscription: Subscription;
@@ -28,7 +29,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.currentUserSubscription = this.firestore.currentUserStatus.subscribe((user) => {
+    this.currentUserSubscription = this.observer.currentUserStatus.subscribe((user) => {
       if (user != null) {
         this.currentUser = user;
         this.currentRouteSubscription = this.route.params.subscribe(params => {

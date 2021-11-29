@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DiversITUser } from 'src/app/models/users.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { ObserversService } from 'src/app/services/observers.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,14 +16,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentUser: DiversITUser
   currentUserSubscription: Subscription
 
-  constructor(private viewportScroller: ViewportScroller, private firestore: UserService, private auth: AuthService) { }
+  constructor(private viewportScroller: ViewportScroller, private firestore: UserService, private auth: AuthService, private observer: ObserversService) { }
 
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.currentUserSubscription = this.firestore.currentUserStatus.subscribe((data) => {
+    this.currentUserSubscription = this.observer.currentUserStatus.subscribe((data) => {
       this.currentUser = data;
       if(data != null) {
         this.loginApplied = false;

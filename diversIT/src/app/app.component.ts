@@ -5,6 +5,7 @@ import { UserService } from './services/user.service';
 import { DiversITUser } from './models/users.model';
 import { Location } from '@angular/common';
 import { ChatService } from './services/chat.service';
+import { ObserversService } from './services/observers.service';
 
 @Component({
   selector: 'app-root',
@@ -16,16 +17,16 @@ export class AppComponent implements OnInit {
   currentUser: DiversITUser;
   newMessages: number;
 
-  constructor(private router: Router, private auth: AuthService, private firestore: UserService, private location: Location, private chat: ChatService) {
+  constructor(private router: Router, private auth: AuthService, private firestore: UserService, private location: Location, private chat: ChatService, private observer: ObserversService) {
   }
 
 
   ngOnInit(): void {
-    this.firestore.currentUserStatus.subscribe((data) => {
+    this.observer.currentUserStatus.subscribe((data) => {
       this.currentUser = data;
     })
 
-    this.chat.numberStatus.subscribe((data) => {
+    this.observer.numberStatus.subscribe((data) => {
       this.newMessages = data;
     });
 

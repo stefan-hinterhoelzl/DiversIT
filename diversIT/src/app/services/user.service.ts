@@ -5,6 +5,8 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { Post } from '../models/post.model';
 import { Chat, Message } from '../models/chat.model';
+import { ChatService } from './chat.service';
+import { ObserversService } from './observers.service';
 
 
 @Injectable({
@@ -12,10 +14,9 @@ import { Chat, Message } from '../models/chat.model';
 })
 export class UserService implements OnDestroy {
 
-  constructor() {
+  constructor(private observer: ObserversService, private chat: ChatService) {
     this.authStatusListener();
   }
-
 
   ngOnDestroy(): void {
    if (this.usersub != null) this.usersub();
@@ -25,29 +26,15 @@ export class UserService implements OnDestroy {
   auth = getAuth();
   usersub;
 
-  private currentUser: BehaviorSubject<DiversITUser> = new BehaviorSubject<DiversITUser>(null);
-  currentUserStatus = this.currentUser.asObservable();
-
-  private currentUserMentors: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>(null);
-  currentUserMentorsStatus = this.currentUserMentors.asObservable()
-
-  private currentUserMentees: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>(null);
-  currentUserMenteesStatus = this.currentUserMentors.asObservable()
-
-  private messages: BehaviorSubject<Message[]> = new BehaviorSubject<Message[]>(null);
-  messagesStatus = this.messages.asObservable();
-
-  private chats: BehaviorSubject<Chat[]> = new BehaviorSubject<Chat[]>(null);
-  chatStatus = this.chats.asObservable();
-
+  
   authStatusListener() {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         this.getCurrentUser(user);
       } else {
-        this.currentUser.next(null);
-        this.currentUserMentors.next(null);
-        this.currentUserMentees.next(null);
+        this.observer.currentUser.next(null);
+        this.observer.currentUserMentors.next(null);
+        this.observer.currentUserMentees.next(null);
         if (this.usersub != null) this.usersub();
       }
     });
@@ -111,37 +98,40 @@ export class UserService implements OnDestroy {
   }
 
   getCurrentUser(user: User) {
-    this.usersub = onSnapshot(doc(this.db, "users", user.uid), (doc) => {
+    this.usersub = onSnapshot(doc(this.db, "users", user.uid), async (doc) => {
       if (doc.exists()) {
-        this.currentUser.next(doc.data() as DiversITUser)
+        this.observer.currentUser.next(doc.data() as DiversITUser)
         if ((doc.data() as DiversITUser).role == 3) {
-          this.getCurrentUserMentors(doc.data() as DiversITUser);
+          let mentors = await this.getCurrentUserMentors(doc.data() as DiversITUser);
+          this.observer.currentUserMentors.next(mentors);
         }
         else {
-          this.getCurrentUserMentees(doc.data() as DiversITUser)
+          let mentees = await this.getCurrentUserMentees(doc.data() as DiversITUser);
+          this.observer.currentUserMentees.next(mentees);
         }
+      this.chat.initializeChat(doc.data() as DiversITUser)
       }
     });
   }
 
-  async getCurrentUserMentors(user: DiversITUser) {
+  async getCurrentUserMentors(user: DiversITUser): Promise<DiversITUser[]> {
     let listOfMentors: DiversITUser[] = [];
 
     for (let i = 0; i < user.mentors.length; i++) {
       var data = await this.getUserPerIDPromise(user.mentors[i])
       listOfMentors.push(data)
     }
-    this.currentUserMentors.next(listOfMentors)
+    return listOfMentors;
   }
 
-  async getCurrentUserMentees(user: DiversITUser) {
+  async getCurrentUserMentees(user: DiversITUser): Promise<DiversITUser[]> {
     let listOfMentees: DiversITUser[] = [];
 
     for (let i = 0; i < user.mentees.length; i++) {
       var data = await this.getUserPerIDPromise(user.mentees[i])
       listOfMentees.push(data)
     }
-    this.currentUserMentors.next(listOfMentees)
+    return listOfMentees
   }
 
 
@@ -175,7 +165,7 @@ export class UserService implements OnDestroy {
       let mentor = doc.data() as DiversITUser;
 
       let currentUser: DiversITUser = null;
-      this.currentUserStatus.subscribe((user) => {
+      this.observer.currentUserStatus.subscribe((user) => {
         if (user != null) currentUser = user;
       });
       // Check if user is the same as the mentor

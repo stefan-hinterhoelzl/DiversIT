@@ -11,16 +11,19 @@ import { Router } from '@angular/router';
 import { DomElementSchemaRegistry } from '@angular/compiler';
 import { UserService } from './user.service';
 import { take } from 'rxjs/operators';
+import { ObserversService } from './observers.service';
+import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  constructor(private snackbar: SnackbarComponent, private router: Router, private user: UserService) {
-    this.authStatusListener();
-   }
+  constructor(private snackbar: SnackbarComponent, private router: Router, private observer: ObserversService) {}
+
+
   
+
 
   database = getDatabase()
 
@@ -30,71 +33,65 @@ export class ChatService {
   //Auth Instance to listen for auth changes
   auth = getAuth()
 
-  private chats: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  chatStatus = this.chats.asObservable();
   chatsub;
+  currentChatPartners: DiversITUser[] = [];
 
   lastamount: number = 0;
 
-  private number: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  numberStatus = this.number.asObservable();
 
-  private messages: BehaviorSubject<Message[]> = new BehaviorSubject<Message[]>([]);
-  messagesStatus = this.messages.asObservable();
+  initializeChat(user: DiversITUser) {
+    if (user.role == 2) this.currentChatPartners = this.observer.getCurrentUserMenteesValue;
+    if (user.role == 3) this.currentChatPartners = this.observer.getCurrentUserMentorsValue;
 
-
-  authStatusListener() {
-    onAuthStateChanged(this.auth, (user) => {
-      if (user) {
-        this.getChatsOfUser(user.uid);
-      } else {
-        if (this.chatsub != undefined) this.chatsub();
-      }
-    });
+    console.log(this.currentChatPartners)
+    this.getChatsOfUser(user)
   }
 
-
-  getChatsOfUser(user: string) {
-    const userChatsRef = query(ref(this.database, user), orderByChild("lastMessageTime"));
+  getChatsOfUser(user: DiversITUser) {
+    if (this.chatsub != null) this.chatsub();
+    const userChatsRef = query(ref(this.database, user.uid), orderByChild("lastMessageTime"));
     this.chatsub = onValue(userChatsRef, async (snapshot) => {
         if (snapshot.exists()) {
           const chats: Chat[] = []
-          const users: string[] = []
           snapshot.forEach((childSnapshot) => {
             chats.push(childSnapshot.val() as Chat)
-            users.push((childSnapshot.val() as Chat).recipientUser)
           })
           chats.reverse()
 
+          console.log(chats)
+          console.log(this.currentChatPartners)
+
+          //there is a missing Chat Object
+          if (chats.length < this.currentChatPartners.length) {
+            //find the missing chatpartner
+            for (let i = 0; i<this.currentChatPartners.length; i++) {
+              console.log(this.currentChatPartners[i]);
+              let chat = chats.find((value) => {return value.recipientUser == this.currentChatPartners[i].uid});
+              if (chat == undefined) {
+                //create the chat object for the new user -- which triggers a rerun of this code
+                this.createChat(user.uid, this.currentChatPartners[i].uid);
+                return;
+              }
+            }
+          }
+
+          //variable for the amount of new Messages
           let number: number = 0;
 
-          let array: DiversITUser[];
-          
-          //Can't Check whether user is mentee or mentor here easily, should however work fine like this. 
-          this.user.currentUserMentorsStatus.pipe(take(1)).subscribe((value) => {
-            console.log("Mentors" + value)
-            if (value == null) {
-              this.user.currentUserMenteesStatus.pipe(take(1)).subscribe((innervalue) => {
-                console.log("Mentees" + innervalue)
-                array = innervalue;
-              });
-            } else {
-              array = value;
-            }
-          });
-
-          console.log(array);
-          
+          //sorted Array for the Names of the Chat Partners
           const sortedarr: DiversITUser[] = []
-          const nameLengths: number[] = []
+
+
           for (let i = 0; i<chats.length; i++) {
-            let x = array.find((curr) => { return curr.uid == chats[i].recipientUser})
+            let x = this.currentChatPartners.find((curr) => { return curr.uid == chats[i].recipientUser})
             sortedarr.push(x)
             number += chats[i].amountNewMessages
           }
 
+          //Handle Amount of New Messages
+          this.observer.number.next(number);
 
-          this.number.next(number);
+          //Handle the opening of the snackbar
             if (this.lastamount < number) {
               if (!this.router.url.includes("chat")) {
                 if (number - this.lastamount == 1) {
@@ -102,7 +99,7 @@ export class ChatService {
                   snackBarRef.onAction().subscribe(()=> {
                     this.router.navigate(['/chat']);
                   });
-                } 
+                }
                 else {
                   let snackBarRef = this.snackbar.openSnackBar("Sie haben "+ (number-this.lastamount).toString() + " neue Nachrichten", null, "zum Chat")
                   snackBarRef.onAction().subscribe(()=> {
@@ -110,6 +107,8 @@ export class ChatService {
                   });
                 }
               }
+
+              //Play Message Sound
               let audio = new Audio();
               audio.src = "../../assets/sounds/ringtone.mp3";
               audio.load();
@@ -117,15 +116,22 @@ export class ChatService {
             } else {
               this.lastamount = 0;
             }
-          
+
+          //Create the data for the Chat Observable
           const payload = {
             chats: chats,
             users: sortedarr,
           }
 
-          this.chats.next(payload);
+          console.log(payload)
+
+          this.observer.chats.next(payload);
+        } else {
+          if (this.currentChatPartners.length == 1) {
+            this.createChat(user.uid, this.currentChatPartners[0].uid)
+          }
         }
-      });  
+      });
   }
 
 
@@ -140,9 +146,6 @@ export class ChatService {
     await updateDoc(docRefMentee, {
       mentors: arrayUnion(mentor)
     });
-
-    this.createChat(mentee, mentor);
-
   }
 
   async revokeRelationship(mentee: string, mentor: string) {
@@ -167,7 +170,7 @@ export class ChatService {
 
   async createChat(mentee: string, mentor: string) {
     let newKey = push(child(ref(this.database), mentee)).key;
-    
+
 
     const MentorChat = <Chat> {
       uid: newKey,
@@ -201,7 +204,7 @@ export class ChatService {
 
 
   sendMessage(chat: Chat, text: string, sender: DiversITUser) {
-    
+
 
     const newMessageKey = push(child(ref(this.database), "messages")).key;
 
@@ -211,10 +214,9 @@ export class ChatService {
       timestamp: serverTimestamp(),
     };
 
-    
+
 
     const updates = {}
-
     const ChatRef = ref(this.database, sender.uid+"/"+chat.uid);
     onValue(ChatRef, (snapshot) => {
       const data = snapshot.val() as Chat;
@@ -234,7 +236,7 @@ export class ChatService {
       updates["messages/"+chat.uid+"/"+newMessageKey] = message;
 
       update(ref(this.database), updates);
-      
+
     }, {
       onlyOnce: true
     });
@@ -249,9 +251,9 @@ export class ChatService {
             messages.push(childSnapshot.val() as Message)
           })
           messages.reverse();
-          this.messages.next(messages);
+          this.observer.messages.next(messages);
         } else {
-          this.messages.next([]);
+          this.observer.messages.next([]);
         }
       });
   }
@@ -265,7 +267,7 @@ export class ChatService {
     const r = ref(this.database, chat.recipientUser+"/"+chat.uid+"/currentlyOnline")
     const o = onDisconnect(r);
     o.set(false);
-   
+
     return update(ref(this.database), updates);
   }
 
@@ -274,7 +276,7 @@ export class ChatService {
     const updates = {}
     updates[this.database, chat.recipientUser+"/"+chat.uid+"/currentlyOnline"] = false;
     updates[this.database, chat.recipientUser+"/"+chat.uid+"/lastCheckedTime"] = serverTimestamp();
-   
+
     return update(ref(this.database), updates);
   }
 
