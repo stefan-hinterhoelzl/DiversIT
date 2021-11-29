@@ -1,1 +1,24 @@
-<p>notifications works!</p>
+<div class="centerPanel">
+    <mat-card class="matcard-notifications">
+        <h2>Benachrichtigungen</h2>
+        <table border="0" style="width: 100%;">
+            <tr *ngFor="let n of this.currentUser.notifications">
+                <td>
+                    <mat-card-header routerLink="/profile/{{n.fromUID}}" style="cursor: pointer;">
+                        <img *ngIf="n.fromPhotoURL !== unknown" src="{{n.fromPhotoURL}}" mat-card-avatar />
+                        <img *ngIf="n.fromPhotoURL === unknown" src="./../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                    </mat-card-header>
+                </td>
+                <td>
+                    <b>{{n.fromName}}</b><br>
+                    <i style="color: gray;">{{n.when.toDate().toLocaleString('de-DE')}}</i>
+                </td>
+                <td>{{n.text}}</td>
+                <td nowrap>
+                    <button mat-raised-button color="accent" *ngIf="n.type === 1">Annehmen</button>
+                    <button mat-raised-button *ngIf="n.type === 1">Ablehnen</button>
+                </td>
+            </tr>
+        </table>
+    </mat-card>
+</div>

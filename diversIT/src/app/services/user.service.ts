@@ -76,6 +76,7 @@ export class UserService {
         girlsOnlyMentor: false,
         photoURL: photoURL,
         backgroundInfos: [],
+        notifications: [],
       });
     } else {
       updateDoc(docRef, {
@@ -103,7 +104,8 @@ export class UserService {
       company: user.company,
       maxMentees: user.maxMentees,
       girlsOnlyMentor: user.girlsOnlyMentor,
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
+      notifications: user.notifications
     });
   }
 
@@ -140,7 +142,6 @@ export class UserService {
     }
     this.currentUserMentors.next(listOfMentees)
   }
-
 
   async getUserPerIDPromise(uid: string): Promise<DiversITUser> {
     const docRef = doc(this.db, "users", uid);
