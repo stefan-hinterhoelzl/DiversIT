@@ -30,7 +30,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   
   messageSubscription: Subscription;
   messages: Message[];
-  messagesVisible: boolean = true;
+  messagesVisible: boolean = false;
 
   
   chatOpen: boolean = false;
@@ -137,14 +137,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.sendMessage();
     }
   }
-
-  scrollToBottom() {
-    return new Promise((resolve, reject) => {
-      this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight - this.myList.nativeElement.clientHeight
-      resolve(true);
-    })
     
-  }
 
   @HostListener('window:beforeunload', ['$event'])
   async beforeUnloadHandler(event) {
