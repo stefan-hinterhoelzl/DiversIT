@@ -12,6 +12,7 @@ import { AuthguardService } from './services/authguard.service';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { ChatComponent } from './chat/chat.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
 
@@ -63,8 +64,11 @@ const routes: Routes = [
     component: ProfileSettingsComponent,
     canActivate: [AuthguardService]
   },
-
-
+  {
+    path: 'notifications',
+    component: NotificationsComponent,
+    canActivate: [AuthguardService]
+  },
 ];
 
 @NgModule({
