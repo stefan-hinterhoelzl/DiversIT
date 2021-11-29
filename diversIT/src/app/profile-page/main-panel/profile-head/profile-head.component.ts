@@ -100,6 +100,10 @@ export class ProfileHeadComponent implements OnInit {
     this.router.navigate(['/chat', { k: this.userOfProfile.uid }]);
   }
 
+  navigateToProfileSetting(){
+    this.router.navigate(['/profilesettings'])
+  }
+
   
     
 }
