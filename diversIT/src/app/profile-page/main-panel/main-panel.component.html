@@ -1,6 +1,6 @@
 <div class="wrapper">
     <app-profile-head [userOfProfile]="userOfProfile" [currentUser]="currentUser" [posts]="postsOfUser"></app-profile-head>
-    <app-profile-new-post *ngIf="userOfProfile.uid === currentUser.uid && currentUser.role == 2" [currentUser]="currentUser"></app-profile-new-post>
+    <app-profile-new-post *ngIf="userOfProfile && userOfProfile.uid === currentUser.uid && currentUser.role == 2" [currentUser]="currentUser"></app-profile-new-post>
 
 
     <app-post-card *ngFor="let post of postsOfUser" userid= "{{userOfProfile.uid}}" name="{{userOfProfile.firstname + ' ' + userOfProfile.lastname}}" profileImg="{{userOfProfile.photoURL}}" time="{{post.timestamp?.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}"></app-post-card>
