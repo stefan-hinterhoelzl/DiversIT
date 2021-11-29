@@ -3,6 +3,6 @@
     <app-profile-new-post [currentUser]="currentUser"></app-profile-new-post>
 
 
-    <app-post-card *ngFor="let post of postsOfUser" userid= "{{userOfProfile.uid}}" name="{{userOfProfile.firstname + ' ' + userOfProfile.lastname}}" profileImg="{{userOfProfile.photoURL}}" time="{{post.timestamp.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}"></app-post-card>
+    <app-post-card *ngFor="let post of postsOfUser" userid= "{{userOfProfile.uid}}" name="{{userOfProfile.firstname + ' ' + userOfProfile.lastname}}" profileImg="{{userOfProfile.photoURL}}" time="{{post.timestamp?.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}"></app-post-card>
 
 </div>
