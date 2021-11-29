@@ -16,7 +16,7 @@ import { take } from 'rxjs/operators';
 })
 export class ProfileHeadComponent implements OnInit {
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private dialog: MatDialog, private chatService: ChatService) { }
+  constructor(private userService: UserService, private route: ActivatedRoute,private router: Router, private dialog: MatDialog, private chatService: ChatService) { }
 
   @Input() userOfProfile: DiversITUser;
   @Input() currentUser: DiversITUser;
@@ -48,6 +48,8 @@ export class ProfileHeadComponent implements OnInit {
   //   }
   // }
 
+
+  // open Dialoge for adding mentor
   addMentor(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: "30%",
@@ -74,6 +76,8 @@ export class ProfileHeadComponent implements OnInit {
     console.log(userId)
   }
 
+
+  // open dialog to affirm mentorship cancle
   cancleMentorship(){
     const dialogRef = this.dialog.open(DialogComponent, {
       width: "30%",
@@ -88,13 +92,17 @@ export class ProfileHeadComponent implements OnInit {
     dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
       if(result != null){
         // user wants to disconnect
-
-        // TODO: disconnect from Mentor (notify mentor?)
         this.chatService.revokeRelationship(this.currentUser.uid, this.userOfProfile.uid)
 
 
       }
     });
   }
+
+  navigateToChatWithMentor(){
+    this.router.navigate(['/chat', { k: this.userOfProfile.uid }]);
+  }
+
+  
     
 }

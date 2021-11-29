@@ -1,4 +1,4 @@
-<mat-card *ngIf="userOfProfile && userOfProfile.role === 2">
+<mat-card *ngIf="userOfProfile">
     <div class="background-image"></div>
         <div mat-card-avatar style="background-image: url('{{userOfProfile.photoURL}}');"></div>
     <mat-card-content>
@@ -6,7 +6,7 @@
         <h3 *ngIf="userOfProfile.job === null  && userOfProfile.company === null">Keine Jobinformationen verfügbar. </h3>
         <h3 *ngIf="userOfProfile.job  && userOfProfile.company === null">{{userOfProfile.job}} </h3>
         <h3 *ngIf="userOfProfile.job && userOfProfile.company">{{userOfProfile.job + " bei " + userOfProfile.company}} </h3>
-        <button *ngIf="currentUser.mentors.includes(userOfProfile.uid)" mat-raised-button color="accent">Nachricht</button>
+        <button *ngIf="currentUser.mentors.includes(userOfProfile.uid)" mat-raised-button color="accent" (click)="navigateToChatWithMentor()">Nachricht</button>
         <button *ngIf="!currentUser.mentors.includes(userOfProfile.uid)" mat-raised-button color="accent" (click)="addMentor()">Verknüpfen</button>
         
         <button mat-raised-button [matMenuTriggerFor]="menu">Mehr</button>
@@ -16,4 +16,6 @@
           </mat-menu>
     </mat-card-content>
 </mat-card>
+
+
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DiversITUser } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc, SnapshotOptions, orderBy, increment } from "firebase/firestore";
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc, SnapshotOptions, orderBy, increment, Timestamp } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/post.model';
@@ -50,6 +50,7 @@ export class UserService {
     });
   }
 
+
   async UpdateUserAccount(uid: string, email: string, photoURL: string) {
     const docRef = doc(this.db, "users", uid);
     const docSnap = await getDoc(docRef);
@@ -95,7 +96,6 @@ export class UserService {
         }
       }
     });
-
   }
 
   async getCurrentUserMentors(user: DiversITUser) {
@@ -175,13 +175,18 @@ export class UserService {
   }
 
   async getPostUser(userID: string): Promise<Post[]> {
-    const q = query(collection(this.db, "posts"), where("userID", "==", userID));
+    const q = query(collection(this.db, "posts"), where("userID", "==", userID), orderBy("timestamp", "desc"));
     const querySnapshot = await getDocs(q);
     let array: Post[] = [];
     querySnapshot.forEach((doc) => {
       array.push(doc.data() as Post)
     });
     return array;
+  }
+
+  async addPost(post: Post) {
+    const docRef = doc(collection(this.db, 'posts'))
+    await setDoc(docRef, post)
   }
 
 

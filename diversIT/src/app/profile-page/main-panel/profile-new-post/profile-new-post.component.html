@@ -1,7 +1,24 @@
 <div class="wrapper"> 
     <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title>Hier kommt der Input für neue Postings hin</mat-card-title>
-        </mat-card-header>
+        <form [formGroup]="postForm" class="example-form" #formDirective="ngForm" >  
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Sag etwas:</mat-label>
+            <textarea type="text" matInput placeholder="Ein guter Tipp ist es...." required formControlName="text"></textarea>
+            <!-- <div  *ngIf="postForm.get('text').errors?.['required']">Ein Text ist <strong>notwendig</strong></div> -->
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Optional: Bild URL</mat-label>
+            <input type="text" matInput placeholder="URL einer Bilddatei" value="" formControlName="photoURL">
+          </mat-form-field>
+          <div mat-dialog-actions align="end">
+            <button mat-raised-button (click)="addPost()">Posten</button>
+          </div>
+        </form>
       </mat-card>
 </div>
+
+
+
+
+

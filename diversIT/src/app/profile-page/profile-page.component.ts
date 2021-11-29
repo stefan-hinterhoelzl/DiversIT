@@ -42,6 +42,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   async initialize(id) {
     if (this.currentUser.uid == id) {
       this.ownProfile = true;
+      this.alternateUser = this.currentUser
     }
     else {
       this.firestore.getUserPerIDPromise(id).then((data) => {

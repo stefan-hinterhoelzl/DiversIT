@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Timestamp } from '@firebase/firestore';
 
 @Component({
   selector: 'app-post-card',
@@ -12,7 +13,7 @@ export class PostCardComponent {
 
   @Input() userid: string;
   @Input() name: string;
-  @Input() time: string;
+  @Input() time: Timestamp;
   @Input() profileImg: string;
   @Input() content: string;
   @Input() contentImg: string;
