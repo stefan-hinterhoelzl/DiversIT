@@ -141,10 +141,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   scrollToBottom() {
-    return new Promise<any>((resolve, reject) => {
-      this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight - this.myList.nativeElement.clientHeight
-      resolve(true)
-    });
+    this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight - this.myList.nativeElement.clientHeight
   }
 
   @HostListener('window:beforeunload', ['$event'])
