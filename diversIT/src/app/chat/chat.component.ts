@@ -80,11 +80,12 @@ export class ChatComponent implements OnInit, OnDestroy {
               }
             }
 
-            if (this.currentChats != null) {
-              this.initialize(this.currentUser);
-            }
+            
           }
         })
+        if (this.currentChats != null) {
+          this.initialize(this.currentUser);
+        }
       }
     });
   }
