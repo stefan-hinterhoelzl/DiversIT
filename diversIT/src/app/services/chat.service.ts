@@ -240,6 +240,7 @@ export class ChatService {
           snapshot.forEach((childSnapshot) => {
             messages.push(childSnapshot.val() as Message)
           })
+          messages.sort((value1: any , value2: any) => {return value2.timestamp - value1.timestamp})
           this.messages.next(messages);
         }
       });

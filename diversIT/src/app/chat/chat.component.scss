@@ -57,6 +57,8 @@
     word-break: break-all;
     overflow-y: scroll;
     //visibility: hidden;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .own-message-wrapper {
@@ -80,7 +82,7 @@
 
 .own-message{
     width: 50%;
-    height: 10%;
+    height: 100%;
     background-color: rgba(221, 216, 216, 0.5);
     display: flex;
     border-radius: 5px;
@@ -94,7 +96,7 @@
 
 .other-message{
     width: 50%;
-    height: 10%;
+    height: 100%;
     background-color: rgba(236, 64, 122, 0.5);
     display: flex;
     border-radius: 5px;

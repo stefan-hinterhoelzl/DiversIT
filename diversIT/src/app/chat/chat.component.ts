@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service';
 import { take } from 'rxjs/operators';
 import { ChatService } from '../services/chat.service';
 import { ThisReceiver } from '@angular/compiler';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -47,7 +47,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('messageList') myList: ElementRef;
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
-  constructor(private user: UserService, private _ngZone: NgZone, private database: ChatService, private route: ActivatedRoute) {
+  constructor(private user: UserService, private _ngZone: NgZone, private database: ChatService, private route: ActivatedRoute, private router: Router) {
     this.textInput = new FormControl('', Validators.required);
    }
   async ngOnDestroy(): Promise<void> {
@@ -111,9 +111,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatunsub = this.database.getMessages(chat)
     this.messageSubscription = this.database.messagesStatus.subscribe(async (data) => {
       this.messages = data;
-      if (data != null) {
-        setTimeout(()=> this.scrollToBottom(), 1000)
-      }
     });
     await this.database.openChat(chat, this.currentUser);
     this.activeChat = chat;
@@ -142,7 +139,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   scrollToBottom() {
-    this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight - this.myList.nativeElement.clientHeight
+    return new Promise((resolve, reject) => {
+      this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight - this.myList.nativeElement.clientHeight
+      resolve(true);
+    })
+    
   }
 
   @HostListener('window:beforeunload', ['$event'])
@@ -159,6 +160,10 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   handleSelection(event) {
     this.textInput.setValue(this.textInput.value+event.char);
+  }
+
+  navigateToUser(id: string) {
+    this.router.navigate(["/profile/"+id])
   }
 
 
