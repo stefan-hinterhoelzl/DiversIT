@@ -25,6 +25,8 @@ export class UserService implements OnDestroy {
   db = getFirestore();
   auth = getAuth();
   usersub;
+  // chatsub;
+  postssub;
 
   
   authStatusListener() {
@@ -66,6 +68,7 @@ export class UserService implements OnDestroy {
         girlsOnlyMentor: false,
         photoURL: photoURL,
         backgroundInfos: [],
+        notifications: [],
       });
     } else {
       updateDoc(docRef, {
@@ -93,7 +96,8 @@ export class UserService implements OnDestroy {
       company: user.company,
       maxMentees: user.maxMentees,
       girlsOnlyMentor: user.girlsOnlyMentor,
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
+      notifications: user.notifications
     });
   }
 
@@ -133,7 +137,6 @@ export class UserService implements OnDestroy {
     }
     return listOfMentees
   }
-
 
   async getUserPerIDPromise(uid: string): Promise<DiversITUser> {
     const docRef = doc(this.db, "users", uid);
@@ -199,6 +202,18 @@ export class UserService implements OnDestroy {
     });
     return array;
   }
+
+  async getPostOfUserObservable(userID: string) {
+    this.postssub = onSnapshot(query(collection(this.db, "posts"), where("userID", "==", userID), orderBy("timestamp", "desc")), (q) => {
+      let arr: Post[] = []
+      q.forEach((doc) => {
+        arr.push(doc.data() as Post)
+        }
+      )
+      this.observer.currentUserPosts.next(arr)
+    })
+  }
+
 
   async addPost(post: Post) {
     const docRef = doc(collection(this.db, 'posts'))

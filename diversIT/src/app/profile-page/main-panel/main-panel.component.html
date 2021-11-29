@@ -1,8 +1,50 @@
 <div class="wrapper">
-    <app-profile-head [userOfProfile]="userOfProfile" [currentUser]="currentUser" [posts]="postsOfUser"></app-profile-head>
-    <app-profile-new-post [currentUser]="currentUser"></app-profile-new-post>
+    <app-profile-head [userOfProfile]="userOfProfile" [currentUser]="currentUser" [posts]="postsOfUser"
+        (changeDetailsBoolean)="setDetailState()"></app-profile-head>
+    <app-profile-new-post *ngIf="userOfProfile && userOfProfile.uid === currentUser.uid && currentUser.role == 2"
+        [currentUser]="currentUser"></app-profile-new-post>
 
+    <div *ngIf="!showDetails">
+        <app-post-card *ngFor="let post of postsOfUser" userid="{{userOfProfile.uid}}"
+            name="{{userOfProfile.firstname + ' ' + userOfProfile.lastname}}" profileImg="{{userOfProfile.photoURL}}"
+            time="{{post.timestamp?.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}">
+        </app-post-card>
+    </div>
 
-    <app-post-card *ngFor="let post of postsOfUser" userid= "{{userOfProfile.uid}}" name="{{userOfProfile.firstname + ' ' + userOfProfile.lastname}}" profileImg="{{userOfProfile.photoURL}}" time="{{post.timestamp.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}"></app-post-card>
+    <mat-card style="margin-top: 10px; width: 100%"
+        *ngIf="userOfProfile && (userOfProfile.uid === currentUser.uid || showDetails)">
+        <h2>Details:</h2>
+        <ul>
+            <li *ngIf="userOfProfile.firstname">
+                <strong>Vorname:</strong> {{userOfProfile.firstname}}
+            </li>
+            <li *ngIf="userOfProfile.lastname">
+                <strong>Nachname:</strong> {{userOfProfile.lastname}}
+            </li>
+            <li *ngIf="userOfProfile.role">
+                <strong>Rolle:</strong> {{userOfProfile.role == 1 ? "Administrator" : (userOfProfile.role == 2 ? "Mentor" : "Mentee")}}
+            </li>
+            <li *ngIf="userOfProfile.gender">
+                <strong>Geschlecht:</strong> {{userOfProfile.gender}}
+            </li>
+            <li *ngIf="userOfProfile.job">
+                <strong>Beruf:</strong> {{userOfProfile.job}}
+            </li>
+            <li *ngIf="userOfProfile.company">
+                <strong>Arbeitgeber:</strong> {{userOfProfile.company}}
+            </li>
+            <li *ngIf="userOfProfile.primaryEducation">
+                <strong>Grundschulausbildung:</strong> {{userOfProfile.primaryEducation}}
+            </li>
+            <li *ngIf="userOfProfile.secondaryEducation">
+                <strong>Sekundarschulausbildung:</strong> {{userOfProfile.secondaryEducation}}
+            </li>
+            <li *ngIf="userOfProfile.universityEducation">
+                <strong>Universitätsabschluss:</strong> {{userOfProfile.universityEducation}}
+            </li>
+        </ul>
+
+    </mat-card>
+
 
 </div>

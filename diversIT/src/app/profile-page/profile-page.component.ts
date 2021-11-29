@@ -44,16 +44,30 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     if (this.currentUser.uid == id) {
       this.ownProfile = true;
       this.alternateUser = this.currentUser
+
+      // meine posts
+      this.firestore.postStatus.subscribe((data) => {
+        this.posts = data;
+        console.log(data)
+      })
     }
     else {
       this.firestore.getUserPerIDPromise(id).then((data) => {
         this.alternateUser = data;
       }).catch(error => console.log(error));
       this.ownProfile = false;
+      // fremde posts
+      this.firestore.getPostUser(id).then(async (data: Post[]) => {
+        this.posts = data;
+      }).catch((error) => console.error(error))
     }
 
-    this.firestore.getPostUser(id).then(async (data: Post[]) => {
-      this.posts = data;
-    }).catch((error) => console.error(error))
+
+
+
+
+
+    // this.firestore.getPostOfUserObservable(this.alternateUser.uid)
+
   }
 }

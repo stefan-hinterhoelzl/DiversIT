@@ -36,12 +36,7 @@ export class ProfileNewPostComponent implements OnInit {
 
 
       this.userService.addPost(postPayload)
-
-      // this.postForm.updateValueAndValidity()
-      // this.formDirective.resetForm()
       this.postForm.reset()
-      // this.postForm.markAsUntouched()
-      this.userService.UpdateUserAccount(this.currentUser.uid, this.currentUser.email, this.currentUser.photoURL)
     }
     else{
       this.snackbar.openSnackBar("Eingaben dürfen nicht leer sein!", "snackbar-red")

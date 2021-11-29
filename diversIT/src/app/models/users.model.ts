@@ -21,4 +21,5 @@ export interface DiversITUser {
     girlsOnlyMentor?: boolean;
     mentors?: string[];
     backgroundInfo?: string[];
+    notifications?: Notification[];
 }
