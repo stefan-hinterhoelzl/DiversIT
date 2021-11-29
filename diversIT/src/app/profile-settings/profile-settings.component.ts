@@ -30,9 +30,9 @@ export class ProfileSettingsComponent implements OnInit {
   profileSettingsForm = new FormGroup({
     role: new FormControl(''),
     email: new FormControl(''),
-    firstName: new FormControl('',[Validators.required]),
-    lastName: new FormControl('',[Validators.required]),
-    gender: new FormControl('',[Validators.required]),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
     photoURL: new FormControl(''),
     maxMentees: new FormControl(''),
     girlsOnlyMentor: new FormControl(''),
@@ -51,9 +51,9 @@ export class ProfileSettingsComponent implements OnInit {
     this.currentUserSubscription = this.firestore.currentUserStatus.subscribe((user) => {
       if (user != null) {
         this.currentUser = user;
-        if(this.currentUser.role=1) this.currentUserRoleText = 'Admin';
-        if(this.currentUser.role=2) this.currentUserRoleText = 'Mentor';
-        if(this.currentUser.role=3) this.currentUserRoleText = 'Mentee';
+        if (this.currentUser.role = 1) this.currentUserRoleText = 'Admin';
+        if (this.currentUser.role = 2) this.currentUserRoleText = 'Mentor';
+        if (this.currentUser.role = 3) this.currentUserRoleText = 'Mentee';
         this.profileSettingsForm.setValue({
           role: this.currentUserRoleText,
           email: this.currentUser.email,
@@ -70,11 +70,11 @@ export class ProfileSettingsComponent implements OnInit {
           universityEducation: this.currentUser.universityEducation
         });
       }
-    });   
+    });
   }
 
   onSubmit() {
-    if(!this.profileSettingsForm.valid) { 
+    if (!this.profileSettingsForm.valid) {
       this.snackbar.openSnackBar("Formular nicht korrekt ausgefüllt.", "snackbar-red");
       return;
     }
@@ -100,7 +100,7 @@ export class ProfileSettingsComponent implements OnInit {
     } else {
       this.currentUser.secondaryEducation = "";
     }
-    if(this.profileSettingsForm.get('universityEducation').value != undefined) {
+    if (this.profileSettingsForm.get('universityEducation').value != undefined) {
       this.currentUser.universityEducation = this.profileSettingsForm.get('universityEducation').value;
     } else {
       this.currentUser.universityEducation = "";
