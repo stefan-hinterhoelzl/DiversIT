@@ -247,6 +247,8 @@ export class ChatService {
           })
           messages.reverse();
           this.messages.next(messages);
+        } else {
+          this.messages.next([]);
         }
       });
   }
