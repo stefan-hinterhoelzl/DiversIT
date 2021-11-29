@@ -57,7 +57,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     }
     this.currentChatsSubscription.unsubscribe();
     this.currentUserSubscription.unsubscribe();
-    this.messageSubscription.unsubscribe();
+    if (this.messageSubscription != null) this.messageSubscription.unsubscribe();
   }
 
    triggerResize() {
