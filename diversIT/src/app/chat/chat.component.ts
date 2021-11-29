@@ -111,7 +111,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.messageSubscription = this.database.messagesStatus.subscribe(async (data) => {
       this.messages = data;
       if (data != null) {
-        setTimeout(()=> this.scrollToBottom(), 0)
+        setTimeout(()=> this.scrollToBottom(), 1000)
       }
     });
     await this.database.openChat(chat, this.currentUser);
@@ -141,10 +141,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   scrollToBottom() {
-    try {
     this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight - this.myList.nativeElement.clientHeight
-    }catch(error) {
-    }
   }
 
   @HostListener('window:beforeunload', ['$event'])
