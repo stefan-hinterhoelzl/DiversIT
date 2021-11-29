@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { Post, PostDisplay } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
+import { ObserversService } from 'src/app/services/observers.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,14 +12,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CenterPanelComponent implements OnInit {
 
-  constructor(private firestore: UserService) { }
+  constructor(private firestore: UserService, private observer: ObserversService) { }
 
   currentUser: DiversITUser;
   mentors: DiversITUser[];
   posts: PostDisplay[] = [];
 
   ngOnInit(): void {    
-    this.firestore.currentUserStatus.subscribe((data) => {
+    this.observer.currentUserStatus.subscribe((data) => {
       if (data != null) {
         this.currentUser = data
         if(this.currentUser.role == 3)this.initializeMentee()
@@ -28,7 +29,7 @@ export class CenterPanelComponent implements OnInit {
   }
 
   initializeMentee(){
-    this.firestore.currentUserMentorsStatus.subscribe(async (data) => {
+    this.observer.currentUserMentorsStatus.subscribe(async (data) => {
       if(data == null) return;
       this.mentors = data;
       this.posts = [];

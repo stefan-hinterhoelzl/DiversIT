@@ -9,6 +9,7 @@ import { take } from 'rxjs/operators';
 import { ChatService } from '../services/chat.service';
 import { ThisReceiver } from '@angular/compiler';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ObserversService } from '../services/observers.service';
 
 @Component({
   selector: 'app-chat',
@@ -47,7 +48,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('messageList') myList: ElementRef;
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
-  constructor(private user: UserService, private _ngZone: NgZone, private database: ChatService, private route: ActivatedRoute, private router: Router) {
+  constructor(private user: UserService, private _ngZone: NgZone, private database: ChatService, private route: ActivatedRoute, private router: Router, private observer: ObserversService) {
     this.textInput = new FormControl('', Validators.required);
    }
   async ngOnDestroy(): Promise<void> {
@@ -66,31 +67,33 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.currentUserSubscription = this.user.currentUserStatus.subscribe((data) => {
+    this.currentUserSubscription = this.observer.currentUserStatus.subscribe((data) => {
       if(data !== null) {
+        //set the current user
         this.currentUser = data;
         this.combinedname = this.currentUser.firstname + " " + this.currentUser.lastname;
-        this.currentChatsSubscription = this.database.chatStatus.subscribe((data) => {
-          if (data != null) {
+      }
+    });
+
+        //get the current Chats
+        this.currentChatsSubscription = this.observer.chatStatus.subscribe((data) => {
+          if (data.length != 0) {
             this.currentChats = data.chats;
             this.currentChatUsers = data.users;
+            console.log(data);
+            //create the Name Arrays for the Chats
             for (let i = 0; i<this.currentChatUsers.length; i++) {
-              console.log(this.currentChatUsers);
               if (this.currentChatUsers[i].firstname.length + this.currentChatUsers[i].lastname.length > 25) {
                 this.currentChatNames[i] = this.currentChatUsers[i].firstname + " " + this.currentChatUsers[i].lastname.charAt(0) + ".";
               } else {
                 this.currentChatNames[i] = this.currentChatUsers[i].firstname + " " + this.currentChatUsers[i].lastname;
               }
             }
-
-            
           }
         })
         if (this.currentChats != null) {
           this.initialize(this.currentUser);
         }
-      }
-    });
   }
 
   initialize(user: DiversITUser) {
@@ -113,7 +116,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.chatunsub();
     } 
     this.chatunsub = this.database.getMessages(chat)
-    this.messageSubscription = this.database.messagesStatus.subscribe(async (data) => {
+    this.messageSubscription = this.observer.messagesStatus.subscribe(async (data) => {
       this.messages = data;
     });
     await this.database.openChat(chat, this.currentUser);

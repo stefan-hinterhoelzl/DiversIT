@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DiversITUser } from '../models/users.model';
+import { ObserversService } from '../services/observers.service';
 import { UserService } from '../services/user.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 
@@ -14,7 +15,7 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 export class ProfileSettingsComponent implements OnInit {
 
-  constructor(private firestore: UserService, private snackbar: SnackbarComponent, private router: Router) { }
+  constructor(private firestore: UserService, private observer: ObserversService, private snackbar: SnackbarComponent, private router: Router) { }
 
   // variables for possible values
   gender = ['Männlich', 'Weiblich', 'Divers'];
@@ -49,7 +50,7 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentUserSubscription = this.firestore.currentUserStatus.subscribe((user) => {
+    this.currentUserSubscription = this.observer.currentUserStatus.subscribe((user) => {
       if (user != null) {
         this.currentUser = user;
         if (this.currentUser.role = 1) this.currentUserRoleText = 'Admin';

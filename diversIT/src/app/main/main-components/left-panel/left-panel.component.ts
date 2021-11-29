@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiversITUser } from 'src/app/models/users.model';
+import { ObserversService } from 'src/app/services/observers.service';
 import { UserService } from 'src/app/services/user.service';
 import { InterestingMentorsComponent } from '../right-panel/interesting-mentors/interesting-mentors.component';
 
@@ -10,7 +11,7 @@ import { InterestingMentorsComponent } from '../right-panel/interesting-mentors/
 })
 export class LeftPanelComponent implements OnInit {
 
-  constructor(private firestore: UserService)  { }
+  constructor(private firestore: UserService, private observer: ObserversService)  { }
 
   currentUser: DiversITUser = <DiversITUser>{
     firstname: "",
@@ -21,7 +22,7 @@ export class LeftPanelComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.firestore.currentUserStatus.subscribe(data => {
+    this.observer.currentUserStatus.subscribe(data => {
       if (data === null) return;
       this.currentUser = data;
     })
