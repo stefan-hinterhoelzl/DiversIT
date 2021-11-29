@@ -8,6 +8,7 @@ import { UserService } from '../services/user.service';
 import { take } from 'rxjs/operators';
 import { ChatService } from '../services/chat.service';
 import { ThisReceiver } from '@angular/compiler';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -29,6 +30,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   
   messageSubscription: Subscription;
   messages: Message[];
+  messagesVisible: boolean = true;
 
   
   chatOpen: boolean = false;
@@ -45,7 +47,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('messageList') myList: ElementRef;
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
-  constructor(private user: UserService, private _ngZone: NgZone, private database: ChatService) {
+  constructor(private user: UserService, private _ngZone: NgZone, private database: ChatService, private route: ActivatedRoute) {
     this.textInput = new FormControl('', Validators.required);
    }
   async ngOnDestroy(): Promise<void> {
@@ -88,17 +90,24 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   initialize(user: DiversITUser) {
+    let k: string = this.route.snapshot.paramMap.get('k');
 
+    if (k != "") {
+      let chat = this.currentChats.find((value) => {
+        return value.recipientUser === k;
+      });
+      if (chat != null) this.openChat(chat)
+    }
   }
 
   async openChat(chat: Chat) {
+    this.messagesVisible = false;
     if (this.chatunsub != null) {
       await this.database.closeChat(this.activeChat, this.currentUser);
       this.chatunsub();
     } 
     this.chatunsub = this.database.getMessages(chat)
     this.messageSubscription = this.database.messagesStatus.subscribe(async (data) => {
-      console.log(data)
       this.messages = data;
       if (data != null) {
         this.chatOpen = true;
@@ -111,6 +120,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.currentChatPartner = this.currentChatUsers.find((user) => {return user.uid == chat.recipientUser})
     this.currentChatPartnerCombinedName = this.currentChatPartner.firstname + " " + this.currentChatPartner.lastname;
     if (this.input != undefined) this.input.nativeElement.focus();
+    this.messagesVisible = true;
 
   }
 
@@ -131,7 +141,10 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   scrollToBottom() {
-    this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight - this.myList.nativeElement.clientHeight
+    return new Promise<any>((resolve, reject) => {
+      this.myList.nativeElement.scrollTop = this.myList.nativeElement.scrollHeight - this.myList.nativeElement.clientHeight
+      resolve(true)
+    });
   }
 
   @HostListener('window:beforeunload', ['$event'])

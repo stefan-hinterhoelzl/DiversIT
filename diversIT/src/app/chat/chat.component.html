@@ -72,8 +72,8 @@
                 </div>
             </div>
             <div class = "flex-wrapper" style =  "height: 100%; flex-direction:column" *ngIf="chatOpen">
-                <div #messageList class="message-window">
-                    <div [ngClass]="message.senderUID === currentUser.uid ? 'own-message-wrapper' : 'other-message-wrapper'" *ngFor="let message of messages; let i = index; let last = last">
+                <div *ngIf ="messagesVisible" #messageList class="message-window">
+                    <div [ngClass]="{'own-message-wrapper': message.senderUID === currentUser.uid, 'other-message-wrapper': message.senderUID !== currentUser.uid, 'invisible': !messagesVisible}" *ngFor="let message of messages; let i = index; let last = last">
                         <div [ngClass]="message.senderUID === currentUser.uid ? 'own-message' : 'other-message'">
                             <div style = "display:flex;">
                                 <p style = "margin-bottom: 0;">{{message.text}}</p>
@@ -83,6 +83,9 @@
                             </div>  
                         </div>
                     </div>
+                </div>
+                <div *ngIf ="!messagesVisible" class = "message-window" style = "display: flex; justify-content: center; align-items: center;">
+                    <mat-spinner color = "accent"></mat-spinner>
                 </div>
                 <div class="response-box">
                         <mat-form-field class="form-field"  appearance="none">
