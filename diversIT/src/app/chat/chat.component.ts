@@ -73,7 +73,7 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.currentUser = data;
         this.combinedname = this.currentUser.firstname + " " + this.currentUser.lastname;
       }
-    });
+    
 
         //get the current Chats
         this.currentChatsSubscription = this.observer.chatStatus.subscribe((data) => {
@@ -91,6 +91,7 @@ export class ChatComponent implements OnInit, OnDestroy {
             }
           }
         })
+      });
         if (this.currentChats != null) {
           this.initialize(this.currentUser);
         }
