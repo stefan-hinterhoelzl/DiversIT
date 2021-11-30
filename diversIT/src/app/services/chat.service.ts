@@ -21,10 +21,6 @@ export class ChatService {
 
   constructor(private snackbar: SnackbarComponent, private router: Router, private observer: ObserversService) { }
 
-
-
-
-
   database = getDatabase()
 
   //to Update the Chatsarray in the user Field
