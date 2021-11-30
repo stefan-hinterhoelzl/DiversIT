@@ -74,6 +74,7 @@ export class ChatService {
             let chatpartner = this.currentChatPartners.find((value) => { return value.uid == chats[i].recipientUser })
             if (chatpartner == undefined) {
               //when the overflow chat was found -- delte that one
+              console.log("I am here");
               this.deleteChat(chats[i], this.observer.getcurrenUserValue.uid);
               return;
             }
