@@ -105,6 +105,7 @@ export class UserService implements OnDestroy {
     this.usersub = onSnapshot(doc(this.db, "users", user.uid), async (doc) => {
       if (doc.exists()) {
         this.observer.currentUser.next(doc.data() as DiversITUser)
+        console.log("updating")
         if ((doc.data() as DiversITUser).role == 3) {
           let mentors = await this.getCurrentUserMentors(doc.data() as DiversITUser);
           this.observer.currentUserMentors.next(mentors);

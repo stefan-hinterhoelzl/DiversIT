@@ -189,37 +189,45 @@ export class ChatService {
 
 
   async createChat(mentee: string, mentor: string) {
-    let newKey = push(child(ref(this.database), mentee)).key;
+    let found: boolean = false;
+    onValue(ref(this.database, mentor), async (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        let chat = childSnapshot.val() as Chat
+        if (chat.recipientUser == mentee) found = true;
+      });
+      if (!found) {
 
 
-    const MentorChat = <Chat>{
-      uid: newKey,
-      lastMessage: "",
-      connectedChat: newKey,
-      recipientUser: mentee,
-      amountNewMessages: 0,
-      lastCheckedTime: serverTimestamp(),
-      lastMessageTime: serverTimestamp(),
-      currentlyOnline: false,
-    }
+        let newKey = push(child(ref(this.database), mentee)).key;
+        const MentorChat = <Chat>{
+          uid: newKey,
+          lastMessage: "",
+          connectedChat: newKey,
+          recipientUser: mentee,
+          amountNewMessages: 0,
+          lastCheckedTime: serverTimestamp(),
+          lastMessageTime: serverTimestamp(),
+          currentlyOnline: false,
+        }
 
-    const MenteeChat = <Chat>{
-      uid: newKey,
-      lastMessage: "",
-      connectedChat: newKey,
-      recipientUser: mentor,
-      amountNewMessages: 0,
-      lastCheckedTime: serverTimestamp(),
-      lastMessageTime: serverTimestamp(),
-      currentlyOnline: false,
-    }
+        const MenteeChat = <Chat>{
+          uid: newKey,
+          lastMessage: "",
+          connectedChat: newKey,
+          recipientUser: mentor,
+          amountNewMessages: 0,
+          lastCheckedTime: serverTimestamp(),
+          lastMessageTime: serverTimestamp(),
+          currentlyOnline: false,
+        }
 
-    const updates = {};
-    updates['/' + mentee + '/' + newKey] = MenteeChat;
-    updates['/' + mentor + '/' + newKey] = MentorChat;
+        const updates = {};
+        updates['/' + mentee + '/' + newKey] = MenteeChat;
+        updates['/' + mentor + '/' + newKey] = MentorChat;
 
-    await update(ref(this.database), updates);
-
+        await update(ref(this.database), updates);
+      }
+    });
   }
 
 
