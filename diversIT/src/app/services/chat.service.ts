@@ -54,14 +54,10 @@ export class ChatService {
         })
         chats.reverse()
 
-        console.log(chats)
-        console.log(this.currentChatPartners)
-
         //there is a missing Chat Object
         if (chats.length < this.currentChatPartners.length) {
           //find the missing chatpartner
           for (let i = 0; i < this.currentChatPartners.length; i++) {
-            console.log(this.currentChatPartners[i]);
             let chat = chats.find((value) => { return value.recipientUser == this.currentChatPartners[i].uid });
             if (chat == undefined) {
               //create the chat object for the new user -- which triggers a rerun of this code
@@ -74,7 +70,6 @@ export class ChatService {
             let chatpartner = this.currentChatPartners.find((value) => { return value.uid == chats[i].recipientUser })
             if (chatpartner == undefined) {
               //when the overflow chat was found -- delte that one
-              console.log("I am here");
               this.deleteChat(chats[i], this.observer.getcurrenUserValue.uid);
               return;
             }
@@ -133,12 +128,9 @@ export class ChatService {
           users: sortedarr,
         }
 
-        console.log(payload)
-
         this.observer.chats.next(payload);
       } else {
         if (this.currentChatPartners.length == 1) {
-          console.log("Helloooo")
           this.createChat(user.uid, this.currentChatPartners[0].uid)
         } else if (this.currentChatPartners.length == 0) {
           this.observer.chats.next({
