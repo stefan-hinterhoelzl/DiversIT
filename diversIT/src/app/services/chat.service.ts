@@ -140,6 +140,11 @@ export class ChatService {
         if (this.currentChatPartners.length == 1) {
           console.log("Helloooo")
           this.createChat(user.uid, this.currentChatPartners[0].uid)
+        } else if (this.currentChatPartners.length == 0) {
+          this.observer.chats.next({
+            chats: [],
+            users: [],
+          });
         }
       }
     });
