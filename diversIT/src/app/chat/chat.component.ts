@@ -80,7 +80,6 @@ export class ChatComponent implements OnInit, OnDestroy {
           if (data.length != 0) {
             this.currentChats = data.chats;
             this.currentChatUsers = data.users;
-            console.log(data);
             //create the Name Arrays for the Chats
             for (let i = 0; i<this.currentChatUsers.length; i++) {
               if (this.currentChatUsers[i].firstname.length + this.currentChatUsers[i].lastname.length > 25) {
