@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
+import { Subscription } from 'rxjs';
 import { Post, PostDisplay } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
 import { ObserversService } from 'src/app/services/observers.service';
@@ -10,16 +11,21 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './center-panel.component.html',
   styleUrls: ['./center-panel.component.scss']
 })
-export class CenterPanelComponent implements OnInit {
+export class CenterPanelComponent implements OnInit, OnDestroy {
 
   constructor(private firestore: UserService, private observer: ObserversService) { }
+  
+  ngOnDestroy(): void {
+    this.usersub.unsubscribe()
+  }
 
   currentUser: DiversITUser;
   mentors: DiversITUser[];
   posts: PostDisplay[] = [];
+  usersub: Subscription;
 
   ngOnInit(): void {    
-    this.observer.currentUserStatus.subscribe((data) => {
+    this.usersub = this.observer.currentUserStatus.subscribe((data) => {
       if (data != null) {
         this.currentUser = data
         if(this.currentUser.role == 3)this.initializeMentee()

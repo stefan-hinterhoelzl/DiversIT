@@ -1,8 +1,8 @@
-<div class="centerPanel">
-    <mat-card class="matcard-notifications">
+<div class="centerPanel" *ngIf="currentUser">
+    <mat-card class="matcard-notifications" >
         <h2>Benachrichtigungen</h2>
         <table border="0" style="width: 100%;">
-            <tr *ngFor="let n of this.currentUser.notifications">
+            <tr *ngFor="let n of this.notifications">
                 <td>
                     <mat-card-header routerLink="/profile/{{n.fromUID}}" style="cursor: pointer;">
                         <img *ngIf="n.fromPhotoURL !== unknown" src="{{n.fromPhotoURL}}" mat-card-avatar />
@@ -15,8 +15,8 @@
                 </td>
                 <td>{{n.text}}</td>
                 <td nowrap>
-                    <button mat-raised-button color="accent" *ngIf="n.type === 1">Annehmen</button>
-                    <button mat-raised-button *ngIf="n.type === 1">Ablehnen</button>
+                    <button mat-raised-button color="accent" *ngIf="n.type === 1" (click)="acceptMentorshipRequest(n)">Annehmen</button>
+                    <button mat-raised-button *ngIf="n.type === 1" (click)="declineMentorshipRequest(n)" style="margin-left: 5px;">Ablehnen</button>
                 </td>
             </tr>
         </table>

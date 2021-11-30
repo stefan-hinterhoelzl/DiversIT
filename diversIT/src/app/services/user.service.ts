@@ -7,6 +7,8 @@ import { Post } from '../models/post.model';
 import { Chat, Message } from '../models/chat.model';
 import { ChatService } from './chat.service';
 import { ObserversService } from './observers.service';
+import { Notification } from '../models/notification.model';
+import { NotificationService } from './notification.service';
 
 
 @Injectable({
@@ -14,7 +16,7 @@ import { ObserversService } from './observers.service';
 })
 export class UserService implements OnDestroy {
 
-  constructor(private observer: ObserversService, private chat: ChatService) {
+  constructor(private observer: ObserversService, private chat: ChatService, private notifications: NotificationService) {
     this.authStatusListener();
   }
 
@@ -38,6 +40,7 @@ export class UserService implements OnDestroy {
         this.observer.currentUserMentors.next(null);
         this.observer.currentUserMentees.next(null);
         if (this.usersub != null) this.usersub();
+        if (this.postssub != null) this.postssub();
       }
     });
   }
@@ -115,7 +118,9 @@ export class UserService implements OnDestroy {
         }
       this.chat.initializeChat(doc.data() as DiversITUser)
       }
-    });
+    });    
+    this.getPostOfUserObservable(user.uid)
+    this.notifications.getNotificationsListener(user.uid)
   }
 
   async getCurrentUserMentors(user: DiversITUser): Promise<DiversITUser[]> {

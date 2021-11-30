@@ -152,12 +152,12 @@ export class ChatService {
     });
   }
 
-  async revokeRelationship(mentee: string, mentor: string) {
+  async revokeRelationship(mentee: string, mentor: string) {    
     const docRefMentor = doc(this.firestore, "users", mentor);
     const docRefMentee = doc(this.firestore, "users", mentee)
 
     await updateDoc(docRefMentor, {
-      mentees: arrayRemove(mentee)
+      mentees: arrayRemove(mentee),
     });
 
     await updateDoc(docRefMentee, {
