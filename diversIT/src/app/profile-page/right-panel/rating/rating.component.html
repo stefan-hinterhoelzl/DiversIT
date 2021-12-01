@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="ownProfile">
+<div class="wrapper" *ngIf="ownProfile && displayForm">
     <mat-card class="card-finetuning">
         <mat-card-title>
             <h2>Dein Erfahrungsbericht</h2>
@@ -17,7 +17,8 @@
                     formControlName="text"></textarea>
             </mat-form-field>
             <div mat-dialog-actions align="end">
-                <a mat-raised-button (click)="sendEmail()">Als Email senden</a>
+                <a mat-raised-button (click)="sendEmail()" hidden>Als Email senden</a>
+                <button mat-raised-button (click)="saveRating()">Absenden</button>
             </div>
         </form>
     </mat-card>

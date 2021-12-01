@@ -1,7 +1,10 @@
+import { DiversITUser } from './../../../models/users.model';
+import { Rating } from './../../../models/rating.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
-import { DiversITUser } from 'src/app/models/users.model';
+import { serverTimestamp } from 'firebase/firestore';
+import { RatingService } from 'src/app/services/rating.service';
 
 @Component({
   selector: 'app-rating',
@@ -16,8 +19,9 @@ export class RatingComponent implements OnInit {
   private starCount = 5;
   ratingForm: FormGroup;
   emailAdress = "diversit.plattform@gmail.com";
+  displayForm = true;
 
-  constructor(private snackbar: SnackbarComponent) {
+  constructor(private snackbar: SnackbarComponent, private ratingService: RatingService) {
   }
 
   ngOnInit() {
@@ -33,15 +37,40 @@ export class RatingComponent implements OnInit {
   }
 
   sendEmail() {
+    if (this.isFormDataComplete()) {
+      window.open(`mailto:${this.emailAdress}?Subject=${this.rating}-Sterne Bewertung: ${this.ratingForm.get('summary').value.trim()}&body=${this.ratingForm.get('text').value.trim()} (${this.currentUser.uid})`);
+      this.snackbar.openSnackBar("Email abgesendet? Danke für dein Feedback!", "green-snackbar");
+      this.reset();
+    }
+  }
+
+  saveRating() {
+    if (this.isFormDataComplete()) {
+      let ratingPayload = <Rating>{
+        stars: this.rating,
+        summary: this.ratingForm.get('summary').value,
+        text: this.ratingForm.get('text').value,
+        timestamp: serverTimestamp(),
+        userID: this.currentUser.uid,
+      }
+      this.ratingService.addRating(ratingPayload);
+      this.snackbar.openSnackBar("Danke für dein Feedback!", "green-snackbar");
+      this.reset();
+      this.displayForm = false;
+    }
+  }
+
+  isFormDataComplete(): boolean {
     if (this.rating == null || this.rating == 0 || this.ratingForm.get('summary').value
       .trim() == '' || this.ratingForm.get('text').value.trim() == '') {
       this.snackbar.openSnackBar("Alle Formularfelder sind verpflichtend auszufüllen.", "red-snackbar");
-      return;
-    }
-    window.open(`mailto:${this.emailAdress}?Subject=${this.rating}-Sterne Bewertung: ${this.ratingForm.get('summary').value.trim()}&body=${this.ratingForm.get('text').value.trim()} (${this.currentUser.uid})`);
+      return false;
+    } else return true;
+  }
+
+  reset() {
     this.rating = null;
-    this.ngOnInit();
-    this.snackbar.openSnackBar("Email abgesendet? Danke für dein Feedback!", "green-snackbar");
+    this.ratingForm.reset();
   }
 }
 

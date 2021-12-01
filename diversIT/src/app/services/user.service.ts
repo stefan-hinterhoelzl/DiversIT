@@ -1,13 +1,10 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { DiversITUser } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, arrayUnion, addDoc, SnapshotOptions, orderBy, increment, Timestamp } from "firebase/firestore";
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, orderBy } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { BehaviorSubject, Subscription } from 'rxjs';
 import { Post } from '../models/post.model';
-import { Chat, Message } from '../models/chat.model';
 import { ChatService } from './chat.service';
 import { ObserversService } from './observers.service';
-import { Notification } from '../models/notification.model';
 import { NotificationService } from './notification.service';
 
 
@@ -21,7 +18,7 @@ export class UserService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-   if (this.usersub != null) this.usersub();
+    if (this.usersub != null) this.usersub();
   }
 
   db = getFirestore();
@@ -30,7 +27,7 @@ export class UserService implements OnDestroy {
   // chatsub;
   postssub;
 
-  
+
   authStatusListener() {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
@@ -117,9 +114,9 @@ export class UserService implements OnDestroy {
           let mentees = await this.getCurrentUserMentees(doc.data() as DiversITUser);
           this.observer.currentUserMentees.next(mentees);
         }
-      this.chat.initializeChat(doc.data() as DiversITUser)
+        this.chat.initializeChat(doc.data() as DiversITUser)
       }
-    });    
+    });
     this.getPostOfUserObservable(user.uid)
     this.notifications.getNotificationsListener(user.uid)
   }
@@ -214,7 +211,7 @@ export class UserService implements OnDestroy {
       let arr: Post[] = []
       q.forEach((doc) => {
         arr.push(doc.data() as Post)
-        }
+      }
       )
       this.observer.currentUserPosts.next(arr)
     })
@@ -244,7 +241,7 @@ export class UserService implements OnDestroy {
       mentees: []
     });
   }
- 
+
 }
 
 
