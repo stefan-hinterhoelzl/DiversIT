@@ -70,7 +70,7 @@
                     <div [ngClass]="{'own-message-wrapper': message.senderUID === currentUser.uid, 'other-message-wrapper': message.senderUID !== currentUser.uid, 'invisible': !messagesVisible}" *ngFor="let message of messages; let i = index; let last = last">
                         <div [ngClass]="message.senderUID === currentUser.uid ? 'own-message' : 'other-message'">
                             <div style = "display:flex;">
-                                <p style = "margin-bottom: 0;">{{message.text}}</p>
+                                <p  style = "margin-bottom: 0; word-break: break-word; white-space: pre-wrap;">{{message.text}}</p>
                             </div>
                             <div style = "display:flex; margin-bottom: 0;">
                                 <p class = "date">{{message.timestamp | date: 'dd.MM - HH:mm'}} </p>
