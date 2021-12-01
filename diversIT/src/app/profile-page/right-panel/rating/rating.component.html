@@ -1,0 +1,25 @@
+<div class="wrapper" *ngIf="ownProfile && displayForm">
+    <mat-card class="card-finetuning">
+        <mat-card-title>
+            <h2>Dein Erfahrungsbericht</h2>
+        </mat-card-title>
+        <app-star-rating [rating]="rating" [starCount]="starCount" (ratingUpdated)="onRatingChanged($event)">
+        </app-star-rating>
+
+        <form [formGroup]="ratingForm" class="example-form">
+            <mat-form-field class="example-full-width example-form" appearance="fill">
+                <mat-label>Kurzbeschreibung</mat-label>
+                <input type="text" matInput placeholder="Kurzbeschreibung" formControlName="summary" />
+            </mat-form-field>
+            <mat-form-field class="example-full-width example-form" appearance="fill">
+                <mat-label>Gib uns Feedback...</mat-label>
+                <textarea type="text" matInput placeholder="DiversIT hat mir geholfen,..."
+                    formControlName="text"></textarea>
+            </mat-form-field>
+            <div mat-dialog-actions align="end">
+                <a mat-raised-button (click)="sendEmail()" hidden>Als Email senden</a>
+                <button mat-raised-button (click)="saveRating()">Absenden</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

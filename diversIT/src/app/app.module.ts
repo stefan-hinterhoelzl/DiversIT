@@ -45,6 +45,9 @@ import { ChatService } from './services/chat.service';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { UserRatingsComponent } from './landing-page/landing-page-components/user-ratings/user-ratings.component';
+import { RatingComponent } from './profile-page/right-panel/rating/rating.component';
+import { StarRatingComponent } from './profile-page/right-panel/rating/star-rating/star-rating.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -81,7 +84,10 @@ const app = initializeApp(environment.firebaseConfig);
     PrivacyComponent,
     ProfileSettingsComponent,
     DialogComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    UserRatingsComponent,
+    RatingComponent,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,
@@ -100,5 +106,5 @@ const app = initializeApp(environment.firebaseConfig);
 })
 export class AppModule {
 
-  constructor(firestore: UserService, auth: AuthService, database: ChatService){}
+  constructor(firestore: UserService, auth: AuthService, database: ChatService) { }
 }

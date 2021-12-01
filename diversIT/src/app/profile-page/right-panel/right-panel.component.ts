@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DiversITUser } from 'src/app/models/users.model';
 
 @Component({
   selector: 'app-right-panel-profile',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./right-panel.component.scss']
 })
 export class RightPanelProfileComponent implements OnInit {
+
+  @Input() currentUser: DiversITUser;
+  @Input() ownProfile: boolean;
 
   constructor() { }
 

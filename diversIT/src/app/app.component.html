@@ -18,21 +18,25 @@
         </button>
         <button mat-icon-button class="icon-label" style="margin-right: 30px; ">
             <mat-icon class="icon" id="supervisor_account" color="accent">supervisor_account</mat-icon>
-            <label for="supervisor_account" class="lable">{{currentUser.role == 3 ? "Mentoren": "Mentees"}}</label>
+            <label for="supervisor_account" class="lable">{{currentUser?.role == 3 ? "Mentoren": "Mentees"}}</label>
         </button>
         <button mat-icon-button class="icon-label" style="margin-right: 60px;"
             routerLink="/profile/{{currentUser?.uid}}">
             <mat-icon class="icon" id="person" color="accent">person</mat-icon>
             <label for="person" class="lable">Profil</label>
         </button>
-        <button mat-icon-button class="icon-label" style="margin-right: 60px; "  routerLink="/notifications">
-            <mat-icon *ngIf = "newNotifications == 0" class="icon" id="notifications" color="accent">notifications</mat-icon>
-            <mat-icon *ngIf = "newNotifications != 0" matBadgeSize="small" matBadge="{{newNotifications}}" matBadgePosition="below" matBadgeColor="accent" class="icon" id="notifications" color="accent">notifications</mat-icon>
+        <button mat-icon-button class="icon-label" style="margin-right: 60px; " routerLink="/notifications">
+            <mat-icon *ngIf="newNotifications == 0" class="icon" id="notifications" color="accent">notifications
+            </mat-icon>
+            <mat-icon *ngIf="newNotifications != 0" matBadgeSize="small" matBadge="{{newNotifications}}"
+                matBadgePosition="below" matBadgeColor="accent" class="icon" id="notifications" color="accent">
+                notifications</mat-icon>
             <label for="notifications" class="lable">Benachrichtigungen</label>
         </button>
         <button mat-icon-button class="icon-label" style="margin-right: 30px;" routerLink="/chat">
-            <mat-icon *ngIf = "newMessages == 0"  class="icon" id="forum" color="accent">forum</mat-icon>
-            <mat-icon *ngIf = "newMessages != 0" matBadgeSize="small" matBadge="{{newMessages}}" matBadgePosition="below" matBadgeColor="accent" class="icon" id="forum" color="accent">forum</mat-icon>
+            <mat-icon *ngIf="newMessages == 0" class="icon" id="forum" color="accent">forum</mat-icon>
+            <mat-icon *ngIf="newMessages != 0" matBadgeSize="small" matBadge="{{newMessages}}" matBadgePosition="below"
+                matBadgeColor="accent" class="icon" id="forum" color="accent">forum</mat-icon>
             <label for="forum" class="lable">Chat</label>
         </button>
         <button mat-icon-button class="icon-label" (click)="logout()">
@@ -63,6 +67,6 @@
 
     <!-- content -->
     <router-outlet></router-outlet>
-    
+
 </main>
 <ngx-scrolltop></ngx-scrolltop>
