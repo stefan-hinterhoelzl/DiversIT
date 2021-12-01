@@ -1,10 +1,10 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="ownProfile">
     <mat-card class="card-finetuning">
         <mat-card-title>
             <h2>Dein Erfahrungsbericht</h2>
         </mat-card-title>
-        <app-star-rating [rating]="rating" [starCount]="starCount" [color]="color"
-            (ratingUpdated)="onRatingChanged($event)"></app-star-rating>
+        <app-star-rating [rating]="rating" [starCount]="starCount" (ratingUpdated)="onRatingChanged($event)">
+        </app-star-rating>
 
         <form [formGroup]="ratingForm" class="example-form">
             <mat-form-field class="example-full-width example-form" appearance="fill">

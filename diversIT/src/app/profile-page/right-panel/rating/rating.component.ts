@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
+import { DiversITUser } from 'src/app/models/users.model';
 
 @Component({
   selector: 'app-rating',
@@ -9,9 +10,10 @@ import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
 })
 export class RatingComponent implements OnInit {
 
-  @Input('rating') rating: number;
-  @Input('starCount') starCount = 5;
-  @Input('color') color = "accent";
+  @Input() currentUser: DiversITUser;
+  @Input() ownProfile: boolean;
+  private rating: number;
+  private starCount = 5;
   ratingForm: FormGroup;
   emailAdress = "diversit.plattform@gmail.com";
 
@@ -36,10 +38,10 @@ export class RatingComponent implements OnInit {
       this.snackbar.openSnackBar("Alle Formularfelder sind verpflichtend auszufüllen.", "red-snackbar");
       return;
     }
-    window.open(`mailto:${this.emailAdress}?Subject=${this.rating}-Sterne Bewertung: ${this.ratingForm.get('summary').value.trim()}&body=${this.ratingForm.get('text').value.trim()}`);
+    window.open(`mailto:${this.emailAdress}?Subject=${this.rating}-Sterne Bewertung: ${this.ratingForm.get('summary').value.trim()}&body=${this.ratingForm.get('text').value.trim()} (${this.currentUser.uid})`);
     this.rating = null;
     this.ngOnInit();
+    this.snackbar.openSnackBar("Email abgesendet? Danke für dein Feedback!", "green-snackbar");
   }
-
 }
 

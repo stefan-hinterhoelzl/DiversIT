@@ -10,7 +10,6 @@ export class StarRatingComponent implements OnInit {
 
   @Input('rating') rating: number;
   @Input('starCount') starCount: number;
-  @Input('color') color: string;
   @Output() ratingUpdated = new EventEmitter();
 
   ratingArr = [];
@@ -24,6 +23,7 @@ export class StarRatingComponent implements OnInit {
       this.ratingArr.push(index);
     }
   }
+
   onClick(rating: number) {
     console.log(rating)
     this.ratingUpdated.emit(rating);
@@ -38,9 +38,4 @@ export class StarRatingComponent implements OnInit {
     }
   }
 
-}
-export enum StarRatingColor {
-  primary = "primary",
-  accent = "accent",
-  warn = "warn"
 }
