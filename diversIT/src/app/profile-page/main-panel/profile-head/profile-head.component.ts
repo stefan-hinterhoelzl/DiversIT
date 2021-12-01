@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
@@ -8,6 +8,9 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { ChatService } from 'src/app/services/chat.service';
 import { take } from 'rxjs/operators';
+import { Notification } from 'src/app/models/notification.model';
+import { serverTimestamp, Timestamp } from '@firebase/firestore';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-profile-head',
@@ -16,7 +19,7 @@ import { take } from 'rxjs/operators';
 })
 export class ProfileHeadComponent implements OnInit {
 
-  constructor(private userService: UserService, private route: ActivatedRoute,private router: Router, private dialog: MatDialog, private chatService: ChatService) { }
+  constructor(private userService: UserService, private route: ActivatedRoute,private router: Router, private dialog: MatDialog, private chatService: ChatService, private notificationService: NotificationService) { }
 
   @Input() userOfProfile: DiversITUser;
   @Input() currentUser: DiversITUser;
@@ -25,26 +28,31 @@ export class ProfileHeadComponent implements OnInit {
   showUserDetails = false
   profileIdSubscription;
   visible = true;
+  openRequest;
+
   ngOnInit(): void {
     this.profileIdSubscription = this.route.snapshot.paramMap.get('id')
-
   }
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   const currentItem: SimpleChange = changes.currentUser;
-  //   if(changes.currentUser && changes.currentUser.currentValue){
-  //     let testuser = changes.currentUser.currentValue as DiversITUser
-  //     console.log(testuser.firstname)
-  //   }
-  //   if(changes.userOfProfile != null){
-  //     let testuser = changes.userOfProfile.currentValue as DiversITUser
-  //     console.log(testuser.firstname)
-  //   }
-  //   if(changes.postsOfUser != null){
-  //     let posts = changes.postsOfUser.currentValue
-  //     console.log(posts[1])
-  //   }
-  // }
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.currentUser && changes.currentUser.currentValue){
+      this.checkButton()
+    }
+    if(changes.userOfProfile != null){
+      this.checkButton()
+    }
+  }
+
+  checkButton(){
+    if(this.userOfProfile && this.currentUser){
+      this.notificationService.checkIfMentorRequestHasAlreadyBeenSent(this.userOfProfile.uid, this.currentUser.uid).then((data) => {
+        if(data != 0) this.openRequest = true;
+        else this.openRequest = false;
+      })
+      console.log(this.openRequest)
+    } 
+    else console.log("nullvalue beim check")
+  }
 
 
   // open Dialoge for adding mentor
@@ -63,9 +71,19 @@ export class ProfileHeadComponent implements OnInit {
     dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
       if(result != null){
         // user wants to connect
-
-        // TODO: connect to Mentor and add message (can be retrieved from result.inputFieldValue)
-          this.chatService.addRelationship(this.currentUser.uid, this.userOfProfile.uid);
+        let notification = <Notification>{
+          fromName: this.currentUser.firstname + " " + this.currentUser.lastname,
+          fromPhotoURL: this.currentUser.photoURL,
+          fromUID: this.currentUser.uid,
+          toUID: this.userOfProfile.uid,
+          text: result.inputFieldValue !== undefined ? result.inputFieldValue : "",
+          type: 1, // Type: 1 = Anfrage (Buttons: Annehmen, Ablehnen); 2 = Info (Keine Buttons)
+          when: null
+        }
+        
+        this.notificationService.addNotification(notification).then((data) =>
+          this.checkButton()
+        )
       }
     });
   }
@@ -90,8 +108,8 @@ export class ProfileHeadComponent implements OnInit {
     dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
       if(result != null){
         // user wants to disconnect
-        this.chatService.revokeRelationship(this.currentUser.uid, this.userOfProfile.uid)
-
+        if(this.currentUser.role == 2) this.chatService.revokeRelationship(this.userOfProfile.uid, this.currentUser.uid)
+        else this.chatService.revokeRelationship(this.currentUser.uid, this.userOfProfile.uid)
 
       }
     });

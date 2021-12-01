@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   title = 'mintistcool';
   currentUser: DiversITUser;
   newMessages: number;
+  newNotifications: number;
 
   constructor(private router: Router, private auth: AuthService, private firestore: UserService, private location: Location, private chat: ChatService, private observer: ObserversService) {
   }
@@ -30,6 +31,10 @@ export class AppComponent implements OnInit {
       this.newMessages = data;
     });
 
+    this.observer.notificationsOfUserStatus.subscribe((data) => {
+      if(data != null)
+      this.newNotifications = data.length
+    })
   }
 
   isLandingPage() {

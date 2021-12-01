@@ -77,7 +77,7 @@ export class ProfileSettingsComponent implements OnInit {
 
   onSubmit() {
     if (!this.profileSettingsForm.valid) {
-      this.snackbar.openSnackBar("Formular nicht korrekt ausgefüllt.", "snackbar-red");
+      this.snackbar.openSnackBar("Formular nicht korrekt ausgefüllt.", "red-snackbar");
       return;
     }
     this.currentUser.firstname = this.profileSettingsForm.get('firstName').value;
@@ -108,7 +108,7 @@ export class ProfileSettingsComponent implements OnInit {
       this.currentUser.universityEducation = "";
     }
     this.firestore.UpdateCurrentUserAccount(this.currentUser);
-    this.snackbar.openSnackBar("Die Benutzerdaten wurden erfolgreich aktualisiert!", "snackbar-green");
+    this.snackbar.openSnackBar("Die Benutzerdaten wurden erfolgreich aktualisiert!", "green-snackbar");
     this.router.navigate(['/profile/' + this.currentUser.uid])
   }
 

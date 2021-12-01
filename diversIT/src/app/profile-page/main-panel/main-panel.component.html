@@ -1,18 +1,10 @@
 <div class="wrapper">
     <app-profile-head [userOfProfile]="userOfProfile" [currentUser]="currentUser" [posts]="postsOfUser"
         (changeDetailsBoolean)="setDetailState()"></app-profile-head>
-    <app-profile-new-post *ngIf="userOfProfile && userOfProfile.uid === currentUser.uid && currentUser.role == 2"
-        [currentUser]="currentUser"></app-profile-new-post>
-
-    <div *ngIf="!showDetails">
-        <app-post-card *ngFor="let post of postsOfUser" userid="{{userOfProfile.uid}}"
-            name="{{userOfProfile.firstname + ' ' + userOfProfile.lastname}}" profileImg="{{userOfProfile.photoURL}}"
-            time="{{post.timestamp?.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}">
-        </app-post-card>
-    </div>
+    
 
     <mat-card style="margin-top: 10px; width: 100%"
-        *ngIf="userOfProfile && (userOfProfile.uid === currentUser.uid || showDetails)">
+        *ngIf="userOfProfile && ((userOfProfile.uid === currentUser.uid && currentUser.role === 3) || showDetails)">
         <h2>Details:</h2>
         <ul>
             <li *ngIf="userOfProfile.firstname">
@@ -43,8 +35,15 @@
                 <strong>Universitätsabschluss:</strong> {{userOfProfile.universityEducation}}
             </li>
         </ul>
-
     </mat-card>
 
+    <app-profile-new-post *ngIf="userOfProfile && userOfProfile.uid === currentUser.uid && currentUser.role == 2 && !showDetails"
+        [currentUser]="currentUser"></app-profile-new-post>
 
+    <div *ngIf="!showDetails">
+        <app-post-card *ngFor="let post of postsOfUser" userid="{{userOfProfile.uid}}"
+            name="{{userOfProfile.firstname + ' ' + userOfProfile.lastname}}" profileImg="{{userOfProfile.photoURL}}"
+            time="{{post.timestamp?.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}">
+        </app-post-card>
+    </div>
 </div>

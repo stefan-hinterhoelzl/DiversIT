@@ -37,6 +37,9 @@ export class ObserversService {
   currentUserPosts: BehaviorSubject<Post[]> = new BehaviorSubject<Post[]>(null);
   currentUserPostsStatus = this.currentUserPosts.asObservable()
 
+  //The Notifications of the currently loggedIn User
+  notificationsOfUser: BehaviorSubject<Notification[]> = new BehaviorSubject<Notification[]>(null);
+  notificationsOfUserStatus = this.notificationsOfUser.asObservable()
   
   constructor() { }
 
@@ -70,4 +73,7 @@ export class ObserversService {
     return this.currentUserPosts.value;
   }
 
+  get getnotificationsOfUserValue(): Notification[] {
+    return this.notificationsOfUser.value;
+  }
 }

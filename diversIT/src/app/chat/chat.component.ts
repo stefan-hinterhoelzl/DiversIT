@@ -73,14 +73,13 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.currentUser = data;
         this.combinedname = this.currentUser.firstname + " " + this.currentUser.lastname;
       }
-    });
+    
 
         //get the current Chats
         this.currentChatsSubscription = this.observer.chatStatus.subscribe((data) => {
           if (data.length != 0) {
             this.currentChats = data.chats;
             this.currentChatUsers = data.users;
-            console.log(data);
             //create the Name Arrays for the Chats
             for (let i = 0; i<this.currentChatUsers.length; i++) {
               if (this.currentChatUsers[i].firstname.length + this.currentChatUsers[i].lastname.length > 25) {
@@ -91,6 +90,7 @@ export class ChatComponent implements OnInit, OnDestroy {
             }
           }
         })
+      });
         if (this.currentChats != null) {
           this.initialize(this.currentUser);
         }
