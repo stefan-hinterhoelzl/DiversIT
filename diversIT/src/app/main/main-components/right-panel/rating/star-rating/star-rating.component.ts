@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } fro
 @Component({
   selector: 'app-star-rating',
   templateUrl: './star-rating.component.html',
-  styleUrls: ['./star-rating.component.css'],
+  styleUrls: ['./star-rating.component.scss'],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class StarRatingComponent implements OnInit {
