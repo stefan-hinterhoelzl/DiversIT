@@ -50,7 +50,8 @@ export class ChatService {
       if (snapshot.exists()) {
         const chats: Chat[] = []
         snapshot.forEach((childSnapshot) => {
-          chats.push(childSnapshot.val() as Chat)
+          let chat = childSnapshot.val() as Chat
+          if (chat.recipientUser != null) chats.push(chat)
         })
         chats.reverse()
 
@@ -65,6 +66,7 @@ export class ChatService {
               return;
             }
           }
+          //there is an additional chat object, pending for deletion
         } else if (chats.length > this.currentChatPartners.length) {
           for (let i = 0; i < chats.length; i++) {
             let chatpartner = this.currentChatPartners.find((value) => { return value.uid == chats[i].recipientUser })
