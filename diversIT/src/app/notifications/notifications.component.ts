@@ -20,9 +20,6 @@ export class NotificationsComponent implements OnInit {
 
   constructor(private firestore: UserService, private observer: ObserversService, private chatService: ChatService, private notificationService: NotificationService) { }
 
-  ngOnDestroy(): void {
-  }
-
   ngOnInit(): void {
     this.notificationSubscription = this.observer.notificationsOfUserStatus.subscribe((notifications: any) => {
       if(notifications != null)

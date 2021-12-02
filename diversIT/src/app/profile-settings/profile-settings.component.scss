@@ -6,9 +6,9 @@
 }
 
 .matcard-profilesettings {
-    margin: 10px 10px;
+    // margin: 10px 10px;
     width: 50%;
-    left: 25%
+    left: 25%;
 }
 
 ::ng-deep .mat-form-field-wrapper{
@@ -17,4 +17,12 @@
 
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
     color: grey;
+}
+
+form > div {
+
+    display: flex;
+    // width: 60%;
+    flex-direction: row;
+    justify-content: space-around;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,9 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
   styleUrls: ['./profile-settings.component.scss']
 })
 
-export class ProfileSettingsComponent implements OnInit {
+export class ProfileSettingsComponent implements OnInit, OnDestroy
+
+{
 
   constructor(private firestore: UserService, private observer: ObserversService, private snackbar: SnackbarComponent, private router: Router) { }
 
@@ -53,9 +55,9 @@ export class ProfileSettingsComponent implements OnInit {
     this.currentUserSubscription = this.observer.currentUserStatus.subscribe((user) => {
       if (user != null) {
         this.currentUser = user;
-        if (this.currentUser.role = 1) this.currentUserRoleText = 'Admin';
-        if (this.currentUser.role = 2) this.currentUserRoleText = 'Mentor';
-        if (this.currentUser.role = 3) this.currentUserRoleText = 'Mentee';
+        if (this.currentUser.role == 1) this.currentUserRoleText = 'Admin';
+        if (this.currentUser.role == 2) this.currentUserRoleText = 'Mentor';
+        if (this.currentUser.role == 3) this.currentUserRoleText = 'Mentee';
         this.profileSettingsForm.setValue({
           role: this.currentUserRoleText,
           email: this.currentUser.email,
@@ -107,6 +109,8 @@ export class ProfileSettingsComponent implements OnInit {
     } else {
       this.currentUser.universityEducation = "";
     }
+
+    console.log(this.currentUser)
     this.firestore.UpdateCurrentUserAccount(this.currentUser);
     this.snackbar.openSnackBar("Die Benutzerdaten wurden erfolgreich aktualisiert!", "green-snackbar");
     this.router.navigate(['/profile/' + this.currentUser.uid])

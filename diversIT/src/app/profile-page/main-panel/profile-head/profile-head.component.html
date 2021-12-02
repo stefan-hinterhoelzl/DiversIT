@@ -12,8 +12,8 @@
             <!-- profil IST mein Mentor -->
             <button *ngIf="currentUser.mentors.includes(userOfProfile.uid) || currentUser.mentees.includes(userOfProfile.uid)" mat-raised-button color="accent" (click)="navigateToChatWithMentor()">Nachricht</button>
             <!-- profil ist NICHT mein Mentor -->
-            <button *ngIf="!currentUser.mentors.includes(userOfProfile.uid) && !currentUser.mentees.includes(userOfProfile.uid) && openRequest != null && openRequest == false" mat-raised-button color="accent" (click)="addMentor()">Verknüpfen</button>
-            <button *ngIf="!currentUser.mentors.includes(userOfProfile.uid) && !currentUser.mentees.includes(userOfProfile.uid) && openRequest != null && openRequest == true" mat-raised-button routerLink="/notifications">Offene Mentoranfrage</button>
+            <button *ngIf="!currentUser.mentors.includes(userOfProfile.uid) && !currentUser.mentees.includes(userOfProfile.uid) && openRequest !== null && openRequest === false" mat-raised-button color="accent" (click)="addMentor()">Verknüpfen</button>
+            <button *ngIf="!currentUser.mentors.includes(userOfProfile.uid) && !currentUser.mentees.includes(userOfProfile.uid) && openRequest !== null && openRequest === true" mat-raised-button routerLink="/notifications">Offene Mentoranfrage</button>
             <button mat-raised-button [matMenuTriggerFor]="menu">Mehr</button>
             <mat-menu #menu="matMenu" >
                 <button *ngIf="currentUser.mentors.includes(userOfProfile.uid) || currentUser.mentees.includes(userOfProfile.uid)" mat-menu-item (click)="cancleMentorship()">Mentorschaft beenden</button>
@@ -24,7 +24,7 @@
         <!-- Wenn es Mein eigenes Profil ist -->
         <wrapper *ngIf="userOfProfile.uid === currentUser.uid">
             <button mat-raised-button (click)="navigateToProfileSetting()">Profileinstellungen</button>
-            <button *ngIf="currentUser.role == 2" mat-raised-button (click)="showDetails()">{{showUserDetails ? "Posts anzeigen" : "Details anzeigen"}}</button>
+            <button *ngIf="currentUser.role === 2" mat-raised-button (click)="showDetails()">{{showUserDetails ? "Posts anzeigen" : "Details anzeigen"}}</button>
         </wrapper>
     </mat-card-content>
 </mat-card>

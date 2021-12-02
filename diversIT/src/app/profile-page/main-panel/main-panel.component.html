@@ -14,7 +14,7 @@
                 <strong>Nachname:</strong> {{userOfProfile.lastname}}
             </li>
             <li *ngIf="userOfProfile.role">
-                <strong>Rolle:</strong> {{userOfProfile.role == 1 ? "Administrator" : (userOfProfile.role == 2 ? "Mentor" : "Mentee")}}
+                <strong>Rolle:</strong> {{userOfProfile.role === 1 ? "Administrator" : (userOfProfile.role === 2 ? "Mentor" : "Mentee")}}
             </li>
             <li *ngIf="userOfProfile.gender">
                 <strong>Geschlecht:</strong> {{userOfProfile.gender}}
@@ -37,7 +37,7 @@
         </ul>
     </mat-card>
 
-    <app-profile-new-post *ngIf="userOfProfile && userOfProfile.uid === currentUser.uid && currentUser.role == 2 && !showDetails"
+    <app-profile-new-post *ngIf="userOfProfile && userOfProfile.uid === currentUser.uid && currentUser.role === 2 && !showDetails"
         [currentUser]="currentUser"></app-profile-new-post>
 
     <div *ngIf="!showDetails">

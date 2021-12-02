@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
@@ -17,7 +17,7 @@ import { NotificationService } from 'src/app/services/notification.service';
   templateUrl: './profile-head.component.html',
   styleUrls: ['./profile-head.component.scss']
 })
-export class ProfileHeadComponent implements OnInit {
+export class ProfileHeadComponent implements OnInit, OnChanges {
 
   constructor(private userService: UserService, private route: ActivatedRoute,private router: Router, private dialog: MatDialog, private chatService: ChatService, private notificationService: NotificationService) { }
 

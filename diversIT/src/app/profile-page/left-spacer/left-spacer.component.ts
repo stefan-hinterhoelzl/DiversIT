@@ -5,11 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './left-spacer.component.html',
   styleUrls: ['./left-spacer.component.scss']
 })
-export class LeftSpacerComponent implements OnInit {
+export class LeftSpacerComponent{
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+
 
 }
