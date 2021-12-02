@@ -12,7 +12,7 @@
                 <div style = "display: flex; flex-direction: column; width: 100%;">
                     <div  *ngIf = "currentChatPartnerCombinedName?.length > 100"  style = "margin-left: 2%;"><h3 (click) = "navigateToUser(currentChatPartner?.uid)" matTooltip="{{currentChatPartnerCombinedName}}" style="margin-bottom:0; cursor: pointer; display: flex;">{{currentChatPartnerCombinedName?.substring(0,100)}}...</h3></div>
                     <div  *ngIf = "currentChatPartnerCombinedName?.length < 100"  style = "margin-left: 2%; cursor: pointer;"><h3 (click) = "navigateToUser(currentChatPartner?.uid)" style="margin-bottom:0; cursor: pointer; display: flex;">{{currentChatPartnerCombinedName}}</h3></div>
-                    <div  *ngIf = "currentChatPartner?.job != '' && currentChatPartner?.company != ''" style = "margin-left: 2%; cursor: pointer;"><p style="margin-bottom: 0;">{{currentChatPartner?.job}} bei {{currentChatPartner?.company}}</p></div>
+                    <div  *ngIf = "currentChatPartner?.job !== '' && currentChatPartner?.company !== ''" style = "margin-left: 2%; cursor: pointer;"><p style="margin-bottom: 0;">{{currentChatPartner?.job}} bei {{currentChatPartner?.company}}</p></div>
                 </div>
             </div>
         </div>
@@ -24,8 +24,8 @@
                     <div [ngClass] ="chat.amountNewMessages > 0 ? 'bold' : ''" style = "display: flex; flex-direction: column; width: 100%;">
                         <div style = "display: flex; flex-direction: row; justify-content: space-between; width: 95%; margin-left: 3%;">
                             <div>
-                                <p *ngIf = "currentChatNames.length != 0 && currentChatNames[i].indexOf('.') != -1" matTooltip="{{currentChatUsers[i].firstname}} {{currentChatUsers[i].lastname}}" style = "font-size: larger">{{currentChatNames[i]}}</p>
-                                <p *ngIf = "currentChatNames.length != 0 && currentChatNames[i].indexOf('.') == -1" style = "font-size: larger">{{currentChatNames[i]}}</p>
+                                <p *ngIf = "currentChatNames.length !== 0 && currentChatNames[i].indexOf('.') !== -1" matTooltip="{{currentChatUsers[i].firstname}} {{currentChatUsers[i].lastname}}" style = "font-size: larger">{{currentChatNames[i]}}</p>
+                                <p *ngIf = "currentChatNames.length !== 0 && currentChatNames[i].indexOf('.') === -1" style = "font-size: larger">{{currentChatNames[i]}}</p>
                             </div>
                             
                             <div>

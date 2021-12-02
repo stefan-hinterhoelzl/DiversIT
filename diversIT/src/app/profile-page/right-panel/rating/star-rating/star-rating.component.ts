@@ -8,8 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } fro
 })
 export class StarRatingComponent implements OnInit {
 
-  @Input('rating') rating: number;
-  @Input('starCount') starCount: number;
+  @Input() rating: number;
+  @Input() starCount: number;
   @Output() ratingUpdated = new EventEmitter();
 
   ratingArr = [];

@@ -7,12 +7,10 @@ import { Dialog } from '../models/dialog.model';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent {
 
   constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Dialog,) { }
 
-  ngOnInit(): void {
-  }
 
   onNoClick(): void {
     this.dialogRef.close();

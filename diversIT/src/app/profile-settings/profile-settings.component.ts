@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,9 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
   styleUrls: ['./profile-settings.component.scss']
 })
 
-export class ProfileSettingsComponent implements OnInit {
+export class ProfileSettingsComponent implements OnInit, OnDestroy
+
+{
 
   constructor(private firestore: UserService, private observer: ObserversService, private snackbar: SnackbarComponent, private router: Router) { }
 
