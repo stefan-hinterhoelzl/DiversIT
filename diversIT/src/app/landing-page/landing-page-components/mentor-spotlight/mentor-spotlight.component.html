@@ -35,7 +35,7 @@
 
         <!-- CTA and Mentoring Capacity Info -->
         <mat-card-actions>
-            <div *ngIf="mentor.maxMentees &lt; mentor.mentees.length; else fullcapacity">
+            <div *ngIf="mentor.maxMentees === -1 || mentor.maxMentees > mentor.mentees.length; else fullcapacity">
                 <p>Freie Mentoring-Plätze!</p>
                 <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary"> Mentee werden
                 </button>
