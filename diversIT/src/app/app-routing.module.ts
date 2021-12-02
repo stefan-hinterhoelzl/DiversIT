@@ -13,6 +13,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { ChatComponent } from './chat/chat.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { MentorGuardService } from './services/redirectMentorGuard.service';
 
 const routes: Routes = [
 
@@ -37,7 +38,7 @@ const routes: Routes = [
   {
     path: 'app',
     component: MainComponent,
-    canActivate: [AuthguardService]
+    canActivate: [AuthguardService, MentorGuardService]
   },
   {
     path: 'admin',

@@ -1,4 +1,4 @@
 <div class="right-panel">
-    <app-interesting-mentors></app-interesting-mentors>
+    <app-interesting-mentors *ngIf="currentUser.role == 3"></app-interesting-mentors>
     <app-rating [ownProfile]="ownProfile" [currentUser]="currentUser"></app-rating>
 </div>
