@@ -38,7 +38,13 @@
                 </mat-form-field>
             </div>
             <div *ngIf="currentUser.role === 2">
-                <mat-checkbox name="girlsOnlyMentor" formControlName="girlsOnlyMentor">Nur Frauen</mat-checkbox>
+                <mat-form-field appearance="fill">
+                    <mat-label for="selectedGirlsOnlyMentor">Girls Only:</mat-label>
+                    <mat-select id="selectedGirlsOnlyMentor" formControlName="girlsOnlyMentor" required>
+                        <mat-option  [value]=true>Girls Only</mat-option>
+                        <mat-option  [value]=false>Alle Mentees</mat-option>
+                    </mat-select>
+                </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label for="maxMentees">Max Mentees (-1 = Kein Limit):</mat-label>
                     <input matInput type="number" min="-1" max="100" id="maxMentees" formControlName="maxMentees">

@@ -109,6 +109,8 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy
     } else {
       this.currentUser.universityEducation = "";
     }
+
+    console.log(this.currentUser)
     this.firestore.UpdateCurrentUserAccount(this.currentUser);
     this.snackbar.openSnackBar("Die Benutzerdaten wurden erfolgreich aktualisiert!", "green-snackbar");
     this.router.navigate(['/profile/' + this.currentUser.uid])

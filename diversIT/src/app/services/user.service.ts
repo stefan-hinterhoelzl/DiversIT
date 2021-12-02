@@ -96,8 +96,7 @@ export class UserService implements OnDestroy {
       company: user.company,
       maxMentees: user.maxMentees,
       girlsOnlyMentor: user.girlsOnlyMentor,
-      photoURL: user.photoURL,
-      notifications: user.notifications
+      photoURL: user.photoURL
     });
   }
 
