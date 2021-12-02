@@ -55,9 +55,9 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy
     this.currentUserSubscription = this.observer.currentUserStatus.subscribe((user) => {
       if (user != null) {
         this.currentUser = user;
-        if (this.currentUser.role = 1) this.currentUserRoleText = 'Admin';
-        if (this.currentUser.role = 2) this.currentUserRoleText = 'Mentor';
-        if (this.currentUser.role = 3) this.currentUserRoleText = 'Mentee';
+        if (this.currentUser.role == 1) this.currentUserRoleText = 'Admin';
+        if (this.currentUser.role == 2) this.currentUserRoleText = 'Mentor';
+        if (this.currentUser.role == 3) this.currentUserRoleText = 'Mentee';
         this.profileSettingsForm.setValue({
           role: this.currentUserRoleText,
           email: this.currentUser.email,
