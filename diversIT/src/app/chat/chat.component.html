@@ -35,8 +35,8 @@
                         </div>
                         <div style = "display: flex; flex-direction: row; justify-content: space-between; width: 90%; margin-left: 3%;">
                             <div>
-                                <p style ="font-size: small;" *ngIf = "chat.lastMessage.length > 20">{{chat.lastMessageTime  | date: 'dd.MM - HH:mm'}}: {{chat.lastMessage.substring(0,20)}}...</p>
-                                <p style ="font-size: small;" *ngIf = "chat.lastMessage.length <= 20">{{chat.lastMessageTime  | date: 'dd.MM - HH:mm'}}: {{chat.lastMessage}}</p>
+                                <p style ="font-size: small;" *ngIf = "chat.lastMessage.length > 20 && chat.lastMessage != '' ">{{chat.lastMessageTime  | date: 'dd.MM - HH:mm'}}: {{chat.lastMessage.substring(0,20)}}...</p>
+                                <p style ="font-size: small;" *ngIf = "chat.lastMessage.length <= 20 && chat.lastMessage != '' ">{{chat.lastMessageTime  | date: 'dd.MM - HH:mm'}}: {{chat.lastMessage}}</p>
                             </div>
                             <div>
                                 <p>
@@ -47,6 +47,9 @@
                         </div>
 
                     </div>
+                </div>
+                <div *ngIf = "currentChats.length === 0">
+                    <p>Sie haben noch keine Chats.</p>
                 </div>
             </div>
             <div class = "flex-wrapper" style =  "height: 100%; flex-direction: column-reverse" *ngIf="chatOpen">
