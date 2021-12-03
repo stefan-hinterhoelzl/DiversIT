@@ -20,9 +20,11 @@
         <mat-card class="job-card-finetuning">
             <mat-card-header>
                 <mat-card-title> IT-Techniker </mat-card-title>
-                <div mat-card-avatar class="header-image" routerLink="/profile/jbZWHG9F8XRDMdtDrQ6hzLZFUz52"
-                    style="cursor: pointer; background-image: url('https://lh3.googleusercontent.com/a-/AOh14Ghlaad4KD3bCh9g0uaW7R-dX08xrjxMIZQasIbR=s96-c'); background-size: cover;">
-                </div>
+                <img *ngIf="firstMentorHasImage('IT-Techniker'); else placeholder"
+                    src="{{jobProfilesMentorsMap.get('IT-Techniker')[0].photoURL}}" mat-card-avatar />
+                <ng-template #placeholder>
+                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                </ng-template>
             </mat-card-header>
             <mat-card-content>
                 <mat-tab-group>
@@ -97,13 +99,29 @@
                             </li>
                         </ul>
                     </mat-tab>
-                    <mat-tab label="Mentor*in">
-                        <div class="container">
-                            <h2> Stefan Hinterhölzl </h2>
-                            <p> DiversIT-Mentor </p>
-                            <button mat-raised-button routerLink="/profile/jbZWHG9F8XRDMdtDrQ6hzLZFUz52"
-                                class="btn btn-primary"> Zum Profil
-                            </button>
+                    <mat-tab label="MentorInnen">
+                        <div class="mentors">
+                            <div *ngFor="let mentor of jobProfilesMentorsMap.get('IT-Techniker')" class="container">
+                                <!-- Photo -->
+                                <img *ngIf="mentor.photoURL !== '' && mentor.photoURL !== unkown; else placeholder"
+                                    src="{{mentor.photoURL}}" mat-card-avatar />
+                                <ng-template #placeholder>
+                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                                </ng-template>
+                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>
+                                <p *ngIf="mentor.gender === 'Weiblich'">DiversIT-Mentorin</p>
+                                <p *ngIf="mentor.gender === 'Männlich'">DiversIT-Mentor</p>
+                                <p *ngIf="mentor.gender !== 'Weiblich' && mentor.gender !== 'Männlich'">DiversIT-Mentor*
+                                </p>
+                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">
+                                    Zum
+                                    Profil
+                                </button>
+                            </div>
+
+                            <div *ngIf="jobProfilesMentorsMap.get('IT-Techniker').length === 0" class="container">
+                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>
+                            </div>
                         </div>
                     </mat-tab>
                 </mat-tab-group>
@@ -115,9 +133,11 @@
         <mat-card class="job-card-finetuning">
             <mat-card-header>
                 <mat-card-title> UX-Designer </mat-card-title>
-                <div mat-card-avatar class="header-image" routerLink="/profile/f0fi5AyuXMSlFcmmJTzErrRqFvx1"
-                    style="cursor: pointer; background-image: url('./../../../../assets/Images/job-profiles/Thomas-Deutsch-small.jpg'); background-size: cover;">
-                </div>
+                <img *ngIf="firstMentorHasImage('UX-Designer'); else placeholder"
+                    src="{{jobProfilesMentorsMap.get('UX-Designer')[0].photoURL}}" mat-card-avatar />
+                <ng-template #placeholder>
+                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                </ng-template>
             </mat-card-header>
             <mat-card-content>
                 <mat-tab-group>
@@ -209,13 +229,29 @@
                             </li>
                         </ul>
                     </mat-tab>
-                    <mat-tab label="Mentor*in">
-                        <div class="container">
-                            <h2> Thomas Deutsch </h2>
-                            <p> DiversIT-Mentor </p>
-                            <button mat-raised-button routerLink="/profile/f0fi5AyuXMSlFcmmJTzErrRqFvx1"
-                                class="btn btn-primary"> Zum Profil
-                            </button>
+                    <mat-tab label="MentorInnen">
+                        <div class="mentors">
+                            <div *ngFor="let mentor of jobProfilesMentorsMap.get('UX-Designer')" class="container">
+                                <!-- Photo -->
+                                <img *ngIf="mentor.photoURL !== '' && mentor.photoURL !== unkown; else placeholder"
+                                    src="{{mentor.photoURL}}" mat-card-avatar />
+                                <ng-template #placeholder>
+                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                                </ng-template>
+                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>
+                                <p *ngIf="mentor.gender === 'Weiblich'">DiversIT-Mentorin</p>
+                                <p *ngIf="mentor.gender === 'Männlich'">DiversIT-Mentor</p>
+                                <p *ngIf="mentor.gender !== 'Weiblich' && mentor.gender !== 'Männlich'">DiversIT-Mentor*
+                                </p>
+                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">
+                                    Zum
+                                    Profil
+                                </button>
+                            </div>
+
+                            <div *ngIf="jobProfilesMentorsMap.get('UX-Designer').length === 0" class="container">
+                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>
+                            </div>
                         </div>
                     </mat-tab>
                 </mat-tab-group>
@@ -227,9 +263,11 @@
         <mat-card class="job-card-finetuning">
             <mat-card-header>
                 <mat-card-title> Software Engineer </mat-card-title>
-                <div mat-card-avatar class="header-image" routerLink="/profile/0jiOV3Ihtjg2Gwu3NovseuGTnm02"
-                    style="cursor: pointer; background-image: url('https://drive.google.com/uc?id=1vIxKVqzRvdUi9oHrz0lRrAYffidwTdsu'); background-size: cover;">
-                </div>
+                <img *ngIf="firstMentorHasImage('Software Engineer'); else placeholder"
+                    src="{{jobProfilesMentorsMap.get('Software Engineer')[0].photoURL}}" mat-card-avatar />
+                <ng-template #placeholder>
+                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                </ng-template>
             </mat-card-header>
             <mat-card-content>
                 <mat-tab-group>
@@ -321,13 +359,30 @@
                             </li>
                         </ul>
                     </mat-tab>
-                    <mat-tab label="Mentor*in">
-                        <div class="container">
-                            <h2> Gerald Roither </h2>
-                            <p> DiversIT-Mentor </p>
-                            <button mat-raised-button routerLink="/profile/0jiOV3Ihtjg2Gwu3NovseuGTnm02"
-                                class="btn btn-primary"> Zum Profil
-                            </button>
+                    <mat-tab label="MentorInnen">
+                        <div class="mentors">
+                            <div *ngFor="let mentor of jobProfilesMentorsMap.get('Software Engineer')"
+                                class="container">
+                                <!-- Photo -->
+                                <img *ngIf="mentor.photoURL !== '' && mentor.photoURL !== unkown; else placeholder"
+                                    src="{{mentor.photoURL}}" mat-card-avatar />
+                                <ng-template #placeholder>
+                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                                </ng-template>
+                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>
+                                <p *ngIf="mentor.gender === 'Weiblich'">DiversIT-Mentorin</p>
+                                <p *ngIf="mentor.gender === 'Männlich'">DiversIT-Mentor</p>
+                                <p *ngIf="mentor.gender !== 'Weiblich' && mentor.gender !== 'Männlich'">DiversIT-Mentor*
+                                </p>
+                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">
+                                    Zum
+                                    Profil
+                                </button>
+                            </div>
+
+                            <div *ngIf="jobProfilesMentorsMap.get('Software Engineer').length === 0" class="container">
+                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>
+                            </div>
                         </div>
                     </mat-tab>
                 </mat-tab-group>
@@ -339,9 +394,11 @@
         <mat-card class="job-card-finetuning">
             <mat-card-header>
                 <mat-card-title> Scrum Master </mat-card-title>
-                <div mat-card-avatar class="header-image" routerLink="/profile/f0fi5AyuXMSlFcmmJTzErrRqFvx1"
-                    style="cursor: pointer; background-image: url('./../../../../assets/Images/job-profiles/Thomas-Deutsch-small.jpg'); background-size: cover;">
-                </div>
+                <img *ngIf="firstMentorHasImage('Scrum Master'); else placeholder"
+                    src="{{jobProfilesMentorsMap.get('Scrum Master')[0].photoURL}}" mat-card-avatar />
+                <ng-template #placeholder>
+                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                </ng-template>
             </mat-card-header>
             <mat-card-content>
                 <mat-tab-group>
@@ -433,13 +490,29 @@
                             </li>
                         </ul>
                     </mat-tab>
-                    <mat-tab label="Mentor*in">
-                        <div class="container">
-                            <h2> Thomas Deutsch </h2>
-                            <p> DiversIT-Mentor </p>
-                            <button mat-raised-button routerLink="/profile/f0fi5AyuXMSlFcmmJTzErrRqFvx1"
-                                class="btn btn-primary"> Zum Profil
-                            </button>
+                    <mat-tab label="MentorInnen">
+                        <div class="mentors">
+                            <div *ngFor="let mentor of jobProfilesMentorsMap.get('Scrum Master')" class="container">
+                                <!-- Photo -->
+                                <img *ngIf="mentor.photoURL !== '' && mentor.photoURL !== unkown; else placeholder"
+                                    src="{{mentor.photoURL}}" mat-card-avatar />
+                                <ng-template #placeholder>
+                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                                </ng-template>
+                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>
+                                <p *ngIf="mentor.gender === 'Weiblich'">DiversIT-Mentorin</p>
+                                <p *ngIf="mentor.gender === 'Männlich'">DiversIT-Mentor</p>
+                                <p *ngIf="mentor.gender !== 'Weiblich' && mentor.gender !== 'Männlich'">DiversIT-Mentor*
+                                </p>
+                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">
+                                    Zum
+                                    Profil
+                                </button>
+                            </div>
+
+                            <div *ngIf="jobProfilesMentorsMap.get('Scrum Master').length === 0" class="container">
+                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>
+                            </div>
                         </div>
                     </mat-tab>
                 </mat-tab-group>
@@ -451,9 +524,11 @@
         <mat-card class="job-card-finetuning">
             <mat-card-header>
                 <mat-card-title> Product Owner </mat-card-title>
-                <div mat-card-avatar class="header-image" routerLink="/profile/zLccCJEzSGap7BlhefDT0xTyi9I3"
-                    style="cursor: pointer; background-image: url('https://drive.google.com/uc?id=1Pt0poYI0Wa4VcxJCL7-uyCDVnnTyTscR'); background-size: cover;">
-                </div>
+                <img *ngIf="firstMentorHasImage('Product Owner'); else placeholder"
+                    src="{{jobProfilesMentorsMap.get('Product Owner')[0].photoURL}}" mat-card-avatar />
+                <ng-template #placeholder>
+                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                </ng-template>
             </mat-card-header>
             <mat-card-content>
                 <mat-tab-group>
@@ -545,13 +620,29 @@
                             </li>
                         </ul>
                     </mat-tab>
-                    <mat-tab label="Mentor*in">
-                        <div class="container">
-                            <h2> Diana Diversit </h2>
-                            <p> DiversIT-Mentorin </p>
-                            <button mat-raised-button routerLink="/profile/3DlpfgwpbxQnLuS3fiw9mKroGm42"
-                                class="btn btn-primary"> Zum Profil
-                            </button>
+                    <mat-tab label="MentorInnen">
+                        <div class="mentors">
+                            <div *ngFor="let mentor of jobProfilesMentorsMap.get('Product Owner')" class="container">
+                                <!-- Photo -->
+                                <img *ngIf="mentor.photoURL !== '' && mentor.photoURL !== unkown; else placeholder"
+                                    src="{{mentor.photoURL}}" mat-card-avatar />
+                                <ng-template #placeholder>
+                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                                </ng-template>
+                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>
+                                <p *ngIf="mentor.gender === 'Weiblich'">DiversIT-Mentorin</p>
+                                <p *ngIf="mentor.gender === 'Männlich'">DiversIT-Mentor</p>
+                                <p *ngIf="mentor.gender !== 'Weiblich' && mentor.gender !== 'Männlich'">DiversIT-Mentor*
+                                </p>
+                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">
+                                    Zum
+                                    Profil
+                                </button>
+                            </div>
+
+                            <div *ngIf="jobProfilesMentorsMap.get('Product Owner').length === 0" class="container">
+                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>
+                            </div>
                         </div>
                     </mat-tab>
                 </mat-tab-group>
@@ -563,9 +654,12 @@
         <mat-card class="job-card-finetuning">
             <mat-card-header>
                 <mat-card-title> Universitätsprofessor für Informatik </mat-card-title>
-                <div mat-card-avatar class="header-image" routerLink="/profile/0jiOV3Ihtjg2Gwu3NovseuGTnm02"
-                    style="cursor: pointer; background-image: url('https://drive.google.com/uc?id=1vIxKVqzRvdUi9oHrz0lRrAYffidwTdsu'); background-size: cover;">
-                </div>
+                <img *ngIf="firstMentorHasImage('Universitätsprofessor für Informatik'); else placeholder"
+                    src="{{jobProfilesMentorsMap.get('Universitätsprofessor für Informatik')[0].photoURL}}"
+                    mat-card-avatar />
+                <ng-template #placeholder>
+                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                </ng-template>
             </mat-card-header>
             <mat-card-content>
                 <mat-tab-group>
@@ -636,13 +730,31 @@
                             </li>
                         </ul>
                     </mat-tab>
-                    <mat-tab label="Mentor*in">
-                        <div class="container">
-                            <h2> Gerald Roither </h2>
-                            <p> DiversIT-Mentor </p>
-                            <button mat-raised-button routerLink="/profile/0jiOV3Ihtjg2Gwu3NovseuGTnm02"
-                                class="btn btn-primary"> Zum Profil
-                            </button>
+                    <mat-tab label="MentorInnen">
+                        <div class="mentors">
+                            <div *ngFor="let mentor of jobProfilesMentorsMap.get('Universitätsprofessor für Informatik')"
+                                class="container">
+                                <!-- Photo -->
+                                <img *ngIf="mentor.photoURL !== '' && mentor.photoURL !== unkown; else placeholder"
+                                    src="{{mentor.photoURL}}" mat-card-avatar />
+                                <ng-template #placeholder>
+                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                                </ng-template>
+                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>
+                                <p *ngIf="mentor.gender === 'Weiblich'">DiversIT-Mentorin</p>
+                                <p *ngIf="mentor.gender === 'Männlich'">DiversIT-Mentor</p>
+                                <p *ngIf="mentor.gender !== 'Weiblich' && mentor.gender !== 'Männlich'">DiversIT-Mentor*
+                                </p>
+                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">
+                                    Zum
+                                    Profil
+                                </button>
+                            </div>
+
+                            <div *ngIf="jobProfilesMentorsMap.get('Universitätsprofessor für Informatik').length === 0"
+                                class="container">
+                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>
+                            </div>
                         </div>
                     </mat-tab>
                 </mat-tab-group>
@@ -654,9 +766,11 @@
         <mat-card class="job-card-finetuning">
             <mat-card-header>
                 <mat-card-title> DevOps Engineer </mat-card-title>
-                <div mat-card-avatar class="header-image" routerLink="/profile/jbZWHG9F8XRDMdtDrQ6hzLZFUz52"
-                    style="cursor: pointer; background-image: url('https://lh3.googleusercontent.com/a-/AOh14Ghlaad4KD3bCh9g0uaW7R-dX08xrjxMIZQasIbR=s96-c'); background-size: cover;">
-                </div>
+                <img *ngIf="firstMentorHasImage('DevOps Engineer'); else placeholder"
+                    src="{{jobProfilesMentorsMap.get('DevOps Engineer')[0].photoURL}}" mat-card-avatar />
+                <ng-template #placeholder>
+                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                </ng-template>
             </mat-card-header>
             <mat-card-content>
                 <mat-tab-group>
@@ -727,13 +841,29 @@
                             </li>
                         </ul>
                     </mat-tab>
-                    <mat-tab label="Mentor*in">
-                        <div class="container">
-                            <h2> Stefan Hinterhölzl </h2>
-                            <p> DiversIT-Mentor </p>
-                            <button mat-raised-button routerLink="/profile/jbZWHG9F8XRDMdtDrQ6hzLZFUz52"
-                                class="btn btn-primary"> Zum Profil
-                            </button>
+                    <mat-tab label="MentorInnen">
+                        <div class="mentors">
+                            <div *ngFor="let mentor of jobProfilesMentorsMap.get('DevOps Engineer')" class="container">
+                                <!-- Photo -->
+                                <img *ngIf="mentor.photoURL !== '' && mentor.photoURL !== unkown; else placeholder"
+                                    src="{{mentor.photoURL}}" mat-card-avatar />
+                                <ng-template #placeholder>
+                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                                </ng-template>
+                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>
+                                <p *ngIf="mentor.gender === 'Weiblich'">DiversIT-Mentorin</p>
+                                <p *ngIf="mentor.gender === 'Männlich'">DiversIT-Mentor</p>
+                                <p *ngIf="mentor.gender !== 'Weiblich' && mentor.gender !== 'Männlich'">DiversIT-Mentor*
+                                </p>
+                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">
+                                    Zum
+                                    Profil
+                                </button>
+                            </div>
+
+                            <div *ngIf="jobProfilesMentorsMap.get('DevOps Engineer').length === 0" class="container">
+                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>
+                            </div>
                         </div>
                     </mat-tab>
                 </mat-tab-group>
@@ -745,9 +875,11 @@
         <mat-card class="job-card-finetuning">
             <mat-card-header>
                 <mat-card-title>IT-Systemadministrator</mat-card-title>
-                <div mat-card-avatar class="header-image" routerLink="/profile/zLccCJEzSGap7BlhefDT0xTyi9I3"
-                    style="cursor: pointer; background-image: url('https://lh3.googleusercontent.com/a-/AOh14GgI4R9eNIz_VwFXbdXWLELsJAw--55cDl-LKKnJ5uI=s288-p-rw-no'); background-size: cover;">
-                </div>
+                <img *ngIf="firstMentorHasImage('IT-Systemadministrator'); else placeholder"
+                    src="{{jobProfilesMentorsMap.get('IT-Systemadministrator')[0].photoURL}}" mat-card-avatar />
+                <ng-template #placeholder>
+                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                </ng-template>
             </mat-card-header>
             <mat-card-content>
                 <mat-tab-group>
@@ -827,13 +959,31 @@
                             </li>
                         </ul>
                     </mat-tab>
-                    <mat-tab label="Mentor*in">
-                        <div class="container">
-                            <h2>Cornelia Eysn</h2>
-                            <p> DiversIT-Mentorin</p>
-                            <button mat-raised-button routerLink="/profile/zLccCJEzSGap7BlhefDT0xTyi9I3"
-                                class="btn btn-primary"> Zum Profil
-                            </button>
+                    <mat-tab label="MentorInnen">
+                        <div class="mentors">
+                            <div *ngFor="let mentor of jobProfilesMentorsMap.get('IT-Systemadministrator')"
+                                class="container">
+                                <!-- Photo -->
+                                <img *ngIf="mentor.photoURL !== '' && mentor.photoURL !== unkown; else placeholder"
+                                    src="{{mentor.photoURL}}" mat-card-avatar />
+                                <ng-template #placeholder>
+                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
+                                </ng-template>
+                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>
+                                <p *ngIf="mentor.gender === 'Weiblich'">DiversIT-Mentorin</p>
+                                <p *ngIf="mentor.gender === 'Männlich'">DiversIT-Mentor</p>
+                                <p *ngIf="mentor.gender !== 'Weiblich' && mentor.gender !== 'Männlich'">DiversIT-Mentor*
+                                </p>
+                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">
+                                    Zum
+                                    Profil
+                                </button>
+                            </div>
+
+                            <div *ngIf="jobProfilesMentorsMap.get('IT-Systemadministrator').length === 0"
+                                class="container">
+                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>
+                            </div>
                         </div>
                     </mat-tab>
                 </mat-tab-group>

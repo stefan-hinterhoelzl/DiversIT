@@ -6,7 +6,8 @@
     <mat-card *ngFor="let mentor of mentors" class="mentor-card-finetuning">
         <mat-card-header>
             <!-- Photo -->
-            <img *ngIf="mentor.photoURL !== unknown; else placeholder" src="{{mentor.photoURL}}" mat-card-avatar />
+            <img *ngIf="mentor.photoURL !== '' && mentor.photoURL !== unknown; else placeholder"
+                src="{{mentor.photoURL}}" mat-card-avatar />
             <ng-template #placeholder>
                 <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />
             </ng-template>
