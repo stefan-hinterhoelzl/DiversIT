@@ -1,6 +1,6 @@
 import { DiversITUser } from './../../../models/users.model';
 import { Rating } from './../../../models/rating.model';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
 import { serverTimestamp } from 'firebase/firestore';
@@ -15,8 +15,8 @@ export class RatingComponent implements OnInit {
 
   @Input() currentUser: DiversITUser;
   @Input() ownProfile: boolean;
+  @Output() starCount = 5;
   private rating: number;
-  private starCount = 5;
   ratingForm: FormGroup;
   emailAdress = "diversit.plattform@gmail.com";
   displayForm = true;
@@ -34,14 +34,6 @@ export class RatingComponent implements OnInit {
   onRatingChanged(rating) {
     console.log(rating);
     this.rating = rating;
-  }
-
-  sendEmail() {
-    if (this.isFormDataComplete()) {
-      window.open(`mailto:${this.emailAdress}?Subject=${this.rating}-Sterne Bewertung: ${this.ratingForm.get('summary').value.trim()}&body=${this.ratingForm.get('text').value.trim()} (${this.currentUser.uid})`);
-      this.snackbar.openSnackBar("Email abgesendet? Danke für dein Feedback!", "green-snackbar");
-      this.reset();
-    }
   }
 
   saveRating() {
