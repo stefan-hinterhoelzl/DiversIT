@@ -6,4 +6,6 @@ export interface Rating {
     summary: string,
     text: string,
     timestamp: Timestamp,
+    username: string,
+    displayOnLandingPage: boolean,
 }

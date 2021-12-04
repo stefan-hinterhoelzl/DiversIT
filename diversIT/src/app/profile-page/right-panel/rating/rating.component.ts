@@ -44,6 +44,8 @@ export class RatingComponent implements OnInit {
         text: this.ratingForm.get('text').value,
         timestamp: serverTimestamp(),
         userID: this.currentUser.uid,
+        username: this.currentUser.firstname + " " + this.currentUser.lastname,
+        displayOnLandingPage: false,
       }
       this.ratingService.addRating(ratingPayload);
       this.snackbar.openSnackBar("Danke für dein Feedback!", "green-snackbar");
