@@ -18,7 +18,8 @@
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <p>{{rating.text}}</p>
-            <p>– {{rating.username}}, {{getFormattedDate(rating.timestamp)}}</p>
+            <p>– {{rating.username}}, {{rating.timestamp.toMillis() | date:'dd.MM.yyyy'}}</p>
+            <p></p>
         </mat-expansion-panel>
     </mat-accordion>
 </div>

@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { DiversITUser } from './../../../models/users.model';
 import { Rating } from './../../../models/rating.model';
 import { Component, Input, OnInit, Output } from '@angular/core';
@@ -20,15 +21,23 @@ export class RatingComponent implements OnInit {
   ratingForm: FormGroup;
   emailAdress = "diversit.plattform@gmail.com";
   displayForm = true;
+  userRating: Rating;
 
-  constructor(private snackbar: SnackbarComponent, private ratingService: RatingService) {
+  constructor(private snackbar: SnackbarComponent, private ratingService: RatingService, private router: RouterModule) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.ratingForm = new FormGroup({
       summary: new FormControl('', Validators.required),
       text: new FormControl('', Validators.required),
     });
+
+    await this.ratingService.getRatingForUserID(this.currentUser.uid).then((data) => {
+      this.userRating = data;
+      this.ratingForm.get('summary').setValue(this.userRating.summary);
+      this.ratingForm.get('text').setValue(this.userRating.text);
+    })
+    this.rating = this.userRating.stars;
   }
 
   onRatingChanged(rating) {
@@ -42,15 +51,18 @@ export class RatingComponent implements OnInit {
         stars: this.rating,
         summary: this.ratingForm.get('summary').value,
         text: this.ratingForm.get('text').value,
-        timestamp: serverTimestamp(),
+        lastUpdated: serverTimestamp(),
         userID: this.currentUser.uid,
         username: this.currentUser.firstname + " " + this.currentUser.lastname,
         displayOnLandingPage: false,
       }
-      this.ratingService.addRating(ratingPayload);
-      this.snackbar.openSnackBar("Danke für dein Feedback!", "green-snackbar");
-      this.reset();
-      this.displayForm = false;
+      this.ratingService.updateRating(ratingPayload).then(() => {
+        this.snackbar.openSnackBar("Danke für dein Feedback!", "green-snackbar");
+        this.reset();
+        this.displayForm = false;
+      }).catch(() => {
+        this.snackbar.openSnackBar("Da ist wohl etwas schief gegangen! Bitte versuche es später nochmal.", "snackbar-red");
+      });
     }
   }
 
