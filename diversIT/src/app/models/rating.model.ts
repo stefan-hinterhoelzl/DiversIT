@@ -5,5 +5,7 @@ export interface Rating {
     stars: number,
     summary: string,
     text: string,
-    timestamp: Timestamp,
+    lastUpdated: Timestamp,
+    username: string,
+    displayOnLandingPage: boolean,
 }

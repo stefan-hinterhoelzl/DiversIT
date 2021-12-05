@@ -1,103 +1,194 @@
-<div class = "main-wrapper" fxLayout = column fxLayoutAlign = "start center">
+<div class="main-wrapper" fxLayout=column fxLayoutAlign="start center">
 
-    <h2>Admins</h2>
-    <mat-form-field style = "width: 60%;">
-        <mat-label>Email</mat-label>
-        <input matInput (keyup)="applyFilterAdmins($event)"  #input>
-    </mat-form-field>
+  <h2>Admins</h2>
+  <mat-form-field style="width: 60%;">
+    <mat-label>Email</mat-label>
+    <input matInput (keyup)="applyFilterAdmins($event)" #input>
+  </mat-form-field>
 
-    <table style = "width: 60%;" mat-table [dataSource]="dataSourceAdmins" class="mat-elevation-z8">
-        <!-- Email Column -->
-        <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> Email </th>
-            <td mat-cell *matCellDef="let element" > {{element.email}} </td>
-          </ng-container>
-        <!-- Letzter Login Column -->
-        <ng-container matColumnDef="lastLogin">
-            <th mat-header-cell *matHeaderCellDef> Letzter Login </th>
-            <td mat-cell *matCellDef="let element" > {{element.lastLoggedIn.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
-          </ng-container>
-        <!-- Letzter Login Column -->
-        <ng-container matColumnDef="creationDate">
-            <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
-            <td mat-cell *matCellDef="let element" > {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
-          </ng-container>
+  <table style="width: 60%;" mat-table [dataSource]="dataSourceAdmins" class="mat-elevation-z8">
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+    <!-- Letzter Login Column -->
+    <ng-container matColumnDef="lastLogin">
+      <th mat-header-cell *matHeaderCellDef> Letzter Login </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastLoggedIn.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+    </ng-container>
+    <!-- Letzter Login Column -->
+    <ng-container matColumnDef="creationDate">
+      <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
+      <td mat-cell *matCellDef="let element"> {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+    </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumnsAdmins"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumnsAdmins;"></tr>
-    </table>
-
-
-    <h2 style = "margin-top: 5%">Registrierte Mentoren</h2>
-    <mat-form-field style = "width: 60%;">
-        <mat-label>Email</mat-label>
-        <input matInput (keyup)="applyFilterMentors($event)" #input>
-    </mat-form-field>
-
-    <table style = "width: 60%;" mat-table [dataSource]="dataSourceMentors" class="mat-elevation-z8">
-        <!-- Email Column -->
-        <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> Email </th>
-            <td mat-cell *matCellDef="let element" > {{element.email}} </td>
-          </ng-container>
-        <!-- Letzter Login Column -->
-        <ng-container matColumnDef="lastLogin">
-            <th mat-header-cell *matHeaderCellDef> Letzter Login </th>
-            <td mat-cell *matCellDef="let element" > {{element.lastLoggedIn.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
-          </ng-container>
-        <!-- Letzter Login Column -->
-        <ng-container matColumnDef="creationDate">
-            <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
-            <td mat-cell *matCellDef="let element" > {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
-          </ng-container>
-          <!-- Button Column -->
-        <ng-container matColumnDef="button">
-          <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
-          <td mat-cell *matCellDef="let element" >
-            <button mat-raised-button (click) = "demoteUserToMentee(element)"> Zum Mentee machen</button>
-          </td>
-        </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsAdmins"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsAdmins;"></tr>
+  </table>
 
 
-    <h2 style = "margin-top: 5%">Registrierte Mentees</h2>
-    <mat-form-field style = "width: 60%;">
-        <mat-label>Email</mat-label>
-        <input matInput (keyup)="applyFilterMentee($event)" #input>
-    </mat-form-field>
+  <h2 style="margin-top: 5%">Registrierte Mentoren</h2>
+  <mat-form-field style="width: 60%;">
+    <mat-label>Email</mat-label>
+    <input matInput (keyup)="applyFilterMentors($event)" #input>
+  </mat-form-field>
 
-    <table style = "width: 60%;" mat-table [dataSource]="dataSourceMentees" class="mat-elevation-z8">
-        <!-- Email Column -->
-        <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> Email </th>
-            <td mat-cell *matCellDef="let element" > {{element.email}} </td>
-          </ng-container>
-        <!-- Letzter Login Column -->
-        <ng-container matColumnDef="lastLogin">
-            <th mat-header-cell *matHeaderCellDef> Letzter Login </th>
-            <td mat-cell *matCellDef="let element" > {{element.lastLoggedIn.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
-          </ng-container>
-        <!-- Letzter Login Column -->
-        <ng-container matColumnDef="creationDate">
-            <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
-            <td mat-cell *matCellDef="let element" > {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
-          </ng-container>
-           <!-- Button Column -->
-        <ng-container matColumnDef="button">
-          <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
-          <td mat-cell *matCellDef="let element"> 
-            <button mat-raised-button (click) = "promoteUserToMentor(element)"> Zum Mentor machen</button>  
-          </td>
-        </ng-container>
+  <table style="width: 60%;" mat-table [dataSource]="dataSourceMentors" class="mat-elevation-z8">
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+    <!-- Letzter Login Column -->
+    <ng-container matColumnDef="lastLogin">
+      <th mat-header-cell *matHeaderCellDef> Letzter Login </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastLoggedIn.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+    </ng-container>
+    <!-- Letzter Login Column -->
+    <ng-container matColumnDef="creationDate">
+      <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
+      <td mat-cell *matCellDef="let element"> {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+    </ng-container>
+    <!-- Button Column -->
+    <ng-container matColumnDef="button">
+      <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button (click)="demoteUserToMentee(element)"> Zum Mentee machen</button>
+      </td>
+    </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
-    
 
+  <h2 style="margin-top: 5%">Registrierte Mentees</h2>
+  <mat-form-field style="width: 60%;">
+    <mat-label>Email</mat-label>
+    <input matInput (keyup)="applyFilterMentee($event)" #input>
+  </mat-form-field>
+
+  <table style="width: 60%;" mat-table [dataSource]="dataSourceMentees" class="mat-elevation-z8">
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+    <!-- Letzter Login Column -->
+    <ng-container matColumnDef="lastLogin">
+      <th mat-header-cell *matHeaderCellDef> Letzter Login </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastLoggedIn.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+    </ng-container>
+    <!-- Letzter Login Column -->
+    <ng-container matColumnDef="creationDate">
+      <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>
+      <td mat-cell *matCellDef="let element"> {{element.creationTime.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+    </ng-container>
+    <!-- Button Column -->
+    <ng-container matColumnDef="button">
+      <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button (click)="promoteUserToMentor(element)"> Zum Mentor machen</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <h2 style="margin-top: 5%">Nutzererfahrungen</h2>
+
+  <h3 style="margin-top:2%">Versteckte Nutzererfahrungen</h3>
+
+  <table style="width: 60%;" mat-table [dataSource]="dataSourceNonDisplayedRatings" class="mat-elevation-z8 rating">
+    <!-- Stars Column -->
+    <ng-container matColumnDef="stars">
+      <th mat-header-cell *matHeaderCellDef> Sternebewertung </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon *ngFor="let star of [].constructor(element.stars)" class="icon" color="accent">star
+        </mat-icon>
+        <mat-icon *ngFor="let star of [].constructor(5 - element.stars)" class="icon" color="accent">
+          star_border
+        </mat-icon>
+      </td>
+    </ng-container>
+    <!-- Summary Column -->
+    <ng-container matColumnDef="summary">
+      <th mat-header-cell *matHeaderCellDef> Zusammenfassung </th>
+      <td mat-cell *matCellDef="let element"> {{element.summary}} </td>
+    </ng-container>
+    <!-- Text Column -->
+    <ng-container matColumnDef="text">
+      <th mat-header-cell *matHeaderCellDef> Text </th>
+      <td mat-cell *matCellDef="let element"> {{element.text}} </td>
+    </ng-container>
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Zuletzt upgedated </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastUpdated.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+    </ng-container>
+    <!-- Button Column -->
+    <ng-container matColumnDef="button">
+      <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button (click)="setRatingDisplayTrue(element)"> Bewertung freischalten</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="ratingDisplayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: ratingDisplayedColumns;"></tr>
+  </table>
+
+  <h3 style="margin-top:2%">Veröffentlichte Nutzererfahrungen</h3>
+
+  <table style="width: 60%;" mat-table [dataSource]="dataSourceDisplayedRatings" class="mat-elevation-z8 rating">
+    <!-- Stars Column -->
+    <ng-container matColumnDef="stars">
+      <th mat-header-cell *matHeaderCellDef> Sternebewertung </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon *ngFor="let star of [].constructor(element.stars)" class="icon" color="accent">star
+        </mat-icon>
+        <mat-icon *ngFor="let star of [].constructor(5 - element.stars)" class="icon" color="accent">
+          star_border
+        </mat-icon>
+      </td>
+    </ng-container>
+    <!-- Summary Column -->
+    <ng-container matColumnDef="summary">
+      <th mat-header-cell *matHeaderCellDef> Zusammenfassung </th>
+      <td mat-cell *matCellDef="let element"> {{element.summary}} </td>
+    </ng-container>
+    <!-- Text Column -->
+    <ng-container matColumnDef="text">
+      <th mat-header-cell *matHeaderCellDef> Text </th>
+      <td mat-cell *matCellDef="let element"> {{element.text}} </td>
+    </ng-container>
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Zuletzt upgedated </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastUpdated.toMillis() | date:'dd.MM.yyyy HH:mm'}} </td>
+    </ng-container>
+    <!-- Button Column -->
+    <ng-container matColumnDef="button">
+      <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button (click)="setRatingDisplayFalse(element)"> Bewertung verstecken</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="ratingDisplayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: ratingDisplayedColumns;"></tr>
+  </table>
 
 </div>

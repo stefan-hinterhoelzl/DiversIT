@@ -4,90 +4,22 @@
 
 <div class="container">
     <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let rating of ratings">
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
+                    <mat-icon *ngFor="let star of [].constructor(rating.stars)" class="icon" color="accent">star
+                    </mat-icon>
+                    <mat-icon *ngFor="let star of [].constructor(5 - rating.stars)" class="icon" color="accent">
+                        star_border
+                    </mat-icon>
                 </mat-panel-title>
                 <mat-panel-description>
-                    Vielen Dank an die DiversIT-Community und meine Mentorin!
+                    {{rating.summary}}
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <p>Dank der Unterstützung von Kolleginnen und Kollegen bei Fragen und den geteilten Erfahrungen
-                meiner Mentorin habe ich es gewagt! ich habe das Wirtschaftsinformatik-Studium an der JKU begonnen und
-                gehe
-                jeden Tag gerne ins Büro und habe Spaß an meinem Job als Software-Entwicklerin in einer bekannten Linzer
-                Online-Agentur.</p>
-            <p>Ich kann nur jedem empfehlen, dieses Angebot zu nutzen - es hilft enorm beim Einstieg in ein IT-Studium
-                oder
-                andere IT-Ausbildung, wenn man Ansprechpersonen hat, um sich auszutauschen, wenn es mal nicht so leicht
-                von
-                der Hand geht!</p>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                </mat-panel-title>
-                <mat-panel-description>
-                    Super Plattform
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>Die Informationen und Kontakte auf der Plattform haben mir sehr geholfen, herauszufinden, in welche
-                Richtung
-                ich beruflich gehen will.</p>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star_outline</mat-icon>
-                </mat-panel-title>
-                <mat-panel-description>
-                    Sehr freundliche Community, in der man sich willkommen fühlt.
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>Die DiversIT-Community ist sehr offen und hilfsbereit wenn es um Fragen bzgl. IT-Berufen und
-                Möglichkeiten
-                geht. Ich würde mir nur wünschen, dass ich hier mehr Kollegen aus meiner Region kennenlernen könnte, um
-                sich
-                auch offline zu vernetzen.</p>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                    <mat-icon class="icon" color="accent">star</mat-icon>
-                </mat-panel-title>
-                <mat-panel-description>
-                    Endlich weiß ich, wo es im Job hingehen soll...
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>Ich war mir erst nicht sicher, ob ich in der Software-Branche richtig aufgehoben bin, da mir meine ersten
-                Programmierversuche recht schwer gefallen sind und ich eine Karriere als Entwickler für mich
-                ausgeschlossen habe. Dank der vielen verschiedenen Erfahrungsberichte, Rollenbeschreibungen und
-                Personenprofile ist mir jedoch bewusst geworden, dass es in der IT viel mehr Möglichkeiten gibt, als
-                Programmierer zu werden.</p>
-            <p>Teamarbeit liegt mir, ich arbeite gerne mit Menschen und kann mit dem nötigen technischen Basiswissen
-                meine organisatorischen und zwischenmenschlichen Stärken bald als Scrum-Master ausspielen, ohne dafür
-                der perfekte Programmierer sein zu müssen!</p>
+            <p>{{rating.text}}</p>
+            <p>– {{rating.username}}, {{rating.lastUpdated.toMillis() | date:'dd.MM.yyyy'}}</p>
+            <p></p>
         </mat-expansion-panel>
     </mat-accordion>
 </div>
