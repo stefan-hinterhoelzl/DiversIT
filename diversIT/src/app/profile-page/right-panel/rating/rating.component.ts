@@ -33,14 +33,16 @@ export class RatingComponent implements OnInit {
     });
 
     await this.ratingService.getRatingForUserID(this.currentUser.uid).then((data) => {
-      this.userRating = data;
-      this.ratingForm.get('summary').setValue(this.userRating.summary);
-      this.ratingForm.get('text').setValue(this.userRating.text);
+      if (data != null) {
+        this.userRating = data;
+        this.ratingForm.get('summary').setValue(this.userRating.summary);
+        this.ratingForm.get('text').setValue(this.userRating.text);
+        this.rating = this.userRating.stars;
+      }
     })
-    this.rating = this.userRating.stars;
   }
 
-  onRatingChanged(rating) {
+  onRatingChanged(rating: number) {
     console.log(rating);
     this.rating = rating;
   }

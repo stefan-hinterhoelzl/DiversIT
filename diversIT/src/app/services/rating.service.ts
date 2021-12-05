@@ -45,8 +45,9 @@ export class RatingService {
     async getRatingForUserID(userID: string): Promise<Rating> {
         const q = query(collection(this.db, 'ratings'), where('userID', '==', userID));
         const querySnapshot = await getDocs(q);
-        console.log(querySnapshot.docs.values.length)
-        return querySnapshot.docs[0].data() as Rating;
+        if (querySnapshot.docs.length > 0) {
+            return querySnapshot.docs[0].data() as Rating;
+        } else return null;
     }
 
     async getDisplayedRatings(): Promise<Rating[]> {
