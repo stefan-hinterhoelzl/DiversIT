@@ -1,6 +1,5 @@
-import * as functions from "firebase-functions";
-
-import * as admin from "firebase-admin";
+import * as functions from "firebase-functions"
+import * as admin from "firebase-admin"
 
 //import * as cors from "cors";
 //const corsHandler = cors({origin: true});
@@ -13,7 +12,7 @@ import * as admin from "firebase-admin";
 //   response.send("Hello from Firebase!");
 // });
 
-admin.initializeApp();
+admin.initializeApp()
 
 export const createRelationship = functions.https.onCall((data, context) => {
 
