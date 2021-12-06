@@ -9,3 +9,4 @@
 [debug] [2021-12-06T15:39:46.584Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
 [debug] [2021-12-06T15:39:46.584Z] > authorizing via signed-in user (hinterhoelzlstefan@gmail.com)
 [info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2021-12-06T15:28:46.560Z] ----------------------------------------------------------------------

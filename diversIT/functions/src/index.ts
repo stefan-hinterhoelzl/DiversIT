@@ -25,11 +25,11 @@ export const createRelationship = functions.https.onCall((data, context) => {
     let mentorRef = admin.firestore().collection("users").doc(mentor);
 
     batch.update(menteeRef, {
-        mentors: admin.firestore.FieldValue.arrayUnion(mentee)
+        mentors: admin.firestore.FieldValue.arrayUnion(mentor)
     });
 
     batch.update(mentorRef, {
-        mentees: admin.firestore.FieldValue.arrayUnion(mentor)
+        mentees: admin.firestore.FieldValue.arrayUnion(mentee)
     });
 
     return batch.commit();
