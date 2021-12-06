@@ -23,7 +23,7 @@ service cloud.firestore {
     }
 
     match /notifications/{notification} {
-      allow read, delete: if signedIn() && request.auth.uid == resource.data.toUID;
+      allow read, delete: if signedIn() && (request.auth.uid == resource.data.toUID || request.auth.uid == resource.data.fromUID);
       allow write: if signedIn() && request.auth.uid == resource.data.fromUID;
     }
   }
