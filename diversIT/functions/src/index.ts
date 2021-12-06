@@ -37,3 +37,25 @@ export const createRelationship = functions.https.onCall((data, context) => {
 });
 
 
+export const revokeRelationship = functions.https.onCall((data, context) => {
+    let mentee: string = data.mentee;
+    let mentor: string = data.mentor;
+
+    const batch = admin.firestore().batch();
+    
+    let menteeRef = admin.firestore().collection("users").doc(mentee);
+    let mentorRef = admin.firestore().collection("users").doc(mentor);
+
+    batch.update(menteeRef, {
+        mentors: admin.firestore.FieldValue.arrayRemove(mentor)
+    });
+
+    batch.update(mentorRef, {
+        mentees: admin.firestore.FieldValue.arrayRemove(mentee)
+    });
+
+    batch.commit().then(() => {
+        return admin.database().ref("messages/"+mentor+mentee).remove();
+    });
+})
+

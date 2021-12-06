@@ -1,8 +1,8 @@
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { child, getDatabase, onValue, orderByChild, push, ref, serverTimestamp, set, update, query, increment, onDisconnect, equalTo } from 'firebase/database'
 import { collection, doc, getDocs, getFirestore, updateDoc, query as queryFirestore, arrayRemove, runTransaction } from '@firebase/firestore';
-import {getApp} from "firebase/app";
-import {getFunctions, connectFunctionsEmulator, httpsCallable} from "firebase/functions";
+import { getApp } from "firebase/app";
+import { getFunctions, connectFunctionsEmulator, httpsCallable } from "firebase/functions";
 import { Chat, Message } from '../models/chat.model';
 import { arrayUnion, where } from 'firebase/firestore';
 import { BehaviorSubject, pipe } from 'rxjs';
@@ -31,14 +31,14 @@ export class ChatService {
 
   //functions
   functions = getFunctions(getApp());
-  
+
 
   constructor(private snackbar: SnackbarComponent, private router: Router, private observer: ObserversService) {
     //comment this to remove emulator
-    connectFunctionsEmulator(this.functions, "localhost", 5001);
-   }
+    //connectFunctionsEmulator(this.functions, "localhost", 5001);
+  }
 
-  
+
   chatsub;
   currentChatPartners: DiversITUser[] = [];
 
@@ -156,35 +156,20 @@ export class ChatService {
 
 
   async addRelationship(mentee: string, mentor: string) {
-
     const createRelationship = httpsCallable(this.functions, 'createRelationship');
-    createRelationship({mentee: mentee, mentor: mentor}).then((result) => {
-      console.log("succeded");
+    createRelationship({ mentee: mentee, mentor: mentor }).then((result) => {
+      this.snackbar.openSnackBar("Vernetzung hergestellt!", "green-snackbar");
+
+      //PLS Thomas Not to other user for accepting the request
+    }).catch(()=> {
+      this.snackbar.openSnackBar("Fehler beim Vernetzen", "red-snackbar")
     });
-
-    // const docRefMentor = doc(this.firestore, "users", mentor);
-    // const docRefMentee = doc(this.firestore, "users", mentee)
-
-    // await updateDoc(docRefMentor, {
-    //   mentees: arrayUnion(mentee)
-    // });
-
-    // await updateDoc(docRefMentee, {
-    //   mentors: arrayUnion(mentor)
-    // });
   }
 
   async revokeRelationship(mentee: string, mentor: string) {
-    runTransaction(this.firestore, async (transacion) => {
-      const docRefMentor = doc(this.firestore, "users", mentor);
-      const docRefMentee = doc(this.firestore, "users", mentee);
-
-      transacion.update(docRefMentor, {
-        mentees: arrayRemove(mentee)
-      });
-      transacion.update(docRefMentee, {
-        mentors: arrayRemove(mentor)
-      });
+    const revokeRelationship = httpsCallable(this.functions, "revokeRelationship");
+    revokeRelationship({mentee: mentee, mentor: mentor}).then((result) => {
+      this.snackbar.openSnackBar("Vernetzung gelöscht", "green-snackbar");
     });
   }
 
@@ -195,61 +180,39 @@ export class ChatService {
 
     //transactional updates on database
     const updates = {}
-    updates['/' + chat.recipientUser + '/' + chat.uid] = null
     updates['/' + currentUser + '/' + chat.uid] = null
-    updates['/messages' + '/' + chat.uid] = null
 
     await update(ref(this.database), updates)
 
   }
 
 
-  async createChat(mentee: string, mentor: string) {
-    let found: boolean = false;
-    onValue(ref(this.database, mentor), async (snapshot) => {
-      snapshot.forEach((childSnapshot) => {
-        let chat = childSnapshot.val() as Chat
-        if (chat.recipientUser == mentee) found = true;
-      });
-      if (!found) {
+  async createChat(user: string, recipient: string) {
+    let currentUser = this.observer.getcurrenUserValue;
+    let newkey = "";
 
+    if (currentUser.role == 3) newkey = recipient + user;
+    else newkey = user + recipient;
+    
+    const newChat = <Chat>{
+      uid: newkey,
+      lastMessage: "",
+      recipientUser: recipient,
+      amountNewMessages: 0,
+      lastCheckedTime: serverTimestamp(),
+      lastMessageTime: serverTimestamp(),
+      currentlyOnline: false,
+    }
 
-        let newKey = push(child(ref(this.database), mentee)).key;
-        const MentorChat = <Chat>{
-          uid: newKey,
-          lastMessage: "",
-          connectedChat: newKey,
-          recipientUser: mentee,
-          amountNewMessages: 0,
-          lastCheckedTime: serverTimestamp(),
-          lastMessageTime: serverTimestamp(),
-          currentlyOnline: false,
-        }
+    const updates = {};
+    updates['/' + user + '/' + newkey] = newChat;
 
-        const MenteeChat = <Chat>{
-          uid: newKey,
-          lastMessage: "",
-          connectedChat: newKey,
-          recipientUser: mentor,
-          amountNewMessages: 0,
-          lastCheckedTime: serverTimestamp(),
-          lastMessageTime: serverTimestamp(),
-          currentlyOnline: false,
-        }
-
-        const updates = {};
-        updates['/' + mentee + '/' + newKey] = MenteeChat;
-        updates['/' + mentor + '/' + newKey] = MentorChat;
-
-        await update(ref(this.database), updates);
-      }
-    });
+    await update(ref(this.database), updates);
   }
 
 
+
   sendMessage(chat: Chat, text: string, sender: DiversITUser) {
-
-
     const newMessageKey = push(child(ref(this.database), "messages")).key;
 
     const message = <Message>{

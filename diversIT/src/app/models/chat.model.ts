@@ -11,7 +11,6 @@ export interface Message {
 
 export interface Chat {
     uid: string,
-    connectedChat: string,
     recipientUser: string,
     lastMessage: string,
     lastMessageTime: Timestamp,
