@@ -1,6 +1,8 @@
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { child, getDatabase, onValue, orderByChild, push, ref, serverTimestamp, set, update, query, increment, onDisconnect, equalTo } from 'firebase/database'
 import { collection, doc, getDocs, getFirestore, updateDoc, query as queryFirestore, arrayRemove, runTransaction } from '@firebase/firestore';
+import {getApp} from "firebase/app";
+import {getFunctions, connectFunctionsEmulator, httpsCallable} from "firebase/functions";
 import { Chat, Message } from '../models/chat.model';
 import { arrayUnion, where } from 'firebase/firestore';
 import { BehaviorSubject, pipe } from 'rxjs';
@@ -19,8 +21,6 @@ import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 })
 export class ChatService {
 
-  constructor(private snackbar: SnackbarComponent, private router: Router, private observer: ObserversService) { }
-
   database = getDatabase()
 
   //to Update the Chatsarray in the user Field
@@ -29,6 +29,16 @@ export class ChatService {
   //Auth Instance to listen for auth changes
   auth = getAuth()
 
+  //functions
+  functions = getFunctions(getApp());
+  
+
+  constructor(private snackbar: SnackbarComponent, private router: Router, private observer: ObserversService) {
+    //comment this to remove emulator
+    connectFunctionsEmulator(this.functions, "localhost", 5001);
+   }
+
+  
   chatsub;
   currentChatPartners: DiversITUser[] = [];
 
@@ -146,16 +156,22 @@ export class ChatService {
 
 
   async addRelationship(mentee: string, mentor: string) {
-    const docRefMentor = doc(this.firestore, "users", mentor);
-    const docRefMentee = doc(this.firestore, "users", mentee)
 
-    await updateDoc(docRefMentor, {
-      mentees: arrayUnion(mentee)
+    const createRelationship = httpsCallable(this.functions, 'createRelationship');
+    createRelationship({mentee: mentee, mentor: mentor}).then((result) => {
+      console.log("succeded");
     });
 
-    await updateDoc(docRefMentee, {
-      mentors: arrayUnion(mentor)
-    });
+    // const docRefMentor = doc(this.firestore, "users", mentor);
+    // const docRefMentee = doc(this.firestore, "users", mentee)
+
+    // await updateDoc(docRefMentor, {
+    //   mentees: arrayUnion(mentee)
+    // });
+
+    // await updateDoc(docRefMentee, {
+    //   mentors: arrayUnion(mentor)
+    // });
   }
 
   async revokeRelationship(mentee: string, mentor: string) {
