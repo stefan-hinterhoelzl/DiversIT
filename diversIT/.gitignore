@@ -7,6 +7,12 @@
 # Only exists if Bazel was run
 /bazel-out
 
+
+#
+firebase-debug.log
+ui-debug.log
+
+
 # dependencies
 /node_modules
 
