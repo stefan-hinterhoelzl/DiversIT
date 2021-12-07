@@ -13,10 +13,10 @@ export class MentorSpotlightComponent implements OnInit {
   numberOfMentors = 1;
   mentors: DiversITUser[];
 
-  constructor(private firestore: UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.firestore.getAllMentorsPromise().then(data => {
+    this.userService.getAllMentorsPromise().then(data => {
       this.mentors = data.sort(() => .5 - Math.random()).slice(0, this.numberOfMentors);
     });
   }

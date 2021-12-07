@@ -1,6 +1,7 @@
+import { RouterModule } from '@angular/router';
 import { DiversITUser } from './../../../models/users.model';
 import { Rating } from './../../../models/rating.model';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
 import { serverTimestamp } from 'firebase/firestore';
@@ -15,33 +16,35 @@ export class RatingComponent implements OnInit {
 
   @Input() currentUser: DiversITUser;
   @Input() ownProfile: boolean;
+  @Output() starCount = 5;
   private rating: number;
-  private starCount = 5;
   ratingForm: FormGroup;
   emailAdress = "diversit.plattform@gmail.com";
   displayForm = true;
+  userRating: Rating;
 
-  constructor(private snackbar: SnackbarComponent, private ratingService: RatingService) {
+  constructor(private snackbar: SnackbarComponent, private ratingService: RatingService, private router: RouterModule) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.ratingForm = new FormGroup({
       summary: new FormControl('', Validators.required),
       text: new FormControl('', Validators.required),
     });
+
+    await this.ratingService.getRatingForUserID(this.currentUser.uid).then((data) => {
+      if (data != null) {
+        this.userRating = data;
+        this.ratingForm.get('summary').setValue(this.userRating.summary);
+        this.ratingForm.get('text').setValue(this.userRating.text);
+        this.rating = this.userRating.stars;
+      }
+    })
   }
 
-  onRatingChanged(rating) {
+  onRatingChanged(rating: number) {
     console.log(rating);
     this.rating = rating;
-  }
-
-  sendEmail() {
-    if (this.isFormDataComplete()) {
-      window.open(`mailto:${this.emailAdress}?Subject=${this.rating}-Sterne Bewertung: ${this.ratingForm.get('summary').value.trim()}&body=${this.ratingForm.get('text').value.trim()} (${this.currentUser.uid})`);
-      this.snackbar.openSnackBar("Email abgesendet? Danke für dein Feedback!", "green-snackbar");
-      this.reset();
-    }
   }
 
   saveRating() {
@@ -50,13 +53,18 @@ export class RatingComponent implements OnInit {
         stars: this.rating,
         summary: this.ratingForm.get('summary').value,
         text: this.ratingForm.get('text').value,
-        timestamp: serverTimestamp(),
+        lastUpdated: serverTimestamp(),
         userID: this.currentUser.uid,
+        username: this.currentUser.firstname + " " + this.currentUser.lastname,
+        displayOnLandingPage: false,
       }
-      this.ratingService.addRating(ratingPayload);
-      this.snackbar.openSnackBar("Danke für dein Feedback!", "green-snackbar");
-      this.reset();
-      this.displayForm = false;
+      this.ratingService.updateRating(ratingPayload).then(() => {
+        this.snackbar.openSnackBar("Danke für dein Feedback!", "green-snackbar");
+        this.reset();
+        this.displayForm = false;
+      }).catch(() => {
+        this.snackbar.openSnackBar("Da ist wohl etwas schief gegangen! Bitte versuche es später nochmal.", "snackbar-red");
+      });
     }
   }
 

@@ -3,6 +3,9 @@
         <mat-card-title>
             <h2>Dein Erfahrungsbericht</h2>
         </mat-card-title>
+        <mat-card-subtitle>
+            Lass andere an deinen Erfahrungen mit DiversIT teilhaben oder editiere deine letzte Bewertung!
+        </mat-card-subtitle>
         <app-star-rating [rating]="rating" [starCount]="starCount" (ratingUpdated)="onRatingChanged($event)">
         </app-star-rating>
 
@@ -17,8 +20,14 @@
                     formControlName="text"></textarea>
             </mat-form-field>
             <div mat-dialog-actions align="end">
-                <a mat-raised-button (click)="sendEmail()" hidden>Als Email senden</a>
+                <p id="disclaimer">Durch das Absenden des Formulars wird der Veröffentlichung mit Namen für
+                    Marketingzwecke im Zusammenhang mit DiversIT zugestimmt. Wir behalten uns vor, Erfahrungsberichte,
+                    die gegen Richtlinien verstoßen, nicht zu
+                    veröffentlichen. <a [routerLink]="['../../datenschutz']" target="_blank">➔ Zur
+                        Datenschutzerklärung</a>
+                </p>
                 <button mat-raised-button (click)="saveRating()">Absenden</button>
+
             </div>
         </form>
     </mat-card>
