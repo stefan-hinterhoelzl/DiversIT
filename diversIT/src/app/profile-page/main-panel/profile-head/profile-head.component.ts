@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
@@ -50,7 +50,7 @@ export class ProfileHeadComponent implements OnInit, OnChanges {
         else this.openRequest = false;
       })
       console.log(this.openRequest)
-    } 
+    }
     else console.log("nullvalue beim check")
   }
 
@@ -80,7 +80,7 @@ export class ProfileHeadComponent implements OnInit, OnChanges {
           type: 1, // Type: 1 = Anfrage (Buttons: Annehmen, Ablehnen); 2 = Info (Keine Buttons)
           when: null
         }
-        
+
         this.notificationService.addNotification(notification).then((data) =>
           this.checkButton()
         )
@@ -127,5 +127,5 @@ export class ProfileHeadComponent implements OnInit, OnChanges {
     this.showUserDetails = !this.showUserDetails
     this.changeDetailsBoolean.emit()
   }
-    
+
 }

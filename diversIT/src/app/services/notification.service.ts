@@ -10,15 +10,15 @@ import { ObserversService } from "./observers.service";
     providedIn: 'root'
   })
   export class NotificationService implements OnDestroy {
-  
+
     db = getFirestore();
-    unsubscribeFromNotifications; 
+    unsubscribeFromNotifications;
     constructor(private observer: ObserversService) {}
 
     ngOnDestroy(): void {
       this.unsubscribeFromNotifications()
     }
-    
+
       async getNotificationsListener(userId: string){
         const q = query(collection(this.db, "notifications"), where("toUID", "==", userId));
         this.unsubscribeFromNotifications = onSnapshot(q, (querySnapshot) => {
@@ -43,7 +43,7 @@ import { ObserversService } from "./observers.service";
           type: notification.type,
           when: serverTimestamp(),
           uid: null
-        }) 
+        })
 
         await updateDoc(ref, {
           uid: ref.id
@@ -63,5 +63,5 @@ import { ObserversService } from "./observers.service";
 
         return querySnapshot1.size + querySnapshot2.size;
       }
-    
+
   }
