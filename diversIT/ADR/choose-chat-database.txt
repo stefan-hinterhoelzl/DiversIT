@@ -3,11 +3,11 @@ Choice of database for the chat implementation
 
 
 STATUS:
-Implented
+Implemented
 
 
 CONTEXT:
-The chat implementation in the Firestore Database was producing too many write and read operations. 
+The chat implementation in the Firestore Database was producing too many write and read operations.
 As per recommendation of the firebase documentation presence values like the "online" id on chats should be implemented with the realtime database.
 The realtime database does not have any restrictions on read and write operations in the free plan.
 
@@ -17,8 +17,8 @@ The chat implementation is moved from the firestore database to the realtime dat
 
 
 CONSEQUENCES:
-The realtime database offers less querying and sorting/limiting power than the firestore database. 
+The realtime database offers less querying and sorting/limiting power than the firestore database.
 For this reason, sorting the chats and messages in descending order on the timestamp needs to be done on the client side.
-The query is sorted ascending, the array is reversed on the client side. 
+The query is sorted ascending, the array is reversed on the client side.
 This should not be a problem with O(n) time complexity on reversing the array. Additionally, the Chat has a shorter life span (Duration of Mentorship)
 with less messages compared to chat applications like WhatsApp.
