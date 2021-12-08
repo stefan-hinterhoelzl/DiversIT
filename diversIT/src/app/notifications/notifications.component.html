@@ -13,7 +13,7 @@
                     <b>{{n.fromName}}</b><br>
                     <i style="color: gray;">{{n.when.toDate().toLocaleString('de-DE')}}</i>
                 </td>
-                <td>{{n.text}}</td>
+                <td>{{n.text != "" ? n.text : "Hat Ihnen eine Mentoranfrage geschickt."}}</td>
                 <td nowrap>
                     <button mat-raised-button color="accent" *ngIf="n.type === 1" (click)="acceptMentorshipRequest(n)">Annehmen</button>
                     <button mat-raised-button (click)="declineMentorshipRequest(n)" style="margin-left: 5px;">Löschen</button>

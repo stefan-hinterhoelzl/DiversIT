@@ -1,18 +1,18 @@
 <div class="container">
      <div class="user-card" *ngFor="let mentor of mentorList">
         <div class="card-header">
-            <img src="{{mentor.photoURL}}" class="profile-image" />
-            <h1>{{mentor.firstname}} {{mentor.lastname}}</h1>
+            <img src="{{mentor?.photoURL}}" class="profile-image" />
+            <h1>{{mentor?.firstname}} {{mentor?.lastname}}</h1>
         </div>
         <div class="card-content">
-            {{mentor.job}} {{mentor.job && mentor.company? "bei" : ""}} {{mentor.company}}
+            {{mentor?.job}} {{mentor?.job && mentor?.company? "bei" : ""}} {{mentor?.company}}
         </div>
         <div class="action-bar">
-            <button mat-raised-button color="accent" routerLink="/profile/{{mentor.uid}}" >Profil ansehen</button>
+            <button mat-raised-button color="accent" routerLink="/profile/{{mentor?.uid}}" >Profil ansehen</button>
         </div>
     </div> 
 
-    <div class="no-entries" *ngIf="mentorList.length === 0">
+    <div class="no-entries" *ngIf="mentorList?.length === 0">
         <h1>Du hast noch keine Verbindung zu anderen Nutzern aufgebaut.</h1>
     </div>
 
