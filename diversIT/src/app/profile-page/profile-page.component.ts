@@ -5,6 +5,7 @@ import { Subscriber, Subscription } from 'rxjs';
 import { Post } from '../models/post.model';
 import { DiversITUser } from '../models/users.model';
 import { ObserversService } from '../services/observers.service';
+import { PostsService } from '../services/posts.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ import { UserService } from '../services/user.service';
 })
 export class ProfilePageComponent implements OnInit, OnDestroy {
 
-  constructor(private firestore: UserService, private route: ActivatedRoute, private observer: ObserversService) { }
+  constructor(private firestore: UserService, private route: ActivatedRoute, private observer: ObserversService, private postService: PostsService) { }
 
   currentUserSubscription: Subscription;
   currentRouteSubscription: Subscription;
@@ -56,7 +57,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
       }).catch(error => console.log(error));
       this.ownProfile = false;
       // fremde posts
-      this.firestore.getPostUser(id).then(async (data: Post[]) => {
+      this.postService.getPostUser(id).then(async (data: Post[]) => {
         this.posts = data;
       }).catch((error) => console.error(error))
     }

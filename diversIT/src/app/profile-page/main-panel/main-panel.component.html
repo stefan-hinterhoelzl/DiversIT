@@ -41,7 +41,7 @@
         [currentUser]="currentUser"></app-profile-new-post>
 
     <div *ngIf="!showDetails">
-        <app-post-card *ngFor="let post of postsOfUser" userid="{{userOfProfile.uid}}"
+        <app-post-card *ngFor="let post of postsOfUser" [currentUser]="currentUser" postuid="{{post.uid}}" userid="{{userOfProfile.uid}}"
             name="{{userOfProfile.firstname + ' ' + userOfProfile.lastname}}" profileImg="{{userOfProfile.photoURL}}"
             time="{{post.timestamp?.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}">
         </app-post-card>

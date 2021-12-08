@@ -9,9 +9,25 @@
     </mat-card-title>
     <mat-card-subtitle (click)="navigateToProfile()" style="cursor: pointer;">{{time | date: 'dd.MM.yyyy hh:mm:ss'}}
     </mat-card-subtitle>
+    <div class="menu-wrapper">
+      <mat-icon class="menu" *ngIf="userid === currentUser.uid" [matMenuTriggerFor]="menu" >more_horiz</mat-icon>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="editPost()">
+          <mat-icon>edit</mat-icon>
+          <span>Bearbeiten</span>
+        </button>
+        <button mat-menu-item (click)="deletePost()">
+          <mat-icon>delete</mat-icon>
+          <span>Löschen</span>
+        </button>
+      </mat-menu>
+    </div>
+
+    
+    
   </mat-card-header>
   <mat-card-content [ngClass]="{'empty-post': (time === undefined && name === undefined && profileImg === undefined)}">
-    <p>
+    <p>  
       {{content}}
     </p>
   </mat-card-content>

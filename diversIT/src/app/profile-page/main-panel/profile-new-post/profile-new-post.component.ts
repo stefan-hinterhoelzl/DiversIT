@@ -3,6 +3,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Firestore, serverTimestamp } from '@firebase/firestore';
 import { Post } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
+import { PostsService } from 'src/app/services/posts.service';
 import { UserService } from 'src/app/services/user.service';
 import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
 
@@ -15,7 +16,7 @@ export class ProfileNewPostComponent implements OnInit {
   @Input() currentUser: DiversITUser;
   postForm: FormGroup;
 
-  constructor(private userService: UserService, private snackbar: SnackbarComponent) { }
+  constructor(private userService: UserService, private snackbar: SnackbarComponent, private postService: PostsService) { }
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
@@ -35,7 +36,7 @@ export class ProfileNewPostComponent implements OnInit {
       }
 
 
-      this.userService.addPost(postPayload)
+      this.postService.addPost(postPayload)
       this.postForm.reset()
     }
     else{

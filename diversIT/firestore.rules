@@ -14,17 +14,18 @@ service cloud.firestore {
 
     match /posts/{post} {
       allow read: if signedIn();
-      allow write, delete, update: if signedIn() && request.auth.uid == resource.data.userID;
+      allow write, update: if signedIn() && request.auth.uid == request.resource.data.userID;
+      allow delete: if signedIn() && request.auth.uid == resource.data.userID;
     }
 
     match /ratings/{rating} {
       allow read: if true;
-      allow write, delete, update: if signedIn() && request.auth.uid == resource.data.userID;
+      allow write, delete, update: if signedIn() && request.auth.uid == request.resource.data.userID;
     }
 
     match /notifications/{notification} {
       allow read, delete: if signedIn() && (request.auth.uid == resource.data.toUID || request.auth.uid == resource.data.fromUID);
-      allow write: if signedIn() && request.auth.uid == resource.data.fromUID;
+      allow write: if signedIn() && request.auth.uid == request.resource.data.fromUID;
     }
   }
 }

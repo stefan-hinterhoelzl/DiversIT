@@ -1,11 +1,12 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { DiversITUser } from '../models/users.model'
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, orderBy } from "firebase/firestore";
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, orderBy, addDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { Post } from '../models/post.model';
 import { ChatService } from './chat.service';
 import { ObserversService } from './observers.service';
 import { NotificationService } from './notification.service';
+import { PostsService } from './posts.service';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ import { NotificationService } from './notification.service';
 })
 export class UserService implements OnDestroy {
 
-  constructor(private observer: ObserversService, private chat: ChatService, private notifications: NotificationService) {
+  constructor(private observer: ObserversService, private chat: ChatService, private notifications: NotificationService, private posts: PostsService) {
     this.authStatusListener();
   }
 
@@ -116,7 +117,7 @@ export class UserService implements OnDestroy {
         this.chat.initializeChat(doc.data() as DiversITUser)
       }
     });
-    this.getPostOfUserObservable(user.uid)
+    this.posts.getPostOfUserObservable(user.uid)
     this.notifications.getNotificationsListener(user.uid)
   }
 
@@ -193,33 +194,6 @@ export class UserService implements OnDestroy {
       array.push(mentor);
     });
     return array;
-  }
-
-  async getPostUser(userID: string): Promise<Post[]> {
-    const q = query(collection(this.db, "posts"), where("userID", "==", userID), orderBy("timestamp", "desc"));
-    const querySnapshot = await getDocs(q);
-    let array: Post[] = [];
-    querySnapshot.forEach((doc) => {
-      array.push(doc.data() as Post)
-    });
-    return array;
-  }
-
-  async getPostOfUserObservable(userID: string) {
-    this.postssub = onSnapshot(query(collection(this.db, "posts"), where("userID", "==", userID), orderBy("timestamp", "desc")), (q) => {
-      let arr: Post[] = []
-      q.forEach((doc) => {
-        arr.push(doc.data() as Post)
-      }
-      )
-      this.observer.currentUserPosts.next(arr)
-    })
-  }
-
-
-  async addPost(post: Post) {
-    const docRef = doc(collection(this.db, 'posts'))
-    await setDoc(docRef, post)
   }
 
 

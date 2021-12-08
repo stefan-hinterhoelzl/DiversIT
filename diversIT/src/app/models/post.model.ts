@@ -5,6 +5,7 @@ export interface Post {
     text: string,
     timestamp: Timestamp,
     photoURL?: string,
+    uid: string
 }
 
 export interface PostDisplay {
