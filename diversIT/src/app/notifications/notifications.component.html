@@ -16,7 +16,12 @@
                 <td>{{n.text}}</td>
                 <td nowrap>
                     <button mat-raised-button color="accent" *ngIf="n.type === 1" (click)="acceptMentorshipRequest(n)">Annehmen</button>
-                    <button mat-raised-button *ngIf="n.type === 1" (click)="declineMentorshipRequest(n)" style="margin-left: 5px;">Ablehnen</button>
+                    <button mat-raised-button (click)="declineMentorshipRequest(n)" style="margin-left: 5px;">Löschen</button>
+                </td>
+            </tr>
+            <tr *ngIf="this.notifications.length === 0">
+                <td style="padding-top: 40px;">
+                    Keine neuen Benachrichtigungen
                 </td>
             </tr>
         </table>

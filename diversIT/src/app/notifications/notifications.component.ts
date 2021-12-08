@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Timestamp } from '@firebase/firestore';
+import { serverTimestamp, Timestamp } from '@firebase/firestore';
 import { Subscription } from 'rxjs';
 import { Notification } from '../models/notification.model';
 import { DiversITUser } from '../models/users.model';
@@ -35,6 +35,16 @@ export class NotificationsComponent implements OnInit {
     if(this.currentUser.role == 2) this.chatService.addRelationship(notification.fromUID, this.currentUser.uid);
     else this.chatService.addRelationship(this.currentUser.uid, notification.fromUID)
     this.notificationService.deleteNotification(notification.uid)
+    this.notificationService.addNotification(<Notification>{
+      fromName: this.currentUser.firstname + " " + this.currentUser.lastname,
+      fromPhotoURL: this.currentUser.photoURL,
+      fromUID: notification.toUID,
+      toUID: notification.fromUID,
+      text: this.currentUser.firstname + " " + this.currentUser.lastname + " hat Ihre Mentorenanfrage angenommen.",
+      type: 2,
+      when: serverTimestamp(),
+      uid: null
+    })
   }
 
   declineMentorshipRequest(notification: Notification){
