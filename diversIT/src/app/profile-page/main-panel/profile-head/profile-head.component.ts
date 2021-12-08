@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { DiversITUser } from 'src/app/models/users.model';
 import { UserService } from 'src/app/services/user.service';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { ChatService } from 'src/app/services/chat.service';
@@ -19,7 +19,8 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class ProfileHeadComponent implements OnInit, OnChanges {
 
-  constructor(private userService: UserService, private route: ActivatedRoute,private router: Router, private dialog: MatDialog, private chatService: ChatService, private notificationService: NotificationService) { }
+
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private dialog: MatDialog, private chatService: ChatService, private notificationService: NotificationService) { }
 
   @Input() userOfProfile: DiversITUser;
   @Input() currentUser: DiversITUser;
@@ -28,28 +29,60 @@ export class ProfileHeadComponent implements OnInit, OnChanges {
   showUserDetails = false
   profileIdSubscription;
   visible = true;
-  openRequest;
+
+  showVerknüpfenButton = true;
+  openRequest: boolean;
+  userReachedMaxMentees: boolean = false;
+  currentUserReachedMaxMentees: boolean = false;
+  notSufficientForGirlsOnlyMentor: boolean = false;
 
   ngOnInit(): void {
     this.profileIdSubscription = this.route.snapshot.paramMap.get('id')
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.currentUser && changes.currentUser.currentValue){
+    if (changes.currentUser && changes.currentUser.currentValue) {
       this.checkButton()
     }
-    if(changes.userOfProfile != null){
+    if (changes.userOfProfile != null) {
       this.checkButton()
     }
   }
 
-  checkButton(){
-    if(this.userOfProfile && this.currentUser){
+  checkButton() {
+    if (this.userOfProfile && this.currentUser) {
       this.notificationService.checkIfMentorRequestHasAlreadyBeenSent(this.userOfProfile.uid, this.currentUser.uid).then((data) => {
-        if(data != 0) this.openRequest = true;
+        // already has a request for Mentorship
+        if (data != 0) this.openRequest = true;
         else this.openRequest = false;
+
+        // User of Profile has maxMentees reached
+        if (this.userOfProfile.maxMentees != -1 &&
+          this.userOfProfile.mentees.length >= this.userOfProfile.maxMentees && 
+          this.userOfProfile.girlsOnlyMentor == false &&
+          this.openRequest == false) {
+          this.userReachedMaxMentees = true
+        }
+        // personal maxMentees Überschritten
+        else if (this.currentUser.maxMentees != -1 && 
+          this.currentUser.mentees.length >= this.currentUser.maxMentees &&
+          this.openRequest == false) {
+          this.currentUserReachedMaxMentees = true
+        }
+        // GirlsOnly Mentor
+        else if (this.userOfProfile.girlsOnlyMentor == true && 
+          this.currentUser.gender !== "Weiblich" &&
+          this.openRequest == false){
+          this.notSufficientForGirlsOnlyMentor = true
+        }
       })
-      console.log(this.openRequest)
+      
+
+      
+
+      
+    
+
     }
     else console.log("nullvalue beim check")
   }
@@ -69,7 +102,7 @@ export class ProfileHeadComponent implements OnInit, OnChanges {
     });
 
     dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
-      if(result != null){
+      if (result != null) {
         // user wants to connect
         let notification = <Notification>{
           fromName: this.currentUser.firstname + " " + this.currentUser.lastname,
@@ -94,7 +127,7 @@ export class ProfileHeadComponent implements OnInit, OnChanges {
 
 
   // open dialog to affirm mentorship cancle
-  cancleMentorship(){
+  cancleMentorship() {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: "30%",
       data: {
@@ -106,24 +139,24 @@ export class ProfileHeadComponent implements OnInit, OnChanges {
     });
 
     dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
-      if(result != null){
+      if (result != null) {
         // user wants to disconnect
-        if(this.currentUser.role == 2) this.chatService.revokeRelationship(this.userOfProfile.uid, this.currentUser.uid)
+        if (this.currentUser.role == 2) this.chatService.revokeRelationship(this.userOfProfile.uid, this.currentUser.uid)
         else this.chatService.revokeRelationship(this.currentUser.uid, this.userOfProfile.uid)
 
       }
     });
   }
 
-  navigateToChatWithMentor(){
+  navigateToChatWithMentor() {
     this.router.navigate(['/chat', { k: this.userOfProfile.uid }]);
   }
 
-  navigateToProfileSetting(){
+  navigateToProfileSetting() {
     this.router.navigate(['/profilesettings'])
   }
 
-  showDetails(){
+  showDetails() {
     this.showUserDetails = !this.showUserDetails
     this.changeDetailsBoolean.emit()
   }
