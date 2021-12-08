@@ -48,6 +48,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UserRatingsComponent } from './landing-page/landing-page-components/user-ratings/user-ratings.component';
 import { RatingComponent } from './profile-page/right-panel/rating/rating.component';
 import { StarRatingComponent } from './profile-page/right-panel/rating/star-rating/star-rating.component';
+import { RelationsPageComponent } from './relations-page/relations-page.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -87,7 +88,8 @@ const app = initializeApp(environment.firebaseConfig);
     NotificationsComponent,
     UserRatingsComponent,
     RatingComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    RelationsPageComponent
   ],
   imports: [
     BrowserModule,

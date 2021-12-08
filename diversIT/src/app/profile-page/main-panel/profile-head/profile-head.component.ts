@@ -30,7 +30,6 @@ export class ProfileHeadComponent implements OnInit, OnChanges {
   profileIdSubscription;
   visible = true;
 
-  showVerknüpfenButton = true;
   openRequest: boolean;
   userReachedMaxMentees: boolean = false;
   currentUserReachedMaxMentees: boolean = false;
@@ -51,6 +50,10 @@ export class ProfileHeadComponent implements OnInit, OnChanges {
 
   checkButton() {
     if (this.userOfProfile && this.currentUser) {
+      // if alreade mentor/mentee don't check any connecting realted stuff
+      if(this.userOfProfile.mentees.includes(this.currentUser.uid) || this.userOfProfile.mentors.includes(this.currentUser.uid)) {
+        return
+      }
       this.notificationService.checkIfMentorRequestHasAlreadyBeenSent(this.userOfProfile.uid, this.currentUser.uid).then((data) => {
         // already has a request for Mentorship
         if (data != 0) this.openRequest = true;

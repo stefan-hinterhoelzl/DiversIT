@@ -14,6 +14,7 @@ import { ChatComponent } from './chat/chat.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MentorGuardService } from './services/redirectMentorGuard.service';
+import { RelationsPageComponent } from './relations-page/relations-page.component';
 
 const routes: Routes = [
 
@@ -70,6 +71,11 @@ const routes: Routes = [
     component: NotificationsComponent,
     canActivate: [AuthguardService]
   },
+  {
+    path: 'relations',
+    component: RelationsPageComponent,
+    canActivate: [AuthguardService]
+  }
 ];
 
 @NgModule({

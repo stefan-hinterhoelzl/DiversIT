@@ -16,7 +16,7 @@
             <mat-icon class="icon" id="search" color="accent">search</mat-icon>
             <label for="search" class="lable">Suche</label>
         </button>
-        <button mat-icon-button class="icon-label" style="margin-right: 30px; ">
+        <button mat-icon-button class="icon-label" style="margin-right: 30px; " routerLink="/relations">
             <mat-icon class="icon" id="supervisor_account" color="accent">supervisor_account</mat-icon>
             <label for="supervisor_account" class="lable">{{currentUser?.role === 3 ? "Mentoren": "Mentees"}}</label>
         </button>

@@ -170,12 +170,14 @@ img {
 
 /*Chip Chip-Primary*/
 .chip {
-	padding: 10px 20px;
-    margin: 10px;
+	padding: 4px 8px;
+    position: relative;
+    top: -4px;
+    left: 10px;
 	border-radius: 30px;
     transition: var(--transition);
     font: {
-        size: 16px;
+        size: 14px;
         weight: 500;
     };
 }

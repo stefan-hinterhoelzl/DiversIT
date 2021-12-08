@@ -2,13 +2,16 @@
     <div class="background-image"></div>
         <div mat-card-avatar style="background-image: url('{{userOfProfile.photoURL}}');"></div>
     <mat-card-content>
-        <h1 >{{userOfProfile.firstname + " " + userOfProfile.lastname}}</h1>
+        <h1>
+            {{userOfProfile.firstname + " " + userOfProfile.lastname}}            
+            <span *ngIf="userOfProfile.girlsOnlyMentor" class="chip chip-primary">Girls only</span>
+        </h1>
         <h3 *ngIf="userOfProfile.job === null  && userOfProfile.company === null">Keine Jobinformationen verfügbar. </h3>
         <h3 *ngIf="userOfProfile.job  && userOfProfile.company === null">{{userOfProfile.job}} </h3>
         <h3 *ngIf="userOfProfile.job && userOfProfile.company">{{userOfProfile.job + " bei " + userOfProfile.company}} </h3>
         
         <!-- Wenn es nicht mein eigenes Profil ist -->
-        <wrapper *ngIf="userOfProfile.uid !== currentUser.uid"> <!-- wrapper ist ein selbst erstelltes HTML Element welches kein Styling besitzt, und somit alles inheritet -->
+        <span *ngIf="userOfProfile.uid !== currentUser.uid"> <!-- wrapper ist ein selbst erstelltes HTML Element welches kein Styling besitzt, und somit alles inheritet -->
         <!-- profil IST mein Mentor -->
             <button *ngIf="currentUser.mentors.includes(userOfProfile.uid) || currentUser.mentees.includes(userOfProfile.uid)" mat-raised-button color="accent" (click)="navigateToChatWithMentor()">Nachricht</button>
         <!-- profil ist NICHT mein Mentor -->
@@ -34,7 +37,7 @@
                 <button *ngIf="currentUser.mentors.includes(userOfProfile.uid) || currentUser.mentees.includes(userOfProfile.uid)" mat-menu-item (click)="cancleMentorship()">Mentorschaft beenden</button>
                 <button mat-menu-item (click)="showDetails()">{{showUserDetails ? "Posts anzeigen" : "Details anzeigen"}}</button>
             </mat-menu>
-        </wrapper>
+        </span>
 
         <!-- Wenn es Mein eigenes Profil ist -->
         <wrapper *ngIf="userOfProfile.uid === currentUser.uid">

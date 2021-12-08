@@ -36,6 +36,7 @@ export class CenterPanelComponent implements OnInit, OnDestroy {
   }
 
   initializeMentee(){
+    console.log("test" +this.posts)
     this.observer.currentUserMentorsStatus.subscribe(async (data) => {
       if(data == null) return;
       this.mentors = data;
@@ -57,6 +58,7 @@ export class CenterPanelComponent implements OnInit, OnDestroy {
           this.posts.push(newDisplayPost)          
         }
       }
+      
       // all posts should be loaded
       this.posts.sort((a,b) => b.timestamp.toMillis() - a.timestamp.toMillis())
       
