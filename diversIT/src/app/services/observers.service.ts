@@ -40,7 +40,15 @@ export class ObserversService {
   //The Notifications of the currently loggedIn User
   notificationsOfUser: BehaviorSubject<Notification[]> = new BehaviorSubject<Notification[]>(null);
   notificationsOfUserStatus = this.notificationsOfUser.asObservable()
-  
+
+  //Forum threads
+  threads: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  threadStatus = this.threads.asObservable();
+
+  //Answers of one thread instance
+  answers: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  answersStatus = this.answers.asObservable();
+
   constructor() { }
 
 
@@ -75,5 +83,13 @@ export class ObserversService {
 
   get getnotificationsOfUserValue(): Notification[] {
     return this.notificationsOfUser.value;
+  }
+
+  get getThreadsValue(): Message[] {
+    return this.threads.value;
+  }
+
+  get getAnswersValue(): Chat[] {
+    return this.answers.value;
   }
 }
