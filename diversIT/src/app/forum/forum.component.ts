@@ -35,6 +35,7 @@ export class ForumComponent implements OnInit {
     this.threadunsub = this.database.getThreads();
   }
 
+  // route and compontent is not set up yet
   navigateToThread(id: string) {
     this.router.navigate(["/forum/thread/" + id]);
   }
