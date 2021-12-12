@@ -15,6 +15,7 @@ import { ProfileSettingsComponent } from './profile-settings/profile-settings.co
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MentorGuardService } from './services/redirectMentorGuard.service';
 import { RelationsPageComponent } from './relations-page/relations-page.component';
+import { ForumThreadComponent } from './forum-thread/forum-thread.component';
 
 const routes: Routes = [
 
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'forum',
     component: ForumComponent
+  },
+  {
+    path: 'forum/:id',
+    component: ForumThreadComponent
   },
   {
     path: 'impressum',
