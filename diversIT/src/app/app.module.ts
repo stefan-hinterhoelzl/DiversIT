@@ -50,6 +50,9 @@ import { RatingComponent } from './profile-page/right-panel/rating/rating.compon
 import { StarRatingComponent } from './profile-page/right-panel/rating/star-rating/star-rating.component';
 import { RelationsPageComponent } from './relations-page/relations-page.component';
 import { ForumThreadComponent } from './forum-thread/forum-thread.component';
+import { ThreadOverviewComponent } from './forum/thread-overview/thread-overview.component';
+import { SearchFilterSortComponent } from './forum/search-filter-sort/search-filter-sort.component';
+import { PageSelectionComponent } from './forum/page-selection/page-selection.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -91,7 +94,10 @@ const app = initializeApp(environment.firebaseConfig);
     RatingComponent,
     StarRatingComponent,
     RelationsPageComponent,
-    ForumThreadComponent
+    ForumThreadComponent,
+    ThreadOverviewComponent,
+    SearchFilterSortComponent,
+    PageSelectionComponent
   ],
   imports: [
     BrowserModule,
