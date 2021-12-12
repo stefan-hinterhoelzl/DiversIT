@@ -49,6 +49,7 @@ import { UserRatingsComponent } from './landing-page/landing-page-components/use
 import { RatingComponent } from './profile-page/right-panel/rating/rating.component';
 import { StarRatingComponent } from './profile-page/right-panel/rating/star-rating/star-rating.component';
 import { RelationsPageComponent } from './relations-page/relations-page.component';
+import { ForumThreadComponent } from './forum-thread/forum-thread.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -89,7 +90,8 @@ const app = initializeApp(environment.firebaseConfig);
     UserRatingsComponent,
     RatingComponent,
     StarRatingComponent,
-    RelationsPageComponent
+    RelationsPageComponent,
+    ForumThreadComponent
   ],
   imports: [
     BrowserModule,
