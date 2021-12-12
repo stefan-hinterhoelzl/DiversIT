@@ -53,6 +53,7 @@ import { ForumThreadComponent } from './forum-thread/forum-thread.component';
 import { ThreadOverviewComponent } from './forum/thread-overview/thread-overview.component';
 import { SearchFilterSortComponent } from './forum/search-filter-sort/search-filter-sort.component';
 import { PageSelectionComponent } from './forum/page-selection/page-selection.component';
+import { MessageCardComponent } from './forum-thread/message-card/message-card.component';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -97,7 +98,8 @@ const app = initializeApp(environment.firebaseConfig);
     ForumThreadComponent,
     ThreadOverviewComponent,
     SearchFilterSortComponent,
-    PageSelectionComponent
+    PageSelectionComponent,
+    MessageCardComponent
   ],
   imports: [
     BrowserModule,
