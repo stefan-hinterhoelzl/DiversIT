@@ -27,5 +27,15 @@ service cloud.firestore {
       allow read, delete: if signedIn() && (request.auth.uid == resource.data.toUID || request.auth.uid == resource.data.fromUID);
       allow write: if signedIn() && request.auth.uid == request.resource.data.fromUID;
     }
+
+    match /threads/{thread} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /answers/{answer} {
+      allow read: if true;
+      allow write: if true;
+    }
   }
 }
