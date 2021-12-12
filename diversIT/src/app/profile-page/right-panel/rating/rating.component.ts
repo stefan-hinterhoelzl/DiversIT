@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { DiversITUser } from './../../../models/users.model';
 import { Rating } from './../../../models/rating.model';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
 import { serverTimestamp } from 'firebase/firestore';
@@ -26,12 +26,20 @@ export class RatingComponent implements OnInit {
   constructor(private snackbar: SnackbarComponent, private ratingService: RatingService, private router: RouterModule) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.ratingForm = new FormGroup({
       summary: new FormControl('', Validators.required),
       text: new FormControl('', Validators.required),
     });
+  }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.currentUser && changes.currentUser.currentValue) {
+      this.prefillRating();
+    }
+  }
+
+  async prefillRating() {
     await this.ratingService.getRatingForUserID(this.currentUser.uid).then((data) => {
       if (data != null) {
         this.userRating = data;
