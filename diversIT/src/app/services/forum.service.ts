@@ -1,103 +1,167 @@
-import { getAuth } from '@firebase/auth';
-import { child, getDatabase, onValue, orderByChild, push, query, ref, serverTimestamp, update } from 'firebase/database';
+import { increment } from '@firebase/firestore';
 import { Injectable } from "@angular/core";
-import { Router } from '@angular/router';
-import { ObserversService } from './observers.service';
 import { Answer, Thread } from '../models/forum.model';
+import { addDoc, collection, doc, getDocs, getFirestore, limit, orderBy, query, startAfter, updateDoc, where } from 'firebase/firestore';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ForumService {
 
-    database = getDatabase();
+    db = getFirestore();
+    lastVisibleThread;
+    lastVisibleAnswer;
 
-    auth = getAuth();
+    constructor() { }
 
-    constructor(private router: Router, private observer: ObserversService) { }
+    async getFirstThreads(numberOfThreads: number, orderByField: string): Promise<Thread[]> {
+        // Query the first page of docs
+        const first = query(collection(this.db, "threads"),
+            orderBy(orderByField, "desc"),
+            limit(numberOfThreads));
+        const documentSnapshots = await getDocs(first);
 
-    forumsub;
+        // Get the last visible document
+        if (documentSnapshots.size > 0) {
+            this.lastVisibleThread = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+            console.log("last", this.lastVisibleThread);
+        }
 
-    getThreads() {
-        const threadsRef = query(ref(this.database, "threads"), orderByChild("lastAnswerTime"));
-
+        const querySnapshot = await getDocs(first);
+        let array: Thread[] = [];
+        querySnapshot.forEach((doc) => {
+            array.push(doc.data() as Thread)
+        });
+        return array;
     }
 
-    getAnswers(threadUID: string) {
-        const answersRef = query(ref(this.database, "threads/" + threadUID + "/answers"), orderByChild("timestamp"));
+    async getNextThreads(numberOfThreads: number, orderByField: string): Promise<Thread[]> {
+        // Construct a new query starting at this document,
+        // get the next threads.
+        const next = query(collection(this.db, "threads"),
+            orderBy(orderByField, "desc"),
+            startAfter(this.lastVisibleThread),
+            limit(numberOfThreads));
 
+        const querySnapshot = await getDocs(next);
+        let array: Thread[] = [];
+        querySnapshot.forEach((doc) => {
+            array.push(doc.data() as Thread)
+        });
+
+        // Get the last visible document
+        if (querySnapshot.size > 0) {
+            this.lastVisibleThread = querySnapshot.docs[querySnapshot.docs.length - 1];
+            console.log("last", this.lastVisibleThread);
+        }
+
+        return array;
     }
 
-    async createThread(title: string, text: string, tags: string[], anonymous?: boolean) {
-        console.log("createThread in forumService is called");
-        let currentUser = this.observer.getcurrenUserValue;
+    async getAnswers(threadUID: string): Promise<Answer[]> {
+        const q = query(collection(this.db, "answers"),
+            where("threadUID", "==", threadUID),
+            orderBy("timestamp", "desc"));
+        const querySnapshot = await getDocs(q);
+        let array: Answer[] = [];
+        querySnapshot.forEach((doc) => {
+            array.push(doc.data() as Answer)
+        });
+        return array;
+    }
 
-        console.log("get new key")
-        const newThreadKey = push(child(ref(this.database), "threads")).key;
+    async getFirstAnswers(threadUID: string, numberOfAnswers: number): Promise<Answer[]> {
+        // Query the first page of docs
+        const first = query(collection(this.db, "answers"),
+            where("threadUID", "==", threadUID),
+            orderBy("timestamp", "desc"),
+            limit(numberOfAnswers));
+        const documentSnapshots = await getDocs(first);
 
-        console.log("set anonymous true if no user is logged in")
-        if (currentUser == null) anonymous = true;
-        console.log("anonymous flag is:" + anonymous);
+        // Get the last visible document
+        if (documentSnapshots.size > 0) {
+            this.lastVisibleAnswer = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+            console.log("last", this.lastVisibleAnswer);
+        }
 
-        const newThread = <Thread>{
-            uid: newThreadKey,
-            created: serverTimestamp(),
-            userUID: currentUser != null ? currentUser.uid : "",
-            anonymous: anonymous != null ? anonymous : false,
-            title: title,
-            text: text,
-            tags: tags,
+        const querySnapshot = await getDocs(first);
+        let array: Answer[] = [];
+        querySnapshot.forEach((doc) => {
+            array.push(doc.data() as Answer)
+        });
+        return array;
+    }
+
+    async getNextAnswers(threadUID: string, numberOfAnswers: number): Promise<Answer[]> {
+        // Construct a new query starting at this document,
+        // get the next threads.
+        const next = query(collection(this.db, "answers"),
+            where("threadUID", "==", threadUID),
+            orderBy("timestamp", "desc"),
+            startAfter(this.lastVisibleAnswer),
+            limit(numberOfAnswers));
+
+        const querySnapshot = await getDocs(next);
+        let array: Answer[] = [];
+        querySnapshot.forEach((doc) => {
+            array.push(doc.data() as Answer)
+        });
+
+        // Get the last visible document
+        if (querySnapshot.size > 0) {
+            this.lastVisibleAnswer = querySnapshot.docs[querySnapshot.docs.length - 1];
+            console.log("last", this.lastVisibleAnswer);
+        }
+
+        return array;
+    }
+
+    async createThread(thread: Thread) {
+
+        const docRef = collection(this.db, 'threads');
+        const ref = await addDoc(docRef, {
+            uid: "",
+            created: thread.created,
+            title: thread.title,
+            text: thread.text,
+            tags: thread.tags,
             numberOfAnswers: 0,
-            lastAnswerTime: serverTimestamp(),
-            upvotedBy: [],
-            downvotedBy: [],
-            totalVotes: 0,
+            lastAnswerTime: thread.created,
             views: 0,
-            display: true,
-        }
+        });
 
-        const updates = {};
-        updates["threads/" + newThreadKey] = newThread;
-
-        console.log("update database");
-        await update(ref(this.database), updates);
+        await updateDoc(ref, {
+            uid: ref.id
+        });
     }
 
-    async createAnswer(threadUID: string, text: string, anonymous?: boolean) {
-        console.log("createAnswer in forumService is called");
-        let currentUser = this.observer.getcurrenUserValue;
+    async createAnswer(answer: Answer) {
 
-        console.log("get new key")
-        const newAnswerKey = push(child(ref(this.database), "threads/" + threadUID + "/answers")).key;
+        const docRef = collection(this.db, 'answers');
+        const ref = await addDoc(docRef, {
+            uid: "",
+            threadUID: answer.threadUID,
+            text: answer.text,
+            timestamp: answer.timestamp,
+        });
 
-        console.log("set anonymous true if no user is logged in")
-        if (currentUser == null) anonymous = true;
-        console.log("anonymous flag is:" + anonymous);
+        await updateDoc(ref, {
+            uid: ref.id
+        });
 
-        const newAnswer = <Answer>{
-            uid: newAnswerKey,
-            userUID: currentUser != null ? currentUser.uid : "",
-            anonymous: anonymous != null ? anonymous : false,
-            text: text,
-            upvotedBy: [],
-            downvotedBy: [],
-            totalVotes: 0,
-            display: true,
-        }
+        const threadRef = doc(this.db, "threads", answer.threadUID);
 
-        const updates = {};
-        const ThreadRef = ref(this.database, "threads/" + threadUID);
-        onValue(ThreadRef, (snapshot) => {
-            const data = snapshot.val() as Thread;
+        await updateDoc(threadRef, {
+            numberOfAnswers: increment(1),
+            lastAnswerTime: answer.timestamp
+        });
+    }
 
-            updates["threads/" + threadUID + "/lastAnswerTime"] = serverTimestamp();
-            updates["threads/" + threadUID + "/numberOfAnswers"] = data.numberOfAnswers + 1;
-            updates["threads/" + threadUID + "/answers/" + newAnswerKey] = newAnswer;
+    async incrementThreadViews(threadUID: string) {
+        const threadRef = doc(this.db, "threads", threadUID);
 
-            console.log("update database");
-            update(ref(this.database), updates);
-        }, {
-            onlyOnce: true
+        await updateDoc(threadRef, {
+            views: increment(1)
         });
     }
 }

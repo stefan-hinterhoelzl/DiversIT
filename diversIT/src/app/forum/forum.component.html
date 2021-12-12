@@ -4,23 +4,25 @@
 <button (click)="testCreateDummyThread()">Test create dummy thread</button>
 
 <div #threadList>
-    <div *ngFor="let thread of allThreads; let i = index; let last = last">
+    <div *ngFor="let thread of currentThreads; let i = index; let last = last">
         <div>
             <h2>Title: {{thread.title}}</h2>
             <p>Text: {{thread.text}}</p>
-            <p>Anwers: {{thread.numberOfAnswers}}</p>
+            <p>Answers: {{thread.numberOfAnswers}}</p>
+            <p>Views: {{thread.views}}</p>
         </div>
         <div>
-            <p *ngIf="(thread.answers == null || thread.answers.length == 0)" class="date">Erstellt am {{thread.created
+            <p *ngIf="(thread.created >= thread.lastAnswerTime)" class="date">Erstellt am {{thread.created.toMillis()
                 | date:
-                'dd.MM -
+                'dd.MM.yyyy -
                 HH:mm'}}</p>
-            <p *ngIf="(thread.answers != null && thread.answers.length > 0)" class="date">Letzte Antwort am
-                {{thread.lastAnswerTime | date:
-                'dd.MM -
+            <p *ngIf="(thread.created < thread.lastAnswerTime)" class="date">Letzte Antwort am
+                {{thread.lastAnswerTime.toMillis() | date:
+                'dd.MM.yyyy -
                 HH:mm'}} </p>
             <button (click)="testCreateAnswerForDummyThread(thread.uid)">Test create answer</button>
             <button (click)="navigateToThread(thread.uid)">Details</button>
         </div>
     </div>
+    <button (click)="getNextThreads()">></button>
 </div>

@@ -1,9 +1,8 @@
+import { serverTimestamp } from 'firebase/firestore';
 import { Router } from '@angular/router';
-import { ObserversService } from './../services/observers.service';
 import { ForumService } from './../services/forum.service';
-import { Component, HostListener, OnInit } from '@angular/core';
-import { Thread } from '../models/forum.model';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Answer, Thread } from '../models/forum.model';
 
 @Component({
   selector: 'app-forum',
@@ -12,27 +11,46 @@ import { Subscription } from 'rxjs';
 })
 export class ForumComponent implements OnInit {
 
-  allThreads: Thread[] = [];
+  currentThreads: Thread[];
 
-  constructor(private database: ForumService, private observer: ObserversService, private router: Router) { }
+  constructor(private database: ForumService, private router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.database.getFirstThreads(3, "numberOfAnswers").then((data) => {
+      this.currentThreads = data;
+    });
   }
 
-  // route and compontent is not set up yet
+  getNextThreads() {
+    this.database.getNextThreads(3, "numberOfAnswers").then((data) => {
+      this.currentThreads = this.currentThreads.concat(data);
+    })
+  }
+
   navigateToThread(id: string) {
-    this.router.navigate(["/forum/thread/" + id]);
+    this.router.navigate(["/forum/" + id]);
   }
 
   // TODO: remove after testing
   testCreateDummyThread() {
     console.log("testCreateDummyThread method was called");
-    this.database.createThread("title test dummy thread", "this is the dummy question text. can you please help me?", ["dummy", "test"]);
+    const newThread = <Thread>{
+      title: "title test dummy thread",
+      text: "this is the dummy question text. can you please help me?",
+      tags: ["dummy", "test"],
+      created: serverTimestamp(),
+    }
+    this.database.createThread(newThread);
   }
 
   testCreateAnswerForDummyThread(threadUID: string) {
     console.log("testCreateAnswerForDummyThread method was called");
-    this.database.createAnswer(threadUID, "dummy answer to a dummy question");
+    const newAnswer = <Answer>{
+      threadUID: threadUID,
+      text: "this is the dummy question text. can you please help me?",
+      timestamp: serverTimestamp(),
+    }
+    this.database.createAnswer(newAnswer);
   }
 
 }
