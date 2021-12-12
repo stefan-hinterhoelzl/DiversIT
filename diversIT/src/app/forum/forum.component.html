@@ -1,1 +1,26 @@
 <p>forum works!</p>
+
+<!-- TODO: Remove after testing -->
+<button (click)="testCreateDummyThread()">Test create dummy thread</button>
+
+<div #threadList>
+    <div *ngFor="let thread of allThreads; let i = index; let last = last">
+        <div>
+            <h2>Title: {{thread.title}}</h2>
+            <p>Text: {{thread.text}}</p>
+            <p>Anwers: {{thread.numberOfAnswers}}</p>
+        </div>
+        <div>
+            <p *ngIf="(thread.answers == null || thread.answers.length == 0)" class="date">Erstellt am {{thread.created
+                | date:
+                'dd.MM -
+                HH:mm'}}</p>
+            <p *ngIf="(thread.answers != null && thread.answers.length > 0)" class="date">Letzte Antwort am
+                {{thread.lastAnswerTime | date:
+                'dd.MM -
+                HH:mm'}} </p>
+            <button (click)="testCreateAnswerForDummyThread(thread.uid)">Test create answer</button>
+            <button (click)="navigateToThread(thread.uid)">Details</button>
+        </div>
+    </div>
+</div>

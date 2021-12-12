@@ -1,6 +1,7 @@
 import { Timestamp } from "@firebase/firestore";
 
 export interface Answer {
+    uid: string,
     userUID: string,
     anonymous: boolean,
     text: string,
@@ -20,7 +21,7 @@ export interface Thread {
     title: string,
     text: string,
     tags: string[],
-    answers: string[],
+    numberOfAnswers: number,
     lastAnswerTime: Timestamp,
     upvotedBy: string[],
     downvotedBy: string[],
