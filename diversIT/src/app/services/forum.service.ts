@@ -20,34 +20,12 @@ export class ForumService {
 
     getThreads() {
         const threadsRef = query(ref(this.database, "threads"), orderByChild("lastAnswerTime"));
-        return onValue(threadsRef, (snapshot) => {
-            if (snapshot.exists()) {
-                const threads: Thread[] = [];
-                snapshot.forEach((childSnapshot) => {
-                    threads.push(childSnapshot.val() as Thread);
-                })
-                threads.reverse();
-                this.observer.threads.next(threads);
-            } else {
-                this.observer.threads.next([]);
-            }
-        });
+
     }
 
     getAnswers(threadUID: string) {
         const answersRef = query(ref(this.database, "threads/" + threadUID + "/answers"), orderByChild("timestamp"));
-        return onValue(answersRef, (snapshot) => {
-            if (snapshot.exists()) {
-                const answers: Answer[] = [];
-                snapshot.forEach((childSnapshot) => {
-                    answers.push(childSnapshot.val() as Answer);
-                })
-                answers.reverse();
-                this.observer.answers.next(answers);
-            } else {
-                this.observer.answers.next([]);
-            }
-        });
+
     }
 
     async createThread(title: string, text: string, tags: string[], anonymous?: boolean) {

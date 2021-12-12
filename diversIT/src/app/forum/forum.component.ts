@@ -13,41 +13,15 @@ import { Subscription } from 'rxjs';
 export class ForumComponent implements OnInit {
 
   allThreads: Thread[] = [];
-  allThreadsSubscription: Subscription;
-
-  threadunsub;
 
   constructor(private database: ForumService, private observer: ObserversService, private router: Router) { }
 
   ngOnInit(): void {
-    this.allThreadsSubscription = this.observer.threadStatus.subscribe((data) => {
-      if (data.length > 0) {
-        this.allThreads = data;
-        console.log(this.allThreads);
-      }
-    });
-    if (this.allThreads != null) {
-      this.initialize();
-    }
-  }
-
-  initialize() {
-    this.threadunsub = this.database.getThreads();
   }
 
   // route and compontent is not set up yet
   navigateToThread(id: string) {
     this.router.navigate(["/forum/thread/" + id]);
-  }
-
-  @HostListener('window:beforeunload', ['$event'])
-  async beforeUnloadHandler(event) {
-    this.threadunsub();
-  }
-
-  @HostListener('window:onunload', ['$event'])
-  onUnloadHandler(event) {
-    this.threadunsub();
   }
 
   // TODO: remove after testing
