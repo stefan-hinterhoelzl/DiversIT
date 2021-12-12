@@ -21,6 +21,6 @@ export class MainPanelComponent implements OnInit {
   setDetailState(){
     this.showDetails = !this.showDetails
   }
-
+ //test
 
 }
