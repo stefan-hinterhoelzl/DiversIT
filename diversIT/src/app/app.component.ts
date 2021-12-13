@@ -1,37 +1,48 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { DiversITUser } from './models/users.model';
 import { Location } from '@angular/common';
 import { ChatService } from './services/chat.service';
 import { ObserversService } from './services/observers.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'mintistcool';
   currentUser: DiversITUser;
   newMessages: number;
   newNotifications: number;
+  currentUserSubscription: Subscription;
+  currentChatSubscripton: Subscription;
+  currentNotSubscription: Subscription
 
   constructor(private router: Router, private auth: AuthService, private firestore: UserService, private location: Location, private chat: ChatService, private observer: ObserversService) {
   }
 
 
+  ngOnDestroy(): void {
+    this.currentUserSubscription.unsubscribe()
+    this.currentChatSubscripton.unsubscribe()
+    this.currentNotSubscription.unsubscribe()
+  }
+
+
   ngOnInit(): void {
-    this.observer.currentUserStatus.subscribe((data) => {
+    this.currentUserSubscription = this.observer.currentUserStatus.subscribe((data) => {
       this.currentUser = data;
     })
 
-    this.observer.numberStatus.subscribe((data) => {
+     this.currentChatSubscripton= this.observer.numberStatus.subscribe((data) => {
       this.newMessages = data;
     });
 
-    this.observer.notificationsOfUserStatus.subscribe((data) => {
+    this.currentNotSubscription = this.observer.notificationsOfUserStatus.subscribe((data) => {
       if(data != null)
       this.newNotifications = data.length
     })

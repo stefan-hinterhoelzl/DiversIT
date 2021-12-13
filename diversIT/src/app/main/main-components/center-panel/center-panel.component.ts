@@ -15,17 +15,19 @@ import { UserService } from 'src/app/services/user.service';
 export class CenterPanelComponent implements OnInit, OnDestroy {
 
   constructor(private firestore: UserService, private observer: ObserversService, private postService: PostsService) { }
-  
+
   ngOnDestroy(): void {
-    this.usersub.unsubscribe()
+    this.usersub.unsubscribe();
+    this.initializeMenteeSub.unsubscribe();
   }
 
   currentUser: DiversITUser;
   mentors: DiversITUser[];
   posts: PostDisplay[] = [];
   usersub: Subscription;
+  initializeMenteeSub: Subscription;
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.usersub = this.observer.currentUserStatus.subscribe((data) => {
       if (data != null) {
         this.currentUser = data
@@ -37,7 +39,7 @@ export class CenterPanelComponent implements OnInit, OnDestroy {
 
   initializeMentee(){
     console.log("test" +this.posts)
-    this.observer.currentUserMentorsStatus.subscribe(async (data) => {
+    this.initializeMenteeSub = this.observer.currentUserMentorsStatus.subscribe(async (data) => {
       if(data == null) return;
       this.mentors = data;
       this.posts = [];
@@ -54,14 +56,14 @@ export class CenterPanelComponent implements OnInit, OnDestroy {
             text: postsOfMentor[j].text,
             timestamp: postsOfMentor[j].timestamp,
             photoURL: postsOfMentor[j].photoURL
-          }          
-          this.posts.push(newDisplayPost)          
+          }
+          this.posts.push(newDisplayPost)
         }
       }
-      
+
       // all posts should be loaded
       this.posts.sort((a,b) => b.timestamp.toMillis() - a.timestamp.toMillis())
-      
+
     })
   }
 

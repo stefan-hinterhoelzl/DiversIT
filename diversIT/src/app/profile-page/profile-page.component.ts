@@ -19,6 +19,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
   currentUserSubscription: Subscription;
   currentRouteSubscription: Subscription;
+  currentPostSubscription: Subscription;
   currentUser: DiversITUser;
   alternateUser: DiversITUser;
   ownProfile: boolean;
@@ -26,6 +27,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe();
+    this.currentPostSubscription.unsubscribe();
+    this.currentRouteSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -46,7 +49,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
       this.alternateUser = this.currentUser
 
       // meine posts
-      this.observer.currentUserPostsStatus.subscribe((data) => {
+      this.currentPostSubscription = this.observer.currentUserPostsStatus.subscribe((data) => {
         this.posts = data;
         console.log(data)
       })
@@ -57,7 +60,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
       }).catch(error => console.log(error));
       this.ownProfile = false;
       // fremde posts
-      this.postService.getPostUser(id).then(async (data: Post[]) => {
+      this.postService.getPostUser(id).then((data: Post[]) => {
         this.posts = data;
       }).catch((error) => console.error(error))
     }
