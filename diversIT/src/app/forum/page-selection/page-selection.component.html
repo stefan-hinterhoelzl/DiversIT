@@ -1,1 +1,11 @@
-<p>page-selection works!</p>
+<div class="pageSelection">
+    <mat-card>
+        <button mat-icon-button color="accent" (click)="decreasePageNum()">
+            <mat-icon>arrow_left</mat-icon>
+        </button>
+        <mat-label>Seite {{currentPage}} von {{numberOfPages}}</mat-label>
+        <button mat-icon-button color="accent" (click)="increasePageNum()">
+            <mat-icon>arrow_right</mat-icon>
+        </button>
+    </mat-card>
+</div>

@@ -1,1 +1,31 @@
-<p>thread-overview works!</p>
+<div class="threadOverview">
+    <mat-card *ngFor="let t of this.threads">
+        <div fxLayout="row">
+            <!--Antworten-->
+            <div fxFlex="10" fxLayout="column">
+                <div class="answerInvocation">{{t.answers}}</div>
+                <div class="answerInvocationLabel">ANTWORTEN</div>
+            </div>
+
+            <!--Aufrufe-->
+            <div fxFlex="10" fxLayout="column">
+                <div class="answerInvocation">{{t.invocations}}</div>
+                <div class="answerInvocationLabel">AUFRUFE</div>
+            </div>
+
+            <!--Forumstitel mit Tags-->
+            <div fxFlex fxLayout="column" class="forumTitleWithTags">
+                <div class="forumTitle" (click)="navigateToForumThread(t.id)">{{t.title}}</div>
+                <div fxLayout="row">
+                    <div fxFlex="50">
+                        <mat-chip *ngFor="let tag of t.tags" color="accent" selected>{{tag}}</mat-chip>
+                    </div>
+                    <div fxFlex class="changedAtCreatedAt">
+                        <span *ngIf="t.lastAnswer !== null">Letzter Antwort am: {{t.lastAnswer.toDate().toLocaleString()}} Uhr;</span>
+                        <span>Erstellt am: {{t.createdAt.toDate().toLocaleString()}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

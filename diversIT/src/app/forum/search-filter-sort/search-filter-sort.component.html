@@ -1,1 +1,21 @@
-<p>search-filter-sort works!</p>
+<div>
+    <mat-card>
+        <mat-form-field appearance="outline" class="searchText">
+            <input type="text" matInput placeholder="Suchen" (change)="onSearchTextChanged($event)">
+            <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="searchTags">
+            <mat-label>Tags</mat-label>
+            <mat-select multiple (selectionChange)="onFilterTagsChanged($event)">
+                <mat-option *ngFor="let ft of filterTags" [value]="ft">{{ft}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="none" class="filterTypes">
+        <mat-chip-list>
+            <mat-chip color="accent" [selected]="filterTypeNew" (click)="onFilterTypeChanged('new')">Neu</mat-chip>
+            <mat-chip color="accent" [selected]="filterTypeDiscussedALot" (click)="onFilterTypeChanged('discussedALot')">Heiß diskutiert</mat-chip>
+            <mat-chip color="accent" [selected]="filterTypeClickedOften" (click)="onFilterTypeChanged('oftenClicked')">Oft geklickt</mat-chip>
+        </mat-chip-list>
+    </mat-form-field>
+    </mat-card>
+</div>

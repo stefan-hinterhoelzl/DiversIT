@@ -1,0 +1,39 @@
+.threadOverview {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.answerInvocation{
+    text-align: center;
+    font-size: large;
+}
+
+.answerInvocationLabel{
+    text-align: center;
+    color: gray;
+    font-size: x-small;
+}
+
+.forumTitleWithTags{
+    padding-left: 3%;
+}
+
+.forumTitle{
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.tags{
+    padding-top: 1%;
+}
+
+.mat-chip {    
+    color: white !important;
+    height: fit-content;
+}
+
+.changedAtCreatedAt{
+    font-size: x-small;
+    color: gray;
+    text-align: right;
+}
