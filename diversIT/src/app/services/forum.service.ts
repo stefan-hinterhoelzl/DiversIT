@@ -1,4 +1,4 @@
-import { increment } from '@firebase/firestore';
+import { getDoc, increment } from '@firebase/firestore';
 import { Injectable } from "@angular/core";
 import { Answer, Thread } from '../models/forum.model';
 import { addDoc, collection, doc, getDocs, getFirestore, limit, orderBy, query, startAfter, updateDoc, where } from 'firebase/firestore';
@@ -35,6 +35,13 @@ export class ForumService {
         return array;
     }
 
+
+    async getThreadByUID(threadUID: string): Promise<Thread>{
+        const q = doc(this.db, "threads", threadUID)
+        const docSnap =  await getDoc(q)
+        return docSnap.data() as Thread
+    }
+
     async getNextThreads(numberOfThreads: number, orderByField: string): Promise<Thread[]> {
         // Construct a new query starting at this document,
         // get the next threads.
@@ -61,7 +68,7 @@ export class ForumService {
     async getAnswers(threadUID: string): Promise<Answer[]> {
         const q = query(collection(this.db, "answers"),
             where("threadUID", "==", threadUID),
-            orderBy("timestamp", "desc"));
+            orderBy("timestamp", "asc"));
         const querySnapshot = await getDocs(q);
         let array: Answer[] = [];
         querySnapshot.forEach((doc) => {
