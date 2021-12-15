@@ -1,3 +1,4 @@
+import { ForumComponent } from './forum/forum.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -96,6 +97,7 @@ const app = initializeApp(environment.firebaseConfig);
     RatingComponent,
     StarRatingComponent,
     RelationsPageComponent,
+    ForumComponent,
     ForumThreadComponent,
     ThreadOverviewComponent,
     SearchFilterSortComponent,

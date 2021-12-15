@@ -1,1 +1,16 @@
-<p>message-card works!</p>
+<div class="message-card">
+    <h1 *ngIf="title">{{title}}</h1>
+    <p>{{content}}</p>
+    <div class="footer-bar">
+        <div > 
+            <span *ngIf="title != null" (click)="copyToClipboard()" style="cursor: pointer;">
+                <mat-icon>share</mat-icon> Teilen 	
+            </span>
+            <span *ngIf="title != null" (click)="openDialogeToAnswer()" style="cursor: pointer;">
+                <mat-icon>reply</mat-icon> Antworten 
+            </span>
+            <span *ngIf="title == null">#{{number}}</span>
+        </div>
+        <div>{{timestamp  | date: 'HH:mm - dd.MM.yyyy'}}</div>
+    </div>
+</div>

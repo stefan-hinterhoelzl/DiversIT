@@ -1,0 +1,27 @@
+.message-card{
+    width: 100%;
+    border-radius: 1rem;
+    background-color: white;
+    margin-top: 20px;
+}
+
+.message-card > h1, .message-card > p, .message-card > div{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+span{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+.footer-bar, .footer-bar > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    gap: 1rem
+}

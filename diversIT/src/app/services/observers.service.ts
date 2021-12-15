@@ -40,7 +40,7 @@ export class ObserversService {
   //The Notifications of the currently loggedIn User
   notificationsOfUser: BehaviorSubject<Notification[]> = new BehaviorSubject<Notification[]>(null);
   notificationsOfUserStatus = this.notificationsOfUser.asObservable()
-  
+
   constructor() { }
 
 

@@ -1,1 +1,4 @@
-<p>forum-thread works!</p>
+<div class="message-wrapper">
+    <app-message-card title="{{thread?.title}}" content="{{thread?.text}}" timestamp="{{thread?.created.toMillis()}}"></app-message-card>
+    <app-message-card *ngFor="let answer of answers; index as i" content="{{answer.text}}" timestamp="{{answer.timestamp.toMillis()}}" number="{{i + 1}}"></app-message-card>
+</div>
