@@ -1,5 +1,18 @@
 <div class="forum">
-    <app-search-filter-sort></app-search-filter-sort>
-    <app-thread-overview></app-thread-overview>
-    <app-page-selection></app-page-selection>
+    <app-search-filter-sort 
+        (filterTextEventEmitter)="setFilterText($event)"
+        (filterTagsEventEmitter)="setFilterTags($event)"
+        (filterTypeEventEmitter)="setFilterType($event)">
+    </app-search-filter-sort>
+    <app-thread-overview
+        [inputFilterText]="filterText"
+        [inputFilterTags]="filterTags"
+        [inputFilterTypeNew]="filterTypeNew"
+        [inputFilterTypeDiscussedALot]="filterTypeDiscussedALot"
+        [inputFilterTypeClickedOften]="filterTypeClickedOften"
+        [inputCurrentPage]="currentPage">
+    </app-thread-overview>
+    <app-page-selection
+        (currentPageEventEmitter)="setCurrentPage($event)">
+    </app-page-selection>
 </div>

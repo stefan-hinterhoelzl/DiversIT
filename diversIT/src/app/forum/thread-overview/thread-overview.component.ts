@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Timestamp } from 'firebase/firestore';
 
 @Component({
@@ -9,12 +9,29 @@ import { Timestamp } from 'firebase/firestore';
 
 export class ThreadOverviewComponent implements OnInit {
 
+  @Input () inputFilterText = "";
+  @Input () inputFilterTags = [];
+  @Input () inputFilterTypeNew = true;
+  @Input () inputFilterTypeDiscussedALot = false;
+  @Input () inputFilterTypeClickedOften = false;
+  @Input () inputCurrentPage = 1;
+
   threads : Thread[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
     this.createTestData();
+    console.log(this.inputFilterText);
+  }
+
+  ngOnChanges(){
+    console.log(this.inputFilterText);
+    console.log(this.inputFilterTags);
+    console.log(this.inputFilterTypeNew);
+    console.log(this.inputFilterTypeDiscussedALot);
+    console.log(this.inputFilterTypeClickedOften);
+    console.log(this.inputCurrentPage);
   }
 
   createTestData(){
