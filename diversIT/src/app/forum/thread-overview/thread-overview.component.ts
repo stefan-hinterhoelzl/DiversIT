@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Timestamp } from 'firebase/firestore';
 
 @Component({
@@ -18,11 +19,10 @@ export class ThreadOverviewComponent implements OnInit {
 
   threads : Thread[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.createTestData();
-    console.log(this.inputFilterText);
   }
 
   ngOnChanges(){
@@ -34,9 +34,13 @@ export class ThreadOverviewComponent implements OnInit {
     console.log(this.inputCurrentPage);
   }
 
+  navigateToForumThread(forumId : number) {
+    this.router.navigate(['/forum/' + forumId.toString()]);
+  }
+
   createTestData(){
     this.threads.push(<Thread>{
-      id: "1",
+      id: "5r0KI7OEWlRe7tu4axwa",
       answers: 10,
       invocations: 25,
       title: "Lohnt es sich zu studieren?",
@@ -45,7 +49,7 @@ export class ThreadOverviewComponent implements OnInit {
       lastAnswer: Timestamp.fromDate(new Date("2021/12/11 13:09:00"))
     });    
     this.threads.push(<Thread>{
-      id: "2",
+      id: "74HzI7Riehy1fX23lenk",
       answers: 0,
       invocations: 3,
       title: "Wie verwaltet ihr eure Kunden?",

@@ -15,7 +15,7 @@
 
             <!--Forumstitel mit Tags-->
             <div fxFlex fxLayout="column" class="forumTitleWithTags">
-                <div class="forumTitle">{{t.title}}</div>
+                <div class="forumTitle" (click)="navigateToForumThread(t.id)">{{t.title}}</div>
                 <div fxLayout="row">
                     <div fxFlex="50">
                         <mat-chip *ngFor="let tag of t.tags" color="accent" selected>{{tag}}</mat-chip>
