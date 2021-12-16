@@ -1,0 +1,24 @@
+TITLE:
+ADR002 - Choice of Frontend Framework
+
+
+STATUS:
+Accepted
+
+
+CONTEXT:
+This project requires a backend to handle and store all data. On a high granularity, the first decision needs to be
+wether the team aims for a PaaS or a self developed and hosted Backend, and the second desicion needs to face 
+what exact technology will be used. 
+
+
+DECISION:
+The team decided on using Firebase.
+
+
+CONSEQUENCES:
+As the Team decided in ADR001 on using Angular, Firebase harmonizes very well with our frontend framework. Both are mainly 
+developed by Google and therefore have a good interface to each other. Furthermore, Firebase also takes care of hosting the website. 
+Saving our data on firestore and their real time database as well as the hosting itself is free for small scoped projects. 
+Firebase functions which will be needed for some data manupilation does require to choose the blaze plan, but also has a free contingent.
+All in all, Firebase does save alot of development time and provides a better uptime of the services than we could and all of this for free.
