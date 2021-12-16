@@ -49,3 +49,15 @@
     margin: 20px auto;
     padding: 20px;
 }
+
+.spinner-container {
+    width: 30%;
+  
+    .mat-spinner {
+      width: 100% !important;
+    }
+  
+    .mat-spinner ::ng-deep svg {
+      width: 100% !important;
+    }
+  }

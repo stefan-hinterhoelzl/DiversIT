@@ -1,0 +1,24 @@
+TITLE:
+ADR001 - Choice of Frontend Framework
+
+
+STATUS:
+Accepted
+
+
+CONTEXT:
+For this project the team needs to settle on one frontend framework. Several frameworks would make sense for a project at this scale. 
+Angular, React and Vue would be the favourites due to their importance in our future workplaces. 
+All offer similar pros and cons with the main difference of the learning curve. Angular is more strict and requires developers
+to be more structured, whereas Vue is very easy to get into but not as organized. React lies in the middle of these two extremes. 
+
+
+DECISION:
+The team decided on using Angular. 
+
+
+CONSEQUENCES:
+Based on existing knowledge in some teammembers the decision was made to go for angular. It might have the hardest learning curve, 
+but is also the most powerfull framework. Our aim is to distribut the existing knowledge in the team and help each other to overcome 
+entry barriers. We expect to have a slow start to set everything up, but think, that the organized structure of an angular project will
+save us time down the line.

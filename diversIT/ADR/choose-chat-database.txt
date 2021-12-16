@@ -1,9 +1,9 @@
 TITLE:
-Choice of database for the chat implementation
+ADR003 - Choice of database for the chat implementation
 
 
 STATUS:
-Implemented
+Accepted
 
 
 CONTEXT:

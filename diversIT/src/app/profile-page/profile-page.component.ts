@@ -27,7 +27,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe();
-    this.currentPostSubscription.unsubscribe();
+    this.currentPostSubscription ? this.currentPostSubscription.unsubscribe() : null;
     this.currentRouteSubscription.unsubscribe();
   }
 
