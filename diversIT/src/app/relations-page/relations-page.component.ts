@@ -14,6 +14,7 @@ export class RelationsPageComponent implements OnInit {
 
   mentorList: DiversITUser[];
   currentUser: DiversITUser;
+  showSpinner = true;
   ngOnInit(){
     this.observerService.currentUserStatus.subscribe((data) => {
       if(data === null) return;
@@ -33,5 +34,9 @@ export class RelationsPageComponent implements OnInit {
       }
       
     }) 
+  }
+
+  imageLoaded(){
+    this.showSpinner = false;
   }
 }
