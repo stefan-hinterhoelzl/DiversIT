@@ -1,28 +1,28 @@
 <div class="threadOverview">
-    <mat-card *ngFor="let t of this.threads">
+    <mat-card *ngFor="let t of this.currentThreads">
         <div fxLayout="row">
             <!--Antworten-->
             <div fxFlex="10" fxLayout="column">
-                <div class="answerInvocation">{{t.answers}}</div>
+                <div class="answerInvocation">{{t.numberOfAnswers}}</div>
                 <div class="answerInvocationLabel">ANTWORTEN</div>
             </div>
 
             <!--Aufrufe-->
             <div fxFlex="10" fxLayout="column">
-                <div class="answerInvocation">{{t.invocations}}</div>
+                <div class="answerInvocation">{{t.views}}</div>
                 <div class="answerInvocationLabel">AUFRUFE</div>
             </div>
 
             <!--Forumstitel mit Tags-->
             <div fxFlex fxLayout="column" class="forumTitleWithTags">
-                <div class="forumTitle" (click)="navigateToForumThread(t.id)">{{t.title}}</div>
+                <div class="forumTitle" (click)="navigateToForumThread(t.uid)">{{t.title}}</div>
                 <div fxLayout="row">
                     <div fxFlex="50">
                         <mat-chip *ngFor="let tag of t.tags" color="accent" selected>{{tag}}</mat-chip>
                     </div>
                     <div fxFlex class="changedAtCreatedAt">
-                        <span *ngIf="t.lastAnswer !== null">Letzter Antwort am: {{t.lastAnswer.toDate().toLocaleString()}} Uhr;</span>
-                        <span>Erstellt am: {{t.createdAt.toDate().toLocaleString()}}</span>
+                        <span *ngIf="t.lastAnswer !== null">Letzter Antwort am: {{t.lastAnswerTime.toDate().toLocaleString()}} Uhr;</span>
+                        <span>Erstellt am: {{t.created.toDate().toLocaleString()}}</span>
                     </div>
                 </div>
             </div>

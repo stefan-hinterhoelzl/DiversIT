@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Timestamp } from 'firebase/firestore';
+import { Thread } from 'src/app/models/forum.model';
+import { ForumService } from 'src/app/services/forum.service';
 
 @Component({
   selector: 'app-thread-overview',
@@ -17,21 +19,25 @@ export class ThreadOverviewComponent implements OnInit {
   @Input () inputFilterTypeClickedOften = false;
   @Input () inputCurrentPage = 1;
 
-  threads : Thread[] = [];
+  currentThreads : Thread[] = [];
+  numberOfShownThreads = 5;
 
-  constructor(private router: Router) { }
+  constructor(private database: ForumService, private router: Router) { }
 
-  ngOnInit(): void {
-    this.createTestData();
+  async ngOnInit(): Promise<void> {
+    await this.database.getFirstThreads(this.numberOfShownThreads, "numberOfAnswers").then((data) => {
+      this.currentThreads = data;
+    }); 
   }
 
-  ngOnChanges(){
-    console.log(this.inputFilterText);
-    console.log(this.inputFilterTags);
-    console.log(this.inputFilterTypeNew);
-    console.log(this.inputFilterTypeDiscussedALot);
-    console.log(this.inputFilterTypeClickedOften);
-    console.log(this.inputCurrentPage);
+  getNextThreads() {
+    this.database.getNextThreads(this.numberOfShownThreads, "numberOfAnswers").then((data) => {
+      this.currentThreads = this.currentThreads.concat(data);
+    })
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+   console.log(changes);
   }
 
   navigateToForumThread(forumId : number) {
@@ -39,36 +45,27 @@ export class ThreadOverviewComponent implements OnInit {
   }
 
   createTestData(){
-    this.threads.push(<Thread>{
-      id: "5r0KI7OEWlRe7tu4axwa",
-      answers: 10,
-      invocations: 25,
+    this.currentThreads.push(<Thread>{
+      uid: "5r0KI7OEWlRe7tu4axwa",
+      created: Timestamp.fromDate(new Date("2021/12/10 9:31:00")),
       title: "Lohnt es sich zu studieren?",
+      text: "",
       tags: ["18-24 Jahre", "Girls only", "BAKIP"],
-      createdAt: Timestamp.fromDate(new Date("2021/12/10 9:31:00")),
-      lastAnswer: Timestamp.fromDate(new Date("2021/12/11 13:09:00"))
+      numberOfAnswers: 10,
+      lastAnswerTime: Timestamp.fromDate(new Date("2021/12/11 13:09:00")),
+      views: 25
     });    
-    this.threads.push(<Thread>{
-      id: "74HzI7Riehy1fX23lenk",
-      answers: 0,
-      invocations: 3,
+    this.currentThreads.push(<Thread>{
+      uid: "74HzI7Riehy1fX23lenk",
+      created: Timestamp.fromDate(new Date("2021/12/8 13:43:00")),
       title: "Wie verwaltet ihr eure Kunden?",
+      text: "",
       tags: ["Freelance", "Web"],
-      createdAt: Timestamp.fromDate(new Date("2021/12/8 13:43:00")),
-      lastAnswer: null
+      numberOfAnswers: 0,
+      lastAnswerTime: null,
+      views: 3
     });  
-    console.log(this.threads);
+    console.log(this.currentThreads);
   }
 
-}
-
-// ToDo --> In Model auslagern
-export interface Thread {
-  id: string;
-  answers: number;
-  invocations: number;
-  title: string;
-  tags?: string[];
-  createdAt: Timestamp;
-  lastAnswer?: Timestamp;
 }
