@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Timestamp } from 'firebase/firestore';
 import { Thread } from 'src/app/models/forum.model';
@@ -36,13 +36,8 @@ export class ThreadOverviewComponent implements OnInit {
     })
   }
 
-  ngOnChanges(){
-    console.log(this.inputFilterText);
-    console.log(this.inputFilterTags);
-    console.log(this.inputFilterTypeNew);
-    console.log(this.inputFilterTypeDiscussedALot);
-    console.log(this.inputFilterTypeClickedOften);
-    console.log(this.inputCurrentPage);
+  ngOnChanges(changes: SimpleChanges){
+   console.log(changes);
   }
 
   navigateToForumThread(forumId : number) {
