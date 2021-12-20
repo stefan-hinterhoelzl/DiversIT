@@ -34,6 +34,7 @@ export class ThreadOverviewComponent implements OnInit {
       this.allThreads = data;
       this.startIndex = 0;
       this.endIndex = this.numberOfShownThreads;
+      this.numberOfMaxPage = 1;
       this.setCurrentThreads();
     }); 
   }
