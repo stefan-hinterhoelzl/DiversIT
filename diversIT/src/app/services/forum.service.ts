@@ -171,4 +171,9 @@ export class ForumService {
             views: increment(1)
         });
     }
+
+    async getNumberOfThreads(){
+        // TODO korrekt berechnen
+        return 11;
+    }
 }

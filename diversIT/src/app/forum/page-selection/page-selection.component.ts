@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ForumService } from 'src/app/services/forum.service';
 
 @Component({
   selector: 'app-page-selection',
@@ -8,19 +9,24 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class PageSelectionComponent implements OnInit {
 
   currentPage = 1;
+  numberOfThreadsToShow = 5;
   numberOfPages : number;
 
   @Output() currentPageEventEmitter = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private database: ForumService) { }
 
   ngOnInit(): void {
     this.determineNumberOfPages();
   }
 
   determineNumberOfPages(){
-    // ToDo: Berechnen 
-    this.numberOfPages = 5;
+    this.database.getNumberOfThreads().then((numOfThreads) => {
+      let restValue : number = numOfThreads % this.numberOfThreadsToShow;
+      let result : number = numOfThreads / this.numberOfThreadsToShow;
+      this.numberOfPages = parseInt(result.toString());
+      if(restValue > 0) this.numberOfPages++;
+    });
   }
 
   decreasePageNum(){

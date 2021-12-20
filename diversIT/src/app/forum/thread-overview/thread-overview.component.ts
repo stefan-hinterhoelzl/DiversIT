@@ -39,7 +39,6 @@ export class ThreadOverviewComponent implements OnInit {
   }
 
   ngOnInit(){
-    
     this.getFirstThreads("created");
   }
 
