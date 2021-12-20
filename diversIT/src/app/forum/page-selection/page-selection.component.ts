@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ForumService } from 'src/app/services/forum.service';
 
 @Component({
@@ -12,12 +12,17 @@ export class PageSelectionComponent implements OnInit {
   numberOfThreadsToShow = 5;
   numberOfPages : number;
 
+  @Input () inputResetPageNumCounter : number;
   @Output() currentPageEventEmitter = new EventEmitter<number>();
 
   constructor(private database: ForumService) { }
 
   ngOnInit(): void {
     this.determineNumberOfPages();
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    if (changes.inputResetPageNumCounter != null) this.resetPageNum();
   }
 
   determineNumberOfPages(){
@@ -41,4 +46,7 @@ export class PageSelectionComponent implements OnInit {
     this.currentPageEventEmitter.emit(this.currentPage);
   }
 
+  resetPageNum(){
+    this.currentPage = 1; 
+  }
 }

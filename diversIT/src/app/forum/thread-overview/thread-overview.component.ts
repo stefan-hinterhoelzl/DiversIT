@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY_PROVIDER_FACTORY } from '@angular/cdk/overlay/overlay-directives';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Thread } from 'src/app/models/forum.model';
 import { ForumService } from 'src/app/services/forum.service';
@@ -17,6 +18,7 @@ export class ThreadOverviewComponent implements OnInit {
   @Input () inputFilterTypeDiscussedALot = false;
   @Input () inputFilterTypeClickedOften = false;
   @Input () inputCurrentPage = 1;
+  @Output() resetPageNumEventEmitter = new EventEmitter<number>();
 
   allThreads: Thread[] = [];
   currentThreads : Thread[] = [];
@@ -25,16 +27,19 @@ export class ThreadOverviewComponent implements OnInit {
   numberOfShownThreads = 5;
   numberOfMaxPage = 1;
   orderField = "";
+  resetPageNumCounter = 1;
 
   constructor(private database: ForumService, private router: Router) { }
 
   private async getFirstThreads(orderByField: string){
     this.orderField = orderByField;
     await this.database.getFirstThreads(this.numberOfShownThreads, this.orderField).then((data) => {
-      this.allThreads = data;
+      this.resetPageNumCounter++;
+      this.resetPageNumEventEmitter.emit(this.resetPageNumCounter);
       this.startIndex = 0;
       this.endIndex = this.numberOfShownThreads;
       this.numberOfMaxPage = 1;
+      this.allThreads = data;
       this.setCurrentThreads();
     }); 
   }
@@ -70,7 +75,8 @@ export class ThreadOverviewComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges){
-    if ((changes.inputFilterTypeNew != null) && (changes.inputFilterTypeNew.currentValue === true)) this.getFirstThreads("created");
+    console.log(changes);
+    if ((changes.inputFilterTypeNew != null) && (changes.inputFilterTypeNew.currentValue === true)) this.getFirstThreads("created"); 
     if ((changes.inputFilterTypeDiscussedALot != null) && (changes.inputFilterTypeDiscussedALot.currentValue === true)) this.getFirstThreads("numberOfAnswers");
     if ((changes.inputFilterTypeClickedOften != null) && (changes.inputFilterTypeClickedOften.currentValue === true)) this.getFirstThreads("views");
     if (changes.inputCurrentPage != null) {
