@@ -22,8 +22,8 @@ export class ThreadOverviewComponent implements OnInit {
 
   allThreads: Thread[] = [];
   currentThreads : Thread[] = [];
-  startIndex = -1;
-  endIndex = -1;
+  startIndex : number;
+  endIndex : number;
   numberOfShownThreads = 5;
   numberOfMaxPage = 1;
   orderField = "";
@@ -36,15 +36,15 @@ export class ThreadOverviewComponent implements OnInit {
     await this.database.getFirstThreads(this.numberOfShownThreads, this.orderField).then((data) => {
       this.resetPageNumCounter++;
       this.resetPageNumEventEmitter.emit(this.resetPageNumCounter);
-      this.startIndex = 0;
-      this.endIndex = this.numberOfShownThreads;
       this.numberOfMaxPage = 1;
       this.allThreads = data;
       this.setCurrentThreads();
-    }); 
+    });
   }
 
   ngOnInit(){
+    this.startIndex = 0;
+    this.endIndex = this.numberOfShownThreads;
     this.getFirstThreads("created");
   }
 
@@ -55,6 +55,8 @@ export class ThreadOverviewComponent implements OnInit {
   }
 
   private setCurrentThreads(){
+    console.log(this.startIndex);
+    console.log(this.endIndex);
     this.currentThreads = [];
     for (let i = this.startIndex; i < this.endIndex; i++) {
       if(this.allThreads[i] != null) this.currentThreads.push(this.allThreads[i]);
@@ -69,14 +71,11 @@ export class ThreadOverviewComponent implements OnInit {
       this.startIndex -= this.numberOfShownThreads;
       this.endIndex -= this.numberOfShownThreads;
     }
-    console.log(this.startIndex);
-    console.log(this.endIndex);
     this.setCurrentThreads();
   }
 
   ngOnChanges(changes: SimpleChanges){
-    console.log(changes);
-    if ((changes.inputFilterTypeNew != null) && (changes.inputFilterTypeNew.currentValue === true)) this.getFirstThreads("created"); 
+    if ((changes.inputFilterTypeNew != null) && (changes.inputFilterTypeNew.currentValue === true)) this.getFirstThreads("created");
     if ((changes.inputFilterTypeDiscussedALot != null) && (changes.inputFilterTypeDiscussedALot.currentValue === true)) this.getFirstThreads("numberOfAnswers");
     if ((changes.inputFilterTypeClickedOften != null) && (changes.inputFilterTypeClickedOften.currentValue === true)) this.getFirstThreads("views");
     if (changes.inputCurrentPage != null) {
