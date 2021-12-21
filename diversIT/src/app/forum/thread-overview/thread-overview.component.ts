@@ -1,4 +1,3 @@
-import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY_PROVIDER_FACTORY } from '@angular/cdk/overlay/overlay-directives';
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Thread } from 'src/app/models/forum.model';
