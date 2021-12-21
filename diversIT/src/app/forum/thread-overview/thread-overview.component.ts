@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Thread } from 'src/app/models/forum.model';
 import { ForumService } from 'src/app/services/forum.service';
