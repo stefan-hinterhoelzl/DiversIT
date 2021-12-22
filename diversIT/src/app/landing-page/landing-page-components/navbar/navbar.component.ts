@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { DiversITUser } from 'src/app/models/users.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ObserversService } from 'src/app/services/observers.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,27 +15,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentUser: DiversITUser
   currentUserSubscription: Subscription
 
-  constructor(private viewportScroller: ViewportScroller, private firestore: UserService, private auth: AuthService, private observer: ObserversService) { }
-
-  ngOnDestroy(): void {
-    this.currentUserSubscription.unsubscribe();
-  }
+  constructor(private viewportScroller: ViewportScroller, private auth: AuthService, private observer: ObserversService) { }
 
   ngOnInit(): void {
-    this.currentUserSubscription = this.observer.currentUserStatus.subscribe((data) => {
+    this.currentUserSubscription = this.observer.getCurrentUserStatus.subscribe((data) => {
       this.currentUser = data;
-      if(data != null) {
+      if (data != null) {
         this.loginApplied = false;
       }
     });
   }
 
-
+  ngOnDestroy(): void {
+    this.currentUserSubscription.unsubscribe();
+  }
 
   public onClick(elementId: string): void {
     this.viewportScroller.setOffset([0, 72.5])
     this.viewportScroller.scrollToAnchor(elementId);
-    
+
   }
 
   classApplied = false;

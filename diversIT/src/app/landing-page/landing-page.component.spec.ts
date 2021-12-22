@@ -8,7 +8,6 @@ describe('LandingPageComponent', () => {
   let component: LandingPageComponent;
   let fixture: ComponentFixture<LandingPageComponent>;
   let compiled: HTMLElement;
-  let element: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,7 +22,6 @@ describe('LandingPageComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     compiled = fixture.nativeElement;
-    element = fixture.debugElement;
   });
 
   it('should create', () => {
@@ -59,23 +57,26 @@ describe('LandingPageComponent', () => {
   });
 
   // Main Banner
-  it('should have main banner text', () => {
-    expect(compiled.querySelector('.main-banner .main-banner-text').textContent).toContain('Die IT braucht dich');
+  it('should have some main banner text', () => {
+    expect(compiled.querySelector('.main-banner .main-banner-text').textContent.length).toBeGreaterThan(0);
   });
 
-  it('should have main banner background class', () => {
-    expect(compiled.querySelector('.main-banner')).toHaveClass('item-bg-one');
+  it('should have background on main banner', () => {
+    const mainBanner = compiled.querySelector('.main-banner');
+    expect(mainBanner).toHaveClass('item-bg-one');
+    expect(getComputedStyle(mainBanner).backgroundImage).toContain('/assets/Images/landing-page_1920x1080.png');
   })
 
   it(`should have main banner button text 'Los geht's'`, () => {
-    expect(compiled.querySelector('.main-banner .main-banner-text button').textContent).toEqual(`Los geht's`);
+    const button = compiled.querySelector('.main-banner .main-banner-text button');
+    expect(button.textContent).toEqual(`Los geht's`);
   });
 
   it('should have main banner button attributes', () => {
     const button = compiled.querySelector('.main-banner .main-banner-text button');
     expect(button).toHaveClass('btn');
     expect(button).toHaveClass('btn-primary');
-    expect(button.attributes.getNamedItem('mat-raised-button').value).toBe('');
-    expect(button.attributes.getNamedItem('ng-reflect-router-link').value).toBe('../app');
+    expect(button.getAttribute('mat-raised-button')).toBeDefined();
+    expect(button.getAttribute('ng-reflect-router-link')).toBe('../app');
   })
 });
