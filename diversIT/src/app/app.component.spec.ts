@@ -1,6 +1,15 @@
+import { ObserversService } from 'src/app/services/observers.service';
+import { UserService } from 'src/app/services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Overlay } from '@angular/cdk/overlay';
+import { UserServiceStub } from './services/user.service.mock';
+import { AuthService } from './services/auth.service';
+import { AuthServiceStub } from './services/auth.service.mock';
+import { ObserversServiceStub } from './services/observers.service.mock';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -11,6 +20,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [SnackbarComponent, MatSnackBar, Overlay,
+        { provide: UserService, useValue: UserServiceStub },
+        { provide: AuthService, useValue: AuthServiceStub },
+        { provide: ObserversService, useValue: ObserversServiceStub }]
     }).compileComponents();
   });
 
@@ -20,16 +33,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'girlsonly'`, () => {
+  it(`should have as title 'diversit'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('girlsonly');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('girlsonly app is running!');
+    expect(app.title).toEqual('diversit');
   });
 });

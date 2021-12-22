@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'mintistcool';
+  title = 'diversit';
   currentUser: DiversITUser;
   newMessages: number;
   newNotifications: number;
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
   currentChatSubscripton: Subscription;
   currentNotSubscription: Subscription
 
-  constructor(private router: Router, private auth: AuthService, private firestore: UserService, private location: Location, private chat: ChatService, private observer: ObserversService) {
+  constructor(private router: Router, private auth: AuthService, private location: Location, private observer: ObserversService) {
   }
 
 
@@ -38,13 +38,13 @@ export class AppComponent implements OnInit, OnDestroy {
       this.currentUser = data;
     })
 
-     this.currentChatSubscripton= this.observer.numberStatus.subscribe((data) => {
+    this.currentChatSubscripton = this.observer.numberStatus.subscribe((data) => {
       this.newMessages = data;
     });
 
     this.currentNotSubscription = this.observer.notificationsOfUserStatus.subscribe((data) => {
-      if(data != null)
-      this.newNotifications = data.length
+      if (data != null)
+        this.newNotifications = data.length
     })
   }
 
