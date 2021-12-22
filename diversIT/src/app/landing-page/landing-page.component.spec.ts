@@ -2,11 +2,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LandingPageComponent } from './landing-page.component';
+import { DebugElement } from '@angular/core';
 
 describe('LandingPageComponent', () => {
   let component: LandingPageComponent;
   let fixture: ComponentFixture<LandingPageComponent>;
-  let compiled;
+  let compiled: HTMLElement;
+  let element: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -21,6 +23,7 @@ describe('LandingPageComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     compiled = fixture.nativeElement;
+    element = fixture.debugElement;
   });
 
   it('should create', () => {
@@ -53,5 +56,26 @@ describe('LandingPageComponent', () => {
 
   it('should render footer', () => {
     expect(compiled.querySelector('app-footer')).toBeTruthy();
+  });
+
+  // Main Banner
+  it('should have main banner text', () => {
+    expect(compiled.querySelector('.main-banner .main-banner-text').textContent).toContain('Die IT braucht dich');
+  });
+
+  it('should have main banner background class', () => {
+    expect(compiled.querySelector('.main-banner')).toHaveClass('item-bg-one');
+  })
+
+  it(`should have main banner button text 'Los geht's'`, () => {
+    expect(compiled.querySelector('.main-banner .main-banner-text button').textContent).toEqual(`Los geht's`);
+  });
+
+  it('should have main banner button attributes', () => {
+    const button = compiled.querySelector('.main-banner .main-banner-text button');
+    expect(button).toHaveClass('btn');
+    expect(button).toHaveClass('btn-primary');
+    expect(button.attributes.getNamedItem('mat-raised-button').value).toBe('');
+    expect(button.attributes.getNamedItem('ng-reflect-router-link').value).toBe('../app');
   })
 });
