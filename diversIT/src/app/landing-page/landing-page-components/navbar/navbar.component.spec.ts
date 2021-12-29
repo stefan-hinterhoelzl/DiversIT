@@ -1,3 +1,4 @@
+import { LoginBoxComponent } from './../../../login-box/login-box.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from './../../../snackbar/snackbar.component';
@@ -12,18 +13,20 @@ import { NavbarComponent } from './navbar.component';
 import { Overlay } from '@angular/cdk/overlay';
 import { ChatService } from 'src/app/services/chat.service';
 import { ChatServiceStub } from 'src/app/services/chat.service.mock';
-import { BehaviorSubject } from 'rxjs';
-import { DiversITUser } from 'src/app/models/users.model';
-import { Timestamp } from 'firebase/firestore';
+import { DebugElement } from '@angular/core';
+import { of } from 'rxjs';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
   let compiled: HTMLElement;
+  let debugElement: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavbarComponent],
+      declarations: [
+        NavbarComponent
+      ],
       imports: [RouterTestingModule],
       providers: [
         ViewportScroller,
@@ -43,6 +46,7 @@ describe('NavbarComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     compiled = fixture.nativeElement;
+    debugElement = fixture.debugElement;
   });
 
   it('should create', () => {
@@ -54,7 +58,6 @@ describe('NavbarComponent', () => {
     expect(spy).not.toHaveBeenCalled();
     component.ngOnInit();
     expect(component.currentUser.uid).toBe('dummyUID');
-    expect(component.loginApplied).toBeFalsy();
     expect(spy).toHaveBeenCalled();
     expect(spy).toHaveBeenCalledTimes(1);
   });
@@ -73,7 +76,7 @@ describe('NavbarComponent', () => {
     expect(navbarBrand.textContent).toBe('DiversIT');
   });
 
-  it('should render nav items when logged in', () => {
+  it('should render all nav items in correct order when logged in', () => {
     const navItemsLoggedIn = compiled.querySelectorAll('ul li');
     expect(navItemsLoggedIn.length).toBe(7);
 
@@ -86,7 +89,7 @@ describe('NavbarComponent', () => {
     expect(navItemsLoggedIn.item(6).textContent).toBe('Ausloggen');
   });
 
-  it('should render nav items when logged out', () => {
+  it('should render all nav items in correct order when logged out', () => {
     component.currentUser = null;
     fixture.detectChanges();
     const navItemsLoggedOut = compiled.querySelectorAll('ul li');
@@ -100,4 +103,37 @@ describe('NavbarComponent', () => {
     expect(navItemsLoggedOut.item(5).textContent).toBe('Forum');
     expect(navItemsLoggedOut.item(6).textContent).toBe('Login');
   });
+
+  it('should toggle loginApplied on click on Login', () => {
+    // set up logged out
+    setUpLoggedOut();
+
+    spyOn(component, 'toggleLogin').and.callThrough();
+
+    const loginButton = debugElement.nativeElement.querySelector('#login .nav-link');
+    expect(loginButton).toBeTruthy();
+    expect(component.toggleLogin).not.toHaveBeenCalled();
+    expect(component.loginApplied).toBeFalsy();
+
+    loginButton.click();
+
+    expect(component.loginApplied).toBeTruthy();
+    expect(component.toggleLogin).toHaveBeenCalled();
+    expect(component.toggleLogin).toHaveBeenCalledTimes(1);
+
+    loginButton.click();
+    expect(component.loginApplied).toBeFalsy();
+    expect(component.toggleLogin).toHaveBeenCalledTimes(2);
+  });
+
+  function setUpLoggedOut() {
+    spyOnProperty<any>(component['observer'], 'getCurrentUserStatus', 'get').and.callFake(() => {
+      return of(null);
+    });
+    component.ngOnInit();
+    expect(component.currentUser).toBeNull();
+    fixture.detectChanges();
+  }
 });
+
+

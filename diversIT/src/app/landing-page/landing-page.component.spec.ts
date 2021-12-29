@@ -1,8 +1,8 @@
+import { SnackbarComponent } from './../snackbar/snackbar.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LandingPageComponent } from './landing-page.component';
-import { DebugElement } from '@angular/core';
 
 describe('LandingPageComponent', () => {
   let component: LandingPageComponent;
@@ -12,7 +12,10 @@ describe('LandingPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LandingPageComponent],
-      imports: [RouterTestingModule]
+      imports: [RouterTestingModule],
+      providers: [
+        SnackbarComponent,
+      ]
     })
       .compileComponents();
   });

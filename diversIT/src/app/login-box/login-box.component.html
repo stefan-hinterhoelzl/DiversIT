@@ -1,20 +1,18 @@
-<div class = "main-wrapper" style = "min-width: 300px;">
-    <mat-card style =  "background-color: whitesmoke">
-        <div fxLayout = "column" fxLayoutAlign = "center center">
+<div class="main-wrapper" style="min-width: 300px;">
+    <mat-card style="background-color: whitesmoke">
+        <div fxLayout="column" fxLayoutAlign="center center">
             <mat-card-title>
                 Login
             </mat-card-title>
-            <div style = "margin-top: 5%;">
-                <button   mat-raised-button  (click) = "socialLogin('google')" >Mit Google anmelden</button>
+            <div style="margin-top: 5%;">
+                <button mat-raised-button (click)="socialLogin('google')">Mit Google anmelden</button>
             </div>
-            <div style = "margin-top: 5%;">
-                <button   mat-raised-button  (click) = "socialLogin('github')" >Mit GitHub anmelden</button>
+            <div style="margin-top: 5%;">
+                <button mat-raised-button (click)="socialLogin('github')">Mit GitHub anmelden</button>
             </div>
-            <div style = "margin-top: 5%;">
-                <button   mat-raised-button  (click) = "socialLogin('facebook')" >Mit Facebook anmelden</button>
+            <div style="margin-top: 5%;">
+                <button mat-raised-button (click)="socialLogin('facebook')">Mit Facebook anmelden</button>
             </div>
         </div>
     </mat-card>
 </div>
-
-
