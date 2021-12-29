@@ -1,4 +1,3 @@
-import { LoginBoxComponent } from './../../../login-box/login-box.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from './../../../snackbar/snackbar.component';
@@ -24,9 +23,7 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        NavbarComponent
-      ],
+      declarations: [NavbarComponent],
       imports: [RouterTestingModule],
       providers: [
         ViewportScroller,
