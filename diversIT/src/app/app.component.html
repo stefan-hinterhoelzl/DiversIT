@@ -47,8 +47,8 @@
         <span class="outer-spacer"></span>
     </mat-toolbar>
 
-    <!-- reduced navbar for legal pages like imprint and privacy -->
-    <mat-toolbar color="primary" *ngIf="isLegalPage()"
+    <!-- reduced navbar for legal pages like imprint and privacy and forum pages -->
+    <mat-toolbar color="primary" *ngIf="isLegalOrForumPage()"
         style="height: 60px; box-shadow: 1px 2px 5px #d3d0d0; position: fixed; z-index: 2;">
         <span class="outer-spacer"></span>
 
