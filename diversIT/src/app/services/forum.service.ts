@@ -36,9 +36,9 @@ export class ForumService {
     }
 
 
-    async getThreadByUID(threadUID: string): Promise<Thread>{
+    async getThreadByUID(threadUID: string): Promise<Thread> {
         const q = doc(this.db, "threads", threadUID)
-        const docSnap =  await getDoc(q)
+        const docSnap = await getDoc(q)
         return docSnap.data() as Thread
     }
 
@@ -172,8 +172,9 @@ export class ForumService {
         });
     }
 
-    async getNumberOfThreads(){
-        // TODO korrekt berechnen
-        return 11;
+    async getNumberOfThreads(): Promise<number> {
+        const q = doc(this.db, "threads", "metadata")
+        const docSnap = await getDoc(q)
+        return docSnap.get("threadCount")
     }
 }

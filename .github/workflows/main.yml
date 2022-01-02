@@ -1,0 +1,33 @@
+name: Build and Deploy to Firebase
+
+on:
+  push:
+    branches:
+      - live-deployed
+
+defaults:
+  run:
+    working-directory: ./diversIT/
+
+jobs:
+  build:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Initialize Node
+        uses: actions/setup-node@master
+      - name: Install Dependencies        
+        run: npm install
+      - name: Testing
+        run: npm test
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting          
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: ./diversIT/
