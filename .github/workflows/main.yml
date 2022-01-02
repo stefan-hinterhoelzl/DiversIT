@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@live-deployed
+        uses: actions/checkout@master
       - name: Initialize Node
         uses: actions/setup-node@master
       - name: Install Dependencies
