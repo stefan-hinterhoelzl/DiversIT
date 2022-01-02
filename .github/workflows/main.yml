@@ -15,6 +15,7 @@ jobs:
       - name: Initialize Node
         uses: actions/setup-node@master
       - name: Install Dependencies
+        working-directory: ./diversIT/
         run: npm install
       - name: Build
         run: npm run build
