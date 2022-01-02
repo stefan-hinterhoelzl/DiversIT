@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 import { ProfilePageComponent } from './profile-page.component';
 
@@ -8,7 +10,10 @@ describe('ProfilePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfilePageComponent ]
+      providers: [
+        ProfilePageComponent,
+        { provide: [SnackbarComponent, MatSnackBar]}
+      ]
     })
     .compileComponents();
   });
