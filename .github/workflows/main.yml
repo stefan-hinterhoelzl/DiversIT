@@ -9,13 +9,13 @@ jobs:
   build:
     name: Build and Deploy
     runs-on: ubuntu-latest
+    working-directory: ./diversIT/
     steps:
       - name: Checkout
         uses: actions/checkout@master
       - name: Initialize Node
         uses: actions/setup-node@master
-      - name: Install Dependencies
-        working-directory: ./diversIT/
+      - name: Install Dependencies        
         run: npm install
       - name: Build
         run: npm run build
