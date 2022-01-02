@@ -38,13 +38,13 @@ export class AppComponent implements OnInit, OnDestroy {
       this.currentUser = data;
     })
 
-     this.currentChatSubscripton= this.observer.numberStatus.subscribe((data) => {
+    this.currentChatSubscripton = this.observer.numberStatus.subscribe((data) => {
       this.newMessages = data;
     });
 
     this.currentNotSubscription = this.observer.notificationsOfUserStatus.subscribe((data) => {
-      if(data != null)
-      this.newNotifications = data.length
+      if (data != null)
+        this.newNotifications = data.length
     })
   }
 
@@ -52,8 +52,8 @@ export class AppComponent implements OnInit, OnDestroy {
     return this.router.url == '/landing';
   }
 
-  isLegalPage() {
-    return this.router.url == '/impressum' || this.router.url == '/datenschutz';
+  isLegalOrForumPage() {
+    return this.router.url == '/impressum' || this.router.url == '/datenschutz' || this.router.url.startsWith('/forum');
   }
 
   logout() {
