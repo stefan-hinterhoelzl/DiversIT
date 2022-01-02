@@ -52,8 +52,8 @@ export class AppComponent implements OnInit, OnDestroy {
     return this.router.url == '/landing';
   }
 
-  isLegalPage() {
-    return this.router.url == '/impressum' || this.router.url == '/datenschutz';
+  isLegalOrForumPage() {
+    return this.router.url == '/impressum' || this.router.url == '/datenschutz' || this.router.url.startsWith('/forum');
   }
 
   logout() {

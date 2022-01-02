@@ -20,7 +20,7 @@ export const createRelationship = functions.https.onCall((data, context) => {
     let mentor: string = data.mentor;
 
     const batch = admin.firestore().batch();
-    
+
     let menteeRef = admin.firestore().collection("users").doc(mentee);
     let mentorRef = admin.firestore().collection("users").doc(mentor);
 
@@ -33,7 +33,7 @@ export const createRelationship = functions.https.onCall((data, context) => {
     });
 
     return batch.commit();
-    
+
 });
 
 
@@ -42,7 +42,7 @@ export const revokeRelationship = functions.https.onCall((data, context) => {
     let mentor: string = data.mentor;
 
     const batch = admin.firestore().batch();
-    
+
     let menteeRef = admin.firestore().collection("users").doc(mentee);
     let mentorRef = admin.firestore().collection("users").doc(mentor);
 
@@ -55,7 +55,28 @@ export const revokeRelationship = functions.https.onCall((data, context) => {
     });
 
     batch.commit().then(() => {
-        return admin.database().ref("messages/"+mentor+mentee).remove();
+        return admin.database().ref("messages/" + mentor + mentee).remove();
     });
 })
+
+exports.aggregateThreads = functions.firestore
+    .document('threads/{uid}')
+    .onWrite(event => {
+
+        // get all threads and aggregate
+        return admin.firestore().collection('threads').orderBy('created', 'desc')
+            .get()
+            .then(querySnapshot => {
+
+                // get the total thread count
+                const threadCount = querySnapshot.size
+
+                // data to update on the document
+                const data = { threadCount }
+
+                // run update
+                return admin.firestore().collection('threads').doc('metadata').update(data)
+            })
+            .catch(err => console.log(err))
+    });
 
