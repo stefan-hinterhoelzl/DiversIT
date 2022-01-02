@@ -19,7 +19,7 @@
                 <div class="forumTitle" (click)="navigateToForumThread(t.uid)">{{t.title}}</div>
                 <div fxLayout="row">
                     <div fxFlex="50">
-                        <mat-chip *ngFor="let tag of t.tags" color="accent" selected>{{tag}}</mat-chip>
+                        <mat-chip *ngFor="let tag of t.tags" color="accent" class="small-chip" selected>{{tag}}</mat-chip>
                     </div>
                     <div fxFlex class="changedAtCreatedAt">
                         <span *ngIf="t.lastAnswer !== null">Letzter Antwort am: {{t.lastAnswerTime.toDate().toLocaleString()}} Uhr;</span>
