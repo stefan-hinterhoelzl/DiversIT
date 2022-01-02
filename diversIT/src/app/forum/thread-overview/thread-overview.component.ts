@@ -54,8 +54,6 @@ export class ThreadOverviewComponent implements OnInit {
   }
 
   private setCurrentThreads(){
-    console.log(this.startIndex);
-    console.log(this.endIndex);
     this.currentThreads = [];
     for (let i = this.startIndex; i < this.endIndex; i++) {
       if(this.allThreads[i] != null) this.currentThreads.push(this.allThreads[i]);
