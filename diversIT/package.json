@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "build": "ng build --configuration production",
+    "test": "ng test --browsers ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",

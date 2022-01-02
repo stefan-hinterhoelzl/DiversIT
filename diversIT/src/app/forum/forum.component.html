@@ -10,9 +10,11 @@
         [inputFilterTypeNew]="filterTypeNew"
         [inputFilterTypeDiscussedALot]="filterTypeDiscussedALot"
         [inputFilterTypeClickedOften]="filterTypeClickedOften"
-        [inputCurrentPage]="currentPage">
+        [inputCurrentPage]="currentPage"
+        (resetPageNumEventEmitter)="resetPageNum($event)">
     </app-thread-overview>
     <app-page-selection
+        [inputResetPageNumCounter]="resetPageNumCounter"
         (currentPageEventEmitter)="setCurrentPage($event)">
     </app-page-selection>
 <div></div>
