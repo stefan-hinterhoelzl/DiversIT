@@ -73,6 +73,18 @@ export class ThreadOverviewComponent implements OnInit {
     this.setCurrentThreads();
   }
 
+  doesThreadMatchFilterCriteria(t: Thread){
+    if(this.inputFilterText.length > 0){
+      if(t.title.toLowerCase().includes(this.inputFilterText.toLowerCase())) return true;
+    }
+    var tagFound = false;
+    t.tags.forEach((tag) => {
+      if(this.inputFilterTags.indexOf(tag.toString()) > -1) tagFound = true;
+    });
+    if(tagFound) return true;
+    return false;
+  }
+
   ngOnChanges(changes: SimpleChanges){
     if ((changes.inputFilterTypeNew != null) && (changes.inputFilterTypeNew.currentValue === true)) this.getFirstThreads("created");
     if ((changes.inputFilterTypeDiscussedALot != null) && (changes.inputFilterTypeDiscussedALot.currentValue === true)) this.getFirstThreads("numberOfAnswers");

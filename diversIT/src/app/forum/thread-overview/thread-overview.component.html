@@ -1,5 +1,6 @@
 <div class="threadOverview">
-    <mat-card *ngFor="let t of this.currentThreads">
+    <mat-card *ngFor="let t of this.currentThreads"
+        [ngStyle]="{'background-color': doesThreadMatchFilterCriteria(t)? '#fde8ef' : 'white'}">
         <div fxLayout="row">
             <!--Antworten-->
             <div fxFlex="10" fxLayout="column">
