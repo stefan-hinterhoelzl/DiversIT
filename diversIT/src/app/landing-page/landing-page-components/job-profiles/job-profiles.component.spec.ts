@@ -26,9 +26,7 @@ describe('JobProfilesComponent', () => {
         {provide: SnackbarComponent, useClass: MockSnackbar},
         {provide: Router, useClass: MockRouter},
       ]
-
-    })
-    
+    })    
     let app = initializeApp(environment.firebaseConfig);
     component = TestBed.inject(JobProfilesComponent)
     

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent {
 
-  constructor(private viewportScroller: ViewportScroller) { }
+  constructor(private router: Router, private viewportScroller: ViewportScroller) { }
 
   public onClick(elementId: string): void {
     this.viewportScroller.scrollToAnchor(elementId);
