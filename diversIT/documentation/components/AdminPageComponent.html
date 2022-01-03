@@ -1,0 +1,1679 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>girlsonly documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">girlsonly documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  AdminPageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/admin-page/admin-page.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-admin-page</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./admin-page.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./admin-page.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#admins" >admins</a>
+                            </li>
+                            <li>
+                                <a href="#dataSourceAdmins" >dataSourceAdmins</a>
+                            </li>
+                            <li>
+                                <a href="#dataSourceDisplayedRatings" >dataSourceDisplayedRatings</a>
+                            </li>
+                            <li>
+                                <a href="#dataSourceMentees" >dataSourceMentees</a>
+                            </li>
+                            <li>
+                                <a href="#dataSourceMentors" >dataSourceMentors</a>
+                            </li>
+                            <li>
+                                <a href="#dataSourceNonDisplayedRatings" >dataSourceNonDisplayedRatings</a>
+                            </li>
+                            <li>
+                                <a href="#displayedColumns" >displayedColumns</a>
+                            </li>
+                            <li>
+                                <a href="#displayedColumnsAdmins" >displayedColumnsAdmins</a>
+                            </li>
+                            <li>
+                                <a href="#displayedRatings" >displayedRatings</a>
+                            </li>
+                            <li>
+                                <a href="#mentees" >mentees</a>
+                            </li>
+                            <li>
+                                <a href="#mentors" >mentors</a>
+                            </li>
+                            <li>
+                                <a href="#nonDisplayedRatings" >nonDisplayedRatings</a>
+                            </li>
+                            <li>
+                                <a href="#ratingDisplayedColumns" >ratingDisplayedColumns</a>
+                            </li>
+                            <li>
+                                <a href="#ratings" >ratings</a>
+                            </li>
+                            <li>
+                                <a href="#users" >users</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#applyFilterAdmins" >applyFilterAdmins</a>
+                            </li>
+                            <li>
+                                <a href="#applyFilterMentee" >applyFilterMentee</a>
+                            </li>
+                            <li>
+                                <a href="#applyFilterMentors" >applyFilterMentors</a>
+                            </li>
+                            <li>
+                                <a href="#demoteUserToMentee" >demoteUserToMentee</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#promoteUserToMentor" >promoteUserToMentor</a>
+                            </li>
+                            <li>
+                                <a href="#setRatingDisplayFalse" >setRatingDisplayFalse</a>
+                            </li>
+                            <li>
+                                <a href="#setRatingDisplayTrue" >setRatingDisplayTrue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, ratingService: <a href="../injectables/RatingService.html" target="_self">RatingService</a>, snackbar: <a href="../components/SnackbarComponent.html" target="_self">SnackbarComponent</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/admin-page/admin-page.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ratingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RatingService.html" target="_self" >RatingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>snackbar</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../components/SnackbarComponent.html" target="_self" >SnackbarComponent</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applyFilterAdmins"></a>
+                    <span class="name">
+                        <span ><b>applyFilterAdmins</b></span>
+                        <a href="#applyFilterAdmins"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applyFilterAdmins(event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/admin-page/admin-page.component.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applyFilterMentee"></a>
+                    <span class="name">
+                        <span ><b>applyFilterMentee</b></span>
+                        <a href="#applyFilterMentee"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applyFilterMentee(event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/app/admin-page/admin-page.component.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applyFilterMentors"></a>
+                    <span class="name">
+                        <span ><b>applyFilterMentors</b></span>
+                        <a href="#applyFilterMentors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applyFilterMentors(event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/admin-page/admin-page.component.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="demoteUserToMentee"></a>
+                    <span class="name">
+                        <span ><b>demoteUserToMentee</b></span>
+                        <a href="#demoteUserToMentee"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>demoteUserToMentee(element: <a href="../interfaces/DiversITUser.html" target="_self">DiversITUser</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/app/admin-page/admin-page.component.ts:80</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+                                    <td>
+                                                <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/admin-page/admin-page.component.ts:35</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="promoteUserToMentor"></a>
+                    <span class="name">
+                        <span ><b>promoteUserToMentor</b></span>
+                        <a href="#promoteUserToMentor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>promoteUserToMentor(element: <a href="../interfaces/DiversITUser.html" target="_self">DiversITUser</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/app/admin-page/admin-page.component.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+                                    <td>
+                                                <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setRatingDisplayFalse"></a>
+                    <span class="name">
+                        <span ><b>setRatingDisplayFalse</b></span>
+                        <a href="#setRatingDisplayFalse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setRatingDisplayFalse(element: <a href="../interfaces/Rating.html" target="_self">Rating</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/app/admin-page/admin-page.component.ts:102</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+                                    <td>
+                                                <code><a href="../interfaces/Rating.html" target="_self" >Rating</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setRatingDisplayTrue"></a>
+                    <span class="name">
+                        <span ><b>setRatingDisplayTrue</b></span>
+                        <a href="#setRatingDisplayTrue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setRatingDisplayTrue(element: <a href="../interfaces/Rating.html" target="_self">Rating</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/app/admin-page/admin-page.component.ts:91</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+                                    <td>
+                                                <code><a href="../interfaces/Rating.html" target="_self" >Rating</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="admins"></a>
+                    <span class="name">
+                        <span ><b>admins</b></span>
+                        <a href="#admins"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/admin-page/admin-page.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSourceAdmins"></a>
+                    <span class="name">
+                        <span ><b>dataSourceAdmins</b></span>
+                        <a href="#dataSourceAdmins"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/admin-page/admin-page.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSourceDisplayedRatings"></a>
+                    <span class="name">
+                        <span ><b>dataSourceDisplayedRatings</b></span>
+                        <a href="#dataSourceDisplayedRatings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/admin-page/admin-page.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSourceMentees"></a>
+                    <span class="name">
+                        <span ><b>dataSourceMentees</b></span>
+                        <a href="#dataSourceMentees"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/admin-page/admin-page.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSourceMentors"></a>
+                    <span class="name">
+                        <span ><b>dataSourceMentors</b></span>
+                        <a href="#dataSourceMentors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/admin-page/admin-page.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSourceNonDisplayedRatings"></a>
+                    <span class="name">
+                        <span ><b>dataSourceNonDisplayedRatings</b></span>
+                        <a href="#dataSourceNonDisplayedRatings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/admin-page/admin-page.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayedColumns"></a>
+                    <span class="name">
+                        <span ><b>displayedColumns</b></span>
+                        <a href="#displayedColumns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;email&#x27;, &#x27;lastLogin&#x27;, &#x27;creationDate&#x27;, &#x27;button&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/admin-page/admin-page.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayedColumnsAdmins"></a>
+                    <span class="name">
+                        <span ><b>displayedColumnsAdmins</b></span>
+                        <a href="#displayedColumnsAdmins"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;email&#x27;, &#x27;lastLogin&#x27;, &#x27;creationDate&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/admin-page/admin-page.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayedRatings"></a>
+                    <span class="name">
+                        <span ><b>displayedRatings</b></span>
+                        <a href="#displayedRatings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Rating.html" target="_self" >Rating[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/admin-page/admin-page.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mentees"></a>
+                    <span class="name">
+                        <span ><b>mentees</b></span>
+                        <a href="#mentees"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/admin-page/admin-page.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mentors"></a>
+                    <span class="name">
+                        <span ><b>mentors</b></span>
+                        <a href="#mentors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/admin-page/admin-page.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nonDisplayedRatings"></a>
+                    <span class="name">
+                        <span ><b>nonDisplayedRatings</b></span>
+                        <a href="#nonDisplayedRatings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Rating.html" target="_self" >Rating[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/admin-page/admin-page.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ratingDisplayedColumns"></a>
+                    <span class="name">
+                        <span ><b>ratingDisplayedColumns</b></span>
+                        <a href="#ratingDisplayedColumns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;stars&#x27;, &#x27;summary&#x27;, &#x27;text&#x27;, &#x27;username&#x27;, &#x27;date&#x27;, &#x27;button&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/admin-page/admin-page.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ratings"></a>
+                    <span class="name">
+                        <span ><b>ratings</b></span>
+                        <a href="#ratings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Rating.html" target="_self" >Rating[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/admin-page/admin-page.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="users"></a>
+                    <span class="name">
+                        <span ><b>users</b></span>
+                        <a href="#users"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/admin-page/admin-page.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { MatTableDataSource } from &#x27;@angular/material/table&#x27;;
+import { Rating } from &#x27;../models/rating.model&#x27;;
+import { DiversITUser } from &#x27;../models/users.model&#x27;;
+import { RatingService } from &#x27;../services/rating.service&#x27;;
+import { UserService } from &#x27;../services/user.service&#x27;;
+import { SnackbarComponent } from &#x27;../snackbar/snackbar.component&#x27;;
+
+@Component({
+  selector: &#x27;app-admin-page&#x27;,
+  templateUrl: &#x27;./admin-page.component.html&#x27;,
+  styleUrls: [&#x27;./admin-page.component.scss&#x27;]
+})
+export class AdminPageComponent implements OnInit {
+
+  users: DiversITUser[]
+  admins: DiversITUser[]
+  mentees: DiversITUser[]
+  mentors: DiversITUser[]
+  dataSourceMentees: any
+  dataSourceMentors: any
+  dataSourceAdmins: any
+  displayedColumnsAdmins: string[] &#x3D; [&#x27;email&#x27;, &#x27;lastLogin&#x27;, &#x27;creationDate&#x27;];
+  displayedColumns: string[] &#x3D; [&#x27;email&#x27;, &#x27;lastLogin&#x27;, &#x27;creationDate&#x27;, &#x27;button&#x27;];
+
+  ratings: Rating[]
+  displayedRatings: Rating[]
+  nonDisplayedRatings: Rating[]
+  dataSourceDisplayedRatings: any
+  dataSourceNonDisplayedRatings: any
+  ratingDisplayedColumns: string[] &#x3D; [&#x27;stars&#x27;, &#x27;summary&#x27;, &#x27;text&#x27;, &#x27;username&#x27;, &#x27;date&#x27;, &#x27;button&#x27;];
+
+  constructor(private userService: UserService, private ratingService: RatingService, private snackbar: SnackbarComponent) { }
+
+  async ngOnInit(): Promise&lt;void&gt; {
+    this.users &#x3D; await this.userService.getAllUsersPromise();
+
+    this.admins &#x3D; this.users.filter((element) &#x3D;&gt; element.role &#x3D;&#x3D; 1)
+    this.mentees &#x3D; this.users.filter((element) &#x3D;&gt; element.role &#x3D;&#x3D; 3)
+    this.mentors &#x3D; this.users.filter((element) &#x3D;&gt; element.role &#x3D;&#x3D; 2)
+
+    this.dataSourceMentees &#x3D; new MatTableDataSource(this.mentees)
+    this.dataSourceMentors &#x3D; new MatTableDataSource(this.mentors)
+    this.dataSourceAdmins &#x3D; new MatTableDataSource(this.admins)
+
+    this.ratings &#x3D; await this.ratingService.getAllRatings();
+    this.displayedRatings &#x3D; this.ratings.filter((element) &#x3D;&gt; element.displayOnLandingPage &#x3D;&#x3D;&#x3D; true).sort((a, b) &#x3D;&gt; b.lastUpdated.toMillis() - a.lastUpdated.toMillis());
+    this.nonDisplayedRatings &#x3D; this.ratings.filter((element) &#x3D;&gt; element.displayOnLandingPage &#x3D;&#x3D;&#x3D; false).sort((a, b) &#x3D;&gt; b.lastUpdated.toMillis() - a.lastUpdated.toMillis());
+
+    this.dataSourceDisplayedRatings &#x3D; new MatTableDataSource(this.displayedRatings)
+    this.dataSourceNonDisplayedRatings &#x3D; new MatTableDataSource(this.nonDisplayedRatings)
+  }
+
+  applyFilterMentee(event: Event) {
+    const filterValue &#x3D; (event.target as HTMLInputElement).value;
+    this.dataSourceMentees.filter &#x3D; filterValue.trim().toLowerCase();
+  }
+
+  applyFilterMentors(event: Event) {
+    const filterValue &#x3D; (event.target as HTMLInputElement).value;
+    this.dataSourceMentees.filter &#x3D; filterValue.trim().toLowerCase();
+  }
+
+  applyFilterAdmins(event: Event) {
+    const filterValue &#x3D; (event.target as HTMLInputElement).value;
+    this.dataSourceMentees.filter &#x3D; filterValue.trim().toLowerCase();
+  }
+
+  promoteUserToMentor(element: DiversITUser) {
+    this.userService.promoteMenteeToMentor(element).then(() &#x3D;&gt; {
+      this.mentees &#x3D; this.mentees.filter((x) &#x3D;&gt; x.uid !&#x3D; element.uid)
+      this.dataSourceMentees &#x3D; new MatTableDataSource(this.mentees);
+      this.mentors.push(element);
+      this.dataSourceMentors &#x3D; new MatTableDataSource(this.mentors);
+    }).catch(() &#x3D;&gt; {
+      this.snackbar.openSnackBar(&quot;Aktion fehlgeschlagen&quot;, &quot;snackbar-red&quot;);
+    });
+  }
+
+  demoteUserToMentee(element: DiversITUser) {
+    this.userService.demoteMenteeToMentor(element).then(() &#x3D;&gt; {
+      this.mentors &#x3D; this.mentors &#x3D; this.mentors.filter((x) &#x3D;&gt; x.uid !&#x3D; element.uid)
+      this.dataSourceMentors &#x3D; new MatTableDataSource(this.mentors);
+      this.mentees.push(element);
+      this.dataSourceMentees &#x3D; new MatTableDataSource(this.mentees);
+    }).catch(() &#x3D;&gt; {
+      this.snackbar.openSnackBar(&quot;Aktion fehlgeschlagen&quot;, &quot;snackbar-red&quot;);
+    });
+  }
+
+  setRatingDisplayTrue(element: Rating) {
+    this.ratingService.setDisplayTrue(element).then(() &#x3D;&gt; {
+      this.nonDisplayedRatings &#x3D; this.nonDisplayedRatings.filter((x) &#x3D;&gt; x.userID !&#x3D; element.userID)
+      this.dataSourceNonDisplayedRatings &#x3D; new MatTableDataSource(this.nonDisplayedRatings);
+      this.displayedRatings.push(element);
+      this.dataSourceDisplayedRatings &#x3D; new MatTableDataSource(this.displayedRatings);
+    }).catch(() &#x3D;&gt; {
+      this.snackbar.openSnackBar(&quot;Aktion fehlgeschlagen&quot;, &quot;snackbar-red&quot;);
+    });
+  }
+
+  setRatingDisplayFalse(element: Rating) {
+    this.ratingService.setDisplayFalse(element).then(() &#x3D;&gt; {
+      this.displayedRatings &#x3D; this.displayedRatings.filter((x) &#x3D;&gt; x.userID !&#x3D; element.userID)
+      this.dataSourceDisplayedRatings &#x3D; new MatTableDataSource(this.displayedRatings);
+      this.nonDisplayedRatings.push(element);
+      this.dataSourceNonDisplayedRatings &#x3D; new MatTableDataSource(this.nonDisplayedRatings);
+    }).catch(() &#x3D;&gt; {
+      this.snackbar.openSnackBar(&quot;Aktion fehlgeschlagen&quot;, &quot;snackbar-red&quot;);
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;main-wrapper&quot; fxLayout&#x3D;column fxLayoutAlign&#x3D;&quot;start center&quot;&gt;
+
+  &lt;h2&gt;Admins&lt;/h2&gt;
+  &lt;mat-form-field style&#x3D;&quot;width: 60%;&quot;&gt;
+    &lt;mat-label&gt;Email&lt;/mat-label&gt;
+    &lt;input matInput (keyup)&#x3D;&quot;applyFilterAdmins($event)&quot; #input&gt;
+  &lt;/mat-form-field&gt;
+
+  &lt;table style&#x3D;&quot;width: 60%;&quot; mat-table [dataSource]&#x3D;&quot;dataSourceAdmins&quot; class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+    &lt;!-- Email Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;email&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Email &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.email}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Letzter Login Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;lastLogin&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Letzter Login &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.lastLoggedIn.toMillis() | date:&#x27;dd.MM.yyyy HH:mm&#x27;}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Letzter Login Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;creationDate&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Registrierungsdatum &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.creationTime.toMillis() | date:&#x27;dd.MM.yyyy HH:mm&#x27;}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;displayedColumnsAdmins&quot;&gt;&lt;/tr&gt;
+    &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: displayedColumnsAdmins;&quot;&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+
+
+  &lt;h2 style&#x3D;&quot;margin-top: 5%&quot;&gt;Registrierte Mentoren&lt;/h2&gt;
+  &lt;mat-form-field style&#x3D;&quot;width: 60%;&quot;&gt;
+    &lt;mat-label&gt;Email&lt;/mat-label&gt;
+    &lt;input matInput (keyup)&#x3D;&quot;applyFilterMentors($event)&quot; #input&gt;
+  &lt;/mat-form-field&gt;
+
+  &lt;table style&#x3D;&quot;width: 60%;&quot; mat-table [dataSource]&#x3D;&quot;dataSourceMentors&quot; class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+    &lt;!-- Email Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;email&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Email &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.email}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Letzter Login Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;lastLogin&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Letzter Login &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.lastLoggedIn.toMillis() | date:&#x27;dd.MM.yyyy HH:mm&#x27;}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Letzter Login Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;creationDate&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Registrierungsdatum &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.creationTime.toMillis() | date:&#x27;dd.MM.yyyy HH:mm&#x27;}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Button Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;button&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Bearbeiten &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+        &lt;button mat-raised-button (click)&#x3D;&quot;demoteUserToMentee(element)&quot;&gt; Zum Mentee machen&lt;/button&gt;
+      &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;displayedColumns&quot;&gt;&lt;/tr&gt;
+    &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: displayedColumns;&quot;&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+
+
+  &lt;h2 style&#x3D;&quot;margin-top: 5%&quot;&gt;Registrierte Mentees&lt;/h2&gt;
+  &lt;mat-form-field style&#x3D;&quot;width: 60%;&quot;&gt;
+    &lt;mat-label&gt;Email&lt;/mat-label&gt;
+    &lt;input matInput (keyup)&#x3D;&quot;applyFilterMentee($event)&quot; #input&gt;
+  &lt;/mat-form-field&gt;
+
+  &lt;table style&#x3D;&quot;width: 60%;&quot; mat-table [dataSource]&#x3D;&quot;dataSourceMentees&quot; class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+    &lt;!-- Email Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;email&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Email &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.email}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Letzter Login Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;lastLogin&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Letzter Login &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.lastLoggedIn.toMillis() | date:&#x27;dd.MM.yyyy HH:mm&#x27;}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Letzter Login Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;creationDate&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Registrierungsdatum &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.creationTime.toMillis() | date:&#x27;dd.MM.yyyy HH:mm&#x27;}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Button Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;button&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Bearbeiten &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+        &lt;button mat-raised-button (click)&#x3D;&quot;promoteUserToMentor(element)&quot;&gt; Zum Mentor machen&lt;/button&gt;
+      &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;displayedColumns&quot;&gt;&lt;/tr&gt;
+    &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: displayedColumns;&quot;&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;h2 style&#x3D;&quot;margin-top: 5%&quot;&gt;Nutzererfahrungen&lt;/h2&gt;
+
+  &lt;h3 style&#x3D;&quot;margin-top:2%&quot;&gt;Versteckte Nutzererfahrungen&lt;/h3&gt;
+
+  &lt;table style&#x3D;&quot;width: 60%;&quot; mat-table [dataSource]&#x3D;&quot;dataSourceNonDisplayedRatings&quot; class&#x3D;&quot;mat-elevation-z8 rating&quot;&gt;
+    &lt;!-- Stars Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;stars&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Sternebewertung &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+        &lt;mat-icon *ngFor&#x3D;&quot;let star of [].constructor(element.stars)&quot; class&#x3D;&quot;icon&quot; color&#x3D;&quot;accent&quot;&gt;star
+        &lt;/mat-icon&gt;
+        &lt;mat-icon *ngFor&#x3D;&quot;let star of [].constructor(5 - element.stars)&quot; class&#x3D;&quot;icon&quot; color&#x3D;&quot;accent&quot;&gt;
+          star_border
+        &lt;/mat-icon&gt;
+      &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Summary Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;summary&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Zusammenfassung &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.summary}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Text Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;text&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Text &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.text}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Username Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;username&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Username &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.username}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Date Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;date&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Zuletzt upgedated &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.lastUpdated.toMillis() | date:&#x27;dd.MM.yyyy HH:mm&#x27;}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Button Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;button&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Bearbeiten &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+        &lt;button mat-raised-button (click)&#x3D;&quot;setRatingDisplayTrue(element)&quot;&gt; Bewertung freischalten&lt;/button&gt;
+      &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;ratingDisplayedColumns&quot;&gt;&lt;/tr&gt;
+    &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: ratingDisplayedColumns;&quot;&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;h3 style&#x3D;&quot;margin-top:2%&quot;&gt;Veröffentlichte Nutzererfahrungen&lt;/h3&gt;
+
+  &lt;table style&#x3D;&quot;width: 60%;&quot; mat-table [dataSource]&#x3D;&quot;dataSourceDisplayedRatings&quot; class&#x3D;&quot;mat-elevation-z8 rating&quot;&gt;
+    &lt;!-- Stars Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;stars&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Sternebewertung &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+        &lt;mat-icon *ngFor&#x3D;&quot;let star of [].constructor(element.stars)&quot; class&#x3D;&quot;icon&quot; color&#x3D;&quot;accent&quot;&gt;star
+        &lt;/mat-icon&gt;
+        &lt;mat-icon *ngFor&#x3D;&quot;let star of [].constructor(5 - element.stars)&quot; class&#x3D;&quot;icon&quot; color&#x3D;&quot;accent&quot;&gt;
+          star_border
+        &lt;/mat-icon&gt;
+      &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Summary Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;summary&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Zusammenfassung &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.summary}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Text Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;text&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Text &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.text}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Username Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;username&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Username &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.username}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Date Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;date&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Zuletzt upgedated &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.lastUpdated.toMillis() | date:&#x27;dd.MM.yyyy HH:mm&#x27;}} &lt;/td&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Button Column --&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;button&quot;&gt;
+      &lt;th mat-header-cell *matHeaderCellDef&gt; Bearbeiten &lt;/th&gt;
+      &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+        &lt;button mat-raised-button (click)&#x3D;&quot;setRatingDisplayFalse(element)&quot;&gt; Bewertung verstecken&lt;/button&gt;
+      &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;ratingDisplayedColumns&quot;&gt;&lt;/tr&gt;
+    &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: ratingDisplayedColumns;&quot;&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./admin-page.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.rating {
+    .mat-header-cell, .mat-cell, .mat-footer-cell {
+        padding: 10px;
+    }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="main-wrapper" fxLayout=column fxLayoutAlign="start center">  <h2>Admins</h2>  <mat-form-field style="width: 60%;">    <mat-label>Email</mat-label>    <input matInput (keyup)="applyFilterAdmins($event)" #input>  </mat-form-field>  <table style="width: 60%;" mat-table [dataSource]="dataSourceAdmins" class="mat-elevation-z8">    <!-- Email Column -->    <ng-container matColumnDef="email">      <th mat-header-cell *matHeaderCellDef> Email </th>      <td mat-cell *matCellDef="let element"> {{element.email}} </td>    </ng-container>    <!-- Letzter Login Column -->    <ng-container matColumnDef="lastLogin">      <th mat-header-cell *matHeaderCellDef> Letzter Login </th>      <td mat-cell *matCellDef="let element"> {{element.lastLoggedIn.toMillis() | date:\'dd.MM.yyyy HH:mm\'}} </td>    </ng-container>    <!-- Letzter Login Column -->    <ng-container matColumnDef="creationDate">      <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>      <td mat-cell *matCellDef="let element"> {{element.creationTime.toMillis() | date:\'dd.MM.yyyy HH:mm\'}} </td>    </ng-container>    <tr mat-header-row *matHeaderRowDef="displayedColumnsAdmins"></tr>    <tr mat-row *matRowDef="let row; columns: displayedColumnsAdmins;"></tr>  </table>  <h2 style="margin-top: 5%">Registrierte Mentoren</h2>  <mat-form-field style="width: 60%;">    <mat-label>Email</mat-label>    <input matInput (keyup)="applyFilterMentors($event)" #input>  </mat-form-field>  <table style="width: 60%;" mat-table [dataSource]="dataSourceMentors" class="mat-elevation-z8">    <!-- Email Column -->    <ng-container matColumnDef="email">      <th mat-header-cell *matHeaderCellDef> Email </th>      <td mat-cell *matCellDef="let element"> {{element.email}} </td>    </ng-container>    <!-- Letzter Login Column -->    <ng-container matColumnDef="lastLogin">      <th mat-header-cell *matHeaderCellDef> Letzter Login </th>      <td mat-cell *matCellDef="let element"> {{element.lastLoggedIn.toMillis() | date:\'dd.MM.yyyy HH:mm\'}} </td>    </ng-container>    <!-- Letzter Login Column -->    <ng-container matColumnDef="creationDate">      <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>      <td mat-cell *matCellDef="let element"> {{element.creationTime.toMillis() | date:\'dd.MM.yyyy HH:mm\'}} </td>    </ng-container>    <!-- Button Column -->    <ng-container matColumnDef="button">      <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>      <td mat-cell *matCellDef="let element">        <button mat-raised-button (click)="demoteUserToMentee(element)"> Zum Mentee machen</button>      </td>    </ng-container>    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>  </table>  <h2 style="margin-top: 5%">Registrierte Mentees</h2>  <mat-form-field style="width: 60%;">    <mat-label>Email</mat-label>    <input matInput (keyup)="applyFilterMentee($event)" #input>  </mat-form-field>  <table style="width: 60%;" mat-table [dataSource]="dataSourceMentees" class="mat-elevation-z8">    <!-- Email Column -->    <ng-container matColumnDef="email">      <th mat-header-cell *matHeaderCellDef> Email </th>      <td mat-cell *matCellDef="let element"> {{element.email}} </td>    </ng-container>    <!-- Letzter Login Column -->    <ng-container matColumnDef="lastLogin">      <th mat-header-cell *matHeaderCellDef> Letzter Login </th>      <td mat-cell *matCellDef="let element"> {{element.lastLoggedIn.toMillis() | date:\'dd.MM.yyyy HH:mm\'}} </td>    </ng-container>    <!-- Letzter Login Column -->    <ng-container matColumnDef="creationDate">      <th mat-header-cell *matHeaderCellDef> Registrierungsdatum </th>      <td mat-cell *matCellDef="let element"> {{element.creationTime.toMillis() | date:\'dd.MM.yyyy HH:mm\'}} </td>    </ng-container>    <!-- Button Column -->    <ng-container matColumnDef="button">      <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>      <td mat-cell *matCellDef="let element">        <button mat-raised-button (click)="promoteUserToMentor(element)"> Zum Mentor machen</button>      </td>    </ng-container>    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>  </table>  <h2 style="margin-top: 5%">Nutzererfahrungen</h2>  <h3 style="margin-top:2%">Versteckte Nutzererfahrungen</h3>  <table style="width: 60%;" mat-table [dataSource]="dataSourceNonDisplayedRatings" class="mat-elevation-z8 rating">    <!-- Stars Column -->    <ng-container matColumnDef="stars">      <th mat-header-cell *matHeaderCellDef> Sternebewertung </th>      <td mat-cell *matCellDef="let element">        <mat-icon *ngFor="let star of [].constructor(element.stars)" class="icon" color="accent">star        </mat-icon>        <mat-icon *ngFor="let star of [].constructor(5 - element.stars)" class="icon" color="accent">          star_border        </mat-icon>      </td>    </ng-container>    <!-- Summary Column -->    <ng-container matColumnDef="summary">      <th mat-header-cell *matHeaderCellDef> Zusammenfassung </th>      <td mat-cell *matCellDef="let element"> {{element.summary}} </td>    </ng-container>    <!-- Text Column -->    <ng-container matColumnDef="text">      <th mat-header-cell *matHeaderCellDef> Text </th>      <td mat-cell *matCellDef="let element"> {{element.text}} </td>    </ng-container>    <!-- Username Column -->    <ng-container matColumnDef="username">      <th mat-header-cell *matHeaderCellDef> Username </th>      <td mat-cell *matCellDef="let element"> {{element.username}} </td>    </ng-container>    <!-- Date Column -->    <ng-container matColumnDef="date">      <th mat-header-cell *matHeaderCellDef> Zuletzt upgedated </th>      <td mat-cell *matCellDef="let element"> {{element.lastUpdated.toMillis() | date:\'dd.MM.yyyy HH:mm\'}} </td>    </ng-container>    <!-- Button Column -->    <ng-container matColumnDef="button">      <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>      <td mat-cell *matCellDef="let element">        <button mat-raised-button (click)="setRatingDisplayTrue(element)"> Bewertung freischalten</button>      </td>    </ng-container>    <tr mat-header-row *matHeaderRowDef="ratingDisplayedColumns"></tr>    <tr mat-row *matRowDef="let row; columns: ratingDisplayedColumns;"></tr>  </table>  <h3 style="margin-top:2%">Veröffentlichte Nutzererfahrungen</h3>  <table style="width: 60%;" mat-table [dataSource]="dataSourceDisplayedRatings" class="mat-elevation-z8 rating">    <!-- Stars Column -->    <ng-container matColumnDef="stars">      <th mat-header-cell *matHeaderCellDef> Sternebewertung </th>      <td mat-cell *matCellDef="let element">        <mat-icon *ngFor="let star of [].constructor(element.stars)" class="icon" color="accent">star        </mat-icon>        <mat-icon *ngFor="let star of [].constructor(5 - element.stars)" class="icon" color="accent">          star_border        </mat-icon>      </td>    </ng-container>    <!-- Summary Column -->    <ng-container matColumnDef="summary">      <th mat-header-cell *matHeaderCellDef> Zusammenfassung </th>      <td mat-cell *matCellDef="let element"> {{element.summary}} </td>    </ng-container>    <!-- Text Column -->    <ng-container matColumnDef="text">      <th mat-header-cell *matHeaderCellDef> Text </th>      <td mat-cell *matCellDef="let element"> {{element.text}} </td>    </ng-container>    <!-- Username Column -->    <ng-container matColumnDef="username">      <th mat-header-cell *matHeaderCellDef> Username </th>      <td mat-cell *matCellDef="let element"> {{element.username}} </td>    </ng-container>    <!-- Date Column -->    <ng-container matColumnDef="date">      <th mat-header-cell *matHeaderCellDef> Zuletzt upgedated </th>      <td mat-cell *matCellDef="let element"> {{element.lastUpdated.toMillis() | date:\'dd.MM.yyyy HH:mm\'}} </td>    </ng-container>    <!-- Button Column -->    <ng-container matColumnDef="button">      <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>      <td mat-cell *matCellDef="let element">        <button mat-raised-button (click)="setRatingDisplayFalse(element)"> Bewertung verstecken</button>      </td>    </ng-container>    <tr mat-header-row *matHeaderRowDef="ratingDisplayedColumns"></tr>    <tr mat-row *matRowDef="let row; columns: ratingDisplayedColumns;"></tr>  </table></div></div>'
+    var COMPONENTS = [{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CenterPanelComponent', 'selector': 'app-center-panel'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'CreatingNewPostCardComponent', 'selector': 'app-creating-new-post-card'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForumComponent', 'selector': 'app-forum'},{'name': 'ForumThreadComponent', 'selector': 'app-forum-thread'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'InterestingMentorsComponent', 'selector': 'app-interesting-mentors'},{'name': 'JobProfilesComponent', 'selector': 'app-job-profiles'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LeftPanelComponent', 'selector': 'app-left-panel'},{'name': 'LeftSpacerComponent', 'selector': 'app-left-spacer'},{'name': 'LoginBoxComponent', 'selector': 'app-login-box'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'MainPanelComponent', 'selector': 'app-main-panel'},{'name': 'MentorSpotlightComponent', 'selector': 'app-mentor-spotlight'},{'name': 'MessageCardComponent', 'selector': 'app-message-card'},{'name': 'MissionComponent', 'selector': 'app-mission'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'PageSelectionComponent', 'selector': 'app-page-selection'},{'name': 'PostCardComponent', 'selector': 'app-post-card'},{'name': 'PrivacyComponent', 'selector': 'app-privacy'},{'name': 'ProfileCardComponent', 'selector': 'app-profile-card'},{'name': 'ProfileHeadComponent', 'selector': 'app-profile-head'},{'name': 'ProfileNewPostComponent', 'selector': 'app-profile-new-post'},{'name': 'ProfilePageComponent', 'selector': 'app-profile-page'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RatingComponent', 'selector': 'app-rating'},{'name': 'RelationsPageComponent', 'selector': 'app-relations-page'},{'name': 'RightPanelComponent', 'selector': 'app-right-panel-main'},{'name': 'RightPanelProfileComponent', 'selector': 'app-right-panel-profile'},{'name': 'RightSpacerComponent', 'selector': 'app-right-spacer'},{'name': 'SearchFilterSortComponent', 'selector': 'app-search-filter-sort'},{'name': 'SnackbarComponent', 'selector': 'app-snackbar'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'},{'name': 'ThreadOverviewComponent', 'selector': 'app-thread-overview'},{'name': 'UnauthorizedComponent', 'selector': 'app-unauthorized'},{'name': 'UserRatingsComponent', 'selector': 'app-user-ratings'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AdminPageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AdminPageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

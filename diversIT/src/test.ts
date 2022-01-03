@@ -7,7 +7,16 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
+/**
+ * Required for karma.conf.js
+ */
 declare const require: {
+  /** necessary for karma.conf.js
+   * 
+   * @param path 
+   * @param deep 
+   * @param filter 
+   */
   context(path: string, deep?: boolean, filter?: RegExp): {
     keys(): string[];
     <T>(id: string): T;

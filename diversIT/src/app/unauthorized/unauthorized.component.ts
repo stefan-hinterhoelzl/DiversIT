@@ -5,8 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './unauthorized.component.html',
   styleUrls: ['./unauthorized.component.scss']
 })
+
+
 export class UnauthorizedComponent {
 
+  /**
+   * Creates an instance of UnauthorizedComponent.
+   * @memberof UnauthorizedComponent
+   */
   constructor() { }
 
 }

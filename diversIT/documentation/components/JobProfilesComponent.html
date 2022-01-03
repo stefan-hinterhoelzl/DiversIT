@@ -1,0 +1,2173 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>girlsonly documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">girlsonly documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  JobProfilesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-job-profiles</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./job-profiles.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./job-profiles.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#breakpoint" >breakpoint</a>
+                            </li>
+                            <li>
+                                <a href="#jobProfiles" >jobProfiles</a>
+                            </li>
+                            <li>
+                                <a href="#jobProfilesList" >jobProfilesList</a>
+                            </li>
+                            <li>
+                                <a href="#jobProfilesMentorsMap" >jobProfilesMentorsMap</a>
+                            </li>
+                            <li>
+                                <a href="#mentors" >mentors</a>
+                            </li>
+                            <li>
+                                <a href="#numberOfMentors" >numberOfMentors</a>
+                            </li>
+                            <li>
+                                <a href="#selectedItems" >selectedItems</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#changeSelection" >changeSelection</a>
+                            </li>
+                            <li>
+                                <a href="#changeSelectionEvent" >changeSelectionEvent</a>
+                            </li>
+                            <li>
+                                <a href="#firstMentorHasImage" >firstMentorHasImage</a>
+                            </li>
+                            <li>
+                                <a href="#initializeJobProfilesMentorsMap" >initializeJobProfilesMentorsMap</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onResize" >onResize</a>
+                            </li>
+                            <li>
+                                <a href="#setJobProfilesMentors" >setJobProfilesMentors</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(userService: <a href="../injectables/UserService.html" target="_self">UserService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeSelection"></a>
+                    <span class="name">
+                        <span ><b>changeSelection</b></span>
+                        <a href="#changeSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeSelection(item: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:39</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeSelectionEvent"></a>
+                    <span class="name">
+                        <span ><b>changeSelectionEvent</b></span>
+                        <a href="#changeSelectionEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeSelectionEvent(event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:47</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="firstMentorHasImage"></a>
+                    <span class="name">
+                        <span ><b>firstMentorHasImage</b></span>
+                        <a href="#firstMentorHasImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>firstMentorHasImage(jobProfile: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>jobProfile</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initializeJobProfilesMentorsMap"></a>
+                    <span class="name">
+                        <span ><b>initializeJobProfilesMentorsMap</b></span>
+                        <a href="#initializeJobProfilesMentorsMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initializeJobProfilesMentorsMap(jobProfiles: string[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>jobProfiles</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:23</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onResize"></a>
+                    <span class="name">
+                        <span ><b>onResize</b></span>
+                        <a href="#onResize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onResize(event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:35</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setJobProfilesMentors"></a>
+                    <span class="name">
+                        <span ><b>setJobProfilesMentors</b></span>
+                        <a href="#setJobProfilesMentors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setJobProfilesMentors(jobProfiles: string[], mentors: <a href="../interfaces/DiversITUser.html" target="_self">DiversITUser[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>jobProfiles</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>mentors</td>
+                                    <td>
+                                                <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="breakpoint"></a>
+                    <span class="name">
+                        <span ><b>breakpoint</b></span>
+                        <a href="#breakpoint"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="jobProfiles"></a>
+                    <span class="name">
+                        <span ><b>jobProfiles</b></span>
+                        <a href="#jobProfiles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormControl(this.selectedItems)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="jobProfilesList"></a>
+                    <span class="name">
+                        <span ><b>jobProfilesList</b></span>
+                        <a href="#jobProfilesList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;IT-Systemadministrator&#x27;, &#x27;IT-Techniker&#x27;, &#x27;UX-Designer&#x27;, &#x27;Software Engineer&#x27;, &#x27;Universitätsprofessor für Informatik&#x27;, &#x27;Scrum Master&#x27;, &#x27;DevOps Engineer&#x27;, &#x27;Product Owner&#x27;].sort()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="jobProfilesMentorsMap"></a>
+                    <span class="name">
+                        <span ><b>jobProfilesMentorsMap</b></span>
+                        <a href="#jobProfilesMentorsMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DiversITUser.html" target="_self" >Map&lt;string | DiversITUser[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mentors"></a>
+                    <span class="name">
+                        <span ><b>mentors</b></span>
+                        <a href="#mentors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numberOfMentors"></a>
+                    <span class="name">
+                        <span ><b>numberOfMentors</b></span>
+                        <a href="#numberOfMentors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>3</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedItems"></a>
+                    <span class="name">
+                        <span ><b>selectedItems</b></span>
+                        <a href="#selectedItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;DevOps Engineer&#x27;, &#x27;Universitätsprofessor für Informatik&#x27;, &#x27;Product Owner&#x27;, &#x27;IT-Systemadministrator&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/landing-page/landing-page-components/job-profiles/job-profiles.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { UserService } from &#x27;./../../../services/user.service&#x27;;
+import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormControl } from &#x27;@angular/forms&#x27;;
+import { DiversITUser } from &#x27;src/app/models/users.model&#x27;;
+
+@Component({
+  selector: &#x27;app-job-profiles&#x27;,
+  templateUrl: &#x27;./job-profiles.component.html&#x27;,
+  styleUrls: [&#x27;./job-profiles.component.scss&#x27;]
+})
+export class JobProfilesComponent implements OnInit {
+
+  breakpoint: number;
+  numberOfMentors &#x3D; 3;
+  selectedItems: string[] &#x3D; [&#x27;DevOps Engineer&#x27;, &#x27;Universitätsprofessor für Informatik&#x27;, &#x27;Product Owner&#x27;, &#x27;IT-Systemadministrator&#x27;];
+  jobProfiles &#x3D; new FormControl(this.selectedItems);
+  jobProfilesList: string[] &#x3D; [&#x27;IT-Systemadministrator&#x27;, &#x27;IT-Techniker&#x27;, &#x27;UX-Designer&#x27;, &#x27;Software Engineer&#x27;, &#x27;Universitätsprofessor für Informatik&#x27;, &#x27;Scrum Master&#x27;, &#x27;DevOps Engineer&#x27;, &#x27;Product Owner&#x27;].sort();
+  mentors: DiversITUser[];
+  jobProfilesMentorsMap: Map&lt;string, DiversITUser[]&gt;;
+
+  constructor(private userService: UserService) { }
+
+  async ngOnInit(): Promise&lt;void&gt; {
+    this.breakpoint &#x3D; (window.innerWidth &lt;&#x3D; 1220) ? 1 : 2;
+    this.initializeJobProfilesMentorsMap(this.jobProfilesList);
+
+    await this.userService.getAllMentorsPromise().then(data &#x3D;&gt; {
+      this.mentors &#x3D; data;
+    });
+
+    this.setJobProfilesMentors(this.jobProfilesList, this.mentors);
+
+  }
+
+  onResize(event) {
+    this.breakpoint &#x3D; (event.target.innerWidth &lt;&#x3D; 1220) ? 1 : 2;
+  }
+
+  changeSelection(item: string) {
+    if (this.selectedItems.includes(item)) {
+      this.selectedItems &#x3D; this.selectedItems.filter(i &#x3D;&gt; i !&#x3D; item);
+    } else {
+      this.selectedItems.push(item);
+    }
+  }
+
+  changeSelectionEvent(event: Event) {
+    let value &#x3D; (event.target as HTMLSelectElement).value;
+    if (this.selectedItems.includes(value)) {
+      this.selectedItems &#x3D; this.selectedItems.filter(i &#x3D;&gt; i !&#x3D; value);
+    } else {
+      this.selectedItems.push(value);
+    }
+  }
+
+  initializeJobProfilesMentorsMap(jobProfiles: string[]) {
+    this.jobProfilesMentorsMap &#x3D; new Map&lt;string, DiversITUser[]&gt;();
+    jobProfiles.forEach(job &#x3D;&gt; {
+      this.jobProfilesMentorsMap.set(job, []);
+    });
+  }
+
+  setJobProfilesMentors(jobProfiles: string[], mentors: DiversITUser[]): void {
+    jobProfiles.forEach(job &#x3D;&gt; {
+      let jobMentors &#x3D; mentors.filter(m &#x3D;&gt; m.job &#x3D;&#x3D;&#x3D; job);
+      if (jobMentors.length &gt; 1) {
+        jobMentors &#x3D; jobMentors.sort(() &#x3D;&gt; .5 - Math.random()).slice(0, this.numberOfMentors);
+      }
+      this.jobProfilesMentorsMap.set(job, jobMentors);
+    });
+  }
+
+  firstMentorHasImage(jobProfile: string): boolean {
+    return this.jobProfilesMentorsMap
+      &amp;&amp; this.jobProfilesMentorsMap.get(jobProfile)
+      &amp;&amp; this.jobProfilesMentorsMap.get(jobProfile).length &gt; 0
+      &amp;&amp; this.jobProfilesMentorsMap.get(jobProfile)[0].photoURL !&#x3D;&#x3D; &#x27;&#x27;
+      &amp;&amp; this.jobProfilesMentorsMap.get(jobProfile)[0].photoURL !&#x3D;&#x3D; &#x27;unknown&#x27;;
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div id&#x3D;&quot;job-profiles&quot; class&#x3D;&quot;section-title&quot;&gt;
+    &lt;h2&gt;Job-Profile in der &lt;span&gt;IT&lt;/span&gt;&lt;/h2&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;mat-form-field appearance&#x3D;&quot;fill&quot;&gt;
+        &lt;mat-label&gt;Job-Profile&lt;/mat-label&gt;
+        &lt;mat-select [formControl]&#x3D;&quot;jobProfiles&quot; multiple [(ngModel)]&#x3D;&quot;selectedItems&quot; matNativeControl
+            (change)&#x3D;&quot;changeSelectionEvent($event)&quot;&gt;
+            &lt;mat-option *ngFor&#x3D;&quot;let jobProfile of jobProfilesList&quot; [value]&#x3D;&quot;jobProfile&quot;&gt;{{jobProfile}}&lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+    &lt;/mat-form-field&gt;
+&lt;/div&gt;
+
+
+
+&lt;mat-grid-list [cols]&#x3D;&quot;breakpoint&quot; rowHeight&#x3D;&quot;1.7:1&quot; (window:resize)&#x3D;&quot;onResize($event)&quot; gutterSize&#x3D;&quot;10&quot;&gt;
+
+    &lt;mat-grid-tile *ngIf&#x3D;&quot;selectedItems.includes(&#x27;IT-Techniker&#x27;)&quot;&gt;
+        &lt;mat-card class&#x3D;&quot;job-card-finetuning&quot;&gt;
+            &lt;mat-card-header&gt;
+                &lt;mat-card-title&gt; IT-Techniker &lt;/mat-card-title&gt;
+                &lt;img *ngIf&#x3D;&quot;firstMentorHasImage(&#x27;IT-Techniker&#x27;); else placeholder&quot;
+                    src&#x3D;&quot;{{jobProfilesMentorsMap.get(&#x27;IT-Techniker&#x27;)[0].photoURL}}&quot; mat-card-avatar /&gt;
+                &lt;ng-template #placeholder&gt;
+                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                &lt;/ng-template&gt;
+            &lt;/mat-card-header&gt;
+            &lt;mat-card-content&gt;
+                &lt;mat-tab-group&gt;
+                    &lt;mat-tab label&#x3D;&quot;Kurzbeschreibung&quot;&gt;
+                        &lt;p&gt; Ein IT-Techniker oder IT-Support-Techniker ist für die Wartung von Computersystemen und
+                            anderen
+                            Technologien
+                            in einer geschäftlichen Umgebung verantwortlich. Zu ihren Aufgaben gehört es, mit anderen
+                            IT-Technikern
+                            zusammenzuarbeiten, um Hardware zu installieren und Computerprobleme zu beheben, auf
+                            IT-Fragen von
+                            Unternehmensmitarbeitern zu antworten und Malware-Schutzgeräte zu aktualisieren, um Viren
+                            oder
+                            Computer-Hacking zu verhindern.
+                        &lt;/p&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Typische Aufgaben&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Erhaltung funktionsfähiger Komponenten durch Reparatur oder Austausch &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Unterstützung bei Anrufen oder Live-Chat bei technischen Schwierigkeiten &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Vorbereitung der Website mit korrekter Codierung und Inhalten, die für die
+                                    Geschäftsanforderungen des Unternehmens relevant sind &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Überwachung von Klicks, Links, Benutzerfreundlichkeit und Gesamtstatus der
+                                    Unternehmenswebseite, Zielseiten und unterstützenden Seiten. &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Unterstützung von Kunden und Mitarbeitern bei Hardware- und
+                                    Softwareherausforderungen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Fähigkeiten&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Problemlösung: IT-Techniker müssen oft ein Problem interpretieren und den
+                                    besten Weg
+                                    zu
+                                    einer Lösung finden. Dies erfordert kritisches Denken, da der IT-Techniker
+                                    möglicherweise
+                                    zusätzliche Informationen benötigt, die nicht bereitgestellt werden.
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Geduld: IT-Techniker arbeiten eng mit ihren Kunden zusammen. Geduld ist für
+                                    dieses
+                                    Feld erforderlich. Die Kunden verstehen oft nicht, was mit ihrem System passiert und
+                                    beschreiben es möglicherweise nicht richtig. &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Kommunikation: Die Kommunikation mit Kunden, Vorgesetzten und Mitarbeitern
+                                    hilft
+                                    allen, das Problem und mögliche Lösungen zu verstehen. Eine klare Darstellung der
+                                    Situation,
+                                    das Befolgen von E-Mails und Telefonaten sorgen für
+                                    einen
+                                    reibungslosen Prozessablauf.
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Ausdauer: Da IT-Techniker viele Stunden mit komplizierten Projekten arbeiten
+                                    können,
+                                    ist die Fähigkeit, sich auf das Ziel zu konzentrieren, von entscheidender Bedeutung.
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;MentorInnen&quot;&gt;
+                        &lt;div class&#x3D;&quot;mentors&quot;&gt;
+                            &lt;div *ngFor&#x3D;&quot;let mentor of jobProfilesMentorsMap.get(&#x27;IT-Techniker&#x27;)&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;!-- Photo --&gt;
+                                &lt;img *ngIf&#x3D;&quot;mentor.photoURL !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; mentor.photoURL !&#x3D;&#x3D; unkown; else placeholder&quot;
+                                    src&#x3D;&quot;{{mentor.photoURL}}&quot; mat-card-avatar /&gt;
+                                &lt;ng-template #placeholder&gt;
+                                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                                &lt;/ng-template&gt;
+                                &lt;h2&gt; {{mentor.firstname}} {{mentor.lastname}} &lt;/h2&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Weiblich&#x27;&quot;&gt;DiversIT-Mentorin&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender !&#x3D;&#x3D; &#x27;Weiblich&#x27; &amp;&amp; mentor.gender !&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor*
+                                &lt;/p&gt;
+                                &lt;button mat-raised-button routerLink&#x3D;&quot;/profile/{{mentor.uid}}&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;
+                                    Zum
+                                    Profil
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+
+                            &lt;div *ngIf&#x3D;&quot;jobProfilesMentorsMap.get(&#x27;IT-Techniker&#x27;).length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;p&gt;Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/mat-tab&gt;
+                &lt;/mat-tab-group&gt;
+            &lt;/mat-card-content&gt;
+        &lt;/mat-card&gt;
+    &lt;/mat-grid-tile&gt;
+
+    &lt;mat-grid-tile *ngIf&#x3D;&quot;selectedItems.includes(&#x27;UX-Designer&#x27;)&quot;&gt;
+        &lt;mat-card class&#x3D;&quot;job-card-finetuning&quot;&gt;
+            &lt;mat-card-header&gt;
+                &lt;mat-card-title&gt; UX-Designer &lt;/mat-card-title&gt;
+                &lt;img *ngIf&#x3D;&quot;firstMentorHasImage(&#x27;UX-Designer&#x27;); else placeholder&quot;
+                    src&#x3D;&quot;{{jobProfilesMentorsMap.get(&#x27;UX-Designer&#x27;)[0].photoURL}}&quot; mat-card-avatar /&gt;
+                &lt;ng-template #placeholder&gt;
+                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                &lt;/ng-template&gt;
+            &lt;/mat-card-header&gt;
+            &lt;mat-card-content&gt;
+                &lt;mat-tab-group&gt;
+                    &lt;mat-tab label&#x3D;&quot;Kurzbeschreibung&quot;&gt;
+                        &lt;p&gt; Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge
+                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die
+                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an
+                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.
+                        &lt;/p&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Typische Aufgaben&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und
+                                    Bannern durchführen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,
+                                    was für beides funktionieren könnte
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Fähigkeiten&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Analytischer Verstand mit Geschäftssinn
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Liebe zum Detail und Beherrschung des IT-Designs
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;MentorInnen&quot;&gt;
+                        &lt;div class&#x3D;&quot;mentors&quot;&gt;
+                            &lt;div *ngFor&#x3D;&quot;let mentor of jobProfilesMentorsMap.get(&#x27;UX-Designer&#x27;)&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;!-- Photo --&gt;
+                                &lt;img *ngIf&#x3D;&quot;mentor.photoURL !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; mentor.photoURL !&#x3D;&#x3D; unkown; else placeholder&quot;
+                                    src&#x3D;&quot;{{mentor.photoURL}}&quot; mat-card-avatar /&gt;
+                                &lt;ng-template #placeholder&gt;
+                                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                                &lt;/ng-template&gt;
+                                &lt;h2&gt; {{mentor.firstname}} {{mentor.lastname}} &lt;/h2&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Weiblich&#x27;&quot;&gt;DiversIT-Mentorin&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender !&#x3D;&#x3D; &#x27;Weiblich&#x27; &amp;&amp; mentor.gender !&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor*
+                                &lt;/p&gt;
+                                &lt;button mat-raised-button routerLink&#x3D;&quot;/profile/{{mentor.uid}}&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;
+                                    Zum
+                                    Profil
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+
+                            &lt;div *ngIf&#x3D;&quot;jobProfilesMentorsMap.get(&#x27;UX-Designer&#x27;).length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;p&gt;Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/mat-tab&gt;
+                &lt;/mat-tab-group&gt;
+            &lt;/mat-card-content&gt;
+        &lt;/mat-card&gt;
+    &lt;/mat-grid-tile&gt;
+
+    &lt;mat-grid-tile *ngIf&#x3D;&quot;selectedItems.includes(&#x27;Software Engineer&#x27;)&quot;&gt;
+        &lt;mat-card class&#x3D;&quot;job-card-finetuning&quot;&gt;
+            &lt;mat-card-header&gt;
+                &lt;mat-card-title&gt; Software Engineer &lt;/mat-card-title&gt;
+                &lt;img *ngIf&#x3D;&quot;firstMentorHasImage(&#x27;Software Engineer&#x27;); else placeholder&quot;
+                    src&#x3D;&quot;{{jobProfilesMentorsMap.get(&#x27;Software Engineer&#x27;)[0].photoURL}}&quot; mat-card-avatar /&gt;
+                &lt;ng-template #placeholder&gt;
+                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                &lt;/ng-template&gt;
+            &lt;/mat-card-header&gt;
+            &lt;mat-card-content&gt;
+                &lt;mat-tab-group&gt;
+                    &lt;mat-tab label&#x3D;&quot;Kurzbeschreibung&quot;&gt;
+                        &lt;p&gt; Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge
+                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die
+                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an
+                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.
+                        &lt;/p&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Typische Aufgaben&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und
+                                    Bannern durchführen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,
+                                    was für beides funktionieren könnte
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Fähigkeiten&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Analytischer Verstand mit Geschäftssinn
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Liebe zum Detail und Beherrschung des IT-Designs
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;MentorInnen&quot;&gt;
+                        &lt;div class&#x3D;&quot;mentors&quot;&gt;
+                            &lt;div *ngFor&#x3D;&quot;let mentor of jobProfilesMentorsMap.get(&#x27;Software Engineer&#x27;)&quot;
+                                class&#x3D;&quot;container&quot;&gt;
+                                &lt;!-- Photo --&gt;
+                                &lt;img *ngIf&#x3D;&quot;mentor.photoURL !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; mentor.photoURL !&#x3D;&#x3D; unkown; else placeholder&quot;
+                                    src&#x3D;&quot;{{mentor.photoURL}}&quot; mat-card-avatar /&gt;
+                                &lt;ng-template #placeholder&gt;
+                                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                                &lt;/ng-template&gt;
+                                &lt;h2&gt; {{mentor.firstname}} {{mentor.lastname}} &lt;/h2&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Weiblich&#x27;&quot;&gt;DiversIT-Mentorin&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender !&#x3D;&#x3D; &#x27;Weiblich&#x27; &amp;&amp; mentor.gender !&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor*
+                                &lt;/p&gt;
+                                &lt;button mat-raised-button routerLink&#x3D;&quot;/profile/{{mentor.uid}}&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;
+                                    Zum
+                                    Profil
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+
+                            &lt;div *ngIf&#x3D;&quot;jobProfilesMentorsMap.get(&#x27;Software Engineer&#x27;).length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;p&gt;Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/mat-tab&gt;
+                &lt;/mat-tab-group&gt;
+            &lt;/mat-card-content&gt;
+        &lt;/mat-card&gt;
+    &lt;/mat-grid-tile&gt;
+
+    &lt;mat-grid-tile *ngIf&#x3D;&quot;selectedItems.includes(&#x27;Scrum Master&#x27;)&quot;&gt;
+        &lt;mat-card class&#x3D;&quot;job-card-finetuning&quot;&gt;
+            &lt;mat-card-header&gt;
+                &lt;mat-card-title&gt; Scrum Master &lt;/mat-card-title&gt;
+                &lt;img *ngIf&#x3D;&quot;firstMentorHasImage(&#x27;Scrum Master&#x27;); else placeholder&quot;
+                    src&#x3D;&quot;{{jobProfilesMentorsMap.get(&#x27;Scrum Master&#x27;)[0].photoURL}}&quot; mat-card-avatar /&gt;
+                &lt;ng-template #placeholder&gt;
+                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                &lt;/ng-template&gt;
+            &lt;/mat-card-header&gt;
+            &lt;mat-card-content&gt;
+                &lt;mat-tab-group&gt;
+                    &lt;mat-tab label&#x3D;&quot;Kurzbeschreibung&quot;&gt;
+                        &lt;p&gt; Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge
+                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die
+                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an
+                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.
+                        &lt;/p&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Typische Aufgaben&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und
+                                    Bannern durchführen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,
+                                    was für beides funktionieren könnte
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Fähigkeiten&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Analytischer Verstand mit Geschäftssinn
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Liebe zum Detail und Beherrschung des IT-Designs
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;MentorInnen&quot;&gt;
+                        &lt;div class&#x3D;&quot;mentors&quot;&gt;
+                            &lt;div *ngFor&#x3D;&quot;let mentor of jobProfilesMentorsMap.get(&#x27;Scrum Master&#x27;)&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;!-- Photo --&gt;
+                                &lt;img *ngIf&#x3D;&quot;mentor.photoURL !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; mentor.photoURL !&#x3D;&#x3D; unkown; else placeholder&quot;
+                                    src&#x3D;&quot;{{mentor.photoURL}}&quot; mat-card-avatar /&gt;
+                                &lt;ng-template #placeholder&gt;
+                                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                                &lt;/ng-template&gt;
+                                &lt;h2&gt; {{mentor.firstname}} {{mentor.lastname}} &lt;/h2&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Weiblich&#x27;&quot;&gt;DiversIT-Mentorin&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender !&#x3D;&#x3D; &#x27;Weiblich&#x27; &amp;&amp; mentor.gender !&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor*
+                                &lt;/p&gt;
+                                &lt;button mat-raised-button routerLink&#x3D;&quot;/profile/{{mentor.uid}}&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;
+                                    Zum
+                                    Profil
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+
+                            &lt;div *ngIf&#x3D;&quot;jobProfilesMentorsMap.get(&#x27;Scrum Master&#x27;).length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;p&gt;Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/mat-tab&gt;
+                &lt;/mat-tab-group&gt;
+            &lt;/mat-card-content&gt;
+        &lt;/mat-card&gt;
+    &lt;/mat-grid-tile&gt;
+
+    &lt;mat-grid-tile *ngIf&#x3D;&quot;selectedItems.includes(&#x27;Product Owner&#x27;)&quot;&gt;
+        &lt;mat-card class&#x3D;&quot;job-card-finetuning&quot;&gt;
+            &lt;mat-card-header&gt;
+                &lt;mat-card-title&gt; Product Owner &lt;/mat-card-title&gt;
+                &lt;img *ngIf&#x3D;&quot;firstMentorHasImage(&#x27;Product Owner&#x27;); else placeholder&quot;
+                    src&#x3D;&quot;{{jobProfilesMentorsMap.get(&#x27;Product Owner&#x27;)[0].photoURL}}&quot; mat-card-avatar /&gt;
+                &lt;ng-template #placeholder&gt;
+                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                &lt;/ng-template&gt;
+            &lt;/mat-card-header&gt;
+            &lt;mat-card-content&gt;
+                &lt;mat-tab-group&gt;
+                    &lt;mat-tab label&#x3D;&quot;Kurzbeschreibung&quot;&gt;
+                        &lt;p&gt; Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge
+                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die
+                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an
+                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.
+                        &lt;/p&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Typische Aufgaben&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und
+                                    Bannern durchführen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,
+                                    was für beides funktionieren könnte
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Fähigkeiten&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Analytischer Verstand mit Geschäftssinn
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Liebe zum Detail und Beherrschung des IT-Designs
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;MentorInnen&quot;&gt;
+                        &lt;div class&#x3D;&quot;mentors&quot;&gt;
+                            &lt;div *ngFor&#x3D;&quot;let mentor of jobProfilesMentorsMap.get(&#x27;Product Owner&#x27;)&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;!-- Photo --&gt;
+                                &lt;img *ngIf&#x3D;&quot;mentor.photoURL !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; mentor.photoURL !&#x3D;&#x3D; unkown; else placeholder&quot;
+                                    src&#x3D;&quot;{{mentor.photoURL}}&quot; mat-card-avatar /&gt;
+                                &lt;ng-template #placeholder&gt;
+                                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                                &lt;/ng-template&gt;
+                                &lt;h2&gt; {{mentor.firstname}} {{mentor.lastname}} &lt;/h2&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Weiblich&#x27;&quot;&gt;DiversIT-Mentorin&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender !&#x3D;&#x3D; &#x27;Weiblich&#x27; &amp;&amp; mentor.gender !&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor*
+                                &lt;/p&gt;
+                                &lt;button mat-raised-button routerLink&#x3D;&quot;/profile/{{mentor.uid}}&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;
+                                    Zum
+                                    Profil
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+
+                            &lt;div *ngIf&#x3D;&quot;jobProfilesMentorsMap.get(&#x27;Product Owner&#x27;).length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;p&gt;Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/mat-tab&gt;
+                &lt;/mat-tab-group&gt;
+            &lt;/mat-card-content&gt;
+        &lt;/mat-card&gt;
+    &lt;/mat-grid-tile&gt;
+
+    &lt;mat-grid-tile *ngIf&#x3D;&quot;selectedItems.includes(&#x27;Universitätsprofessor für Informatik&#x27;)&quot;&gt;
+        &lt;mat-card class&#x3D;&quot;job-card-finetuning&quot;&gt;
+            &lt;mat-card-header&gt;
+                &lt;mat-card-title&gt; Universitätsprofessor für Informatik &lt;/mat-card-title&gt;
+                &lt;img *ngIf&#x3D;&quot;firstMentorHasImage(&#x27;Universitätsprofessor für Informatik&#x27;); else placeholder&quot;
+                    src&#x3D;&quot;{{jobProfilesMentorsMap.get(&#x27;Universitätsprofessor für Informatik&#x27;)[0].photoURL}}&quot;
+                    mat-card-avatar /&gt;
+                &lt;ng-template #placeholder&gt;
+                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                &lt;/ng-template&gt;
+            &lt;/mat-card-header&gt;
+            &lt;mat-card-content&gt;
+                &lt;mat-tab-group&gt;
+                    &lt;mat-tab label&#x3D;&quot;Kurzbeschreibung&quot;&gt;
+                        &lt;p&gt; Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln.
+                        &lt;/p&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Typische Aufgaben&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Fähigkeiten&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Analytischer Verstand mit Geschäftssinn
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;MentorInnen&quot;&gt;
+                        &lt;div class&#x3D;&quot;mentors&quot;&gt;
+                            &lt;div *ngFor&#x3D;&quot;let mentor of jobProfilesMentorsMap.get(&#x27;Universitätsprofessor für Informatik&#x27;)&quot;
+                                class&#x3D;&quot;container&quot;&gt;
+                                &lt;!-- Photo --&gt;
+                                &lt;img *ngIf&#x3D;&quot;mentor.photoURL !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; mentor.photoURL !&#x3D;&#x3D; unkown; else placeholder&quot;
+                                    src&#x3D;&quot;{{mentor.photoURL}}&quot; mat-card-avatar /&gt;
+                                &lt;ng-template #placeholder&gt;
+                                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                                &lt;/ng-template&gt;
+                                &lt;h2&gt; {{mentor.firstname}} {{mentor.lastname}} &lt;/h2&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Weiblich&#x27;&quot;&gt;DiversIT-Mentorin&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender !&#x3D;&#x3D; &#x27;Weiblich&#x27; &amp;&amp; mentor.gender !&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor*
+                                &lt;/p&gt;
+                                &lt;button mat-raised-button routerLink&#x3D;&quot;/profile/{{mentor.uid}}&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;
+                                    Zum
+                                    Profil
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+
+                            &lt;div *ngIf&#x3D;&quot;jobProfilesMentorsMap.get(&#x27;Universitätsprofessor für Informatik&#x27;).length &#x3D;&#x3D;&#x3D; 0&quot;
+                                class&#x3D;&quot;container&quot;&gt;
+                                &lt;p&gt;Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/mat-tab&gt;
+                &lt;/mat-tab-group&gt;
+            &lt;/mat-card-content&gt;
+        &lt;/mat-card&gt;
+    &lt;/mat-grid-tile&gt;
+
+    &lt;mat-grid-tile *ngIf&#x3D;&quot;selectedItems.includes(&#x27;DevOps Engineer&#x27;)&quot;&gt;
+        &lt;mat-card class&#x3D;&quot;job-card-finetuning&quot;&gt;
+            &lt;mat-card-header&gt;
+                &lt;mat-card-title&gt; DevOps Engineer &lt;/mat-card-title&gt;
+                &lt;img *ngIf&#x3D;&quot;firstMentorHasImage(&#x27;DevOps Engineer&#x27;); else placeholder&quot;
+                    src&#x3D;&quot;{{jobProfilesMentorsMap.get(&#x27;DevOps Engineer&#x27;)[0].photoURL}}&quot; mat-card-avatar /&gt;
+                &lt;ng-template #placeholder&gt;
+                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                &lt;/ng-template&gt;
+            &lt;/mat-card-header&gt;
+            &lt;mat-card-content&gt;
+                &lt;mat-tab-group&gt;
+                    &lt;mat-tab label&#x3D;&quot;Kurzbeschreibung&quot;&gt;
+                        &lt;p&gt; Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die
+                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und
+                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von
+                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln.
+                        &lt;/p&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Typische Aufgaben&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Identifizierung von Zielbenutzergruppen und führen von Interviews, um die
+                                    Benutzerbedürfnisse zu verstehen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den
+                                    digitalen Nutzer
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne
+                                    produzieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und
+                                    Testaktivitäten zur Bewertung des Benutzerverhaltens
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Fähigkeiten&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in
+                                    digitale Erlebnisse zu übersetzen
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an
+                                    Entwickler zu kommunizieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche
+                                    zu finden
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu
+                                    priorisieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Analytischer Verstand mit Geschäftssinn
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;MentorInnen&quot;&gt;
+                        &lt;div class&#x3D;&quot;mentors&quot;&gt;
+                            &lt;div *ngFor&#x3D;&quot;let mentor of jobProfilesMentorsMap.get(&#x27;DevOps Engineer&#x27;)&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;!-- Photo --&gt;
+                                &lt;img *ngIf&#x3D;&quot;mentor.photoURL !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; mentor.photoURL !&#x3D;&#x3D; unkown; else placeholder&quot;
+                                    src&#x3D;&quot;{{mentor.photoURL}}&quot; mat-card-avatar /&gt;
+                                &lt;ng-template #placeholder&gt;
+                                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                                &lt;/ng-template&gt;
+                                &lt;h2&gt; {{mentor.firstname}} {{mentor.lastname}} &lt;/h2&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Weiblich&#x27;&quot;&gt;DiversIT-Mentorin&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender !&#x3D;&#x3D; &#x27;Weiblich&#x27; &amp;&amp; mentor.gender !&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor*
+                                &lt;/p&gt;
+                                &lt;button mat-raised-button routerLink&#x3D;&quot;/profile/{{mentor.uid}}&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;
+                                    Zum
+                                    Profil
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+
+                            &lt;div *ngIf&#x3D;&quot;jobProfilesMentorsMap.get(&#x27;DevOps Engineer&#x27;).length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;container&quot;&gt;
+                                &lt;p&gt;Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/mat-tab&gt;
+                &lt;/mat-tab-group&gt;
+            &lt;/mat-card-content&gt;
+        &lt;/mat-card&gt;
+    &lt;/mat-grid-tile&gt;
+
+    &lt;mat-grid-tile *ngIf&#x3D;&quot;selectedItems.includes(&#x27;IT-Systemadministrator&#x27;)&quot;&gt;
+        &lt;mat-card class&#x3D;&quot;job-card-finetuning&quot;&gt;
+            &lt;mat-card-header&gt;
+                &lt;mat-card-title&gt;IT-Systemadministrator&lt;/mat-card-title&gt;
+                &lt;img *ngIf&#x3D;&quot;firstMentorHasImage(&#x27;IT-Systemadministrator&#x27;); else placeholder&quot;
+                    src&#x3D;&quot;{{jobProfilesMentorsMap.get(&#x27;IT-Systemadministrator&#x27;)[0].photoURL}}&quot; mat-card-avatar /&gt;
+                &lt;ng-template #placeholder&gt;
+                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                &lt;/ng-template&gt;
+            &lt;/mat-card-header&gt;
+            &lt;mat-card-content&gt;
+                &lt;mat-tab-group&gt;
+                    &lt;mat-tab label&#x3D;&quot;Kurzbeschreibung&quot;&gt;
+                        &lt;p&gt;
+                            Ein IT-Systemadministrator oder IT-Manager verwaltet die Netzwerk- und Serverinfrastruktur
+                            eines Unternehmens. Die Hauptaufgaben sind die Sicherheit der Computersysteme und der
+                            elektronischen Daten des Unternehmens, die Entwicklung und Implementierung
+                            kundenspezifischer Systeme sowie die Überwachung aller computerbezogenen Aktivitäten.
+                        &lt;/p&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Typische Aufgaben&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt;Überwachung des täglichen Betriebs der Netzwerk- und Serverinfrastruktur&lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt;Ausrichtung der IT-Infrastruktur auf aktuelle und zukünftige
+                                    Geschäftsanforderungen
+                                    und -ziele&lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt;Verwalten von IT-Budgets, Forecasting, Cashflow-Handling und Durchsetzung der
+                                    Kosteneffizienz&lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt;Bewertung von Risiken, Entwicklung von Netzwerkwiederherstellungs- und
+                                    Backup-Prozessen
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt;Begutachtung und Kauf von Neu- und Ersatzhardware
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt;Sicherstellen, dass die IT-Aktivitäten innerhalb der Grenzen der geltenden
+                                    Gesetze, Kodizes
+                                    und Vorschriften liegen&lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt;Testen, Fehlersuche und Anpassen von Informationssystemen für einen
+                                    effektiven
+                                    Betrieb&lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Implementierung der Sicherheit des Netzwerks, der Daten und seiner Speicher-
+                                    und
+                                    Kommunikationssysteme &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;Fähigkeiten&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, Kandidaten einzuschätzen und zu rekrutieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, neue IT-Mitarbeiter
+                                    auszubilden, Teammitglieder zu leiten und zu motivieren &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Erfahrung in der Koordination von Installationen, Upgrades und Wartung &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeit, Softwareanforderungen zu identifizieren
+                                &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Kenntnisse von Architekturprozessen und Leistungsberichten von
+                                    Betriebssystemen &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Ausgeprägte Fähigkeiten zum kritischen Denken &lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;p&gt; Fähigkeiten, die Codeentwicklung zu verstehen und zu überwachen &lt;/p&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/mat-tab&gt;
+                    &lt;mat-tab label&#x3D;&quot;MentorInnen&quot;&gt;
+                        &lt;div class&#x3D;&quot;mentors&quot;&gt;
+                            &lt;div *ngFor&#x3D;&quot;let mentor of jobProfilesMentorsMap.get(&#x27;IT-Systemadministrator&#x27;)&quot;
+                                class&#x3D;&quot;container&quot;&gt;
+                                &lt;!-- Photo --&gt;
+                                &lt;img *ngIf&#x3D;&quot;mentor.photoURL !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; mentor.photoURL !&#x3D;&#x3D; unkown; else placeholder&quot;
+                                    src&#x3D;&quot;{{mentor.photoURL}}&quot; mat-card-avatar /&gt;
+                                &lt;ng-template #placeholder&gt;
+                                    &lt;img src&#x3D;&quot;./../../../../../assets/Images/User-Placeholder.png&quot; mat-card-avatar /&gt;
+                                &lt;/ng-template&gt;
+                                &lt;h2&gt; {{mentor.firstname}} {{mentor.lastname}} &lt;/h2&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Weiblich&#x27;&quot;&gt;DiversIT-Mentorin&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender &#x3D;&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor&lt;/p&gt;
+                                &lt;p *ngIf&#x3D;&quot;mentor.gender !&#x3D;&#x3D; &#x27;Weiblich&#x27; &amp;&amp; mentor.gender !&#x3D;&#x3D; &#x27;Männlich&#x27;&quot;&gt;DiversIT-Mentor*
+                                &lt;/p&gt;
+                                &lt;button mat-raised-button routerLink&#x3D;&quot;/profile/{{mentor.uid}}&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;
+                                    Zum
+                                    Profil
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+
+                            &lt;div *ngIf&#x3D;&quot;jobProfilesMentorsMap.get(&#x27;IT-Systemadministrator&#x27;).length &#x3D;&#x3D;&#x3D; 0&quot;
+                                class&#x3D;&quot;container&quot;&gt;
+                                &lt;p&gt;Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/mat-tab&gt;
+                &lt;/mat-tab-group&gt;
+            &lt;/mat-card-content&gt;
+        &lt;/mat-card&gt;
+    &lt;/mat-grid-tile&gt;
+
+&lt;/mat-grid-list&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./job-profiles.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.job-card-finetuning {
+    height: 100%;
+    overflow: auto;
+    padding: 0;
+
+    .mat-card-header {
+        align-items: center;
+        padding: 12px;
+    }
+
+    .mat-card-title {
+        margin-bottom: 0;
+    }
+
+    .mat-card-avatar {
+        height: 100px;
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .mat-tab-group {
+        padding: 12px;
+
+        p {
+            margin: 12px 12px 12px 12px;
+        }
+    }
+
+    .mat-tab-labels {
+        padding-top: 5px;
+    }
+
+    li p {
+        margin-left: 0;
+    }
+
+    .mentors {
+        display: flex;
+    }
+}
+
+.job-grid-tile {
+    width: 100%;
+}
+
+.container {
+    margin: 20px;
+
+    p {
+        margin-left: 0!important;
+    }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div id="job-profiles" class="section-title">    <h2>Job-Profile in der <span>IT</span></h2></div><div class="container">    <mat-form-field appearance="fill">        <mat-label>Job-Profile</mat-label>        <mat-select [formControl]="jobProfiles" multiple [(ngModel)]="selectedItems" matNativeControl            (change)="changeSelectionEvent($event)">            <mat-option *ngFor="let jobProfile of jobProfilesList" [value]="jobProfile">{{jobProfile}}</mat-option>        </mat-select>    </mat-form-field></div><mat-grid-list [cols]="breakpoint" rowHeight="1.7:1" (window:resize)="onResize($event)" gutterSize="10">    <mat-grid-tile *ngIf="selectedItems.includes(\'IT-Techniker\')">        <mat-card class="job-card-finetuning">            <mat-card-header>                <mat-card-title> IT-Techniker </mat-card-title>                <img *ngIf="firstMentorHasImage(\'IT-Techniker\'); else placeholder"                    src="{{jobProfilesMentorsMap.get(\'IT-Techniker\')[0].photoURL}}" mat-card-avatar />                <ng-template #placeholder>                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                </ng-template>            </mat-card-header>            <mat-card-content>                <mat-tab-group>                    <mat-tab label="Kurzbeschreibung">                        <p> Ein IT-Techniker oder IT-Support-Techniker ist für die Wartung von Computersystemen und                            anderen                            Technologien                            in einer geschäftlichen Umgebung verantwortlich. Zu ihren Aufgaben gehört es, mit anderen                            IT-Technikern                            zusammenzuarbeiten, um Hardware zu installieren und Computerprobleme zu beheben, auf                            IT-Fragen von                            Unternehmensmitarbeitern zu antworten und Malware-Schutzgeräte zu aktualisieren, um Viren                            oder                            Computer-Hacking zu verhindern.                        </p>                    </mat-tab>                    <mat-tab label="Typische Aufgaben">                        <ul>                            <li>                                <p> Erhaltung funktionsfähiger Komponenten durch Reparatur oder Austausch </p>                            </li>                            <li>                                <p> Unterstützung bei Anrufen oder Live-Chat bei technischen Schwierigkeiten </p>                            </li>                            <li>                                <p> Vorbereitung der Website mit korrekter Codierung und Inhalten, die für die                                    Geschäftsanforderungen des Unternehmens relevant sind </p>                            </li>                            <li>                                <p> Überwachung von Klicks, Links, Benutzerfreundlichkeit und Gesamtstatus der                                    Unternehmenswebseite, Zielseiten und unterstützenden Seiten. </p>                            </li>                            <li>                                <p> Unterstützung von Kunden und Mitarbeitern bei Hardware- und                                    Softwareherausforderungen                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="Fähigkeiten">                        <ul>                            <li>                                <p> Problemlösung: IT-Techniker müssen oft ein Problem interpretieren und den                                    besten Weg                                    zu                                    einer Lösung finden. Dies erfordert kritisches Denken, da der IT-Techniker                                    möglicherweise                                    zusätzliche Informationen benötigt, die nicht bereitgestellt werden.                                </p>                            </li>                            <li>                                <p> Geduld: IT-Techniker arbeiten eng mit ihren Kunden zusammen. Geduld ist für                                    dieses                                    Feld erforderlich. Die Kunden verstehen oft nicht, was mit ihrem System passiert und                                    beschreiben es möglicherweise nicht richtig. </p>                            </li>                            <li>                                <p> Kommunikation: Die Kommunikation mit Kunden, Vorgesetzten und Mitarbeitern                                    hilft                                    allen, das Problem und mögliche Lösungen zu verstehen. Eine klare Darstellung der                                    Situation,                                    das Befolgen von E-Mails und Telefonaten sorgen für                                    einen                                    reibungslosen Prozessablauf.                                </p>                            </li>                            <li>                                <p> Ausdauer: Da IT-Techniker viele Stunden mit komplizierten Projekten arbeiten                                    können,                                    ist die Fähigkeit, sich auf das Ziel zu konzentrieren, von entscheidender Bedeutung.                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="MentorInnen">                        <div class="mentors">                            <div *ngFor="let mentor of jobProfilesMentorsMap.get(\'IT-Techniker\')" class="container">                                <!-- Photo -->                                <img *ngIf="mentor.photoURL !== \'\' && mentor.photoURL !== unkown; else placeholder"                                    src="{{mentor.photoURL}}" mat-card-avatar />                                <ng-template #placeholder>                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                                </ng-template>                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>                                <p *ngIf="mentor.gender === \'Weiblich\'">DiversIT-Mentorin</p>                                <p *ngIf="mentor.gender === \'Männlich\'">DiversIT-Mentor</p>                                <p *ngIf="mentor.gender !== \'Weiblich\' && mentor.gender !== \'Männlich\'">DiversIT-Mentor*                                </p>                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">                                    Zum                                    Profil                                </button>                            </div>                            <div *ngIf="jobProfilesMentorsMap.get(\'IT-Techniker\').length === 0" class="container">                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>                            </div>                        </div>                    </mat-tab>                </mat-tab-group>            </mat-card-content>        </mat-card>    </mat-grid-tile>    <mat-grid-tile *ngIf="selectedItems.includes(\'UX-Designer\')">        <mat-card class="job-card-finetuning">            <mat-card-header>                <mat-card-title> UX-Designer </mat-card-title>                <img *ngIf="firstMentorHasImage(\'UX-Designer\'); else placeholder"                    src="{{jobProfilesMentorsMap.get(\'UX-Designer\')[0].photoURL}}" mat-card-avatar />                <ng-template #placeholder>                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                </ng-template>            </mat-card-header>            <mat-card-content>                <mat-tab-group>                    <mat-tab label="Kurzbeschreibung">                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.                        </p>                    </mat-tab>                    <mat-tab label="Typische Aufgaben">                        <ul>                            <li>                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die                                    Benutzerbedürfnisse zu verstehen                                </p>                            </li>                            <li>                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den                                    digitalen Nutzer                                </p>                            </li>                            <li>                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne                                    produzieren                                </p>                            </li>                            <li>                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und                                    Testaktivitäten zur Bewertung des Benutzerverhaltens                                </p>                            </li>                            <li>                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten                                </p>                            </li>                            <li>                                <p> Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und                                    Bannern durchführen                                </p>                            </li>                            <li>                                <p> Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,                                    was für beides funktionieren könnte                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="Fähigkeiten">                        <ul>                            <li>                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in                                    digitale Erlebnisse zu übersetzen                                </p>                            </li>                            <li>                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an                                    Entwickler zu kommunizieren                                </p>                            </li>                            <li>                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch                                </p>                            </li>                            <li>                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche                                    zu finden                                </p>                            </li>                            <li>                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu                                    priorisieren                                </p>                            </li>                            <li>                                <p> Analytischer Verstand mit Geschäftssinn                                </p>                            </li>                            <li>                                <p> Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten                                </p>                            </li>                            <li>                                <p> Liebe zum Detail und Beherrschung des IT-Designs                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="MentorInnen">                        <div class="mentors">                            <div *ngFor="let mentor of jobProfilesMentorsMap.get(\'UX-Designer\')" class="container">                                <!-- Photo -->                                <img *ngIf="mentor.photoURL !== \'\' && mentor.photoURL !== unkown; else placeholder"                                    src="{{mentor.photoURL}}" mat-card-avatar />                                <ng-template #placeholder>                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                                </ng-template>                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>                                <p *ngIf="mentor.gender === \'Weiblich\'">DiversIT-Mentorin</p>                                <p *ngIf="mentor.gender === \'Männlich\'">DiversIT-Mentor</p>                                <p *ngIf="mentor.gender !== \'Weiblich\' && mentor.gender !== \'Männlich\'">DiversIT-Mentor*                                </p>                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">                                    Zum                                    Profil                                </button>                            </div>                            <div *ngIf="jobProfilesMentorsMap.get(\'UX-Designer\').length === 0" class="container">                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>                            </div>                        </div>                    </mat-tab>                </mat-tab-group>            </mat-card-content>        </mat-card>    </mat-grid-tile>    <mat-grid-tile *ngIf="selectedItems.includes(\'Software Engineer\')">        <mat-card class="job-card-finetuning">            <mat-card-header>                <mat-card-title> Software Engineer </mat-card-title>                <img *ngIf="firstMentorHasImage(\'Software Engineer\'); else placeholder"                    src="{{jobProfilesMentorsMap.get(\'Software Engineer\')[0].photoURL}}" mat-card-avatar />                <ng-template #placeholder>                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                </ng-template>            </mat-card-header>            <mat-card-content>                <mat-tab-group>                    <mat-tab label="Kurzbeschreibung">                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.                        </p>                    </mat-tab>                    <mat-tab label="Typische Aufgaben">                        <ul>                            <li>                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die                                    Benutzerbedürfnisse zu verstehen                                </p>                            </li>                            <li>                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den                                    digitalen Nutzer                                </p>                            </li>                            <li>                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne                                    produzieren                                </p>                            </li>                            <li>                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und                                    Testaktivitäten zur Bewertung des Benutzerverhaltens                                </p>                            </li>                            <li>                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten                                </p>                            </li>                            <li>                                <p> Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und                                    Bannern durchführen                                </p>                            </li>                            <li>                                <p> Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,                                    was für beides funktionieren könnte                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="Fähigkeiten">                        <ul>                            <li>                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in                                    digitale Erlebnisse zu übersetzen                                </p>                            </li>                            <li>                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an                                    Entwickler zu kommunizieren                                </p>                            </li>                            <li>                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch                                </p>                            </li>                            <li>                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche                                    zu finden                                </p>                            </li>                            <li>                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu                                    priorisieren                                </p>                            </li>                            <li>                                <p> Analytischer Verstand mit Geschäftssinn                                </p>                            </li>                            <li>                                <p> Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten                                </p>                            </li>                            <li>                                <p> Liebe zum Detail und Beherrschung des IT-Designs                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="MentorInnen">                        <div class="mentors">                            <div *ngFor="let mentor of jobProfilesMentorsMap.get(\'Software Engineer\')"                                class="container">                                <!-- Photo -->                                <img *ngIf="mentor.photoURL !== \'\' && mentor.photoURL !== unkown; else placeholder"                                    src="{{mentor.photoURL}}" mat-card-avatar />                                <ng-template #placeholder>                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                                </ng-template>                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>                                <p *ngIf="mentor.gender === \'Weiblich\'">DiversIT-Mentorin</p>                                <p *ngIf="mentor.gender === \'Männlich\'">DiversIT-Mentor</p>                                <p *ngIf="mentor.gender !== \'Weiblich\' && mentor.gender !== \'Männlich\'">DiversIT-Mentor*                                </p>                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">                                    Zum                                    Profil                                </button>                            </div>                            <div *ngIf="jobProfilesMentorsMap.get(\'Software Engineer\').length === 0" class="container">                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>                            </div>                        </div>                    </mat-tab>                </mat-tab-group>            </mat-card-content>        </mat-card>    </mat-grid-tile>    <mat-grid-tile *ngIf="selectedItems.includes(\'Scrum Master\')">        <mat-card class="job-card-finetuning">            <mat-card-header>                <mat-card-title> Scrum Master </mat-card-title>                <img *ngIf="firstMentorHasImage(\'Scrum Master\'); else placeholder"                    src="{{jobProfilesMentorsMap.get(\'Scrum Master\')[0].photoURL}}" mat-card-avatar />                <ng-template #placeholder>                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                </ng-template>            </mat-card-header>            <mat-card-content>                <mat-tab-group>                    <mat-tab label="Kurzbeschreibung">                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.                        </p>                    </mat-tab>                    <mat-tab label="Typische Aufgaben">                        <ul>                            <li>                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die                                    Benutzerbedürfnisse zu verstehen                                </p>                            </li>                            <li>                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den                                    digitalen Nutzer                                </p>                            </li>                            <li>                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne                                    produzieren                                </p>                            </li>                            <li>                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und                                    Testaktivitäten zur Bewertung des Benutzerverhaltens                                </p>                            </li>                            <li>                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten                                </p>                            </li>                            <li>                                <p> Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und                                    Bannern durchführen                                </p>                            </li>                            <li>                                <p> Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,                                    was für beides funktionieren könnte                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="Fähigkeiten">                        <ul>                            <li>                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in                                    digitale Erlebnisse zu übersetzen                                </p>                            </li>                            <li>                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an                                    Entwickler zu kommunizieren                                </p>                            </li>                            <li>                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch                                </p>                            </li>                            <li>                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche                                    zu finden                                </p>                            </li>                            <li>                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu                                    priorisieren                                </p>                            </li>                            <li>                                <p> Analytischer Verstand mit Geschäftssinn                                </p>                            </li>                            <li>                                <p> Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten                                </p>                            </li>                            <li>                                <p> Liebe zum Detail und Beherrschung des IT-Designs                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="MentorInnen">                        <div class="mentors">                            <div *ngFor="let mentor of jobProfilesMentorsMap.get(\'Scrum Master\')" class="container">                                <!-- Photo -->                                <img *ngIf="mentor.photoURL !== \'\' && mentor.photoURL !== unkown; else placeholder"                                    src="{{mentor.photoURL}}" mat-card-avatar />                                <ng-template #placeholder>                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                                </ng-template>                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>                                <p *ngIf="mentor.gender === \'Weiblich\'">DiversIT-Mentorin</p>                                <p *ngIf="mentor.gender === \'Männlich\'">DiversIT-Mentor</p>                                <p *ngIf="mentor.gender !== \'Weiblich\' && mentor.gender !== \'Männlich\'">DiversIT-Mentor*                                </p>                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">                                    Zum                                    Profil                                </button>                            </div>                            <div *ngIf="jobProfilesMentorsMap.get(\'Scrum Master\').length === 0" class="container">                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>                            </div>                        </div>                    </mat-tab>                </mat-tab-group>            </mat-card-content>        </mat-card>    </mat-grid-tile>    <mat-grid-tile *ngIf="selectedItems.includes(\'Product Owner\')">        <mat-card class="job-card-finetuning">            <mat-card-header>                <mat-card-title> Product Owner </mat-card-title>                <img *ngIf="firstMentorHasImage(\'Product Owner\'); else placeholder"                    src="{{jobProfilesMentorsMap.get(\'Product Owner\')[0].photoURL}}" mat-card-avatar />                <ng-template #placeholder>                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                </ng-template>            </mat-card-header>            <mat-card-content>                <mat-tab-group>                    <mat-tab label="Kurzbeschreibung">                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln, die enge                            Zusammenarbeit mit anderen IT-Experten und Unternehmensmitarbeitern, um die                            Benutzererfahrung zu verfeinern, und die Durchführung von Usability-Tests an                            Softwareprodukten oder Websitefunktionen, um die Funktionalität sicherzustellen.                        </p>                    </mat-tab>                    <mat-tab label="Typische Aufgaben">                        <ul>                            <li>                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die                                    Benutzerbedürfnisse zu verstehen                                </p>                            </li>                            <li>                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den                                    digitalen Nutzer                                </p>                            </li>                            <li>                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne                                    produzieren                                </p>                            </li>                            <li>                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und                                    Testaktivitäten zur Bewertung des Benutzerverhaltens                                </p>                            </li>                            <li>                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten                                </p>                            </li>                            <li>                                <p> Tests an Benutzeroberflächenelementen wie CTAs, Layouts, Ziellinks, Landingpages und                                    Bannern durchführen                                </p>                            </li>                            <li>                                <p> Verstehen Sie Produktspezifikationen und Benutzerpsychologie und sagen Sie voraus,                                    was für beides funktionieren könnte                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="Fähigkeiten">                        <ul>                            <li>                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in                                    digitale Erlebnisse zu übersetzen                                </p>                            </li>                            <li>                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an                                    Entwickler zu kommunizieren                                </p>                            </li>                            <li>                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch                                </p>                            </li>                            <li>                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche                                    zu finden                                </p>                            </li>                            <li>                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu                                    priorisieren                                </p>                            </li>                            <li>                                <p> Analytischer Verstand mit Geschäftssinn                                </p>                            </li>                            <li>                                <p> Fähigkeit, sowohl selbstständig als auch im Team zu arbeiten                                </p>                            </li>                            <li>                                <p> Liebe zum Detail und Beherrschung des IT-Designs                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="MentorInnen">                        <div class="mentors">                            <div *ngFor="let mentor of jobProfilesMentorsMap.get(\'Product Owner\')" class="container">                                <!-- Photo -->                                <img *ngIf="mentor.photoURL !== \'\' && mentor.photoURL !== unkown; else placeholder"                                    src="{{mentor.photoURL}}" mat-card-avatar />                                <ng-template #placeholder>                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                                </ng-template>                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>                                <p *ngIf="mentor.gender === \'Weiblich\'">DiversIT-Mentorin</p>                                <p *ngIf="mentor.gender === \'Männlich\'">DiversIT-Mentor</p>                                <p *ngIf="mentor.gender !== \'Weiblich\' && mentor.gender !== \'Männlich\'">DiversIT-Mentor*                                </p>                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">                                    Zum                                    Profil                                </button>                            </div>                            <div *ngIf="jobProfilesMentorsMap.get(\'Product Owner\').length === 0" class="container">                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>                            </div>                        </div>                    </mat-tab>                </mat-tab-group>            </mat-card-content>        </mat-card>    </mat-grid-tile>    <mat-grid-tile *ngIf="selectedItems.includes(\'Universitätsprofessor für Informatik\')">        <mat-card class="job-card-finetuning">            <mat-card-header>                <mat-card-title> Universitätsprofessor für Informatik </mat-card-title>                <img *ngIf="firstMentorHasImage(\'Universitätsprofessor für Informatik\'); else placeholder"                    src="{{jobProfilesMentorsMap.get(\'Universitätsprofessor für Informatik\')[0].photoURL}}"                    mat-card-avatar />                <ng-template #placeholder>                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                </ng-template>            </mat-card-header>            <mat-card-content>                <mat-tab-group>                    <mat-tab label="Kurzbeschreibung">                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln.                        </p>                    </mat-tab>                    <mat-tab label="Typische Aufgaben">                        <ul>                            <li>                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die                                    Benutzerbedürfnisse zu verstehen                                </p>                            </li>                            <li>                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den                                    digitalen Nutzer                                </p>                            </li>                            <li>                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne                                    produzieren                                </p>                            </li>                            <li>                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und                                    Testaktivitäten zur Bewertung des Benutzerverhaltens                                </p>                            </li>                            <li>                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="Fähigkeiten">                        <ul>                            <li>                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in                                    digitale Erlebnisse zu übersetzen                                </p>                            </li>                            <li>                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an                                    Entwickler zu kommunizieren                                </p>                            </li>                            <li>                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch                                </p>                            </li>                            <li>                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche                                    zu finden                                </p>                            </li>                            <li>                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu                                    priorisieren                                </p>                            </li>                            <li>                                <p> Analytischer Verstand mit Geschäftssinn                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="MentorInnen">                        <div class="mentors">                            <div *ngFor="let mentor of jobProfilesMentorsMap.get(\'Universitätsprofessor für Informatik\')"                                class="container">                                <!-- Photo -->                                <img *ngIf="mentor.photoURL !== \'\' && mentor.photoURL !== unkown; else placeholder"                                    src="{{mentor.photoURL}}" mat-card-avatar />                                <ng-template #placeholder>                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                                </ng-template>                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>                                <p *ngIf="mentor.gender === \'Weiblich\'">DiversIT-Mentorin</p>                                <p *ngIf="mentor.gender === \'Männlich\'">DiversIT-Mentor</p>                                <p *ngIf="mentor.gender !== \'Weiblich\' && mentor.gender !== \'Männlich\'">DiversIT-Mentor*                                </p>                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">                                    Zum                                    Profil                                </button>                            </div>                            <div *ngIf="jobProfilesMentorsMap.get(\'Universitätsprofessor für Informatik\').length === 0"                                class="container">                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>                            </div>                        </div>                    </mat-tab>                </mat-tab-group>            </mat-card-content>        </mat-card>    </mat-grid-tile>    <mat-grid-tile *ngIf="selectedItems.includes(\'DevOps Engineer\')">        <mat-card class="job-card-finetuning">            <mat-card-header>                <mat-card-title> DevOps Engineer </mat-card-title>                <img *ngIf="firstMentorHasImage(\'DevOps Engineer\'); else placeholder"                    src="{{jobProfilesMentorsMap.get(\'DevOps Engineer\')[0].photoURL}}" mat-card-avatar />                <ng-template #placeholder>                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                </ng-template>            </mat-card-header>            <mat-card-content>                <mat-tab-group>                    <mat-tab label="Kurzbeschreibung">                        <p> Ein UX Designer oder User Experience Designer ist dafür verantwortlich, die                            Benutzererfahrung zu überwachen und sicherzustellen, dass Websites, Softwareprogramme und                            Produkte einfach zu bedienen sind. Zu ihren Aufgaben gehören die Überprüfung von                            Benutzerfeedback, um potenzielle Fehler oder Bereiche auf Klarheit zu ermitteln.                        </p>                    </mat-tab>                    <mat-tab label="Typische Aufgaben">                        <ul>                            <li>                                <p> Identifizierung von Zielbenutzergruppen und führen von Interviews, um die                                    Benutzerbedürfnisse zu verstehen                                </p>                            </li>                            <li>                                <p> Sicherstellung der Erstellung und Umsetzung maßgeschneiderter Erlebnisse für den                                    digitalen Nutzer                                </p>                            </li>                            <li>                                <p> Hochwertige Lösungen durch Flussdiagramme, Grafikdesigns, Storyboards und Lagepläne                                    produzieren                                </p>                            </li>                            <li>                                <p> Bereitstellung von Anleitungen zur Implementierung von UX-Forschungstechniken und                                    Testaktivitäten zur Bewertung des Benutzerverhaltens                                </p>                            </li>                            <li>                                <p> Wettbewerbsvorteil gegenüber Konkurrenzprodukten und Branchentrends erhalten                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="Fähigkeiten">                        <ul>                            <li>                                <p> Fähigkeit, Geschäftskennzahlen zu verstehen und Unternehmensziele und -ziele in                                    digitale Erlebnisse zu übersetzen                                </p>                            </li>                            <li>                                <p> Ausgezeichnete zwischenmenschliche und kommunikative Fähigkeiten, um Ideen an                                    Entwickler zu kommunizieren                                </p>                            </li>                            <li>                                <p> Kenntnisse in Branchentools wie Adobe Suite, Figma, Sketch                                </p>                            </li>                            <li>                                <p> Problemlösungsfähigkeiten, um Lösungen für Herausforderungen der Benutzeroberfläche                                    zu finden                                </p>                            </li>                            <li>                                <p> Multitasking- und Zeitmanagementfähigkeiten mit der Fähigkeit, Aufgaben zu                                    priorisieren                                </p>                            </li>                            <li>                                <p> Analytischer Verstand mit Geschäftssinn                                </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="MentorInnen">                        <div class="mentors">                            <div *ngFor="let mentor of jobProfilesMentorsMap.get(\'DevOps Engineer\')" class="container">                                <!-- Photo -->                                <img *ngIf="mentor.photoURL !== \'\' && mentor.photoURL !== unkown; else placeholder"                                    src="{{mentor.photoURL}}" mat-card-avatar />                                <ng-template #placeholder>                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                                </ng-template>                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>                                <p *ngIf="mentor.gender === \'Weiblich\'">DiversIT-Mentorin</p>                                <p *ngIf="mentor.gender === \'Männlich\'">DiversIT-Mentor</p>                                <p *ngIf="mentor.gender !== \'Weiblich\' && mentor.gender !== \'Männlich\'">DiversIT-Mentor*                                </p>                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">                                    Zum                                    Profil                                </button>                            </div>                            <div *ngIf="jobProfilesMentorsMap.get(\'DevOps Engineer\').length === 0" class="container">                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>                            </div>                        </div>                    </mat-tab>                </mat-tab-group>            </mat-card-content>        </mat-card>    </mat-grid-tile>    <mat-grid-tile *ngIf="selectedItems.includes(\'IT-Systemadministrator\')">        <mat-card class="job-card-finetuning">            <mat-card-header>                <mat-card-title>IT-Systemadministrator</mat-card-title>                <img *ngIf="firstMentorHasImage(\'IT-Systemadministrator\'); else placeholder"                    src="{{jobProfilesMentorsMap.get(\'IT-Systemadministrator\')[0].photoURL}}" mat-card-avatar />                <ng-template #placeholder>                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                </ng-template>            </mat-card-header>            <mat-card-content>                <mat-tab-group>                    <mat-tab label="Kurzbeschreibung">                        <p>                            Ein IT-Systemadministrator oder IT-Manager verwaltet die Netzwerk- und Serverinfrastruktur                            eines Unternehmens. Die Hauptaufgaben sind die Sicherheit der Computersysteme und der                            elektronischen Daten des Unternehmens, die Entwicklung und Implementierung                            kundenspezifischer Systeme sowie die Überwachung aller computerbezogenen Aktivitäten.                        </p>                    </mat-tab>                    <mat-tab label="Typische Aufgaben">                        <ul>                            <li>                                <p>Überwachung des täglichen Betriebs der Netzwerk- und Serverinfrastruktur</p>                            </li>                            <li>                                <p>Ausrichtung der IT-Infrastruktur auf aktuelle und zukünftige                                    Geschäftsanforderungen                                    und -ziele</p>                            </li>                            <li>                                <p>Verwalten von IT-Budgets, Forecasting, Cashflow-Handling und Durchsetzung der                                    Kosteneffizienz</p>                            </li>                            <li>                                <p>Bewertung von Risiken, Entwicklung von Netzwerkwiederherstellungs- und                                    Backup-Prozessen                            </li>                            <li>                                <p>Begutachtung und Kauf von Neu- und Ersatzhardware                                </p>                            </li>                            <li>                                <p>Sicherstellen, dass die IT-Aktivitäten innerhalb der Grenzen der geltenden                                    Gesetze, Kodizes                                    und Vorschriften liegen</p>                            </li>                            <li>                                <p>Testen, Fehlersuche und Anpassen von Informationssystemen für einen                                    effektiven                                    Betrieb</p>                            </li>                            <li>                                <p> Implementierung der Sicherheit des Netzwerks, der Daten und seiner Speicher-                                    und                                    Kommunikationssysteme </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="Fähigkeiten">                        <ul>                            <li>                                <p> Fähigkeit, Kandidaten einzuschätzen und zu rekrutieren                                </p>                            </li>                            <li>                                <p> Fähigkeit, neue IT-Mitarbeiter                                    auszubilden, Teammitglieder zu leiten und zu motivieren </p>                            </li>                            <li>                                <p> Erfahrung in der Koordination von Installationen, Upgrades und Wartung </p>                            </li>                            <li>                                <p> Fähigkeit, Softwareanforderungen zu identifizieren                                </p>                            </li>                            <li>                                <p> Kenntnisse von Architekturprozessen und Leistungsberichten von                                    Betriebssystemen </p>                            </li>                            <li>                                <p> Ausgeprägte Fähigkeiten zum kritischen Denken </p>                            </li>                            <li>                                <p> Fähigkeiten, die Codeentwicklung zu verstehen und zu überwachen </p>                            </li>                        </ul>                    </mat-tab>                    <mat-tab label="MentorInnen">                        <div class="mentors">                            <div *ngFor="let mentor of jobProfilesMentorsMap.get(\'IT-Systemadministrator\')"                                class="container">                                <!-- Photo -->                                <img *ngIf="mentor.photoURL !== \'\' && mentor.photoURL !== unkown; else placeholder"                                    src="{{mentor.photoURL}}" mat-card-avatar />                                <ng-template #placeholder>                                    <img src="./../../../../../assets/Images/User-Placeholder.png" mat-card-avatar />                                </ng-template>                                <h2> {{mentor.firstname}} {{mentor.lastname}} </h2>                                <p *ngIf="mentor.gender === \'Weiblich\'">DiversIT-Mentorin</p>                                <p *ngIf="mentor.gender === \'Männlich\'">DiversIT-Mentor</p>                                <p *ngIf="mentor.gender !== \'Weiblich\' && mentor.gender !== \'Männlich\'">DiversIT-Mentor*                                </p>                                <button mat-raised-button routerLink="/profile/{{mentor.uid}}" class="btn btn-primary">                                    Zum                                    Profil                                </button>                            </div>                            <div *ngIf="jobProfilesMentorsMap.get(\'IT-Systemadministrator\').length === 0"                                class="container">                                <p>Aktuell sind für dieses Job-Profil leider keine MentorInnen verfügbar.</p>                            </div>                        </div>                    </mat-tab>                </mat-tab-group>            </mat-card-content>        </mat-card>    </mat-grid-tile></mat-grid-list></div>'
+    var COMPONENTS = [{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CenterPanelComponent', 'selector': 'app-center-panel'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'CreatingNewPostCardComponent', 'selector': 'app-creating-new-post-card'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForumComponent', 'selector': 'app-forum'},{'name': 'ForumThreadComponent', 'selector': 'app-forum-thread'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'InterestingMentorsComponent', 'selector': 'app-interesting-mentors'},{'name': 'JobProfilesComponent', 'selector': 'app-job-profiles'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LeftPanelComponent', 'selector': 'app-left-panel'},{'name': 'LeftSpacerComponent', 'selector': 'app-left-spacer'},{'name': 'LoginBoxComponent', 'selector': 'app-login-box'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'MainPanelComponent', 'selector': 'app-main-panel'},{'name': 'MentorSpotlightComponent', 'selector': 'app-mentor-spotlight'},{'name': 'MessageCardComponent', 'selector': 'app-message-card'},{'name': 'MissionComponent', 'selector': 'app-mission'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'PageSelectionComponent', 'selector': 'app-page-selection'},{'name': 'PostCardComponent', 'selector': 'app-post-card'},{'name': 'PrivacyComponent', 'selector': 'app-privacy'},{'name': 'ProfileCardComponent', 'selector': 'app-profile-card'},{'name': 'ProfileHeadComponent', 'selector': 'app-profile-head'},{'name': 'ProfileNewPostComponent', 'selector': 'app-profile-new-post'},{'name': 'ProfilePageComponent', 'selector': 'app-profile-page'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RatingComponent', 'selector': 'app-rating'},{'name': 'RelationsPageComponent', 'selector': 'app-relations-page'},{'name': 'RightPanelComponent', 'selector': 'app-right-panel-main'},{'name': 'RightPanelProfileComponent', 'selector': 'app-right-panel-profile'},{'name': 'RightSpacerComponent', 'selector': 'app-right-spacer'},{'name': 'SearchFilterSortComponent', 'selector': 'app-search-filter-sort'},{'name': 'SnackbarComponent', 'selector': 'app-snackbar'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'},{'name': 'ThreadOverviewComponent', 'selector': 'app-thread-overview'},{'name': 'UnauthorizedComponent', 'selector': 'app-unauthorized'},{'name': 'UserRatingsComponent', 'selector': 'app-user-ratings'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'JobProfilesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'JobProfilesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
