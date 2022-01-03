@@ -12,12 +12,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 
-
+/**
+ * class Snackbarcomponent
+ */
 export class SnackbarComponent {
 
+
   /**
-   * @description default class of Snackbarcomponent
-   * @memberof SnackbarComponent
+   * variable for timeout - not supposed to be changed
    */
   timeOut = 5000;
 

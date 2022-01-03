@@ -172,7 +172,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/snackbar/snackbar.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/snackbar/snackbar.component.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -241,8 +241,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">src/app/snackbar/snackbar.component.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/snackbar/snackbar.component.ts:50</a></div>
                 </td>
             </tr>
 
@@ -370,7 +370,7 @@ let snackbarRef = openSnackBar(&amp;quot;Hello World&amp;quot;, &amp;quot;Accept
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/snackbar/snackbar.component.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/snackbar/snackbar.component.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -401,10 +401,16 @@ let snackbarRef = openSnackBar(&amp;quot;Hello World&amp;quot;, &amp;quot;Accept
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/snackbar/snackbar.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/snackbar/snackbar.component.ts:24</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>variable for timeout - not supposed to be changed</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -417,7 +423,6 @@ let snackbarRef = openSnackBar(&amp;quot;Hello World&amp;quot;, &amp;quot;Accept
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
 
-
 /**
  * @description snackbar component can be used to alert the user of some circumstance
  * @class SnackbarComponent
@@ -429,12 +434,14 @@ import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
 })
 
 
-
+/**
+ * class Snackbarcomponent
+ */
 export class SnackbarComponent {
 
+
   /**
-   * @description default class of Snackbarcomponent
-   * @memberof SnackbarComponent
+   * variable for timeout - not supposed to be changed
    */
   timeOut &#x3D; 5000;
 
