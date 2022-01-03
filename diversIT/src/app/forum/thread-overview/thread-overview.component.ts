@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { Timestamp } from 'firebase/firestore';
 import { Thread } from 'src/app/models/forum.model';
 import { ForumService } from 'src/app/services/forum.service';
 
@@ -18,54 +17,90 @@ export class ThreadOverviewComponent implements OnInit {
   @Input () inputFilterTypeDiscussedALot = false;
   @Input () inputFilterTypeClickedOften = false;
   @Input () inputCurrentPage = 1;
+  @Output() resetPageNumEventEmitter = new EventEmitter<number>();
 
+  allThreads: Thread[] = [];
   currentThreads : Thread[] = [];
+  startIndex : number;
+  endIndex : number;
   numberOfShownThreads = 5;
+  numberOfMaxPage = 1;
+  orderField = "";
+  resetPageNumCounter = 1;
 
   constructor(private database: ForumService, private router: Router) { }
 
-  async ngOnInit(): Promise<void> {
-    await this.database.getFirstThreads(this.numberOfShownThreads, "numberOfAnswers").then((data) => {
-      this.currentThreads = data;
-    }); 
+  private async getFirstThreads(orderByField: string){
+    this.orderField = orderByField;
+    await this.database.getFirstThreads(this.numberOfShownThreads, this.orderField).then((data) => {
+      this.resetPageNumCounter++;
+      this.resetPageNumEventEmitter.emit(this.resetPageNumCounter);
+      this.numberOfMaxPage = 1;
+      this.allThreads = data;
+      this.setCurrentThreads();
+    });
   }
 
-  getNextThreads() {
-    this.database.getNextThreads(this.numberOfShownThreads, "numberOfAnswers").then((data) => {
-      this.currentThreads = this.currentThreads.concat(data);
+  ngOnInit(){
+    this.startIndex = 0;
+    this.endIndex = this.numberOfShownThreads;
+    this.getFirstThreads("created");
+  }
+
+  async getNextThreads() {
+    await this.database.getNextThreads(this.numberOfShownThreads, this.orderField).then((data) => {
+      this.allThreads = this.allThreads.concat(data);
     })
   }
 
+  private setCurrentThreads(){
+    this.currentThreads = [];
+    for (let i = this.startIndex; i < this.endIndex; i++) {
+      if(this.allThreads[i] != null) this.currentThreads.push(this.allThreads[i]);
+    }
+  }
+
+  private determineThreadsFromAndToIndex(increase: boolean) {
+    if(increase) {
+      this.startIndex += this.numberOfShownThreads;
+      this.endIndex += this.numberOfShownThreads;
+    } else {
+      this.startIndex -= this.numberOfShownThreads;
+      this.endIndex -= this.numberOfShownThreads;
+    }
+    this.setCurrentThreads();
+  }
+
+  doesThreadMatchFilterCriteria(t: Thread){
+    if(this.inputFilterText.length > 0){
+      if(t.title.toLowerCase().includes(this.inputFilterText.toLowerCase())) return true;
+    }
+    var tagFound = false;
+    t.tags.forEach((tag) => {
+      if(this.inputFilterTags.indexOf(tag.toString()) > -1) tagFound = true;
+    });
+    if(tagFound) return true;
+    return false;
+  }
+
   ngOnChanges(changes: SimpleChanges){
-   console.log(changes);
+    if ((changes.inputFilterTypeNew != null) && (changes.inputFilterTypeNew.currentValue === true)) this.getFirstThreads("created");
+    if ((changes.inputFilterTypeDiscussedALot != null) && (changes.inputFilterTypeDiscussedALot.currentValue === true)) this.getFirstThreads("numberOfAnswers");
+    if ((changes.inputFilterTypeClickedOften != null) && (changes.inputFilterTypeClickedOften.currentValue === true)) this.getFirstThreads("views");
+    if (changes.inputCurrentPage != null) {
+      if(changes.inputCurrentPage.currentValue > this.numberOfMaxPage) {
+        this.getNextThreads().then(() => {
+          this.numberOfMaxPage = changes.inputCurrentPage.currentValue;
+          this.determineThreadsFromAndToIndex((changes.inputCurrentPage.currentValue > changes.inputCurrentPage.previousValue));
+        });
+      } else {
+        this.determineThreadsFromAndToIndex((changes.inputCurrentPage.currentValue > changes.inputCurrentPage.previousValue));
+      }
+    }
   }
 
   navigateToForumThread(forumId : number) {
     this.router.navigate(['/forum/' + forumId.toString()]);
-  }
-
-  createTestData(){
-    this.currentThreads.push(<Thread>{
-      uid: "5r0KI7OEWlRe7tu4axwa",
-      created: Timestamp.fromDate(new Date("2021/12/10 9:31:00")),
-      title: "Lohnt es sich zu studieren?",
-      text: "",
-      tags: ["18-24 Jahre", "Girls only", "BAKIP"],
-      numberOfAnswers: 10,
-      lastAnswerTime: Timestamp.fromDate(new Date("2021/12/11 13:09:00")),
-      views: 25
-    });    
-    this.currentThreads.push(<Thread>{
-      uid: "74HzI7Riehy1fX23lenk",
-      created: Timestamp.fromDate(new Date("2021/12/8 13:43:00")),
-      title: "Wie verwaltet ihr eure Kunden?",
-      text: "",
-      tags: ["Freelance", "Web"],
-      numberOfAnswers: 0,
-      lastAnswerTime: null,
-      views: 3
-    });  
-    console.log(this.currentThreads);
   }
 
 }

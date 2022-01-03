@@ -13,6 +13,7 @@ export class ForumComponent implements OnInit {
   filterTypeDiscussedALot = false;
   filterTypeClickedOften = false;
   currentPage = 1;
+  resetPageNumCounter : number;
 
   constructor() { }
 
@@ -35,5 +36,8 @@ export class ForumComponent implements OnInit {
   setCurrentPage(event: number) {
     this.currentPage = event;
   }
-
+  
+  resetPageNum(event: number) {
+    this.resetPageNumCounter = event;
+  }
 }
