@@ -1,3 +1,6 @@
+/**
+ * environment parameters for production state
+ */
 export const environment = {
   production: true,
   firebaseConfig: {
