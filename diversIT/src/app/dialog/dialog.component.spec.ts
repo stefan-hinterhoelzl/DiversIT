@@ -11,13 +11,24 @@ describe('DialogComponent', () => {
 
   }
 
+  const data = {
+    header: "überschrift",
+    text: "Text und Inhalt",
+    placeholderForInputArea: "Platzhalter für Textarea",
+    inputAreaValue: "Text in Textarea",
+    placeholderForInput: "Platzhalter Input",
+    inputValue: "inputValue",
+    buttonTextConfirm: "Confirm",
+    buttonTextAbort: "Abort"
+  }
+
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ DialogComponent ],
       providers: [
         {provide: MatDialogRef, useClass: MockMatDialogRef},
-        {provide: MAT_DIALOG_DATA, useValue: {}},
+        {provide: MAT_DIALOG_DATA, useValue: data},
       ]
     })
     .compileComponents();
