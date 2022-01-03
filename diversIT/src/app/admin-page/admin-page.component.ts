@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { httpsCallable } from 'firebase/functions';
 import { Rating } from '../models/rating.model';
 import { DiversITUser } from '../models/users.model';
+import { LoadingService } from '../services/loading.service';
 import { RatingService } from '../services/rating.service';
 import { UserService } from '../services/user.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
@@ -30,7 +32,8 @@ export class AdminPageComponent implements OnInit {
   dataSourceNonDisplayedRatings: any
   ratingDisplayedColumns: string[] = ['stars', 'summary', 'text', 'username', 'date', 'button'];
 
-  constructor(private userService: UserService, private ratingService: RatingService, private snackbar: SnackbarComponent) { }
+
+  constructor(private userService: UserService, private ratingService: RatingService, private snackbar: SnackbarComponent, private loading: LoadingService) { }
 
   async ngOnInit(): Promise<void> {
     this.users = await this.userService.getAllUsersPromise();
@@ -67,24 +70,32 @@ export class AdminPageComponent implements OnInit {
   }
 
   promoteUserToMentor(element: DiversITUser) {
+    this.loading.show()
     this.userService.promoteMenteeToMentor(element).then(() => {
       this.mentees = this.mentees.filter((x) => x.uid != element.uid)
       this.dataSourceMentees = new MatTableDataSource(this.mentees);
       this.mentors.push(element);
       this.dataSourceMentors = new MatTableDataSource(this.mentors);
+      this.loading.hide()
+      this.snackbar.openSnackBar("User "+element.firstname + " "+ element.lastname + " wurde die Rolle Mentor gegeben.", "green-snackbar")
     }).catch(() => {
-      this.snackbar.openSnackBar("Aktion fehlgeschlagen", "snackbar-red");
+      this.loading.hide()
+      this.snackbar.openSnackBar("Aktion fehlgeschlagen", "red-snackbar");
     });
   }
 
   demoteUserToMentee(element: DiversITUser) {
+    this.loading.show()
     this.userService.demoteMenteeToMentor(element).then(() => {
       this.mentors = this.mentors = this.mentors.filter((x) => x.uid != element.uid)
       this.dataSourceMentors = new MatTableDataSource(this.mentors);
       this.mentees.push(element);
       this.dataSourceMentees = new MatTableDataSource(this.mentees);
+      this.loading.hide()
+      this.snackbar.openSnackBar("User "+element.firstname + " "+ element.lastname + " wurde die Rolle Mentee gegeben.", "green-snackbar")
     }).catch(() => {
-      this.snackbar.openSnackBar("Aktion fehlgeschlagen", "snackbar-red");
+      this.loading.hide()
+      this.snackbar.openSnackBar("Aktion fehlgeschlagen", "red-snackbar");
     });
   }
 
@@ -95,7 +106,7 @@ export class AdminPageComponent implements OnInit {
       this.displayedRatings.push(element);
       this.dataSourceDisplayedRatings = new MatTableDataSource(this.displayedRatings);
     }).catch(() => {
-      this.snackbar.openSnackBar("Aktion fehlgeschlagen", "snackbar-red");
+      this.snackbar.openSnackBar("Aktion fehlgeschlagen", "red-snackbar");
     });
   }
 
@@ -106,7 +117,7 @@ export class AdminPageComponent implements OnInit {
       this.nonDisplayedRatings.push(element);
       this.dataSourceNonDisplayedRatings = new MatTableDataSource(this.nonDisplayedRatings);
     }).catch(() => {
-      this.snackbar.openSnackBar("Aktion fehlgeschlagen", "snackbar-red");
+      this.snackbar.openSnackBar("Aktion fehlgeschlagen", "red-snackbar");
     });
   }
 
