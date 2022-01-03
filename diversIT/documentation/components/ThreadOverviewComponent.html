@@ -1,0 +1,1524 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>girlsonly documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">girlsonly documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  ThreadOverviewComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/forum/thread-overview/thread-overview.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-thread-overview</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./thread-overview.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./thread-overview.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#allThreads" >allThreads</a>
+                            </li>
+                            <li>
+                                <a href="#currentThreads" >currentThreads</a>
+                            </li>
+                            <li>
+                                <a href="#endIndex" >endIndex</a>
+                            </li>
+                            <li>
+                                <a href="#numberOfMaxPage" >numberOfMaxPage</a>
+                            </li>
+                            <li>
+                                <a href="#numberOfShownThreads" >numberOfShownThreads</a>
+                            </li>
+                            <li>
+                                <a href="#orderField" >orderField</a>
+                            </li>
+                            <li>
+                                <a href="#resetPageNumCounter" >resetPageNumCounter</a>
+                            </li>
+                            <li>
+                                <a href="#startIndex" >startIndex</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#determineThreadsFromAndToIndex" >determineThreadsFromAndToIndex</a>
+                            </li>
+                            <li>
+                                <a href="#doesThreadMatchFilterCriteria" >doesThreadMatchFilterCriteria</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#getFirstThreads" >getFirstThreads</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getNextThreads" >getNextThreads</a>
+                            </li>
+                            <li>
+                                <a href="#navigateToForumThread" >navigateToForumThread</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setCurrentThreads" >setCurrentThreads</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#inputCurrentPage" >inputCurrentPage</a>
+                            </li>
+                            <li>
+                                <a href="#inputFilterTags" >inputFilterTags</a>
+                            </li>
+                            <li>
+                                <a href="#inputFilterText" >inputFilterText</a>
+                            </li>
+                            <li>
+                                <a href="#inputFilterTypeClickedOften" >inputFilterTypeClickedOften</a>
+                            </li>
+                            <li>
+                                <a href="#inputFilterTypeDiscussedALot" >inputFilterTypeDiscussedALot</a>
+                            </li>
+                            <li>
+                                <a href="#inputFilterTypeNew" >inputFilterTypeNew</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#resetPageNumEventEmitter" >resetPageNumEventEmitter</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(database: <a href="../injectables/ForumService.html" target="_self">ForumService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>database</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ForumService.html" target="_self" >ForumService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="inputCurrentPage"></a>
+                        <b>inputCurrentPage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:19</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="inputFilterTags"></a>
+                        <b>inputFilterTags</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>{}</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:15</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="inputFilterText"></a>
+                        <b>inputFilterText</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:14</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="inputFilterTypeClickedOften"></a>
+                        <b>inputFilterTypeClickedOften</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:18</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="inputFilterTypeDiscussedALot"></a>
+                        <b>inputFilterTypeDiscussedALot</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:17</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="inputFilterTypeNew"></a>
+                        <b>inputFilterTypeNew</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:16</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resetPageNumEventEmitter"></a>
+                        <b>resetPageNumEventEmitter</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:20</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="determineThreadsFromAndToIndex"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>determineThreadsFromAndToIndex</b></span>
+                        <a href="#determineThreadsFromAndToIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>determineThreadsFromAndToIndex(increase: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>increase</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doesThreadMatchFilterCriteria"></a>
+                    <span class="name">
+                        <span ><b>doesThreadMatchFilterCriteria</b></span>
+                        <a href="#doesThreadMatchFilterCriteria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>doesThreadMatchFilterCriteria(t: <a href="../interfaces/Thread.html" target="_self">Thread</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>t</td>
+                                    <td>
+                                                <code><a href="../interfaces/Thread.html" target="_self" >Thread</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFirstThreads"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span class="modifier">Async</span>
+                        <span ><b>getFirstThreads</b></span>
+                        <a href="#getFirstThreads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getFirstThreads(orderByField: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:33</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>orderByField</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNextThreads"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getNextThreads</b></span>
+                        <a href="#getNextThreads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNextThreads()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateToForumThread"></a>
+                    <span class="name">
+                        <span ><b>navigateToForumThread</b></span>
+                        <a href="#navigateToForumThread"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateToForumThread(forumId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:102</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>forumId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:86</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:44</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setCurrentThreads"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>setCurrentThreads</b></span>
+                        <a href="#setCurrentThreads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setCurrentThreads()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allThreads"></a>
+                    <span class="name">
+                        <span ><b>allThreads</b></span>
+                        <a href="#allThreads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Thread.html" target="_self" >Thread[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentThreads"></a>
+                    <span class="name">
+                        <span ><b>currentThreads</b></span>
+                        <a href="#currentThreads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Thread.html" target="_self" >Thread[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="endIndex"></a>
+                    <span class="name">
+                        <span ><b>endIndex</b></span>
+                        <a href="#endIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numberOfMaxPage"></a>
+                    <span class="name">
+                        <span ><b>numberOfMaxPage</b></span>
+                        <a href="#numberOfMaxPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numberOfShownThreads"></a>
+                    <span class="name">
+                        <span ><b>numberOfShownThreads</b></span>
+                        <a href="#numberOfShownThreads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>5</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orderField"></a>
+                    <span class="name">
+                        <span ><b>orderField</b></span>
+                        <a href="#orderField"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetPageNumCounter"></a>
+                    <span class="name">
+                        <span ><b>resetPageNumCounter</b></span>
+                        <a href="#resetPageNumCounter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startIndex"></a>
+                    <span class="name">
+                        <span ><b>startIndex</b></span>
+                        <a href="#startIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Thread } from &#x27;src/app/models/forum.model&#x27;;
+import { ForumService } from &#x27;src/app/services/forum.service&#x27;;
+
+@Component({
+  selector: &#x27;app-thread-overview&#x27;,
+  templateUrl: &#x27;./thread-overview.component.html&#x27;,
+  styleUrls: [&#x27;./thread-overview.component.scss&#x27;]
+})
+
+export class ThreadOverviewComponent implements OnInit {
+
+  @Input () inputFilterText &#x3D; &quot;&quot;;
+  @Input () inputFilterTags &#x3D; [];
+  @Input () inputFilterTypeNew &#x3D; true;
+  @Input () inputFilterTypeDiscussedALot &#x3D; false;
+  @Input () inputFilterTypeClickedOften &#x3D; false;
+  @Input () inputCurrentPage &#x3D; 1;
+  @Output() resetPageNumEventEmitter &#x3D; new EventEmitter&lt;number&gt;();
+
+  allThreads: Thread[] &#x3D; [];
+  currentThreads : Thread[] &#x3D; [];
+  startIndex : number;
+  endIndex : number;
+  numberOfShownThreads &#x3D; 5;
+  numberOfMaxPage &#x3D; 1;
+  orderField &#x3D; &quot;&quot;;
+  resetPageNumCounter &#x3D; 1;
+
+  constructor(private database: ForumService, private router: Router) { }
+
+  private async getFirstThreads(orderByField: string){
+    this.orderField &#x3D; orderByField;
+    await this.database.getFirstThreads(this.numberOfShownThreads, this.orderField).then((data) &#x3D;&gt; {
+      this.resetPageNumCounter++;
+      this.resetPageNumEventEmitter.emit(this.resetPageNumCounter);
+      this.numberOfMaxPage &#x3D; 1;
+      this.allThreads &#x3D; data;
+      this.setCurrentThreads();
+    });
+  }
+
+  ngOnInit(){
+    this.startIndex &#x3D; 0;
+    this.endIndex &#x3D; this.numberOfShownThreads;
+    this.getFirstThreads(&quot;created&quot;);
+  }
+
+  async getNextThreads() {
+    await this.database.getNextThreads(this.numberOfShownThreads, this.orderField).then((data) &#x3D;&gt; {
+      this.allThreads &#x3D; this.allThreads.concat(data);
+    })
+  }
+
+  private setCurrentThreads(){
+    this.currentThreads &#x3D; [];
+    for (let i &#x3D; this.startIndex; i &lt; this.endIndex; i++) {
+      if(this.allThreads[i] !&#x3D; null) this.currentThreads.push(this.allThreads[i]);
+    }
+  }
+
+  private determineThreadsFromAndToIndex(increase: boolean) {
+    if(increase) {
+      this.startIndex +&#x3D; this.numberOfShownThreads;
+      this.endIndex +&#x3D; this.numberOfShownThreads;
+    } else {
+      this.startIndex -&#x3D; this.numberOfShownThreads;
+      this.endIndex -&#x3D; this.numberOfShownThreads;
+    }
+    this.setCurrentThreads();
+  }
+
+  doesThreadMatchFilterCriteria(t: Thread){
+    if(this.inputFilterText.length &gt; 0){
+      if(t.title.toLowerCase().includes(this.inputFilterText.toLowerCase())) return true;
+    }
+    var tagFound &#x3D; false;
+    t.tags.forEach((tag) &#x3D;&gt; {
+      if(this.inputFilterTags.indexOf(tag.toString()) &gt; -1) tagFound &#x3D; true;
+    });
+    if(tagFound) return true;
+    return false;
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    if ((changes.inputFilterTypeNew !&#x3D; null) &amp;&amp; (changes.inputFilterTypeNew.currentValue &#x3D;&#x3D;&#x3D; true)) this.getFirstThreads(&quot;created&quot;);
+    if ((changes.inputFilterTypeDiscussedALot !&#x3D; null) &amp;&amp; (changes.inputFilterTypeDiscussedALot.currentValue &#x3D;&#x3D;&#x3D; true)) this.getFirstThreads(&quot;numberOfAnswers&quot;);
+    if ((changes.inputFilterTypeClickedOften !&#x3D; null) &amp;&amp; (changes.inputFilterTypeClickedOften.currentValue &#x3D;&#x3D;&#x3D; true)) this.getFirstThreads(&quot;views&quot;);
+    if (changes.inputCurrentPage !&#x3D; null) {
+      if(changes.inputCurrentPage.currentValue &gt; this.numberOfMaxPage) {
+        this.getNextThreads().then(() &#x3D;&gt; {
+          this.numberOfMaxPage &#x3D; changes.inputCurrentPage.currentValue;
+          this.determineThreadsFromAndToIndex((changes.inputCurrentPage.currentValue &gt; changes.inputCurrentPage.previousValue));
+        });
+      } else {
+        this.determineThreadsFromAndToIndex((changes.inputCurrentPage.currentValue &gt; changes.inputCurrentPage.previousValue));
+      }
+    }
+  }
+
+  navigateToForumThread(forumId : number) {
+    this.router.navigate([&#x27;/forum/&#x27; + forumId.toString()]);
+  }
+
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;threadOverview&quot;&gt;
+    &lt;mat-card *ngFor&#x3D;&quot;let t of this.currentThreads&quot;
+        [ngStyle]&#x3D;&quot;{&#x27;background-color&#x27;: doesThreadMatchFilterCriteria(t)? &#x27;#fde8ef&#x27; : &#x27;white&#x27;}&quot;&gt;
+        &lt;div fxLayout&#x3D;&quot;row&quot;&gt;
+            &lt;!--Antworten--&gt;
+            &lt;div fxFlex&#x3D;&quot;10&quot; fxLayout&#x3D;&quot;column&quot;&gt;
+                &lt;div class&#x3D;&quot;answerInvocation&quot;&gt;{{t.numberOfAnswers}}&lt;/div&gt;
+                &lt;div class&#x3D;&quot;answerInvocationLabel&quot;&gt;ANTWORTEN&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!--Aufrufe--&gt;
+            &lt;div fxFlex&#x3D;&quot;10&quot; fxLayout&#x3D;&quot;column&quot;&gt;
+                &lt;div class&#x3D;&quot;answerInvocation&quot;&gt;{{t.views}}&lt;/div&gt;
+                &lt;div class&#x3D;&quot;answerInvocationLabel&quot;&gt;AUFRUFE&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!--Forumstitel mit Tags--&gt;
+            &lt;div fxFlex fxLayout&#x3D;&quot;column&quot; class&#x3D;&quot;forumTitleWithTags&quot;&gt;
+                &lt;div class&#x3D;&quot;forumTitle&quot; (click)&#x3D;&quot;navigateToForumThread(t.uid)&quot;&gt;{{t.title}}&lt;/div&gt;
+                &lt;div fxLayout&#x3D;&quot;row&quot;&gt;
+                    &lt;div fxFlex&#x3D;&quot;50&quot;&gt;
+                        &lt;mat-chip *ngFor&#x3D;&quot;let tag of t.tags&quot; color&#x3D;&quot;accent&quot; class&#x3D;&quot;small-chip&quot; selected&gt;{{tag}}&lt;/mat-chip&gt;
+                    &lt;/div&gt;
+                    &lt;div fxFlex class&#x3D;&quot;changedAtCreatedAt&quot;&gt;
+                        &lt;span *ngIf&#x3D;&quot;t.lastAnswer !&#x3D;&#x3D; null&quot;&gt;Letzter Antwort am: {{t.lastAnswerTime.toDate().toLocaleString()}} Uhr;&lt;/span&gt;
+                        &lt;span&gt;Erstellt am: {{t.created.toDate().toLocaleString()}}&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/mat-card&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./thread-overview.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.threadOverview {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.answerInvocation{
+    text-align: center;
+    font-size: large;
+}
+
+.answerInvocationLabel{
+    text-align: center;
+    color: gray;
+    font-size: x-small;
+}
+
+.forumTitleWithTags{
+    padding-left: 3%;
+}
+
+.forumTitle{
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.tags{
+    padding-top: 1%;
+}
+
+.mat-chip {    
+    color: white !important;
+    height: fit-content;
+}
+
+.changedAtCreatedAt{
+    font-size: x-small;
+    color: gray;
+    text-align: right;
+}
+
+.small-chip {
+    color: white !important;
+    font-size: xx-small !important;
+    margin-top: 2%;
+    margin-left: 1%;
+    height: 10px !important;
+    min-height: 0px !important;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="threadOverview">    <mat-card *ngFor="let t of this.currentThreads"        [ngStyle]="{\'background-color\': doesThreadMatchFilterCriteria(t)? \'#fde8ef\' : \'white\'}">        <div fxLayout="row">            <!--Antworten-->            <div fxFlex="10" fxLayout="column">                <div class="answerInvocation">{{t.numberOfAnswers}}</div>                <div class="answerInvocationLabel">ANTWORTEN</div>            </div>            <!--Aufrufe-->            <div fxFlex="10" fxLayout="column">                <div class="answerInvocation">{{t.views}}</div>                <div class="answerInvocationLabel">AUFRUFE</div>            </div>            <!--Forumstitel mit Tags-->            <div fxFlex fxLayout="column" class="forumTitleWithTags">                <div class="forumTitle" (click)="navigateToForumThread(t.uid)">{{t.title}}</div>                <div fxLayout="row">                    <div fxFlex="50">                        <mat-chip *ngFor="let tag of t.tags" color="accent" class="small-chip" selected>{{tag}}</mat-chip>                    </div>                    <div fxFlex class="changedAtCreatedAt">                        <span *ngIf="t.lastAnswer !== null">Letzter Antwort am: {{t.lastAnswerTime.toDate().toLocaleString()}} Uhr;</span>                        <span>Erstellt am: {{t.created.toDate().toLocaleString()}}</span>                    </div>                </div>            </div>        </div>    </mat-card></div></div>'
+    var COMPONENTS = [{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CenterPanelComponent', 'selector': 'app-center-panel'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'CreatingNewPostCardComponent', 'selector': 'app-creating-new-post-card'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForumComponent', 'selector': 'app-forum'},{'name': 'ForumThreadComponent', 'selector': 'app-forum-thread'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'InterestingMentorsComponent', 'selector': 'app-interesting-mentors'},{'name': 'JobProfilesComponent', 'selector': 'app-job-profiles'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LeftPanelComponent', 'selector': 'app-left-panel'},{'name': 'LeftSpacerComponent', 'selector': 'app-left-spacer'},{'name': 'LoginBoxComponent', 'selector': 'app-login-box'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'MainPanelComponent', 'selector': 'app-main-panel'},{'name': 'MentorSpotlightComponent', 'selector': 'app-mentor-spotlight'},{'name': 'MessageCardComponent', 'selector': 'app-message-card'},{'name': 'MissionComponent', 'selector': 'app-mission'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'PageSelectionComponent', 'selector': 'app-page-selection'},{'name': 'PostCardComponent', 'selector': 'app-post-card'},{'name': 'PrivacyComponent', 'selector': 'app-privacy'},{'name': 'ProfileCardComponent', 'selector': 'app-profile-card'},{'name': 'ProfileHeadComponent', 'selector': 'app-profile-head'},{'name': 'ProfileNewPostComponent', 'selector': 'app-profile-new-post'},{'name': 'ProfilePageComponent', 'selector': 'app-profile-page'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RatingComponent', 'selector': 'app-rating'},{'name': 'RelationsPageComponent', 'selector': 'app-relations-page'},{'name': 'RightPanelComponent', 'selector': 'app-right-panel-main'},{'name': 'RightPanelProfileComponent', 'selector': 'app-right-panel-profile'},{'name': 'RightSpacerComponent', 'selector': 'app-right-spacer'},{'name': 'SearchFilterSortComponent', 'selector': 'app-search-filter-sort'},{'name': 'SnackbarComponent', 'selector': 'app-snackbar'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'},{'name': 'ThreadOverviewComponent', 'selector': 'app-thread-overview'},{'name': 'UnauthorizedComponent', 'selector': 'app-unauthorized'},{'name': 'UserRatingsComponent', 'selector': 'app-user-ratings'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ThreadOverviewComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ThreadOverviewComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

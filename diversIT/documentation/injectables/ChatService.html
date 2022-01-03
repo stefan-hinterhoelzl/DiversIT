@@ -1,0 +1,1588 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>girlsonly documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">girlsonly documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >ChatService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/services/chat.service.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#auth" >auth</a>
+                            </li>
+                            <li>
+                                <a href="#chatsub" >chatsub</a>
+                            </li>
+                            <li>
+                                <a href="#currentChatPartners" >currentChatPartners</a>
+                            </li>
+                            <li>
+                                <a href="#database" >database</a>
+                            </li>
+                            <li>
+                                <a href="#firestore" >firestore</a>
+                            </li>
+                            <li>
+                                <a href="#functions" >functions</a>
+                            </li>
+                            <li>
+                                <a href="#lastamount" >lastamount</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#addRelationship" >addRelationship</a>
+                            </li>
+                            <li>
+                                <a href="#closeChat" >closeChat</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#createChat" >createChat</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteChat" >deleteChat</a>
+                            </li>
+                            <li>
+                                <a href="#getChatsOfUser" >getChatsOfUser</a>
+                            </li>
+                            <li>
+                                <a href="#getMessages" >getMessages</a>
+                            </li>
+                            <li>
+                                <a href="#initializeChat" >initializeChat</a>
+                            </li>
+                            <li>
+                                <a href="#openChat" >openChat</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#revokeRelationship" >revokeRelationship</a>
+                            </li>
+                            <li>
+                                <a href="#sendMessage" >sendMessage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(snackbar: <a href="../components/SnackbarComponent.html" target="_self">SnackbarComponent</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, observer: <a href="../injectables/ObserversService.html" target="_self">ObserversService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/services/chat.service.ts:33</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>snackbar</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../components/SnackbarComponent.html" target="_self" >SnackbarComponent</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>observer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ObserversService.html" target="_self" >ObserversService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addRelationship"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>addRelationship</b></span>
+                        <a href="#addRelationship"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addRelationship(mentee: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, mentor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">src/app/services/chat.service.ts:158</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>mentee</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>mentor</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeChat"></a>
+                    <span class="name">
+                        <span ><b>closeChat</b></span>
+                        <a href="#closeChat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeChat(chat: <a href="../interfaces/Chat.html" target="_self">Chat</a>, user: <a href="../interfaces/DiversITUser.html" target="_self">DiversITUser</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="282"
+                            class="link-to-prism">src/app/services/chat.service.ts:282</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>chat</td>
+                                    <td>
+                                                <code><a href="../interfaces/Chat.html" target="_self" >Chat</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createChat"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>createChat</b></span>
+                        <a href="#createChat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createChat(user: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, recipient: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="190"
+                            class="link-to-prism">src/app/services/chat.service.ts:190</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>recipient</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteChat"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>deleteChat</b></span>
+                        <a href="#deleteChat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteChat(chat: <a href="../interfaces/Chat.html" target="_self">Chat</a>, currentUser: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="178"
+                            class="link-to-prism">src/app/services/chat.service.ts:178</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>chat</td>
+                                    <td>
+                                                <code><a href="../interfaces/Chat.html" target="_self" >Chat</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>currentUser</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getChatsOfUser"></a>
+                    <span class="name">
+                        <span ><b>getChatsOfUser</b></span>
+                        <a href="#getChatsOfUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getChatsOfUser(user: <a href="../interfaces/DiversITUser.html" target="_self">DiversITUser</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/services/chat.service.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMessages"></a>
+                    <span class="name">
+                        <span ><b>getMessages</b></span>
+                        <a href="#getMessages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMessages(chat: <a href="../interfaces/Chat.html" target="_self">Chat</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="252"
+                            class="link-to-prism">src/app/services/chat.service.ts:252</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>chat</td>
+                                    <td>
+                                                <code><a href="../interfaces/Chat.html" target="_self" >Chat</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initializeChat"></a>
+                    <span class="name">
+                        <span ><b>initializeChat</b></span>
+                        <a href="#initializeChat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initializeChat(user: <a href="../interfaces/DiversITUser.html" target="_self">DiversITUser</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/services/chat.service.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openChat"></a>
+                    <span class="name">
+                        <span ><b>openChat</b></span>
+                        <a href="#openChat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openChat(chat: <a href="../interfaces/Chat.html" target="_self">Chat</a>, user: <a href="../interfaces/DiversITUser.html" target="_self">DiversITUser</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="269"
+                            class="link-to-prism">src/app/services/chat.service.ts:269</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>chat</td>
+                                    <td>
+                                                <code><a href="../interfaces/Chat.html" target="_self" >Chat</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="revokeRelationship"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>revokeRelationship</b></span>
+                        <a href="#revokeRelationship"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>revokeRelationship(mentee: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, mentor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">src/app/services/chat.service.ts:169</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>mentee</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>mentor</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendMessage"></a>
+                    <span class="name">
+                        <span ><b>sendMessage</b></span>
+                        <a href="#sendMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sendMessage(chat: <a href="../interfaces/Chat.html" target="_self">Chat</a>, text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, sender: <a href="../interfaces/DiversITUser.html" target="_self">DiversITUser</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="215"
+                            class="link-to-prism">src/app/services/chat.service.ts:215</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>chat</td>
+                                    <td>
+                                                <code><a href="../interfaces/Chat.html" target="_self" >Chat</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>text</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>sender</td>
+                                    <td>
+                                                <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="auth"></a>
+                    <span class="name">
+                        <span ><b>auth</b></span>
+                        <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>getAuth()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/services/chat.service.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chatsub"></a>
+                    <span class="name">
+                        <span ><b>chatsub</b></span>
+                        <a href="#chatsub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/services/chat.service.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentChatPartners"></a>
+                    <span class="name">
+                        <span ><b>currentChatPartners</b></span>
+                        <a href="#currentChatPartners"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DiversITUser.html" target="_self" >DiversITUser[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/services/chat.service.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="database"></a>
+                    <span class="name">
+                        <span ><b>database</b></span>
+                        <a href="#database"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>getDatabase()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/services/chat.service.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="firestore"></a>
+                    <span class="name">
+                        <span ><b>firestore</b></span>
+                        <a href="#firestore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>getFirestore()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/services/chat.service.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="functions"></a>
+                    <span class="name">
+                        <span ><b>functions</b></span>
+                        <a href="#functions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>getFunctions(getApp())</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/services/chat.service.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lastamount"></a>
+                    <span class="name">
+                        <span ><b>lastamount</b></span>
+                        <a href="#lastamount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/services/chat.service.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { child, getDatabase, onValue, orderByChild, push, ref, serverTimestamp, set, update, query, increment, onDisconnect, equalTo } from &#x27;firebase/database&#x27;
+import { collection, doc, getDocs, getFirestore, updateDoc, query as queryFirestore, arrayRemove, runTransaction } from &#x27;@firebase/firestore&#x27;;
+import { getApp } from &quot;firebase/app&quot;;
+import { getFunctions, connectFunctionsEmulator, httpsCallable } from &quot;firebase/functions&quot;;
+import { Chat, Message } from &#x27;../models/chat.model&#x27;;
+import { arrayUnion, where } from &#x27;firebase/firestore&#x27;;
+import { BehaviorSubject, pipe } from &#x27;rxjs&#x27;;
+import { getAuth, onAuthStateChanged } from &#x27;@firebase/auth&#x27;;
+import { DiversITUser } from &#x27;../models/users.model&#x27;;
+import { SnackbarComponent } from &#x27;../snackbar/snackbar.component&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { DomElementSchemaRegistry } from &#x27;@angular/compiler&#x27;;
+import { UserService } from &#x27;./user.service&#x27;;
+import { take } from &#x27;rxjs/operators&#x27;;
+import { ObserversService } from &#x27;./observers.service&#x27;;
+import { MatGridTileHeaderCssMatStyler } from &#x27;@angular/material/grid-list&#x27;;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class ChatService {
+
+  database &#x3D; getDatabase()
+
+  //to Update the Chatsarray in the user Field
+  firestore &#x3D; getFirestore()
+
+  //Auth Instance to listen for auth changes
+  auth &#x3D; getAuth()
+
+  //functions
+  functions &#x3D; getFunctions(getApp());
+
+
+  constructor(private snackbar: SnackbarComponent, private router: Router, private observer: ObserversService) {
+    //comment this to remove emulator
+    //connectFunctionsEmulator(this.functions, &quot;localhost&quot;, 5001);
+  }
+
+
+  chatsub;
+  currentChatPartners: DiversITUser[] &#x3D; [];
+
+  lastamount: number &#x3D; 0;
+
+
+  initializeChat(user: DiversITUser) {
+    if (user.role &#x3D;&#x3D; 2) this.currentChatPartners &#x3D; this.observer.getCurrentUserMenteesValue;
+    if (user.role &#x3D;&#x3D; 3) this.currentChatPartners &#x3D; this.observer.getCurrentUserMentorsValue;
+
+    console.log(this.currentChatPartners)
+    this.getChatsOfUser(user)
+  }
+
+  getChatsOfUser(user: DiversITUser) {
+    if (this.chatsub !&#x3D; null) this.chatsub();
+    const userChatsRef &#x3D; query(ref(this.database, user.uid), orderByChild(&quot;lastMessageTime&quot;));
+    this.chatsub &#x3D; onValue(userChatsRef, async (snapshot) &#x3D;&gt; {
+      if (snapshot.exists()) {
+        const chats: Chat[] &#x3D; []
+        snapshot.forEach((childSnapshot) &#x3D;&gt; {
+          let chat &#x3D; childSnapshot.val() as Chat
+          if (chat.recipientUser !&#x3D; null) chats.push(chat)
+        })
+        chats.reverse()
+
+        //there is a missing Chat Object
+        if (chats.length &lt; this.currentChatPartners.length) {
+          //find the missing chatpartner
+          for (let i &#x3D; 0; i &lt; this.currentChatPartners.length; i++) {
+            let chat &#x3D; chats.find((value) &#x3D;&gt; { return value.recipientUser &#x3D;&#x3D; this.currentChatPartners[i].uid });
+            if (chat &#x3D;&#x3D; undefined) {
+              //create the chat object for the new user -- which triggers a rerun of this code
+              this.createChat(user.uid, this.currentChatPartners[i].uid);
+              return;
+            }
+          }
+          //there is an additional chat object, pending for deletion
+        } else if (chats.length &gt; this.currentChatPartners.length) {
+          for (let i &#x3D; 0; i &lt; chats.length; i++) {
+            let chatpartner &#x3D; this.currentChatPartners.find((value) &#x3D;&gt; { return value.uid &#x3D;&#x3D; chats[i].recipientUser })
+            if (chatpartner &#x3D;&#x3D; undefined) {
+              //when the overflow chat was found -- delte that one -- triggers a rerun of this code
+              this.deleteChat(chats[i], this.observer.getcurrenUserValue.uid);
+              return;
+            }
+          }
+        }
+
+        //variable for the amount of new Messages
+        let number: number &#x3D; 0;
+
+        //sorted Array for the Names of the Chat Partners
+        const sortedarr: DiversITUser[] &#x3D; []
+
+
+        for (let i &#x3D; 0; i &lt; chats.length; i++) {
+          let x &#x3D; this.currentChatPartners.find((curr) &#x3D;&gt; { return curr.uid &#x3D;&#x3D; chats[i].recipientUser })
+          sortedarr.push(x)
+          number +&#x3D; chats[i].amountNewMessages
+        }
+
+        //Handle Amount of New Messages
+        this.observer.number.next(number);
+
+        //Handle the opening of the snackbar
+        if (this.lastamount &lt; number) {
+          if (!this.router.url.includes(&quot;chat&quot;)) {
+            if (number - this.lastamount &#x3D;&#x3D; 1) {
+              let snackBarRef &#x3D; this.snackbar.openSnackBar(&quot;Sie haben &quot; + (number - this.lastamount).toString() + &quot; neue Nachricht&quot;, null, &quot;zum Chat&quot;)
+              snackBarRef.onAction().subscribe(() &#x3D;&gt; {
+                this.router.navigate([&#x27;/chat&#x27;]);
+              });
+            }
+            else {
+              let snackBarRef &#x3D; this.snackbar.openSnackBar(&quot;Sie haben &quot; + (number - this.lastamount).toString() + &quot; neue Nachrichten&quot;, null, &quot;zum Chat&quot;)
+              snackBarRef.onAction().subscribe(() &#x3D;&gt; {
+                this.router.navigate([&#x27;/chat&#x27;]);
+              });
+            }
+          }
+
+          //set the new lastamount after the if conditions for the snackbar
+          this.lastamount &#x3D; number;
+
+          //Play Message Sound
+          let audio &#x3D; new Audio();
+          audio.src &#x3D; &quot;../../assets/sounds/ringtone.mp3&quot;;
+          audio.load();
+          audio.play();
+
+        } else {
+          this.lastamount &#x3D; 0;
+        }
+
+        //Create the data for the Chat Observable
+        const payload &#x3D; {
+          chats: chats,
+          users: sortedarr,
+        }
+
+        this.observer.chats.next(payload);
+      } else {
+        if (this.currentChatPartners.length &#x3D;&#x3D; 1) {
+          this.createChat(user.uid, this.currentChatPartners[0].uid)
+        } else if (this.currentChatPartners.length &#x3D;&#x3D; 0) {
+          this.observer.chats.next({
+            chats: [],
+            users: [],
+          });
+        }
+      }
+    });
+  }
+
+
+  async addRelationship(mentee: string, mentor: string) {
+    const createRelationship &#x3D; httpsCallable(this.functions, &#x27;createRelationship&#x27;);
+    createRelationship({ mentee: mentee, mentor: mentor }).then((result) &#x3D;&gt; {
+      this.snackbar.openSnackBar(&quot;Vernetzung hergestellt!&quot;, &quot;green-snackbar&quot;);
+
+      //PLS Thomas Not to other user for accepting the request
+    }).catch(()&#x3D;&gt; {
+      this.snackbar.openSnackBar(&quot;Fehler beim Vernetzen&quot;, &quot;red-snackbar&quot;)
+    });
+  }
+
+  async revokeRelationship(mentee: string, mentor: string) {
+    const revokeRelationship &#x3D; httpsCallable(this.functions, &quot;revokeRelationship&quot;);
+    revokeRelationship({mentee: mentee, mentor: mentor}).then((result) &#x3D;&gt; {
+      this.snackbar.openSnackBar(&quot;Vernetzung gelöscht&quot;, &quot;green-snackbar&quot;);
+    });
+  }
+
+
+
+  async deleteChat(chat: Chat, currentUser: string) {
+    //mentor and mentee chat objects
+
+    //transactional updates on database
+    const updates &#x3D; {}
+    updates[&#x27;/&#x27; + currentUser + &#x27;/&#x27; + chat.uid] &#x3D; null
+
+    await update(ref(this.database), updates)
+
+  }
+
+
+  async createChat(user: string, recipient: string) {
+    let currentUser &#x3D; this.observer.getcurrenUserValue;
+    let newkey &#x3D; &quot;&quot;;
+
+    if (currentUser.role &#x3D;&#x3D; 3) newkey &#x3D; recipient + user;
+    else newkey &#x3D; user + recipient;
+    
+    const newChat &#x3D; &lt;Chat&gt;{
+      uid: newkey,
+      lastMessage: &quot;&quot;,
+      recipientUser: recipient,
+      amountNewMessages: 0,
+      lastCheckedTime: serverTimestamp(),
+      lastMessageTime: serverTimestamp(),
+      currentlyOnline: false,
+    }
+
+    const updates &#x3D; {};
+    updates[&#x27;/&#x27; + user + &#x27;/&#x27; + newkey] &#x3D; newChat;
+
+    await update(ref(this.database), updates);
+  }
+
+
+
+  sendMessage(chat: Chat, text: string, sender: DiversITUser) {
+    const newMessageKey &#x3D; push(child(ref(this.database), &quot;messages&quot;)).key;
+
+    const message &#x3D; &lt;Message&gt;{
+      text: text,
+      senderUID: sender.uid,
+      timestamp: serverTimestamp(),
+    };
+
+
+
+    const updates &#x3D; {}
+    const ChatRef &#x3D; ref(this.database, sender.uid + &quot;/&quot; + chat.uid);
+    onValue(ChatRef, (snapshot) &#x3D;&gt; {
+      const data &#x3D; snapshot.val() as Chat;
+
+      if (!data.currentlyOnline) {
+        updates[chat.recipientUser + &quot;/&quot; + chat.uid + &quot;/lastMessage&quot;] &#x3D; text;
+        updates[chat.recipientUser + &quot;/&quot; + chat.uid + &quot;/lastMessageTime&quot;] &#x3D; serverTimestamp();
+        updates[chat.recipientUser + &quot;/&quot; + chat.uid + &quot;/amountNewMessages&quot;] &#x3D; increment(1);
+      } else {
+        updates[chat.recipientUser + &quot;/&quot; + chat.uid + &quot;/lastMessage&quot;] &#x3D; text;
+        updates[chat.recipientUser + &quot;/&quot; + chat.uid + &quot;/lastMessageTime&quot;] &#x3D; serverTimestamp();
+      }
+
+      updates[sender.uid + &quot;/&quot; + chat.uid + &quot;/lastMessage&quot;] &#x3D; text;
+      updates[sender.uid + &quot;/&quot; + chat.uid + &quot;/lastMessageTime&quot;] &#x3D; serverTimestamp();
+
+      updates[&quot;messages/&quot; + chat.uid + &quot;/&quot; + newMessageKey] &#x3D; message;
+
+      update(ref(this.database), updates);
+
+    }, {
+      onlyOnce: true
+    });
+  }
+
+  getMessages(chat: Chat) {
+    const messagesRef &#x3D; query(ref(this.database, &quot;messages/&quot; + chat.uid), orderByChild(&quot;timestamp&quot;));
+    return onValue(messagesRef, (snapshot) &#x3D;&gt; {
+      if (snapshot.exists()) {
+        const messages: Message[] &#x3D; []
+        snapshot.forEach((childSnapshot) &#x3D;&gt; {
+          messages.push(childSnapshot.val() as Message)
+        })
+        messages.reverse();
+        this.observer.messages.next(messages);
+      } else {
+        this.observer.messages.next([]);
+      }
+    });
+  }
+
+
+  openChat(chat: Chat, user: DiversITUser) {
+    const updates &#x3D; {}
+    updates[this.database, chat.recipientUser + &quot;/&quot; + chat.uid + &quot;/currentlyOnline&quot;] &#x3D; true;
+    updates[this.database, user.uid + &quot;/&quot; + chat.uid + &quot;/amountNewMessages&quot;] &#x3D; 0;
+
+    const r &#x3D; ref(this.database, chat.recipientUser + &quot;/&quot; + chat.uid + &quot;/currentlyOnline&quot;)
+    const o &#x3D; onDisconnect(r);
+    o.set(false);
+
+    return update(ref(this.database), updates);
+  }
+
+
+  closeChat(chat: Chat, user: DiversITUser) {
+    const updates &#x3D; {}
+    updates[this.database, chat.recipientUser + &quot;/&quot; + chat.uid + &quot;/currentlyOnline&quot;] &#x3D; false;
+    updates[this.database, chat.recipientUser + &quot;/&quot; + chat.uid + &quot;/lastCheckedTime&quot;] &#x3D; serverTimestamp();
+
+    return update(ref(this.database), updates);
+  }
+
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ChatService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
