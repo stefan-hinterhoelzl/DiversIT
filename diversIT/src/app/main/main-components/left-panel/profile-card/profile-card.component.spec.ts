@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { ProfileCardComponent } from './profile-card.component';
 
@@ -8,7 +9,10 @@ describe('ProfileCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileCardComponent ]
+      declarations: [ ProfileCardComponent ],
+      providers: [
+        {provide: Router, useValue: {}}
+      ]
     })
     .compileComponents();
   });
