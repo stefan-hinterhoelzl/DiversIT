@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build --configuration production",
     "test": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
-    "test-single-component-example": "ng test --include **/message-card/*.spec.ts --browsers=Chrome",
+    "test-single-component-example": "ng test --include **/mentor-spotlight/*.spec.ts --browsers=Chrome",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
