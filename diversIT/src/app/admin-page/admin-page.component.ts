@@ -8,12 +8,19 @@ import { RatingService } from '../services/rating.service';
 import { UserService } from '../services/user.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 
+/**
+ * The Component of the Admin Page
+ * @export
+ * @class AdminPageComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
+
 
   users: DiversITUser[]
   admins: DiversITUser[]
@@ -34,7 +41,24 @@ export class AdminPageComponent implements OnInit {
 
 
   constructor(private userService: UserService, private ratingService: RatingService, private snackbar: SnackbarComponent, private loading: LoadingService) { }
+  /**
+   * Creates an instance of AdminPageComponent.
+   * @param {UserService} userService
+   * @param {RatingService} ratingService
+   * @param {SnackbarComponent} snackbar
+   * @param {LoadingService} loading
+   * @memberof AdminPageComponent
+   */
 
+
+  /**
+   * exectues on initialization of component,
+   * loads all users and splits them into each respective role and pushes the data into the tables
+   * following the ratings of the users are gathered and also put into a table for user representation
+   *
+   * @return {*}  {Promise<void>}
+   * @memberof AdminPageComponent
+   */
   async ngOnInit(): Promise<void> {
     this.users = await this.userService.getAllUsersPromise();
 
@@ -54,6 +78,12 @@ export class AdminPageComponent implements OnInit {
     this.dataSourceNonDisplayedRatings = new MatTableDataSource(this.nonDisplayedRatings)
   }
 
+
+  /**
+   *
+   * @param {Event} event
+   * @memberof AdminPageComponent
+   */
   applyFilterMentee(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSourceMentees.filter = filterValue.trim().toLowerCase();

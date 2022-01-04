@@ -172,12 +172,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/snackbar/snackbar.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/snackbar/snackbar.component.ts:21</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of SnackbarComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -239,14 +241,17 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/snackbar/snackbar.component.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/snackbar/snackbar.component.ts:47</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> takes parameters and opens a small snackbar at the bottom right of the screen</p>
+<p>let snackbarRef = openSnackBar(&quot;Hello World&quot;, &quot;Accept&quot;, &quot;green-snackbar&quot;)</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -258,6 +263,7 @@
                                     <td>Type</td>
                                     <td>Optional</td>
                                     <td>Default value</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -274,6 +280,10 @@
                                     <td>
                                     </td>
 
+                                    <td>
+                                        <p>text of message</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>className</td>
@@ -289,6 +299,10 @@
                                         <code>null</code>
                                     </td>
 
+                                    <td>
+                                        <p>color of Snackbar e.g. &quot;red-snackbar&quot; &quot;green-snackbar&quot;</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>action</td>
@@ -304,18 +318,27 @@
                                         <code>&quot; &quot;</code>
                                     </td>
 
+                                    <td>
+                                        <p>Buttontext of Snackbar</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div>
+                        <b>Example :</b>
+                        <div>
+                            <pre class="line-numbers"><code class="language-html">let snackbarRef = openSnackBar(&amp;quot;Hello World&amp;quot;, &amp;quot;Accept&amp;quot;, &amp;quot;green-snackbar&amp;quot;)</code></pre>
+                        </div>
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>In either case, a MatSnackBarRef is returned. This can be used to dismiss the snackbar or to receive notification of when the snackbar is dismissed</p>
+
                     </div>
                 </td>
             </tr>
@@ -347,7 +370,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/snackbar/snackbar.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/snackbar/snackbar.component.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -378,10 +401,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/snackbar/snackbar.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/snackbar/snackbar.component.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>variable for timeout - not supposed to be changed</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -391,23 +420,52 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component} from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+
 
 @Component({
   selector: &#x27;app-snackbar&#x27;,
   templateUrl: &#x27;./snackbar.component.html&#x27;,
   styleUrls: [&#x27;./snackbar.component.scss&#x27;]
 })
+
+/**
+ *  snackbar component can be used to alert the user of some circumstance
+ * @class SnackbarComponent
+ */
 export class SnackbarComponent {
 
+
+  /**
+   * variable for timeout - not supposed to be changed
+   */
   timeOut &#x3D; 5000;
 
+
+
+  /**
+   * Creates an instance of SnackbarComponent.
+   * @param {MatSnackBar} snackBar
+   * @memberof SnackbarComponent
+   */
   constructor(
     public snackBar: MatSnackBar
   ) { }
 
 
+  /**
+   *  takes parameters and opens a small snackbar at the bottom right of the screen
+   *
+   * @param {string} message text of message
+   * @param {string} [className&#x3D;null] color of Snackbar e.g. &quot;red-snackbar&quot; &quot;green-snackbar&quot;
+   * @param {string} [action&#x3D;&quot; &quot;] Buttontext of Snackbar
+   * @return {MatSnackBarRef}  In either case, a MatSnackBarRef is returned. This can be used to dismiss the snackbar or to receive notification of when the snackbar is dismissed
+   * @memberof SnackbarComponent
+   * 
+   * @example
+   * let snackbarRef &#x3D; openSnackBar(&quot;Hello World&quot;, &quot;Accept&quot;, &quot;green-snackbar&quot;)
+   */
   openSnackBar(message: string, className: string &#x3D; null, action: string &#x3D; &quot; &quot;) {
     return this.snackBar.open(message, action, {
       duration: this.timeOut,
@@ -415,10 +473,7 @@ export class SnackbarComponent {
       horizontalPosition: &#x27;end&#x27;,
       panelClass: [className],
     });
-    
-
   }
-
 }
 </code></pre>
     </div>

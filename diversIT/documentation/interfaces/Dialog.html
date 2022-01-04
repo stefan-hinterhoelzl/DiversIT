@@ -68,6 +68,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>interface of a dialog</p>
+
+            </p>
 
 
         <section>
@@ -185,6 +192,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>the value of the button which aborts the dialog</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -223,6 +236,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The value inside the button which confirmes the action</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -261,6 +280,15 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>optional the header or title of a dialog</p>
+<ul>
+<li>if not provided, no header will be visible</li>
+</ul>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -299,6 +327,15 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>optional some value of the textarea</p>
+<ul>
+<li>if omitted placeholderForInputArea will be shown</li>
+</ul>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -337,6 +374,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>value of the inputfiel</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -375,6 +418,16 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>the placeholdertext for a input field</p>
+<ul>
+<li>if omitted no inputfiel will be shown</li>
+<li>if provided value of inputfield will be return on positiv exit of dialog</li>
+</ul>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -413,6 +466,15 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>the placeholdertext for a inputarea</p>
+<ul>
+<li>if provided inputarea will be visible and return it&#39;s value on positiv dialoge exit</li>
+</ul>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -451,6 +513,15 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>optional the text describing some circumstance or instructions</p>
+<ul>
+<li>if not provided, no description or instructions will be visible to the user</li>
+</ul>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -459,13 +530,32 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Dialog {
+    /** optional the header or title of a dialog 
+     * - if not provided, no header will be visible
+    */
     header?: string;
+    /** optional the text describing some circumstance or instructions
+     * - if not provided, no description or instructions will be visible to the user
+     */
     text?: string;
+    /** the placeholdertext for a inputarea 
+     * - if provided inputarea will be visible and return it&#x27;s value on positiv dialoge exit
+     */
     placeholderForInputArea?: string;
+    /** optional some value of the textarea 
+     * - if omitted placeholderForInputArea will be shown
+    */
     inputAreaValue?: string;
+    /** the placeholdertext for a input field
+     * - if omitted no inputfiel will be shown
+     * - if provided value of inputfield will be return on positiv exit of dialog
+     */
     placeholderForInput?: string;
+    /** value of the inputfiel */
     inputValue?: string;
+    /** The value inside the button which confirmes the action */
     buttonTextConfirm?: string;
+    /** the value of the button which aborts the dialog */
     buttonTextAbort?: string;
 }</code></pre>
     </div>

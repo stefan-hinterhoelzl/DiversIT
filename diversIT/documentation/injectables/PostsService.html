@@ -61,6 +61,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>serviceclass for all firebase related operations of post elements</p>
+
+            </p>
 
 
 
@@ -140,12 +147,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/posts.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/services/posts.service.ts:23</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of PostsService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -205,14 +214,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">src/app/services/posts.service.ts:45</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/app/services/posts.service.ts:85</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>creates a post on firebase</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -223,6 +234,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -237,6 +249,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>object containing all necessary information</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -276,14 +292,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/app/services/posts.service.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/app/services/posts.service.ts:107</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>deletes a post from database</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -294,6 +312,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -308,6 +327,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>id of post to delete</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -347,14 +370,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/app/services/posts.service.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/services/posts.service.ts:67</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>creates a listener for the post observable - should only be called by initializing the service class</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -418,14 +443,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/app/services/posts.service.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/services/posts.service.ts:50</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>gets all posts of a user by userID ordered by timestamp descending</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -436,6 +463,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -450,6 +478,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>string of the userID</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -461,7 +493,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>{Promise&lt;Post[]&gt;}</p>
+
                     </div>
                 </td>
             </tr>
@@ -487,14 +520,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/services/posts.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/app/services/posts.service.ts:38</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>cancles the subscription of posts on destroy of the service</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -526,14 +561,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">src/app/services/posts.service.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">src/app/services/posts.service.ts:120</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>updates an existing post</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -544,6 +581,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -558,6 +596,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>if of post</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>content</td>
@@ -570,6 +612,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>content of post</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>imageURL</td>
@@ -582,6 +628,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>image of post - null if no image</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -623,7 +673,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/posts.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/services/posts.service.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -643,7 +693,7 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/posts.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/services/posts.service.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -665,19 +715,46 @@ import { Post } from &quot;../models/post.model&quot;;
 import { ObserversService } from &quot;./observers.service&quot;;
 
 
+/**
+ * serviceclass for all firebase related operations of post elements
+ *
+ * @export
+ * @class PostsService
+ * @implements {OnDestroy}
+ */
 @Injectable({
     providedIn: &#x27;root&#x27;
   })
   export class PostsService implements OnDestroy {
 
-    db &#x3D; getFirestore();
-    unsubscribeFromPosts;
+    db &#x3D; getFirestore(); /** connection to firebase */
+    unsubscribeFromPosts; /** global variable which is needed to unsubscribe the observer */
+
+    /**
+     * Creates an instance of PostsService.
+     * @param {ObserversService} observer
+     * @memberof PostsService
+     */
     constructor(private observer: ObserversService) {}
 
+
+    /**
+     *
+     * cancles the subscription of posts on destroy of the service
+     * @memberof PostsService
+     */
     ngOnDestroy(): void {
       this.unsubscribeFromPosts()
     }
 
+
+    /**
+     * gets all posts of a user by userID ordered by timestamp descending
+     *
+     * @param {string} userID string of the userID
+     * @returns {*}  {Promise&lt;Post[]&gt;}
+     * @memberof PostsService
+     */
     async getPostUser(userID: string): Promise&lt;Post[]&gt; {
         const q &#x3D; query(collection(this.db, &quot;posts&quot;), where(&quot;userID&quot;, &quot;&#x3D;&#x3D;&quot;, userID), orderBy(&quot;timestamp&quot;, &quot;desc&quot;));
         const querySnapshot &#x3D; await getDocs(q);
@@ -688,6 +765,13 @@ import { ObserversService } from &quot;./observers.service&quot;;
         return array;
       }
     
+
+      /**
+       * creates a listener for the post observable - should only be called by initializing the service class
+       *
+       * @param {string} userID
+       * @memberof PostsService
+       */
       async getPostOfUserObservable(userID: string) {
         this.unsubscribeFromPosts &#x3D; onSnapshot(query(collection(this.db, &quot;posts&quot;), where(&quot;userID&quot;, &quot;&#x3D;&#x3D;&quot;, userID), orderBy(&quot;timestamp&quot;, &quot;desc&quot;)), (q) &#x3D;&gt; {
           let arr: Post[] &#x3D; []
@@ -700,6 +784,12 @@ import { ObserversService } from &quot;./observers.service&quot;;
       }
     
     
+      /**
+       * creates a post on firebase
+       *
+       * @param {Post} post object containing all necessary information
+       * @memberof PostsService
+       */
       async addPost(post: Post) {
         const docRef &#x3D; collection(this.db, &#x27;posts&#x27;)
         const ref &#x3D; await addDoc(docRef, {
@@ -715,10 +805,26 @@ import { ObserversService } from &quot;./observers.service&quot;;
         })
       }
 
+
+      /**
+       * deletes a post from database
+       *
+       * @param {string} postUID id of post to delete
+       * @memberof PostsService
+       */
       async deletePost(postUID: string){
         await deleteDoc(doc(this.db, &quot;posts&quot;, postUID));
       }
 
+
+      /**
+       * updates an existing post
+       *
+       * @param {string} postUID if of post
+       * @param {string} content content of post
+       * @param {string} imageURL image of post - null if no image
+       * @memberof PostsService
+       */
       async updatePost(postUID: string, content: string, imageURL: string){
         await updateDoc(doc(this.db, &quot;posts&quot;, postUID), {
             text: content,

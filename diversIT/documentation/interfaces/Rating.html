@@ -68,6 +68,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>interface for rating mentors</p>
+
+            </p>
 
 
         <section>
@@ -166,6 +173,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>boolean default = false, can be changed by admin in adminpanel</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -199,6 +212,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>server Timestamp from firebase</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -232,6 +251,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>number between 0 and 5 in real usecase - representing the happiness of a mentee with its mentor</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -265,6 +290,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>short description of the review</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -298,6 +329,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>detailed review of the mentor</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -331,6 +368,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>id of user generated from Firebase</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -364,6 +407,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>name of user</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -373,13 +422,27 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Timestamp } from &quot;@firebase/firestore&quot;;
 
+
+/**
+ * interface for rating mentors
+ *
+ * @export
+ * @interface Rating
+ */
 export interface Rating {
+    /** id of user generated from Firebase */
     userID: string,
+    /** number between 0 and 5 in real usecase - representing the happiness of a mentee with its mentor */
     stars: number,
+    /** short description of the review */
     summary: string,
+    /** detailed review of the mentor */
     text: string,
+    /** server Timestamp from firebase */
     lastUpdated: Timestamp,
+    /** name of user */
     username: string,
+    /** boolean default &#x3D; false, can be changed by admin in adminpanel */
     displayOnLandingPage: boolean,
 }</code></pre>
     </div>

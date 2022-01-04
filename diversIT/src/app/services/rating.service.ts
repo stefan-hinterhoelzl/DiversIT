@@ -2,13 +2,26 @@ import { Injectable } from "@angular/core"
 import { collection, doc, getDoc, getDocs, getFirestore, orderBy, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore"
 import { Rating } from "../models/rating.model"
 
+/**
+ * service for rating mentors
+ *
+ * @export
+ * @class RatingService
+ */
 @Injectable({
     providedIn: 'root'
 })
 export class RatingService {
 
-    db = getFirestore();
+    db = getFirestore(); /** Firestore connection variable */
 
+
+    /**
+     *  updates a rating and creates a new one if it does not already exist
+     *
+     * @param {Rating} rating Interface object containing the rating information
+     * @memberof RatingService
+     */
     async updateRating(rating: Rating) {
         const docRef = doc(collection(this.db, 'ratings'))
         const q = query(collection(this.db, 'ratings'), where('userID', '==', rating.userID));
@@ -33,6 +46,14 @@ export class RatingService {
         }
     }
 
+
+
+    /**
+     * gets all ratings from db
+     *
+     * @returns {*}  {Promise<Rating[]>}
+     * @memberof RatingService
+     */
     async getAllRatings(): Promise<Rating[]> {
         const querySnapshot = await getDocs(collection(this.db, 'ratings'));
         let array: Rating[] = []
@@ -42,6 +63,15 @@ export class RatingService {
         return array;
     }
 
+
+
+    /**
+     * Gets a rating vor a specific user
+     *
+     * @param {string} userID string of userID
+     * @returns {*}  {Promise<Rating>}
+     * @memberof RatingService
+     */
     async getRatingForUserID(userID: string): Promise<Rating> {
         const q = query(collection(this.db, 'ratings'), where('userID', '==', userID));
         const querySnapshot = await getDocs(q);
@@ -50,6 +80,13 @@ export class RatingService {
         } else return null;
     }
 
+
+    /**
+     * gets the ratings which are allowed to be displayed on the landing page (decided by admin in adminpanle)
+     *
+     * @returns {*}  {Promise<Rating[]>}
+     * @memberof RatingService
+     */
     async getDisplayedRatings(): Promise<Rating[]> {
         const q = query(collection(this.db, 'ratings'), where('displayOnLandingPage', '==', true));
         const querySnapshot = await getDocs(q);
@@ -61,6 +98,14 @@ export class RatingService {
         return array;
     }
 
+
+    /**
+     * revokes the permission to display a specific rating on the landingpage 
+     *
+     * @param {Rating} rating
+     * @returns {*}  
+     * @memberof RatingService
+     */
     async setDisplayFalse(rating: Rating) {
         const q = query(collection(this.db, 'ratings'), where('userID', '==', rating.userID));
         const querySnapshot = await getDocs(q);
@@ -71,6 +116,14 @@ export class RatingService {
         });
     }
 
+
+    /**
+     * allows a rating to be displayed on the landingpage
+     *
+     * @param {Rating} rating
+     * @returns {*}  
+     * @memberof RatingService
+     */
     async setDisplayTrue(rating: Rating) {
         const q = query(collection(this.db, 'ratings'), where('userID', '==', rating.userID));
         const querySnapshot = await getDocs(q);
