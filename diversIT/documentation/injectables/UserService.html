@@ -61,6 +61,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p> This file contains all firebase methods regarding the user object.</p>
+
+            </p>
 
 
 
@@ -171,12 +178,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/user.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/services/user.service.ts:21</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of UserService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -270,14 +279,17 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/app/services/user.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/services/user.service.ts:59</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> Listens for changes of the auth status of the user
+on change, e.g. logout - all oberservs for connected mentors and mentees are set to null</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -309,14 +321,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="209"
-                            class="link-to-prism">src/app/services/user.service.ts:209</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="308"
+                            class="link-to-prism">src/app/services/user.service.ts:308</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> demote a Mentor to a Mentee</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -327,6 +341,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -341,6 +356,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>object to demote to Mentee based on object&#39;s id</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -380,17 +399,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="166"
-                            class="link-to-prism">src/app/services/user.service.ts:166</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="246"
+                            class="link-to-prism">src/app/services/user.service.ts:246</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> used primarily on the Landingpage for highlighting interesing mentors</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../interfaces/DiversITUser.html" target="_self" >Promise&lt;DiversITUser[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Promise containing an Array of interesing Mentors as Type DiverITUser</p>
 
                     </div>
                 </td>
@@ -419,17 +446,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="188"
-                            class="link-to-prism">src/app/services/user.service.ts:188</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="274"
+                            class="link-to-prism">src/app/services/user.service.ts:274</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> get all Mentors</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../interfaces/DiversITUser.html" target="_self" >Promise&lt;DiversITUser[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Promise of an DiverITUser array containing all Mentors</p>
 
                     </div>
                 </td>
@@ -458,17 +493,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="157"
-                            class="link-to-prism">src/app/services/user.service.ts:157</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="230"
+                            class="link-to-prism">src/app/services/user.service.ts:230</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> get the whole collection of users as a Promis</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../interfaces/DiversITUser.html" target="_self" >Promise&lt;DiversITUser[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>which you can resolve to get an array of all users</p>
 
                     </div>
                 </td>
@@ -495,14 +538,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="104"
-                            class="link-to-prism">src/app/services/user.service.ts:104</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">src/app/services/user.service.ts:151</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> returns the current user and subscribes to some observables</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -513,6 +558,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -527,6 +573,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Object of Type {User}</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -566,14 +616,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">src/app/services/user.service.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">src/app/services/user.service.ts:195</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> does provide a Promise which resolves the mentees of the provided user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -584,6 +636,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -598,6 +651,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Object of user for which mentees should be provided</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -609,7 +666,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>returns a Promise you can resolve</p>
+
                     </div>
                 </td>
             </tr>
@@ -637,14 +695,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="124"
-                            class="link-to-prism">src/app/services/user.service.ts:124</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="178"
+                            class="link-to-prism">src/app/services/user.service.ts:178</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> does provide a Promise which resolves the mentors of the provided user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -655,6 +715,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -669,6 +730,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Object of user for which mentors should be provided</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -680,7 +745,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>returns a Promise you can resolve</p>
+
                     </div>
                 </td>
             </tr>
@@ -708,14 +774,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="144"
-                            class="link-to-prism">src/app/services/user.service.ts:144</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="212"
+                            class="link-to-prism">src/app/services/user.service.ts:212</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> gets the User as a Promise of type {DiversITUser} based on the provided userID</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -726,6 +794,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -740,6 +809,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>id of user to get</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -751,7 +824,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>which you can resolve to get the userobject</p>
+
                     </div>
                 </td>
             </tr>
@@ -777,14 +851,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/app/services/user.service.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/services/user.service.ts:43</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> cancles subscription on destroy</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -816,14 +892,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="200"
-                            class="link-to-prism">src/app/services/user.service.ts:200</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="292"
+                            class="link-to-prism">src/app/services/user.service.ts:292</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> function which is only used for testing - should not be implemented for production builds and will be deleted</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -834,6 +912,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -848,6 +927,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>object to promote to Mentor based on object&#39;s id</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -885,14 +968,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/app/services/user.service.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">src/app/services/user.service.ts:121</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> updates the user object in Firestore</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -903,6 +988,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -917,6 +1003,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>takes a user object and overwrites the object in the database - based on the given user object id</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -956,14 +1046,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">src/app/services/user.service.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/services/user.service.ts:81</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> updates the userobject in firestore</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -974,6 +1066,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -988,6 +1081,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>id of user to update</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>email</td>
@@ -1000,6 +1097,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>new email of user - is allowed to be the same the user already has</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>photoURL</td>
@@ -1012,6 +1113,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>url to the profileimage of the user</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1053,7 +1158,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/services/user.service.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/services/user.service.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -1078,7 +1183,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/services/user.service.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/services/user.service.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -1098,7 +1203,7 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/services/user.service.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/services/user.service.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -1118,7 +1223,7 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/services/user.service.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/services/user.service.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -1133,7 +1238,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, OnDestroy } from &#x27;@angular/core&#x27;;
 import { DiversITUser } from &#x27;../models/users.model&#x27;
-import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, orderBy, addDoc } from &quot;firebase/firestore&quot;;
+import { getFirestore, collection, doc, where, query, getDocs, getDoc, setDoc, onSnapshot, updateDoc, serverTimestamp, orderBy, addDoc, DocumentReference } from &quot;firebase/firestore&quot;;
 import { getAuth, onAuthStateChanged, User } from &quot;firebase/auth&quot;;
 import { Post } from &#x27;../models/post.model&#x27;;
 import { ChatService } from &#x27;./chat.service&#x27;;
@@ -1142,15 +1247,37 @@ import { NotificationService } from &#x27;./notification.service&#x27;;
 import { PostsService } from &#x27;./posts.service&#x27;;
 
 
+/**
+ *  This file contains all firebase methods regarding the user object.
+ * @export
+ * @class UserService
+ * @implements {OnDestroy}
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class UserService implements OnDestroy {
 
+
+
+  /**
+   * Creates an instance of UserService.
+   * @param {ObserversService} observer
+   * @param {ChatService} chat
+   * @param {NotificationService} notifications
+   * @param {PostsService} posts
+   * @memberof UserService
+   */
   constructor(private observer: ObserversService, private chat: ChatService, private notifications: NotificationService, private posts: PostsService) {
     this.authStatusListener();
   }
 
+
+
+  /**
+   *  cancles subscription on destroy
+   * @memberof UserService
+   */
   ngOnDestroy(): void {
     if (this.usersub !&#x3D; null) this.usersub();
   }
@@ -1162,6 +1289,11 @@ export class UserService implements OnDestroy {
   postssub;
 
 
+  /**
+   *  Listens for changes of the auth status of the user
+   * on change, e.g. logout - all oberservs for connected mentors and mentees are set to null
+   * @memberof UserService
+   */
   authStatusListener() {
     onAuthStateChanged(this.auth, (user) &#x3D;&gt; {
       if (user) {
@@ -1177,6 +1309,13 @@ export class UserService implements OnDestroy {
   }
 
 
+  /**
+   *  updates the userobject in firestore
+   * @param {string} uid id of user to update
+   * @param {string} email new email of user - is allowed to be the same the user already has
+   * @param {string} photoURL url to the profileimage of the user
+   * @memberof UserService
+   */
   async UpdateUserAccount(uid: string, email: string, photoURL: string) {
     const docRef &#x3D; doc(this.db, &quot;users&quot;, uid);
     const docSnap &#x3D; await getDoc(docRef);
@@ -1211,6 +1350,12 @@ export class UserService implements OnDestroy {
     }
   }
 
+
+  /**
+   *  updates the user object in Firestore
+   * @param {DiversITUser} user takes a user object and overwrites the object in the database - based on the given user object id
+   * @memberof UserService
+   */
   UpdateCurrentUserAccount(user: DiversITUser) {
     updateDoc(doc(this.db, &quot;users&quot;, user.uid), {
       role: user.role,
@@ -1234,6 +1379,13 @@ export class UserService implements OnDestroy {
     });
   }
 
+
+  
+  /**
+   *  returns the current user and subscribes to some observables
+   * @param {User} user Object of Type {User}
+   * @memberof UserService
+   */
   getCurrentUser(user: User) {
     this.usersub &#x3D; onSnapshot(doc(this.db, &quot;users&quot;, user.uid), async (doc) &#x3D;&gt; {
       if (doc.exists()) {
@@ -1254,6 +1406,13 @@ export class UserService implements OnDestroy {
     this.notifications.getNotificationsListener(user.uid)
   }
 
+
+  /**
+   *  does provide a Promise which resolves the mentors of the provided user
+   * @param {DiversITUser} user Object of user for which mentors should be provided
+   * @return {Promise&lt;DiversITUser[]&gt;} returns a Promise you can resolve
+   * @memberof UserService
+   */
   async getCurrentUserMentors(user: DiversITUser): Promise&lt;DiversITUser[]&gt; {
     let listOfMentors: DiversITUser[] &#x3D; [];
 
@@ -1264,6 +1423,13 @@ export class UserService implements OnDestroy {
     return listOfMentors;
   }
 
+
+  /**
+   *  does provide a Promise which resolves the mentees of the provided user
+   * @param {DiversITUser} user Object of user for which mentees should be provided
+   * @return {Promise&lt;DiversITUser[]&gt;} returns a Promise you can resolve
+   * @memberof UserService
+   */
   async getCurrentUserMentees(user: DiversITUser): Promise&lt;DiversITUser[]&gt; {
     let listOfMentees: DiversITUser[] &#x3D; [];
 
@@ -1274,6 +1440,13 @@ export class UserService implements OnDestroy {
     return listOfMentees
   }
 
+
+  /**
+   *  gets the User as a Promise of type {DiversITUser} based on the provided userID
+   * @param {string} uid id of user to get
+   * @return {Promise&lt;DiversITUser&gt;} which you can resolve to get the userobject
+   * @memberof UserService
+   */
   async getUserPerIDPromise(uid: string): Promise&lt;DiversITUser&gt; {
     const docRef &#x3D; doc(this.db, &quot;users&quot;, uid);
     const docSnap &#x3D; await getDoc(docRef);
@@ -1287,6 +1460,11 @@ export class UserService implements OnDestroy {
   }
 
 
+  /**
+   *  get the whole collection of users as a Promis
+   * @return  {Promise&lt;DiversITUser[]&gt;} which you can resolve to get an array of all users
+   * @memberof UserService
+   */
   async getAllUsersPromise(): Promise&lt;DiversITUser[]&gt; {
     const querySnapshot &#x3D; await getDocs(collection(this.db, &quot;users&quot;));
     let array: DiversITUser[] &#x3D; []
@@ -1296,6 +1474,13 @@ export class UserService implements OnDestroy {
     return array;
   }
 
+
+
+  /**
+   *  used primarily on the Landingpage for highlighting interesing mentors
+   * @return {Promise&lt;DiversITUser[]&gt;} Promise containing an Array of interesing Mentors as Type DiverITUser
+   * @memberof UserService
+   */
   async getAllInterestingMentorsPromise(): Promise&lt;DiversITUser[]&gt; {
     const q &#x3D; query(collection(this.db, &quot;users&quot;), where(&quot;role&quot;, &quot;&#x3D;&#x3D;&quot;, 2));
     const querySnapshot &#x3D; await getDocs(q);
@@ -1318,6 +1503,12 @@ export class UserService implements OnDestroy {
     return array;
   }
 
+
+  /**
+   *  get all Mentors
+   * @returns {Promise&lt;DiversITUser[]&gt;} Promise of an DiverITUser array containing all Mentors
+   * @memberof UserService
+   */
   async getAllMentorsPromise(): Promise&lt;DiversITUser[]&gt; {
     const q &#x3D; query(collection(this.db, &quot;users&quot;), where(&quot;role&quot;, &quot;&#x3D;&#x3D;&quot;, 2));
     const querySnapshot &#x3D; await getDocs(q);
@@ -1330,6 +1521,12 @@ export class UserService implements OnDestroy {
   }
 
 
+  /**
+   *  function which is only used for testing - should not be implemented for production builds and will be deleted
+   * @param {DiversITUser} user object to promote to Mentor based on object&#x27;s id
+   * @returns {*}  
+   * @memberof UserService
+   */
   async promoteMenteeToMentor(user: DiversITUser) {
     const docRef &#x3D; doc(this.db, &#x27;users&#x27;, user.uid)
 
@@ -1339,6 +1536,13 @@ export class UserService implements OnDestroy {
     });
   }
 
+
+  /**
+   *  demote a Mentor to a Mentee
+   * @param {DiversITUser} user object to demote to Mentee based on object&#x27;s id
+   * @returns {*}
+   * @memberof UserService
+   */
   async demoteMenteeToMentor(user: DiversITUser) {
     const docRef &#x3D; doc(this.db, &#x27;users&#x27;, user.uid)
 

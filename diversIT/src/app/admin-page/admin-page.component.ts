@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 /**
- * @description The Component of the Admin Page
+ * The Component of the Admin Page
  * @export
  * @class AdminPageComponent
  * @implements {OnInit}
@@ -18,6 +18,7 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
+
 
   users: DiversITUser[]
   admins: DiversITUser[]
@@ -48,7 +49,7 @@ export class AdminPageComponent implements OnInit {
 
 
   /**
-   * @description exectues on initialization of component, 
+   * exectues on initialization of component, 
    * loads all users and splits them into each respective role and pushes the data into the tables
    * following the ratings of the users are gathered and also put into a table for user representation
    * 
@@ -76,7 +77,7 @@ export class AdminPageComponent implements OnInit {
 
 
   /**
-   * @description 
+   *  
    * @param {Event} event
    * @memberof AdminPageComponent
    */

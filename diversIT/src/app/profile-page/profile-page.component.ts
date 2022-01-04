@@ -9,7 +9,7 @@ import { PostsService } from '../services/posts.service';
 import { UserService } from '../services/user.service';
 
 /**
- * @description Main Component of the profile page. 
+ * Main Component of the profile page. 
  * @export
  * @class ProfilePageComponent
  * @implements {OnInit}
@@ -32,9 +32,6 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
    */
   constructor(private firestore: UserService, private route: ActivatedRoute, private observer: ObserversService, private postService: PostsService) { }
 
-  /**
-   * @ignore
-   */
   currentUserSubscription: Subscription;
   currentRouteSubscription: Subscription;
   currentPostSubscription: Subscription;
@@ -45,7 +42,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
 
   /**
-   * @description closes all subscribtion on destroy of component
+   * closes all subscribtion on destroy of component
    * @memberof ProfilePageComponent
    */
   ngOnDestroy(): void {
@@ -56,7 +53,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
 
   /**
-   * @description subscribes to current user and gets id of userpage to display from route. Loads the necessary data.
+   * subscribes to current user and gets id of userpage to display from route. Loads the necessary data.
    * @memberof ProfilePageComponent
    */
   ngOnInit(): void {
@@ -73,13 +70,14 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
 
   /**
-   * @description this method first finds out if the page presentet to the user is the page of the user or another user.
+   * this method first finds out if the page presentet to the user is the page of the user or another user.
    * following that either the posts of the user himself are loaded or the posts of another user. 
    * If i am the user, a subscription gets created, if not i will just receive an array with all the posts once. 
    * @param {*} id of profile to display
    * @memberof ProfilePageComponent
    */
   async initialize(id) {
+    
     if (this.currentUser.uid == id) {
       this.ownProfile = true;
       this.alternateUser = this.currentUser
@@ -100,13 +98,5 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         this.posts = data;
       }).catch((error) => console.error(error))
     }
-
-
-
-
-
-
-    // this.firestore.getPostOfUserObservable(this.alternateUser.uid)
-
   }
 }

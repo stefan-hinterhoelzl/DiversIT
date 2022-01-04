@@ -172,7 +172,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/snackbar/snackbar.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/snackbar/snackbar.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -241,15 +241,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/app/snackbar/snackbar.component.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/snackbar/snackbar.component.ts:47</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>let snackbarRef = openSnackBar(&quot;Hello World&quot;, &quot;Accept&quot;, &quot;green-snackbar&quot;)</p>
+                    <div class="io-description"><p> takes parameters and opens a small snackbar at the bottom right of the screen</p>
+<p>let snackbarRef = openSnackBar(&quot;Hello World&quot;, &quot;Accept&quot;, &quot;green-snackbar&quot;)</p>
 </div>
 
                     <div class="io-description">
@@ -328,8 +329,7 @@
                     <div>
                         <b>Example :</b>
                         <div>
-                            <pre class="line-numbers"><code class="language-html">:
-let snackbarRef = openSnackBar(&amp;quot;Hello World&amp;quot;, &amp;quot;Accept&amp;quot;, &amp;quot;green-snackbar&amp;quot;)</code></pre>
+                            <pre class="line-numbers"><code class="language-html">let snackbarRef = openSnackBar(&amp;quot;Hello World&amp;quot;, &amp;quot;Accept&amp;quot;, &amp;quot;green-snackbar&amp;quot;)</code></pre>
                         </div>
                     </div>
                     <div class="io-description">
@@ -370,7 +370,7 @@ let snackbarRef = openSnackBar(&amp;quot;Hello World&amp;quot;, &amp;quot;Accept
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/snackbar/snackbar.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/snackbar/snackbar.component.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -401,7 +401,7 @@ let snackbarRef = openSnackBar(&amp;quot;Hello World&amp;quot;, &amp;quot;Accept
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/snackbar/snackbar.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/snackbar/snackbar.component.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -423,19 +423,16 @@ let snackbarRef = openSnackBar(&amp;quot;Hello World&amp;quot;, &amp;quot;Accept
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
 
-/**
- * @description snackbar component can be used to alert the user of some circumstance
- * @class SnackbarComponent
- */
+
 @Component({
   selector: &#x27;app-snackbar&#x27;,
   templateUrl: &#x27;./snackbar.component.html&#x27;,
   styleUrls: [&#x27;./snackbar.component.scss&#x27;]
 })
 
-
 /**
- * class Snackbarcomponent
+ *  snackbar component can be used to alert the user of some circumstance
+ * @class SnackbarComponent
  */
 export class SnackbarComponent {
 
@@ -458,15 +455,15 @@ export class SnackbarComponent {
 
 
   /**
-   * @description takes parameters and opens a small snackbar at the bottom right of the screen
+   *  takes parameters and opens a small snackbar at the bottom right of the screen
    *
    * @param {string} message text of message
    * @param {string} [className&#x3D;null] color of Snackbar e.g. &quot;red-snackbar&quot; &quot;green-snackbar&quot;
    * @param {string} [action&#x3D;&quot; &quot;] Buttontext of Snackbar
-   * @return {*}  In either case, a MatSnackBarRef is returned. This can be used to dismiss the snackbar or to receive notification of when the snackbar is dismissed
+   * @return {MatSnackBarRef}  In either case, a MatSnackBarRef is returned. This can be used to dismiss the snackbar or to receive notification of when the snackbar is dismissed
    * @memberof SnackbarComponent
    * 
-   * @example:
+   * @example
    * let snackbarRef &#x3D; openSnackBar(&quot;Hello World&quot;, &quot;Accept&quot;, &quot;green-snackbar&quot;)
    */
   openSnackBar(message: string, className: string &#x3D; null, action: string &#x3D; &quot; &quot;) {

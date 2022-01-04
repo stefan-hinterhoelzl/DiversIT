@@ -1,19 +1,16 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-/**
- * @description snackbar component can be used to alert the user of some circumstance
- * @class SnackbarComponent
- */
+
 @Component({
   selector: 'app-snackbar',
   templateUrl: './snackbar.component.html',
   styleUrls: ['./snackbar.component.scss']
 })
 
-
 /**
- * class Snackbarcomponent
+ *  snackbar component can be used to alert the user of some circumstance
+ * @class SnackbarComponent
  */
 export class SnackbarComponent {
 
@@ -36,15 +33,15 @@ export class SnackbarComponent {
 
 
   /**
-   * @description takes parameters and opens a small snackbar at the bottom right of the screen
+   *  takes parameters and opens a small snackbar at the bottom right of the screen
    *
    * @param {string} message text of message
    * @param {string} [className=null] color of Snackbar e.g. "red-snackbar" "green-snackbar"
    * @param {string} [action=" "] Buttontext of Snackbar
-   * @return {*}  In either case, a MatSnackBarRef is returned. This can be used to dismiss the snackbar or to receive notification of when the snackbar is dismissed
+   * @return {MatSnackBarRef}  In either case, a MatSnackBarRef is returned. This can be used to dismiss the snackbar or to receive notification of when the snackbar is dismissed
    * @memberof SnackbarComponent
    * 
-   * @example:
+   * @example
    * let snackbarRef = openSnackBar("Hello World", "Accept", "green-snackbar")
    */
   openSnackBar(message: string, className: string = null, action: string = " ") {
