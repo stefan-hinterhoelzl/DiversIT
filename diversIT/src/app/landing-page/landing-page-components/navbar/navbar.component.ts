@@ -16,16 +16,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentUser: DiversITUser
   currentUserSubscription: Subscription
 
-  constructor(private viewportScroller: ViewportScroller, private firestore: UserService, private auth: AuthService, private observer: ObserversService) { }
+  constructor(private viewportScroller: ViewportScroller, private auth: AuthService, private observer: ObserversService) { }
 
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.currentUserSubscription = this.observer.currentUserStatus.subscribe((data) => {
+    this.currentUserSubscription = this.observer.getCurrentUserStatus.subscribe((data) => {
       this.currentUser = data;
-      if(data != null) {
+      if (data != null) {
         this.loginApplied = false;
       }
     });
@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public onClick(elementId: string): void {
     this.viewportScroller.setOffset([0, 72.5])
     this.viewportScroller.scrollToAnchor(elementId);
-    
+
   }
 
   classApplied = false;
