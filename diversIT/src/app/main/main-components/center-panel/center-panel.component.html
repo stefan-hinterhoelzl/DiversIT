@@ -3,6 +3,6 @@
         <app-post-card *ngFor="let post of posts" [currentUser]="currentUser" postuid="{{post.uid}}" userid= "{{post.userID}}" name="{{post.userName}}" profileImg="{{post.userImgURL}}" time="{{post.timestamp.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}"></app-post-card>
         <app-post-card *ngIf="posts.length === 0 && currentUser?.role === 3" content="Du bist noch mit keinem Mentor vernetzt."></app-post-card>
         <app-post-card *ngIf="posts.length === 0 && currentUser?.role === 2" content="🚧 Work in progress. 🚧"></app-post-card>
-        <app-post-card *ngIf="posts.length === 0 && currentUser?.role === 1" content="Du bist Admin. Kannst daher keine Verknüpfungen herstellen."></app-post-card>
+        <app-post-card routerLink="/admin" style="cursor:pointer" *ngIf="posts.length === 0 && currentUser?.role === 1" content="Du bist Admin. Kannst daher keine Verknüpfungen herstellen."></app-post-card>
     </div>
 </div>

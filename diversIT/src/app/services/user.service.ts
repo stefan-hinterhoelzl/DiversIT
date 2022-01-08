@@ -7,6 +7,8 @@ import { ChatService } from './chat.service';
 import { ObserversService } from './observers.service';
 import { NotificationService } from './notification.service';
 import { PostsService } from './posts.service';
+import { getFunctions, httpsCallable } from 'firebase/functions';
+import { getApp } from 'firebase/app';
 
 
 /**
@@ -46,6 +48,7 @@ export class UserService implements OnDestroy {
 
   db = getFirestore();
   auth = getAuth();
+  functions = getFunctions(getApp())
   usersub;
   // chatsub;
   postssub;
@@ -290,12 +293,8 @@ export class UserService implements OnDestroy {
    * @memberof UserService
    */
   async promoteMenteeToMentor(user: DiversITUser) {
-    const docRef = doc(this.db, 'users', user.uid)
-
-    return updateDoc(docRef, {
-      role: 2,
-      mentors: []
-    });
+    const menteeToMentor = httpsCallable(this.functions, "menteeToMentor")
+    return menteeToMentor({user: user.uid, mentors: user.mentors})
   }
 
 
@@ -306,12 +305,8 @@ export class UserService implements OnDestroy {
    * @memberof UserService
    */
   async demoteMenteeToMentor(user: DiversITUser) {
-    const docRef = doc(this.db, 'users', user.uid)
-
-    return updateDoc(docRef, {
-      role: 3,
-      mentees: []
-    });
+    const mentorToMentee = httpsCallable(this.functions, "mentorToMentee")
+    return mentorToMentee({user: user.uid, mentees: user.mentees})
   }
 
 }

@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { ChatService } from './services/chat.service';
 import { ObserversService } from './services/observers.service';
 import { Subscription } from 'rxjs';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -20,9 +21,10 @@ export class AppComponent implements OnInit, OnDestroy {
   newNotifications: number;
   currentUserSubscription: Subscription;
   currentChatSubscripton: Subscription;
-  currentNotSubscription: Subscription
+  currentNotSubscription: Subscription;
+  loading = this.loader.loading$;
 
-  constructor(private router: Router, private auth: AuthService, private firestore: UserService, private location: Location, private chat: ChatService, private observer: ObserversService) {
+  constructor(private router: Router, private auth: AuthService, private firestore: UserService, private location: Location, private chat: ChatService, private observer: ObserversService, private loader: LoadingService) {
   }
 
 

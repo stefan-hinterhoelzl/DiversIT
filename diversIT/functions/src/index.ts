@@ -59,6 +59,54 @@ export const revokeRelationship = functions.https.onCall((data, context) => {
     });
 })
 
+export const menteeToMentor = functions.https.onCall((data, context) => {
+  let user: string = data.user;
+  let mentors: string[] = data.mentors;
+
+  let ref = admin.firestore().collection("users").doc(user);
+
+  const batch = admin.firestore().batch();
+
+  batch.update(ref, {
+    mentors: [],
+    role: 2
+  });
+
+  for (let i = 0; i < mentors.length; i++) {
+    let mref = admin.firestore().collection("users").doc(mentors[i]);
+    batch.update(mref, {
+      mentees: admin.firestore.FieldValue.arrayRemove(user)
+    })
+  }
+
+  return batch.commit();
+})
+
+export const mentorToMentee = functions.https.onCall((data, context) => {
+  let user: string = data.user;
+  let mentees: string[] = data.mentees;
+
+  let ref = admin.firestore().collection("users").doc(user);
+
+  const batch = admin.firestore().batch();
+
+  batch.update(ref, {
+    mentees: [],
+    role: 3
+  });
+
+  for (let i = 0; i < mentees.length; i++) {
+    let mref = admin.firestore().collection("users").doc(mentees[i]);
+    batch.update(mref, {
+      mentors: admin.firestore.FieldValue.arrayRemove(user)
+    })
+  }
+
+  return batch.commit();
+})
+
+
+
 exports.aggregateThreads = functions.firestore
     .document('threads/{uid}')
     .onWrite(event => {

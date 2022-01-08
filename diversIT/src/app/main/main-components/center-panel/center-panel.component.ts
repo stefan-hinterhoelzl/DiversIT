@@ -17,8 +17,8 @@ export class CenterPanelComponent implements OnInit, OnDestroy {
   constructor(private firestore: UserService, private observer: ObserversService, private postService: PostsService) { }
 
   ngOnDestroy(): void {
-    this.usersub.unsubscribe();
-    this.initializeMenteeSub.unsubscribe();
+    if (this.usersub != null) this.usersub.unsubscribe();
+    if (this.initializeMenteeSub != null) this.initializeMenteeSub.unsubscribe();
   }
 
   currentUser: DiversITUser;
@@ -31,8 +31,8 @@ export class CenterPanelComponent implements OnInit, OnDestroy {
     this.usersub = this.observer.currentUserStatus.subscribe((data) => {
       if (data != null) {
         this.currentUser = data
-        if(this.currentUser.role == 3)this.initializeMentee()
-        else if(this.currentUser.role == 2)this.initializeMentor()
+        if(this.currentUser.role == 3) this.initializeMentee()
+        else if(this.currentUser.role == 2) this.initializeMentor()
       }
     });
   }
