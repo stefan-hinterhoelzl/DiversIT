@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { serverTimestamp } from 'firebase/firestore';
+import { take } from 'rxjs/operators';
+import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { Thread } from 'src/app/models/forum.model';
 import { ForumService } from 'src/app/services/forum.service';
 
@@ -28,9 +32,24 @@ export class ThreadOverviewComponent implements OnInit {
   orderField = "";
   resetPageNumCounter = 1;
 
-  constructor(private database: ForumService, private router: Router) { }
+  constructor(private database: ForumService, private router: Router, private dialog: MatDialog) { }
 
-  private async getFirstThreads(orderByField: string){
+  /**
+   * LifeCycle-Method - component initializied
+   * @memberof ThreadOverviewComponent
+   */
+  ngOnInit(){
+    this.startIndex = 0;
+    this.endIndex = this.numberOfShownThreads;
+    this.getFirstThreads("created");
+  }
+
+  /**
+   * Determine first n (=numberOfShownThreads) threads ordered by input field orderByField
+   * @param {string} orderByField
+   * @memberof ThreadOverviewComponent
+   */
+   private async getFirstThreads(orderByField: string){
     this.orderField = orderByField;
     await this.database.getFirstThreads(this.numberOfShownThreads, this.orderField).then((data) => {
       this.resetPageNumCounter++;
@@ -41,18 +60,20 @@ export class ThreadOverviewComponent implements OnInit {
     });
   }
 
-  ngOnInit(){
-    this.startIndex = 0;
-    this.endIndex = this.numberOfShownThreads;
-    this.getFirstThreads("created");
-  }
-
+  /**
+   * Determine next n (=numberOfShownThreads) threads 
+   * @memberof ThreadOverviewComponent
+   */
   async getNextThreads() {
     await this.database.getNextThreads(this.numberOfShownThreads, this.orderField).then((data) => {
       this.allThreads = this.allThreads.concat(data);
     })
   }
 
+  /**
+   * Determine threads which should be displayed
+   * @memberof ThreadOverviewComponent
+   */
   private setCurrentThreads(){
     this.currentThreads = [];
     for (let i = this.startIndex; i < this.endIndex; i++) {
@@ -60,6 +81,11 @@ export class ThreadOverviewComponent implements OnInit {
     }
   }
 
+  /**
+   * Change page number and threads which should be displayed
+   * @param {boolean} increase or decrease
+   * @memberof ThreadOverviewComponent
+   */
   private determineThreadsFromAndToIndex(increase: boolean) {
     if(increase) {
       this.startIndex += this.numberOfShownThreads;
@@ -71,6 +97,12 @@ export class ThreadOverviewComponent implements OnInit {
     this.setCurrentThreads();
   }
 
+  /**
+   * Check if input thread matches the set filter criteria
+   * @param {Thread} t current thread
+   * @return {*} yes or no
+   * @memberof ThreadOverviewComponent
+   */
   doesThreadMatchFilterCriteria(t: Thread){
     if(this.inputFilterText.length > 0){
       if(t.title.toLowerCase().includes(this.inputFilterText.toLowerCase())) return true;
@@ -83,6 +115,11 @@ export class ThreadOverviewComponent implements OnInit {
     return false;
   }
 
+  /**
+   * LifeCycle-Method - changes have been made on the input values
+   * @param {SimpleChanges} changes
+   * @memberof ThreadOverviewComponent
+   */
   ngOnChanges(changes: SimpleChanges){
     if ((changes.inputFilterTypeNew != null) && (changes.inputFilterTypeNew.currentValue === true)) this.getFirstThreads("created");
     if ((changes.inputFilterTypeDiscussedALot != null) && (changes.inputFilterTypeDiscussedALot.currentValue === true)) this.getFirstThreads("numberOfAnswers");
@@ -99,8 +136,45 @@ export class ThreadOverviewComponent implements OnInit {
     }
   }
 
+  /**
+   * Open a thread / forum with a input Forum-Id
+   * @param {number} forumId
+   * @memberof ThreadOverviewComponent
+   */
   navigateToForumThread(forumId : number) {
     this.router.navigate(['/forum/' + forumId.toString()]);
+  }
+
+  /**
+   * Open a Dialog for creating a new forum 
+   * @memberof ThreadOverviewComponent
+   */
+  openDialogToCreateForum(){
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: "40%",
+      data: {
+        header: "Neues Forum anlegen",
+        placeholderForInputArea: "Forumstitel",
+        placeholderForInput: "Forumstext",
+        placeholderForSelectName: "Forumstags",
+        placeholderForSelectValues: ['HTL', 'HAK', 'BAKIP', 'Girls only', 'Freelance', 'Web', '18-24 Jahre'],
+        buttonTextConfirm: "Anlegen",
+        buttonTextAbort: "Abbrechen",
+      },
+    });
+
+    dialogRef.afterClosed().pipe(take(1)).subscribe(result => {      
+      if (result != null) {
+        this.database.createThread(<Thread>{
+          title: result.inputAreaValue,
+          text: result.inputValue,
+          tags: result.inputSelectValues,
+          created: serverTimestamp()
+        }).then(() => {
+          window.location.reload()
+        })            
+      }
+    });
   }
 
 }

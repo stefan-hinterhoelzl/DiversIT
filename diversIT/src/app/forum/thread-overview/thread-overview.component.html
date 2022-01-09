@@ -1,4 +1,9 @@
 <div class="threadOverview">
+    <mat-card>
+        <button mat-mini-fab aria-label="Forum anlegen" (click)="openDialogToCreateForum()" color="accent" style="color:white;">
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-card>
     <mat-card *ngFor="let t of this.currentThreads"
         [ngStyle]="{'background-color': doesThreadMatchFilterCriteria(t)? '#fde8ef' : 'white'}">
         <div fxLayout="row">

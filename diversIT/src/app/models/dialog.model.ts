@@ -29,6 +29,12 @@ export interface Dialog {
     placeholderForInput?: string;
     /** value of the inputfiel */
     inputValue?: string;
+    /** label for select **/
+    placeholderForSelectName?: string;
+    /** select values **/
+    placeholderForSelectValues?: [];
+    /** selected values **/
+    inputSelectValues?: [];
     /** The value inside the button which confirmes the action */
     buttonTextConfirm?: string;
     /** the value of the button which aborts the dialog */
