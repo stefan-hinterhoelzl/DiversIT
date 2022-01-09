@@ -145,7 +145,7 @@ export class UserService implements OnDestroy {
   }
 
 
-  
+
   /**
    *  returns the current user and subscribes to some observables
    * @param {User} user Object of Type {User}
@@ -289,7 +289,7 @@ export class UserService implements OnDestroy {
   /**
    *  function which is only used for testing - should not be implemented for production builds and will be deleted
    * @param {DiversITUser} user object to promote to Mentor based on object's id
-   * @returns {*}  
+   * @returns {*}
    * @memberof UserService
    */
   async promoteMenteeToMentor(user: DiversITUser) {
