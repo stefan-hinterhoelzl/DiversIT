@@ -1,0 +1,24 @@
+TITLE:
+ADR004 - implementation of serverside functions for various security critical tasks
+
+
+STATUS:
+Accepted
+
+
+CONTEXT:
+The initial plan involved executing all tasks and functions from the client side. This is due to the fact, that no personally owned server was available to host a backend on.
+Cloud Functions from various providers usually are only free to a certain limit. Therefore, the decision was made to simply keep all functionaity on the client side. However, later on it was proposed
+to switch to a pay as you go plan with our hosting/db service provider. Switching to pay as you go enables us to implement serverless backend functions. The functions for creating relationships between users was shifted into a cloud function.
+This is to ensure that no user is writing to another users document in the database. Additionally, all the admin functionality was shifted to cloud functions for the same reasons. Furthermore, cloud functions enable us to keep a live count
+of active forum threads.
+
+
+DECISION:
+The pay as you go "blaze plan" is activated (a budget limit of 0 € is applied to avoid exceeding the free limit), realtionship building and admin functionality is moved to serverless cloud functions on firebase.
+
+
+CONSEQUENCES:
+The firebase functions had to be activated and implemented in the project. Due to cold start boots, an inital innvocation of a function after a longer period of no way innovation can take multiple seconds.
+For this reason, a loading indication had to be implemented on the frontend in order to tell the user that the backend function is currently executing. As a side note, already setup functionality on the client side had
+to be slightly altered to correctly run on the firebase cloud function server.
