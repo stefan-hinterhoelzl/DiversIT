@@ -11,7 +11,6 @@ import { NavbarComponent } from './navbar.component';
 import { DebugElement } from '@angular/core';
 import { of } from 'rxjs';
 import { ChatService } from 'src/app/services/chat.service';
-import { debug } from 'console';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;

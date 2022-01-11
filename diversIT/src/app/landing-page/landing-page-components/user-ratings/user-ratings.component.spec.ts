@@ -46,7 +46,6 @@ describe('UserRatingsComponent', () => {
     expect(getDisplayedRatingsSpy).toHaveBeenCalled();
     getDisplayedRatingsSpy.calls.mostRecent().returnValue.then(res => {
       expect(res).toEqual(promisedData);
-      console.log(res);
     });
 
     compiled = fixture.nativeElement;
@@ -62,12 +61,12 @@ describe('UserRatingsComponent', () => {
 
   it('should render title', () => {
     expect(compiled.querySelector('.container.section-title h2').textContent).toBe('Nutzererfahrungen');
-  })
+  });
 
   it('should render 3 rating if more than 3 are returned', () => {
     expect(compiled.querySelectorAll('mat-accordion')).toHaveSize(1);
     expect(compiled.querySelectorAll('mat-accordion mat-expansion-panel')).toHaveSize(3);
-  })
+  });
 
   it('should render 4 stars correctly', () => {
     let rating = compiled.querySelectorAll('mat-accordion mat-expansion-panel').item(0);
@@ -78,20 +77,20 @@ describe('UserRatingsComponent', () => {
     expect(stars.item(2).textContent.trim()).toEqual("star");
     expect(stars.item(3).textContent.trim()).toEqual("star");
     expect(stars.item(4).textContent.trim()).toEqual("star_border");
-  })
+  });
 
   it('should render summary', () => {
     let rating = compiled.querySelectorAll('mat-accordion mat-expansion-panel').item(0);
     expect(rating.querySelector('#summary').textContent.trim()).toEqual("dummy summary");
-  })
+  });
 
   it('should render text', () => {
     let rating = compiled.querySelectorAll('mat-accordion mat-expansion-panel').item(0);
     expect(rating.querySelector('#text').textContent.trim()).toEqual("dummy text");
-  })
+  });
 
   it('should render username and date', () => {
     let rating = compiled.querySelectorAll('mat-accordion mat-expansion-panel').item(0);
     expect(rating.querySelector('#nameDate').textContent).toBe("– Max Mustermann, 09.01.2022");
-  })
+  });
 });
