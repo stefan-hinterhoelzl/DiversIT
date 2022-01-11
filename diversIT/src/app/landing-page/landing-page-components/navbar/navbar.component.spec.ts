@@ -1,16 +1,23 @@
 import { ChatServiceStub } from 'src/app/services/chat.service.mock';
-import { RouterTestingModule } from '@angular/router/testing';
 import { SnackbarComponent } from './../../../snackbar/snackbar.component';
 import { ObserversServiceStub } from './../../../services/observers.service.mock';
 import { ObserversService } from 'src/app/services/observers.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthServiceStub } from 'src/app/services/auth.service.mock';
-
 import { NavbarComponent } from './navbar.component';
 import { DebugElement } from '@angular/core';
 import { of } from 'rxjs';
 import { ChatService } from 'src/app/services/chat.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StickyNavModule } from 'ng2-sticky-nav';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
+import { AngularMaterialModule } from 'src/app/angular-material-module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -21,12 +28,23 @@ describe('NavbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavbarComponent],
-      imports: [RouterTestingModule],
       providers: [
         { provide: SnackbarComponent, useValue: {} },
         { provide: AuthService, useClass: AuthServiceStub },
         { provide: ObserversService, useClass: ObserversServiceStub },
         { provide: ChatService, useClass: ChatServiceStub }
+      ],
+      imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        StickyNavModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxScrollTopModule,
       ]
     })
       .compileComponents();

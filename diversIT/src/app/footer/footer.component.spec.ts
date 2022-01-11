@@ -1,4 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StickyNavModule } from 'ng2-sticky-nav';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
+import { AngularMaterialModule } from '../angular-material-module';
+import { AppRoutingModule } from '../app-routing.module';
 
 import { FooterComponent } from './footer.component';
 
@@ -9,7 +18,19 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FooterComponent]
+      declarations: [FooterComponent],
+      imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        StickyNavModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxScrollTopModule,
+      ]
     })
       .compileComponents();
   });

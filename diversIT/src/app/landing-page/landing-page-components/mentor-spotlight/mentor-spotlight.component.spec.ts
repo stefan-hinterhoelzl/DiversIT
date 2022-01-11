@@ -5,6 +5,15 @@ import { DiversITUser } from 'src/app/models/users.model';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
 import { MentorSpotlightComponent } from './mentor-spotlight.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StickyNavModule } from 'ng2-sticky-nav';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
+import { AngularMaterialModule } from 'src/app/angular-material-module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 describe('MentorSpotlightComponent', () => {
   let component: MentorSpotlightComponent;
@@ -30,25 +39,7 @@ describe('MentorSpotlightComponent', () => {
     mentees: []
   } as DiversITUser;
 
-  let mentor2 = {
-    uid: 'dummyUID2',
-    role: 2,
-    firstname: 'David',
-    lastname: 'Dummier',
-    gender: 'Männlich',
-    girlsOnlyMentor: false,
-    photoURL: '',
-    job: 'DevOps Engineer',
-    company: 'Dummy Inc.',
-    primaryEducation: 'Primary school',
-    secondaryEducation: 'Secondary school',
-    universityEducation: 'University',
-    backgroundInfo: ['dummy info 1', 'dummy info 2'],
-    maxMentees: 1,
-    mentees: ['dummyMenteeUID']
-  } as DiversITUser;
-
-  let promisedData = [mentor1];
+  let promisedData = [mentor1, mentor1];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -57,7 +48,19 @@ describe('MentorSpotlightComponent', () => {
         { provide: SnackbarComponent, useValue: {} },
         { provide: UserService, useClass: UserServiceStub }
       ],
-      imports: [RouterTestingModule]
+      imports: [
+        RouterTestingModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        StickyNavModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxScrollTopModule,
+      ]
     })
       .compileComponents();
   });
@@ -72,10 +75,6 @@ describe('MentorSpotlightComponent', () => {
 
     // check spy works
     expect(getAllMentorsPromiseSpy).toHaveBeenCalled();
-    getAllMentorsPromiseSpy.calls.mostRecent().returnValue.then(res => {
-      expect(res).toEqual(promisedData);
-      console.log(res);
-    });
 
     compiled = fixture.nativeElement;
   });
@@ -92,7 +91,7 @@ describe('MentorSpotlightComponent', () => {
     expect(compiled.querySelector('.container.section-title h2').textContent).toBe('Mentorinnen Spotlight');
   });
 
-  it('should render 1 mentor', () => {
+  it('should render 1 mentor when more than 1 are returned', () => {
     expect(compiled.querySelectorAll('mat-card')).toHaveSize(1);
   });
 });

@@ -1,8 +1,23 @@
+import { NavbarComponent } from './landing-page-components/navbar/navbar.component';
+import { FooterComponent } from './../footer/footer.component';
+import { UserRatingsComponent } from './landing-page-components/user-ratings/user-ratings.component';
+import { JobProfilesComponent } from './landing-page-components/job-profiles/job-profiles.component';
+import { MentorSpotlightComponent } from './landing-page-components/mentor-spotlight/mentor-spotlight.component';
+import { MissionComponent } from './landing-page-components/mission/mission.component';
 import { SnackbarComponent } from './../snackbar/snackbar.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LandingPageComponent } from './landing-page.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StickyNavModule } from 'ng2-sticky-nav';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
+import { AngularMaterialModule } from '../angular-material-module';
+import { AppRoutingModule } from '../app-routing.module';
 
 describe('LandingPageComponent', () => {
   let component: LandingPageComponent;
@@ -12,9 +27,24 @@ describe('LandingPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LandingPageComponent],
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        StickyNavModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxScrollTopModule,
+      ],
       providers: [
         SnackbarComponent,
+        MissionComponent,
+        FooterComponent,
+        NavbarComponent
       ]
     })
       .compileComponents();

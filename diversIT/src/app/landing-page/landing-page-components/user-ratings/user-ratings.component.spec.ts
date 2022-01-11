@@ -4,6 +4,15 @@ import { Rating } from './../../../models/rating.model';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RatingService } from 'src/app/services/rating.service';
 import { UserRatingsComponent } from './user-ratings.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StickyNavModule } from 'ng2-sticky-nav';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
+import { AngularMaterialModule } from 'src/app/angular-material-module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 describe('UserRatingsComponent', () => {
   let component: UserRatingsComponent;
@@ -27,6 +36,18 @@ describe('UserRatingsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UserRatingsComponent],
       providers: [{ provide: RatingService, useClass: RatingServiceStub }],
+      imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        StickyNavModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxScrollTopModule,
+      ]
     })
       .compileComponents();
   });
