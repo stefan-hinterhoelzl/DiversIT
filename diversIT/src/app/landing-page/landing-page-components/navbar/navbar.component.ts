@@ -31,20 +31,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
   }
 
-
-
   public onClick(elementId: string): void {
     this.viewportScroller.setOffset([0, 72.5])
     this.viewportScroller.scrollToAnchor(elementId);
 
   }
 
-  classApplied = false;
   loginApplied = false;
-
-  toggleClass() {
-    this.classApplied = !this.classApplied;
-  }
 
   toggleLogin() {
     this.loginApplied = !this.loginApplied;

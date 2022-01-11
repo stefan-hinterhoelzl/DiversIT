@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar.component';
 import { DebugElement } from '@angular/core';
 import { of } from 'rxjs';
 import { ChatService } from 'src/app/services/chat.service';
+import { debug } from 'console';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -98,22 +99,49 @@ describe('NavbarComponent', () => {
   it('should toggle loginApplied on click on Login', () => {
     setUpLoggedOut();
 
-    spyOn(component, 'toggleLogin').and.callThrough();
+    let spy = spyOn(component, 'toggleLogin').and.callThrough();
 
     const loginButton = debugElement.nativeElement.querySelector('#login .nav-link');
     expect(loginButton).toBeTruthy();
-    expect(component.toggleLogin).not.toHaveBeenCalled();
+    expect(spy).not.toHaveBeenCalled();
     expect(component.loginApplied).toBeFalsy();
 
     loginButton.click();
 
     expect(component.loginApplied).toBeTruthy();
-    expect(component.toggleLogin).toHaveBeenCalled();
-    expect(component.toggleLogin).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
 
     loginButton.click();
     expect(component.loginApplied).toBeFalsy();
-    expect(component.toggleLogin).toHaveBeenCalledTimes(2);
+    expect(spy).toHaveBeenCalledTimes(2);
+  });
+
+  it('should call logout method on click on Ausloggen', () => {
+    let spy = spyOn(component, 'logout').and.callThrough();
+    const logoutButton = debugElement.nativeElement.querySelector('#logout .nav-link');
+
+    logoutButton.click();
+
+    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should trigger onClick method with correct elementId on click on scroll nav items', () => {
+    let spy = spyOn(component, 'onClick').and.callThrough();
+
+    debugElement.nativeElement.querySelector('#homenav .nav-link').click();
+    debugElement.nativeElement.querySelector('#msnav .nav-link').click();
+    debugElement.nativeElement.querySelector('#jpnav .nav-link').click();
+    debugElement.nativeElement.querySelector('#missionnav .nav-link').click();
+    debugElement.nativeElement.querySelector('#urnav .nav-link').click();
+
+    expect(spy).toHaveBeenCalledTimes(5);
+    expect(spy).toHaveBeenCalledWith('home');
+    expect(spy).toHaveBeenCalledWith('mentor-spotlight');
+    expect(spy).toHaveBeenCalledWith('job-profiles');
+    expect(spy).toHaveBeenCalledWith('mission');
+    expect(spy).toHaveBeenCalledWith('user-ratings');
   });
 
   function setUpLoggedOut() {
