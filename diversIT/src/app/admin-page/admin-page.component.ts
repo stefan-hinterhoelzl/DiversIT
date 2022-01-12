@@ -130,23 +130,31 @@ export class AdminPageComponent implements OnInit {
   }
 
   setRatingDisplayTrue(element: Rating) {
-    this.ratingService.setDisplayTrue(element).then(() => {
+    this.loading.show()
+    this.ratingService.alterDisplaySetting(element).then(() => {
       this.nonDisplayedRatings = this.nonDisplayedRatings.filter((x) => x.userID != element.userID)
       this.dataSourceNonDisplayedRatings = new MatTableDataSource(this.nonDisplayedRatings);
       this.displayedRatings.push(element);
       this.dataSourceDisplayedRatings = new MatTableDataSource(this.displayedRatings);
+      this.loading.hide()
+      this.snackbar.openSnackBar("Rating wird auf der Landing Page angezeigt", "green-snackbar")
     }).catch(() => {
+      this.loading.hide()
       this.snackbar.openSnackBar("Aktion fehlgeschlagen", "red-snackbar");
     });
   }
 
   setRatingDisplayFalse(element: Rating) {
-    this.ratingService.setDisplayFalse(element).then(() => {
+    this.loading.show()
+    this.ratingService.alterDisplaySetting(element).then(() => {
       this.displayedRatings = this.displayedRatings.filter((x) => x.userID != element.userID)
       this.dataSourceDisplayedRatings = new MatTableDataSource(this.displayedRatings);
       this.nonDisplayedRatings.push(element);
       this.dataSourceNonDisplayedRatings = new MatTableDataSource(this.nonDisplayedRatings);
+      this.loading.hide()
+      this.snackbar.openSnackBar("Rating wird nicht mehr auf der Landing Page angezeigt", "green-snackbar")
     }).catch(() => {
+      this.loading.hide()
       this.snackbar.openSnackBar("Aktion fehlgeschlagen", "red-snackbar");
     });
   }

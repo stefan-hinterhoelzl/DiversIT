@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core"
+import { getApp } from "firebase/app";
 import { collection, doc, getDoc, getDocs, getFirestore, orderBy, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore"
+import { getFunctions, httpsCallable } from "firebase/functions";
 import { Rating } from "../models/rating.model"
 
 /**
@@ -14,6 +16,7 @@ import { Rating } from "../models/rating.model"
 export class RatingService {
 
     db = getFirestore(); /** Firestore connection variable */
+    functions = getFunctions(getApp()) /** Firestore Functions variable */
 
 
     /**
@@ -98,39 +101,14 @@ export class RatingService {
         return array;
     }
 
-
     /**
-     * revokes the permission to display a specific rating on the landingpage 
+     * alters the display setting for showing the rating on the landing page
      *
-     * @param {Rating} rating
-     * @returns {*}  
-     * @memberof RatingService
+     * @param rating the rating to be altered
+     * @returns
      */
-    async setDisplayFalse(rating: Rating) {
-        const q = query(collection(this.db, 'ratings'), where('userID', '==', rating.userID));
-        const querySnapshot = await getDocs(q);
-        const docRef = querySnapshot.docs[0].ref;
-
-        return updateDoc(docRef, {
-            displayOnLandingPage: false,
-        });
-    }
-
-
-    /**
-     * allows a rating to be displayed on the landingpage
-     *
-     * @param {Rating} rating
-     * @returns {*}  
-     * @memberof RatingService
-     */
-    async setDisplayTrue(rating: Rating) {
-        const q = query(collection(this.db, 'ratings'), where('userID', '==', rating.userID));
-        const querySnapshot = await getDocs(q);
-        const docRef = querySnapshot.docs[0].ref;
-
-        return updateDoc(docRef, {
-            displayOnLandingPage: true,
-        });
+    alterDisplaySetting(rating: Rating) {
+      const alterDisplaySettings = httpsCallable(this.functions, "alterDisplaySetting")
+      return alterDisplaySettings({userID: rating.userID, value: !rating.displayOnLandingPage})
     }
 }

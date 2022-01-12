@@ -105,6 +105,19 @@ export const mentorToMentee = functions.https.onCall((data, context) => {
   return batch.commit();
 })
 
+export const alterDisplaySetting = functions.https.onCall((data, context) => {
+  let ratingUserID: string = data.userID;
+  let value: boolean = data.value;
+
+  return admin.firestore().collection("ratings").where("userID", "==", ratingUserID).get()
+  .then((querySnapshot) => {
+    let ref = querySnapshot.docs[0].ref
+    ref.update({
+      displayOnLandingPage: value,
+    })
+  })
+})
+
 
 
 exports.aggregateThreads = functions.firestore
