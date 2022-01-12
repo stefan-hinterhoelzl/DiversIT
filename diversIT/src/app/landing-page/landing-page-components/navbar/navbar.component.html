@@ -1,20 +1,21 @@
-<nav class="navbar navbar-light" [class.active]="classApplied" ngStickyNav stickyClass="sticky-box-shadow">
+<nav class="navbar navbar-light" ngStickyNav stickyClass="sticky-box-shadow">
 	<div class="container">
 		<a class="navbar-brand" routerLink="/">Divers<span>IT</span></a>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav ml-auto">
 
-				<li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('home')">Home</span></li>
-				<li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('mentor-spotlight')">Mentor
+				<li id="homenav" class="nav-item"><span class="nav-link" (click)="onClick('home')">Home</span></li>
+				<li id="msnav" class="nav-item"><span class="nav-link" (click)="onClick('mentor-spotlight')">Mentor
 						Spotlight</span></li>
-				<li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('job-profiles')">Job-Profile</span>
+				<li id="jpnav" class="nav-item"><span class="nav-link"
+						(click)="onClick('job-profiles')">Job-Profile</span>
 				</li>
-				<li class="nav-item"><span class="nav-link" (click)="toggleClass(); onClick('mission')">Mission</span>
+				<li id="missionnav" class="nav-item"><span class="nav-link" (click)="onClick('mission')">Mission</span>
 				</li>
-				<li class="nav-item"><span class="nav-link"
-						(click)="toggleClass(); onClick('user-ratings')">Nutzererfahrungen</span>
+				<li id="urnav" class="nav-item"><span class="nav-link"
+						(click)="onClick('user-ratings')">Nutzererfahrungen</span>
 				</li>
-				<li class="nav-item"><span class="nav-link" (click)="toggleClass()" [routerLink]="['../forum']">Forum</span>
+				<li id="forumnav" class="nav-item"><span class="nav-link" [routerLink]="['../forum']">Forum</span>
 				</li>
 				<li id="login" *ngIf="currentUser === null" class="nav-item"><span class="nav-link"
 						(click)="toggleLogin()">Login</span></li>

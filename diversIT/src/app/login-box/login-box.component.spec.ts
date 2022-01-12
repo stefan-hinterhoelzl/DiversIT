@@ -1,25 +1,26 @@
+import { AuthServiceStub } from 'src/app/services/auth.service.mock';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { initializeApp } from 'firebase/app';
-import { environment } from 'src/environments/environment';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
-
 import { LoginBoxComponent } from './login-box.component';
+import { AuthService } from '../services/auth.service';
 
 describe('LoginBoxComponent', () => {
   let component: LoginBoxComponent;
   let fixture: ComponentFixture<LoginBoxComponent>;
 
-  beforeEach(async () => {    
-    let app = initializeApp(environment.firebaseConfig);
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginBoxComponent ],
-      providers: [ 
-        {provide: Router, useValue: {}},
-        {provide: SnackbarComponent, useValue: {}}
+      declarations: [LoginBoxComponent],
+      providers: [
+        { provide: SnackbarComponent, useValue: {} },
+        { provide: AuthService, useClass: AuthServiceStub }
+      ],
+      imports: [
+        RouterTestingModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

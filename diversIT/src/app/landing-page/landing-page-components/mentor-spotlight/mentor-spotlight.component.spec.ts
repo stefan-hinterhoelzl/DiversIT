@@ -1,34 +1,97 @@
+import { UserServiceStub } from './../../../services/user.service.mock';
+import { UserService } from 'src/app/services/user.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { DiversITUser } from 'src/app/models/users.model';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { initializeApp } from 'firebase/app';
 import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
-import { environment } from 'src/environments/environment';
-
 import { MentorSpotlightComponent } from './mentor-spotlight.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StickyNavModule } from 'ng2-sticky-nav';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
+import { AngularMaterialModule } from 'src/app/angular-material-module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 describe('MentorSpotlightComponent', () => {
   let component: MentorSpotlightComponent;
   let fixture: ComponentFixture<MentorSpotlightComponent>;
+  let compiled: HTMLElement;
+  let getAllMentorsPromiseSpy: jasmine.Spy;
+
+  let mentor1 = {
+    uid: 'dummyUID1',
+    role: 2,
+    firstname: 'Diana',
+    lastname: 'Dummy',
+    gender: 'Weiblich',
+    girlsOnlyMentor: true,
+    photoURL: '',
+    job: 'DevOps Engineer',
+    company: 'Dummy Inc.',
+    primaryEducation: 'Primary school',
+    secondaryEducation: 'Secondary school',
+    universityEducation: 'University',
+    backgroundInfo: ['dummy info 1', 'dummy info 2'],
+    maxMentees: -1,
+    mentees: []
+  } as DiversITUser;
+
+  let promisedData = [mentor1, mentor1];
 
   beforeEach(async () => {
-    let app = initializeApp(environment.firebaseConfig);
     await TestBed.configureTestingModule({
-      declarations: [ MentorSpotlightComponent ],
+      declarations: [MentorSpotlightComponent],
       providers: [
-        {provide: SnackbarComponent, useValue: {}},
-        {provide: Router, useValue: {}}
+        { provide: SnackbarComponent, useValue: {} },
+        { provide: UserService, useClass: UserServiceStub }
+      ],
+      imports: [
+        RouterTestingModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        StickyNavModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxScrollTopModule,
       ]
     })
-    .compileComponents();
+      .compileComponents();
+  });
+
+  beforeEach(async () => {
+    fixture = TestBed.createComponent(MentorSpotlightComponent);
+    component = fixture.componentInstance;
+
+    getAllMentorsPromiseSpy = spyOn(component['userService'], 'getAllMentorsPromise').and.returnValue(Promise.resolve(promisedData));
+
+    fixture.detectChanges();
+
+    // check spy works
+    expect(getAllMentorsPromiseSpy).toHaveBeenCalled();
+
+    compiled = fixture.nativeElement;
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MentorSpotlightComponent);
-    component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render title', () => {
+    expect(compiled.querySelector('.container.section-title h2').textContent).toBe('Mentorinnen Spotlight');
+  });
+
+  it('should render 1 mentor when more than 1 are returned', () => {
+    expect(compiled.querySelectorAll('mat-card')).toHaveSize(1);
   });
 });
