@@ -3,11 +3,11 @@ import { DiversITUser } from "../models/users.model";
 export class UserServiceStub {
 
     getAllMentorsPromise() {
-        return Promise.resolve([this.getMentor1(), this.getMentor1, this.getMentor2]);
+        return Promise.resolve([UserServiceStub.getDummyMentor1(), UserServiceStub.getDummyMentor2(), UserServiceStub.getDummyMentor3()]);
     }
 
-    private getMentor1(): DiversITUser {
-        let mentor1 = {
+    public static getDummyMentor1(): DiversITUser {
+        return {
             uid: 'dummyUID1',
             role: 2,
             firstname: 'Diana',
@@ -24,12 +24,10 @@ export class UserServiceStub {
             maxMentees: -1,
             mentees: []
         } as DiversITUser;
-
-        return mentor1;
     }
 
-    private getMentor2(): DiversITUser {
-        let mentor2 = {
+    public static getDummyMentor2(): DiversITUser {
+        return {
             uid: 'dummyUID2',
             role: 2,
             firstname: 'David',
@@ -46,8 +44,26 @@ export class UserServiceStub {
             maxMentees: 1,
             mentees: ['dummyMenteeUID']
         } as DiversITUser;
+    }
 
-        return mentor2;
+    public static getDummyMentor3(): DiversITUser {
+        return {
+            uid: 'dummyUID3',
+            role: 2,
+            firstname: 'Max',
+            lastname: 'Muste',
+            gender: 'Divers',
+            girlsOnlyMentor: true,
+            photoURL: '',
+            job: 'DevOps Engineer',
+            company: 'Dummy Inc.',
+            primaryEducation: 'Primary school',
+            secondaryEducation: 'Secondary school',
+            universityEducation: 'University',
+            backgroundInfo: ['dummy info 1', 'dummy info 2'],
+            maxMentees: -1,
+            mentees: []
+        } as DiversITUser;
     }
 
 }

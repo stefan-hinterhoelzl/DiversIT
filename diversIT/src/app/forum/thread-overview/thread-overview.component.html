@@ -1,6 +1,7 @@
 <div class="threadOverview">
     <mat-card>
-        <button mat-mini-fab aria-label="Forum anlegen" (click)="openDialogToCreateForum()" color="accent" style="color:white;">
+        <button mat-mini-fab aria-label="Forum anlegen" (click)="openDialogToCreateForum()" color="accent"
+            style="color:white;">
             <mat-icon>add</mat-icon>
         </button>
     </mat-card>
@@ -24,10 +25,12 @@
                 <div class="forumTitle" (click)="navigateToForumThread(t.uid)">{{t.title}}</div>
                 <div fxLayout="row">
                     <div fxFlex="50">
-                        <mat-chip *ngFor="let tag of t.tags" color="accent" class="small-chip" selected>{{tag}}</mat-chip>
+                        <mat-chip *ngFor="let tag of t.tags" color="accent" class="small-chip" selected>{{tag}}
+                        </mat-chip>
                     </div>
                     <div fxFlex class="changedAtCreatedAt">
-                        <span *ngIf="t.lastAnswer !== null">Letzter Antwort am: {{t.lastAnswerTime.toDate().toLocaleString()}} Uhr;</span>
+                        <span *ngIf="t.lastAnswer !== null">Letzte Antwort am:
+                            {{t.lastAnswerTime.toDate().toLocaleString()}} Uhr; </span>
                         <span>Erstellt am: {{t.created.toDate().toLocaleString()}}</span>
                     </div>
                 </div>

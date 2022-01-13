@@ -19,13 +19,14 @@ export class ForumThreadComponent implements OnInit {
 
   ngOnInit(): void {
     this.threadId = this.route.snapshot.paramMap.get('id')
-    this.forum.getThreadByUID(this.threadId).then( (data: Thread) => {
-        this.thread = data
-      }
+    this.forum.getThreadByUID(this.threadId).then((data: Thread) => {
+      this.thread = data
+    }
     )
     this.forum.getAnswers(this.threadId).then((data: Answer[]) => {
       this.answers = data;
     })
+    this.forum.incrementThreadViews(this.threadId)
   }
 
 }

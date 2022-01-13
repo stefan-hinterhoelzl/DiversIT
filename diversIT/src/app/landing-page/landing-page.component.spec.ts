@@ -28,7 +28,6 @@ describe('LandingPageComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LandingPageComponent],
       imports: [
-        RouterTestingModule,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
@@ -41,10 +40,13 @@ describe('LandingPageComponent', () => {
         NgxScrollTopModule,
       ],
       providers: [
-        SnackbarComponent,
-        MissionComponent,
-        FooterComponent,
-        NavbarComponent
+        { provide: MissionComponent, useValue: {} },
+        { provide: FooterComponent, useValue: {} },
+        { provide: NavbarComponent, useValue: {} },
+        { provide: SnackbarComponent, useValue: {} },
+        { provide: MentorSpotlightComponent, useValue: {} },
+        { provide: JobProfilesComponent, useValue: {} },
+        { provide: UserRatingsComponent, useValue: {} },
       ]
     })
       .compileComponents();
