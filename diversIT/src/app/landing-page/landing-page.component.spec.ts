@@ -41,10 +41,13 @@ describe('LandingPageComponent', () => {
         NgxScrollTopModule,
       ],
       providers: [
-        SnackbarComponent,
-        MissionComponent,
-        FooterComponent,
-        NavbarComponent
+        { provide: MissionComponent, useValue: {} },
+        { provide: FooterComponent, useValue: {} },
+        { provide: NavbarComponent, useValue: {} },
+        { provide: SnackbarComponent, useValue: {} },
+        { provide: MentorSpotlightComponent, useValue: {} },
+        { provide: JobProfilesComponent, useValue: {} },
+        { provide: UserRatingsComponent, useValue: {} },
       ]
     })
       .compileComponents();

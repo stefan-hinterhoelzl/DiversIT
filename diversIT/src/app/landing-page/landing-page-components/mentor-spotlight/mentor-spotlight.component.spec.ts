@@ -21,25 +21,7 @@ describe('MentorSpotlightComponent', () => {
   let compiled: HTMLElement;
   let getAllMentorsPromiseSpy: jasmine.Spy;
 
-  let mentor1 = {
-    uid: 'dummyUID1',
-    role: 2,
-    firstname: 'Diana',
-    lastname: 'Dummy',
-    gender: 'Weiblich',
-    girlsOnlyMentor: true,
-    photoURL: '',
-    job: 'DevOps Engineer',
-    company: 'Dummy Inc.',
-    primaryEducation: 'Primary school',
-    secondaryEducation: 'Secondary school',
-    universityEducation: 'University',
-    backgroundInfo: ['dummy info 1', 'dummy info 2'],
-    maxMentees: -1,
-    mentees: []
-  } as DiversITUser;
-
-  let promisedData = [mentor1, mentor1];
+  let promisedData = [UserServiceStub.getDummyMentor1(), UserServiceStub.getDummyMentor1()];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

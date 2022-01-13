@@ -26,9 +26,10 @@ export class JobProfilesComponent implements OnInit {
 
     await this.userService.getAllMentorsPromise().then(data => {
       this.mentors = data;
+      this.setJobProfilesMentors(this.jobProfilesList, data);
+
     });
 
-    this.setJobProfilesMentors(this.jobProfilesList, this.mentors);
 
   }
 
@@ -46,11 +47,7 @@ export class JobProfilesComponent implements OnInit {
 
   changeSelectionEvent(event: Event) {
     let value = (event.target as HTMLSelectElement).value;
-    if (this.selectedItems.includes(value)) {
-      this.selectedItems = this.selectedItems.filter(i => i != value);
-    } else {
-      this.selectedItems.push(value);
-    }
+    this.changeSelection(value);
   }
 
   initializeJobProfilesMentorsMap(jobProfiles: string[]) {
