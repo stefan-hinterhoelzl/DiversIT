@@ -1,0 +1,22 @@
+TITLE:
+ADR007 - How to register for DiversIT
+
+
+STATUS:
+Accepted
+
+
+CONTEXT:
+Clarification of the questions whether a login should be implemented by the team or whether the social login which Firebase offers should be used.
+In addition, it should be clarified which authentication providers should be selected for the social login, if the social login is chosen.
+
+
+DECISION:
+It was decided to use the social login from Firebase, because a lot of programming work is omitted and the login works via many different providers. 
+As login providers, three common providers (Google, Facebook and GitHub) were chosen, as the team believes that almost everyone has an account on these platforms.
+
+
+CONSEQUENCES:
+User must have a Google, Facebook or GitHub account.
+
+
