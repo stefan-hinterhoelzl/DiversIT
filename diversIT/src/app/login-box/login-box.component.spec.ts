@@ -32,4 +32,12 @@ describe('LoginBoxComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('socialLogin should call service with provider', () => {
+    let spy = spyOn(component['auth'], 'socialLogin');
+
+    component.socialLogin('google');
+    expect(spy).toHaveBeenCalledWith('google');
+  });
+
 });

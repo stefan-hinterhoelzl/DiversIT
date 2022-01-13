@@ -28,7 +28,6 @@ describe('LandingPageComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LandingPageComponent],
       imports: [
-        RouterTestingModule,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
