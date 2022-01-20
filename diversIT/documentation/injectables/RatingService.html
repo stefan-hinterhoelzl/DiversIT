@@ -37,6 +37,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Injectables</li>
   <li >RatingService</li>
@@ -565,6 +566,12 @@
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Firestore connection variable</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -588,8 +595,8 @@ import { Rating } from &quot;../models/rating.model&quot;
     providedIn: &#x27;root&#x27;
 })
 export class RatingService {
-
-    db &#x3D; getFirestore(); /** Firestore connection variable */
+    /** Firestore connection variable */
+    db &#x3D; getFirestore(); 
 
 
     /**

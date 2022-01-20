@@ -18,9 +18,10 @@ import { ObserversService } from "./observers.service";
     providedIn: 'root'
   })
   export class PostsService implements OnDestroy {
-
-    db = getFirestore(); /** connection to firebase */
-    unsubscribeFromPosts; /** global variable which is needed to unsubscribe the observer */
+    /** connection to firebase */
+    db = getFirestore(); 
+    /** global variable which is needed to unsubscribe the observer */
+    unsubscribeFromPosts; 
 
     /**
      * Creates an instance of PostsService.

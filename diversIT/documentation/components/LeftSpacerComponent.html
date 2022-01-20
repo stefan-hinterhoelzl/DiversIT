@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This is just a component used for spacing at the moment, this space containes the posts of a user</p>
+
+    </p>
 
 
 
@@ -127,10 +134,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/profile-page/left-spacer/left-spacer.component.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/profile-page/left-spacer/left-spacer.component.ts:14</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of LeftSpacerComponent. Not used at the moment as it is just spacing the content.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -145,8 +158,14 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component} from &#x27;@angular/core&#x27;;
 
+/**
+ * This is just a component used for spacing at the moment, this space containes the posts of a user
+ *
+ * @export
+ * @class LeftSpacerComponent
+ */
 @Component({
   selector: &#x27;app-left-spacer&#x27;,
   templateUrl: &#x27;./left-spacer.component.html&#x27;,
@@ -154,6 +173,10 @@
 })
 export class LeftSpacerComponent{
 
+  /**
+   * Creates an instance of LeftSpacerComponent. Not used at the moment as it is just spacing the content.
+   * @memberof LeftSpacerComponent
+   */
   constructor() { }
 
 
@@ -204,6 +227,7 @@ export class LeftSpacerComponent{
     var ACTUAL_COMPONENT = {'name': 'LeftSpacerComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

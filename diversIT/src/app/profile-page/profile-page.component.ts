@@ -32,12 +32,19 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
    */
   constructor(private firestore: UserService, private route: ActivatedRoute, private observer: ObserversService, private postService: PostsService) { }
 
+  /** subscription of the user navigating the application */
   currentUserSubscription: Subscription;
+  /** subscription of the route the user is on */
   currentRouteSubscription: Subscription;
+  /** subscription to the posts of a user */
   currentPostSubscription: Subscription;
+  /** the object of the user navigating the application */
   currentUser: DiversITUser;
+  /** the displayed user of the profilepage */
   alternateUser: DiversITUser;
+  /** a gloabl boolean which is set true when the currentuser is viewing it's own profile */
   ownProfile: boolean;
+  /** List of all posts */
   posts: Post[];
 
 

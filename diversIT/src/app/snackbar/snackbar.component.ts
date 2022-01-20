@@ -1,30 +1,23 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
+/**
+ *  snackbar component can be used to alert the user of some circumstance
+ * @class SnackbarComponent
+ */
 @Component({
   selector: 'app-snackbar',
   templateUrl: './snackbar.component.html',
   styleUrls: ['./snackbar.component.scss']
 })
-
-/**
- *  snackbar component can be used to alert the user of some circumstance
- * @class SnackbarComponent
- */
 export class SnackbarComponent {
 
-
-  /**
-   * variable for timeout - not supposed to be changed
-   */
+  /** variable for timeout - not supposed to be changed */
   timeOut = 5000;
-
-
 
   /**
    * Creates an instance of SnackbarComponent.
-   * @param {MatSnackBar} snackBar
+   * @param {MatSnackBar} snackBar Service to dispatch Material Design snack bar messages
    * @memberof SnackbarComponent
    */
   constructor(

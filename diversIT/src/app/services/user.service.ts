@@ -44,10 +44,13 @@ export class UserService implements OnDestroy {
     if (this.usersub != null) this.usersub();
   }
 
+  /** connection to database */
   db = getFirestore();
+  /** connection to authenticationserver */
   auth = getAuth();
+  /** subscription of user */
   usersub;
-  // chatsub;
+  /** subscription of posts */
   postssub;
 
 

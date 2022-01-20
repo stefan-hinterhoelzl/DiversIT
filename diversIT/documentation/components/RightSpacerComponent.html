@@ -68,14 +68,15 @@
 </p>
 
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+        <p>This is just a component used for spacing at the moment - profile page is split into four columns - this is one of them</p>
+
     </p>
+
+
 
 
 <section>
@@ -121,33 +122,6 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
 
     <section>
     <h3 id="constructor">Constructor</h3>
@@ -160,10 +134,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/profile-page/right-spacer/right-spacer.component.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/profile-page/right-spacer/right-spacer.component.ts:15</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of RightSpacerComponent. Not used at the moment as this is just a spacer</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -172,67 +152,35 @@
 
 
 
-    <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
 
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/profile-page/right-spacer/right-spacer.component.ts:12</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component} from &#x27;@angular/core&#x27;;
 
+/**
+ * This is just a component used for spacing at the moment - profile page is split into four columns - this is one of them
+ *
+ * @export
+ * @class RightSpacerComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-right-spacer&#x27;,
   templateUrl: &#x27;./right-spacer.component.html&#x27;,
   styleUrls: [&#x27;./right-spacer.component.scss&#x27;]
 })
-export class RightSpacerComponent implements OnInit {
+export class RightSpacerComponent {
 
+
+  /**
+   * Creates an instance of RightSpacerComponent. Not used at the moment as this is just a spacer
+   * @memberof RightSpacerComponent
+   */
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }
 </code></pre>
@@ -281,6 +229,7 @@ export class RightSpacerComponent implements OnInit {
     var ACTUAL_COMPONENT = {'name': 'RightSpacerComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

@@ -12,8 +12,8 @@ import { Rating } from "../models/rating.model"
     providedIn: 'root'
 })
 export class RatingService {
-
-    db = getFirestore(); /** Firestore connection variable */
+    /** Firestore connection variable */
+    db = getFirestore(); 
 
 
     /**

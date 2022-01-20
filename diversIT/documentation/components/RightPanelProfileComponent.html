@@ -68,14 +68,16 @@
 </p>
 
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+        <p>This is just a component used for spacing at the moment, this space contains the right side of the component and holds ratings and maybe advertisement</p>
+<p>profile page is split into four columns - this is one of them</p>
+
     </p>
+
+
 
 
 <section>
@@ -126,20 +128,6 @@
     <table class="table table-sm table-bordered index-table">
         <tbody>
 
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -177,10 +165,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/profile-page/right-panel/right-panel.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/profile-page/right-panel/right-panel.component.ts:21</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of RightPanelProfileComponent.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -203,9 +197,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/profile-page/right-panel/right-panel.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/profile-page/right-panel/right-panel.component.ts:19</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A Userobject which is passed down to avoid fetching it again</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -224,80 +224,56 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/profile-page/right-panel/right-panel.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/profile-page/right-panel/right-panel.component.ts:21</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The profile of the user navigating the Application. Used to check if the viewed profil is the own down the line.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
 
 
 
-    <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
 
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/app/profile-page/right-panel/right-panel.component.ts:16</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { DiversITUser } from &#x27;src/app/models/users.model&#x27;;
-
+/**
+ * This is just a component used for spacing at the moment, this space contains the right side of the component and holds ratings and maybe advertisement
+ * 
+ * profile page is split into four columns - this is one of them
+ *
+ * @export
+ * @class RightPanelProfileComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-right-panel-profile&#x27;,
   templateUrl: &#x27;./right-panel.component.html&#x27;,
   styleUrls: [&#x27;./right-panel.component.scss&#x27;]
 })
-export class RightPanelProfileComponent implements OnInit {
-
+export class RightPanelProfileComponent {
+  /** A Userobject which is passed down to avoid fetching it again */
   @Input() currentUser: DiversITUser;
+  /** The profile of the user navigating the Application. Used to check if the viewed profil is the own down the line. */
   @Input() ownProfile: boolean;
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  
+  /**
+   * Creates an instance of RightPanelProfileComponent.
+   * @memberof RightPanelProfileComponent
+   */
+  constructor() { }
 
 }
 </code></pre>
@@ -350,6 +326,7 @@ export class RightPanelProfileComponent implements OnInit {
     var ACTUAL_COMPONENT = {'name': 'RightPanelProfileComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 /**
- * The Component of the Admin Page
+ * The Component of the Admin Page accessible only by users with the role admin under the route /admin
  * @export
  * @class AdminPageComponent
  * @implements {OnInit}
@@ -19,7 +19,7 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
 })
 export class AdminPageComponent implements OnInit {
 
-
+  
   users: DiversITUser[]
   admins: DiversITUser[]
   mentees: DiversITUser[]
