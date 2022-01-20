@@ -14,8 +14,8 @@ export class UserRatingsComponent implements OnInit {
 
   constructor(private ratingService: RatingService) { }
 
-  ngOnInit() {
-    this.ratingService.getDisplayedRatings().then((data) => {
+  async ngOnInit() {
+    await this.ratingService.getDisplayedRatings().then((data) => {
       this.ratings = data.sort(() => .5 - Math.random()).slice(0, this.numberOfRatings)
     });
   }

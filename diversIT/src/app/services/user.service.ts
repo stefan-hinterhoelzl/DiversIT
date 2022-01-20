@@ -7,6 +7,8 @@ import { ChatService } from './chat.service';
 import { ObserversService } from './observers.service';
 import { NotificationService } from './notification.service';
 import { PostsService } from './posts.service';
+import { getFunctions, httpsCallable } from 'firebase/functions';
+import { getApp } from 'firebase/app';
 
 
 /**
@@ -48,6 +50,8 @@ export class UserService implements OnDestroy {
   db = getFirestore();
   /** connection to authenticationserver */
   auth = getAuth();
+  /** instance of Firebase functions */
+  functions = getFunctions(getApp())
   /** subscription of user */
   usersub;
   /** subscription of posts */
@@ -145,7 +149,7 @@ export class UserService implements OnDestroy {
   }
 
 
-  
+
   /**
    *  returns the current user and subscribes to some observables
    * @param {User} user Object of Type {User}
@@ -289,16 +293,12 @@ export class UserService implements OnDestroy {
   /**
    *  function which is only used for testing - should not be implemented for production builds and will be deleted
    * @param {DiversITUser} user object to promote to Mentor based on object's id
-   * @returns {*}  
+   * @returns {*}
    * @memberof UserService
    */
   async promoteMenteeToMentor(user: DiversITUser) {
-    const docRef = doc(this.db, 'users', user.uid)
-
-    return updateDoc(docRef, {
-      role: 2,
-      mentors: []
-    });
+    const menteeToMentor = httpsCallable(this.functions, "menteeToMentor")
+    return menteeToMentor({user: user.uid, mentors: user.mentors})
   }
 
 
@@ -309,12 +309,8 @@ export class UserService implements OnDestroy {
    * @memberof UserService
    */
   async demoteMenteeToMentor(user: DiversITUser) {
-    const docRef = doc(this.db, 'users', user.uid)
-
-    return updateDoc(docRef, {
-      role: 3,
-      mentees: []
-    });
+    const mentorToMentee = httpsCallable(this.functions, "mentorToMentee")
+    return mentorToMentee({user: user.uid, mentees: user.mentees})
   }
 
 }

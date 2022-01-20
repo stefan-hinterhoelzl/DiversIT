@@ -7,9 +7,16 @@
 
   </mat-form-field>
   <mat-form-field *ngIf="data.placeholderForInput" appearance="fill" style="width: 100%;" >
-    <mat-label >{{data.placeholderForInput}}</mat-label>
+    <mat-label>{{data.placeholderForInput}}</mat-label>
     <input  matInput [(ngModel)]="data.inputValue" style="width: 100%;"/>
-</mat-form-field>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="data.placeholderForSelectValues" appearance="fill" style="width: 100%;">
+    <mat-label>{{data.placeholderForSelectName}}:</mat-label>
+    <mat-select multiple [(ngModel)]="data.inputSelectValues" style="width: 100%;">
+        <mat-option *ngFor="let element of data.placeholderForSelectValues" [value]="element">{{element}}</mat-option>
+    </mat-select> 
+  </mat-form-field>
 </div>
 <div mat-dialog-actions style="display: flex; flex-direction: row; justify-content: space-around;">
   <button  mat-raised-button (click)="onNoClick()">{{data.buttonTextAbort ? data.buttonTextAbort : "Abbrechen"}}</button>

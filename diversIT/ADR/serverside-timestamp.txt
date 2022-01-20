@@ -1,0 +1,21 @@
+TITLE:
+ADR005 - Using serverside timestamps instead of clientside models in database models
+
+
+STATUS:
+Accepted
+
+
+CONTEXT:
+While it is rather easy to save client side server timestamp in the database they create risks. Users can viciously or unwillingly save wrong timestamps into the database which creates false data in the system.
+
+
+DECISION:
+Only serverside timestamps are used in the database.
+
+
+CONSEQUENCES:
+The firestore database can only insert timestamps into directly indexed fields. Indexes in arrays are not indexed, only toplevel fields or Maps with up to 20 levels deep. For this reason the data models have to be constructed in a way,
+where no timestamps in arrays are necessary.
+
+

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Chat, Message } from '../models/chat.model';
 import { Post } from '../models/post.model';
 import { DiversITUser } from '../models/users.model';
@@ -55,6 +55,10 @@ export class ObserversService {
 
   get getChatsValue(): Chat[] {
     return this.chats.value;
+  }
+
+  get getCurrentUserStatus(): Observable<DiversITUser> {
+    return this.currentUserStatus;
   }
 
   get getcurrenUserValue(): DiversITUser {

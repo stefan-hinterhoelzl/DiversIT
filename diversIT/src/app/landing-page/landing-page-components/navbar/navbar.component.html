@@ -1,32 +1,29 @@
-<nav class="navbar navbar-light" [class.active]="classApplied" ngStickyNav stickyClass="sticky-box-shadow">
-        <div class="container">
-                <a class="navbar-brand" routerLink="/">Divers<span>IT</span></a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
+<nav class="navbar navbar-light" ngStickyNav stickyClass="sticky-box-shadow">
+	<div class="container">
+		<a class="navbar-brand" routerLink="/">Divers<span>IT</span></a>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
 
-                                <li class="nav-item"><span class="nav-link"
-                                                (click)="toggleClass(); onClick('home')">Home</span></li>
-                                <li class="nav-item"><span class="nav-link"
-                                                (click)="toggleClass(); onClick('mentor-spotlight')">Mentor
-                                                Spotlight</span></li>
-                                <li class="nav-item"><span class="nav-link"
-                                                (click)="toggleClass(); onClick('job-profiles')">Job-Profile</span></li>
-                                <li class="nav-item"><span class="nav-link"
-                                                (click)="toggleClass(); onClick('mission')">Mission</span>
-                                </li>
-                                <li class="nav-item"><span class="nav-link"
-                                                (click)="toggleClass(); onClick('user-ratings')">Nutzererfahrungen</span>
-                                </li>
-                                <li class="nav-item"><span class="nav-link" (click)="toggleClass()"
-                                                [routerLink]="['../forum']">Forum</span>
-                                </li>
-                                <li *ngIf="currentUser === null" class="nav-item"><span class="nav-link"
-                                                (click)="toggleLogin()">Login</span></li>
-                                <li *ngIf="currentUser !== null" class="nav-item"><span class="nav-link"
-                                                (click)="logout()">Ausloggen</span></li>
-                        </ul>
-                </div>
-        </div>
-        <app-login-box *ngIf="loginApplied" style="justify-self: right; justify-content: right;">
-        </app-login-box>
+				<li id="homenav" class="nav-item"><span class="nav-link" (click)="onClick('home')">Home</span></li>
+				<li id="msnav" class="nav-item"><span class="nav-link" (click)="onClick('mentor-spotlight')">Mentor
+						Spotlight</span></li>
+				<li id="jpnav" class="nav-item"><span class="nav-link"
+						(click)="onClick('job-profiles')">Job-Profile</span>
+				</li>
+				<li id="missionnav" class="nav-item"><span class="nav-link" (click)="onClick('mission')">Mission</span>
+				</li>
+				<li id="urnav" class="nav-item"><span class="nav-link"
+						(click)="onClick('user-ratings')">Nutzererfahrungen</span>
+				</li>
+				<li id="forumnav" class="nav-item"><span class="nav-link" [routerLink]="['../forum']">Forum</span>
+				</li>
+				<li id="login" *ngIf="currentUser === null" class="nav-item"><span class="nav-link"
+						(click)="toggleLogin()">Login</span></li>
+				<li id="logout" *ngIf="currentUser !== null" class="nav-item"><span class="nav-link"
+						(click)="logout()">Ausloggen</span></li>
+			</ul>
+		</div>
+	</div>
+	<app-login-box *ngIf="loginApplied" style="justify-self: right; justify-content: right;">
+	</app-login-box>
 </nav>

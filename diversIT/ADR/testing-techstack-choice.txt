@@ -1,0 +1,29 @@
+TITLE:
+ADR006 - Choice of testing techstack
+
+
+STATUS:
+Accepted
+
+
+CONTEXT:
+For this project the team needs to settle on a techsteck for automated testing. Several testing frameworks and test runners are available,
+for would make sense for a project that is mainly implemented in Angular.
+For automated tests on unit, integration and end-to-end level, for example frameworks like Jest, Mocha, Jasmine with Karma, Cypress and 
+Puppeteer are available.
+
+For end-to-end UI tests, previous versions of Angular came with the framework Protractor already included, when using Angular CLI.
+For latest Angular versions, this is no longer the case. Protractor is now deprecated and a more modern alternative is Cypress.
+
+
+DECISION:
+For Angular, Jasmine is the recommended testing framework for unit tests. Angular CLI comes by default with Jasmine and Karma as the test runner.
+Even though e.g. Jest, which was developed for React, would also be a valid option with some advantages, the team did not see a big enough reason 
+that would justify deviating from the recommended standard. Jasmine and Karma also work very well together.
+
+For end-to-end UI tests, the team decided to follow Angulars recommendation to replace the deprecated Protractor framework with Cypress.
+
+
+CONSEQUENCES:
+None expected, except lock-in of having to transfer existing tests in case a switch do a different tech stack would be necessary.
+In general, moving from Jasmine to Jest is considered to be relatively straightforward. 

@@ -1,27 +1,24 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { initializeApp } from 'firebase/app';
-import { environment } from 'src/environments/environment';
-
+import { MatDialog } from '@angular/material/dialog';
 import { ThreadOverviewComponent } from './thread-overview.component';
+import { ForumServiceStub } from 'src/app/services/forum.service.mock';
+import { ForumService } from 'src/app/services/forum.service';
 
 describe('ThreadOverviewComponent', () => {
   let component: ThreadOverviewComponent;
   let fixture: ComponentFixture<ThreadOverviewComponent>;
 
-  class MockRouter {
-
-  }
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThreadOverviewComponent ],
+      declarations: [ThreadOverviewComponent],
       providers: [
-        {provide: Router, useClass: MockRouter}
-      ]
+        { provide: MatDialog, useValue: {} },
+        { provide: ForumService, useClass: ForumServiceStub }
+      ],
+      imports: [RouterTestingModule]
     })
-    .compileComponents();
-    let app = initializeApp(environment.firebaseConfig);
+      .compileComponents();
   });
 
   beforeEach(() => {
