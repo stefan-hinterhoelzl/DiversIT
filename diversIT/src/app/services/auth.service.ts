@@ -6,16 +6,37 @@ import { UserService } from './user.service';
 
 
 
+/**
+ * Service to take care of authentication
+ *
+ * @export
+ * @class AuthService
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+
+  /**
+   * Creates an instance of AuthService.
+   * @param {Router} router
+   * @param {UserService} firestore
+   * @param {SnackbarComponent} snackbar
+   * @memberof AuthService
+   */
   constructor(private router: Router, 
     private firestore: UserService, 
     private snackbar: SnackbarComponent) {}
 
 
+
+  /**
+   * Authenticates a Firebase client using a popup-based OAuth authentication flow.
+   *
+   * @param {string} socialProvider string of provider. either facebook, google or github
+   * @memberof AuthService
+   */
   socialLogin(socialProvider: string) {
 
     const auth = getAuth();
@@ -45,6 +66,13 @@ export class AuthService {
     });
   }
 
+
+
+  /**
+   * Signs the user out and navigates the user to the landingpage.
+   *
+   * @memberof AuthService
+   */
   logout() {
     const auth = getAuth();
     auth.signOut().then(()=> {
@@ -53,6 +81,13 @@ export class AuthService {
     });
   }
 
+
+  /**
+   * used to get the current signed in user
+   * 
+   * @return {*} the current signed in user 
+   * @memberof AuthService
+   */
   getAuthUserObject() {
     const auth = getAuth();
     return auth.currentUser;

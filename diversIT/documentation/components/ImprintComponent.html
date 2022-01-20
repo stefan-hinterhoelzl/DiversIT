@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>static content class for displaying the imprint of diverIT</p>
+
+    </p>
 
 
 
@@ -127,10 +134,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/imprint/imprint.component.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/imprint/imprint.component.ts:14</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of ImprintComponent.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -147,6 +160,12 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 
+/**
+ * static content class for displaying the imprint of diverIT
+ *
+ * @export
+ * @class ImprintComponent
+ */
 @Component({
   selector: &#x27;app-imprint&#x27;,
   templateUrl: &#x27;./imprint.component.html&#x27;,
@@ -154,6 +173,10 @@
 })
 export class ImprintComponent {
 
+  /**
+   * Creates an instance of ImprintComponent.
+   * @memberof ImprintComponent
+   */
   constructor() { }
 
 }

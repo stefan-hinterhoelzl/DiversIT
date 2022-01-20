@@ -34,8 +34,8 @@ export class DialogComponent {
         buttonTextAbort: "Abbrechen",
       },
     })
-   * @param {MatDialogRef<DialogComponent>} dialogRef
-   * @param {Dialog} data
+   * @param {MatDialogRef<DialogComponent>} dialogRef Reference to a Dialoge opened by the Material Dialog Service
+   * @param {Dialog} data Data to be displayed in the Dialog, should have the objecttype Dialog from the folder interfaces
    * @memberof DialogComponent
    */
   constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Dialog,) { }

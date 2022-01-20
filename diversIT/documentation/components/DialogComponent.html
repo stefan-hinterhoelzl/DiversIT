@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Template Dialog/Modal. Cann be used throughout the page without reinventing the dialog implementation.</p>
+
+    </p>
 
 
 
@@ -173,12 +180,27 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/dialog/dialog.component.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/dialog/dialog.component.ts:16</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of DialogComponent.</p>
+<p>Each value of data can be left out, if it is deemed unnecessary.</p>
+<p>width: &quot;30%&quot;,
+data: {
+header: &quot;Mentorenschaft beantragen&quot;,
+text: &quot;Schreibe ein paar Worte über dich, damit dein Mentor dich direkt kennenlernt.&quot;,
+placeholderForInputArea: &quot;Platzhalter Textarea&quot;,
+inputAreaValue: &quot;Inhalt der Textarea&quot;,
+placeholderForInput: &quot;Platzhalter Textfield&quot;,
+inputValue: &quot;Hallo Welt!&quot;,
+buttonTextConfirm: &quot;Anfrage senden&quot;,
+buttonTextAbort: &quot;Abbrechen&quot;,
+},
+})</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -187,6 +209,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -201,6 +224,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Reference to a Dialoge opened by the Material Dialog Service</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>data</td>
@@ -213,9 +240,30 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Data to be displayed in the Dialog, should have the objecttype Dialog from the folder interfaces</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
+                                    <b>Example :</b>
+                                        <div>
+                                            <p>this.dialog.open(DialogComponent, {
+width: &quot;30%&quot;,
+data: {
+header: &quot;Mentorenschaft beantragen&quot;,
+text: &quot;Schreibe ein paar Worte über dich, damit dein Mentor dich direkt kennenlernt.&quot;,
+placeholderForInputArea: &quot;Platzhalter Textarea&quot;,
+inputAreaValue: &quot;Inhalt der Textarea&quot;,
+placeholderForInput: &quot;Platzhalter Textfield&quot;,
+inputValue: &quot;Hallo Welt!&quot;,
+buttonTextConfirm: &quot;Anfrage senden&quot;,
+buttonTextAbort: &quot;Abbrechen&quot;,
+},
+})</p>
+
+                                        </div>
                             </div>
                     </td>
                 </tr>
@@ -252,14 +300,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/app/dialog/dialog.component.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/dialog/dialog.component.ts:49</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>closes the Dialoge and does not return data.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -304,10 +354,15 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/dialog/dialog.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/dialog/dialog.component.ts:41</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">Data to be displayed in the Dialog, should have the objecttype Dialog from the folder interfaces</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -331,10 +386,15 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/dialog/dialog.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/dialog/dialog.component.ts:41</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">Reference to a Dialoge opened by the Material Dialog Service</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -348,6 +408,12 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from &#x27;@angular/material/dialog&#x27;;
 import { Dialog } from &#x27;../models/dialog.model&#x27;;
 
+/**
+ * Template Dialog/Modal. Cann be used throughout the page without reinventing the dialog implementation.
+ *
+ * @export
+ * @class DialogComponent
+ */
 @Component({
   selector: &#x27;app-dialog&#x27;,
   templateUrl: &#x27;./dialog.component.html&#x27;,
@@ -355,9 +421,37 @@ import { Dialog } from &#x27;../models/dialog.model&#x27;;
 })
 export class DialogComponent {
 
+
+  /**
+   * Creates an instance of DialogComponent. 
+   * 
+   * Each value of data can be left out, if it is deemed unnecessary.
+   * 
+   * @example this.dialog.open(DialogComponent, {
+      width: &quot;30%&quot;,
+      data: {
+        header: &quot;Mentorenschaft beantragen&quot;,
+        text: &quot;Schreibe ein paar Worte über dich, damit dein Mentor dich direkt kennenlernt.&quot;,
+        placeholderForInputArea: &quot;Platzhalter Textarea&quot;,
+        inputAreaValue: &quot;Inhalt der Textarea&quot;,
+        placeholderForInput: &quot;Platzhalter Textfield&quot;,
+        inputValue: &quot;Hallo Welt!&quot;,
+        buttonTextConfirm: &quot;Anfrage senden&quot;,
+        buttonTextAbort: &quot;Abbrechen&quot;,
+      },
+    })
+   * @param {MatDialogRef&lt;DialogComponent&gt;} dialogRef Reference to a Dialoge opened by the Material Dialog Service
+   * @param {Dialog} data Data to be displayed in the Dialog, should have the objecttype Dialog from the folder interfaces
+   * @memberof DialogComponent
+   */
   constructor(public dialogRef: MatDialogRef&lt;DialogComponent&gt;, @Inject(MAT_DIALOG_DATA) public data: Dialog,) { }
 
 
+  /**
+   * closes the Dialoge and does not return data.
+   *
+   * @memberof DialogComponent
+   */
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -376,9 +470,16 @@ export class DialogComponent {
 
   &lt;/mat-form-field&gt;
   &lt;mat-form-field *ngIf&#x3D;&quot;data.placeholderForInput&quot; appearance&#x3D;&quot;fill&quot; style&#x3D;&quot;width: 100%;&quot; &gt;
-    &lt;mat-label &gt;{{data.placeholderForInput}}&lt;/mat-label&gt;
+    &lt;mat-label&gt;{{data.placeholderForInput}}&lt;/mat-label&gt;
     &lt;input  matInput [(ngModel)]&#x3D;&quot;data.inputValue&quot; style&#x3D;&quot;width: 100%;&quot;/&gt;
-&lt;/mat-form-field&gt;
+  &lt;/mat-form-field&gt;
+
+  &lt;mat-form-field *ngIf&#x3D;&quot;data.placeholderForSelectValues&quot; appearance&#x3D;&quot;fill&quot; style&#x3D;&quot;width: 100%;&quot;&gt;
+    &lt;mat-label&gt;{{data.placeholderForSelectName}}:&lt;/mat-label&gt;
+    &lt;mat-select multiple [(ngModel)]&#x3D;&quot;data.inputSelectValues&quot; style&#x3D;&quot;width: 100%;&quot;&gt;
+        &lt;mat-option *ngFor&#x3D;&quot;let element of data.placeholderForSelectValues&quot; [value]&#x3D;&quot;element&quot;&gt;{{element}}&lt;/mat-option&gt;
+    &lt;/mat-select&gt; 
+  &lt;/mat-form-field&gt;
 &lt;/div&gt;
 &lt;div mat-dialog-actions style&#x3D;&quot;display: flex; flex-direction: row; justify-content: space-around;&quot;&gt;
   &lt;button  mat-raised-button (click)&#x3D;&quot;onNoClick()&quot;&gt;{{data.buttonTextAbort ? data.buttonTextAbort : &quot;Abbrechen&quot;}}&lt;/button&gt;
@@ -418,7 +519,7 @@ export class DialogComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><h1 mat-dialog-title>{{data.header}}</h1><div mat-dialog-content style="width: 100%;">  <p>{{data.text}} </p>  <mat-form-field *ngIf="data.placeholderForInputArea" appearance="fill" style="width: 100%;" >    <mat-label >{{data.placeholderForInputArea}}</mat-label>    <textarea  matInput [(ngModel)]="data.inputAreaValue" style="width: 100%;"></textarea>  </mat-form-field>  <mat-form-field *ngIf="data.placeholderForInput" appearance="fill" style="width: 100%;" >    <mat-label >{{data.placeholderForInput}}</mat-label>    <input  matInput [(ngModel)]="data.inputValue" style="width: 100%;"/></mat-form-field></div><div mat-dialog-actions style="display: flex; flex-direction: row; justify-content: space-around;">  <button  mat-raised-button (click)="onNoClick()">{{data.buttonTextAbort ? data.buttonTextAbort : "Abbrechen"}}</button>  <button  mat-raised-button color="accent" [mat-dialog-close]="data" cdkFocusInitial >{{data.buttonTextConfirm ? data.buttonTextConfirm : "Bestätigen"}}</button></div></div>'
+        var COMPONENT_TEMPLATE = '<div><h1 mat-dialog-title>{{data.header}}</h1><div mat-dialog-content style="width: 100%;">  <p>{{data.text}} </p>  <mat-form-field *ngIf="data.placeholderForInputArea" appearance="fill" style="width: 100%;" >    <mat-label >{{data.placeholderForInputArea}}</mat-label>    <textarea  matInput [(ngModel)]="data.inputAreaValue" style="width: 100%;"></textarea>  </mat-form-field>  <mat-form-field *ngIf="data.placeholderForInput" appearance="fill" style="width: 100%;" >    <mat-label>{{data.placeholderForInput}}</mat-label>    <input  matInput [(ngModel)]="data.inputValue" style="width: 100%;"/>  </mat-form-field>  <mat-form-field *ngIf="data.placeholderForSelectValues" appearance="fill" style="width: 100%;">    <mat-label>{{data.placeholderForSelectName}}:</mat-label>    <mat-select multiple [(ngModel)]="data.inputSelectValues" style="width: 100%;">        <mat-option *ngFor="let element of data.placeholderForSelectValues" [value]="element">{{element}}</mat-option>    </mat-select>   </mat-form-field></div><div mat-dialog-actions style="display: flex; flex-direction: row; justify-content: space-around;">  <button  mat-raised-button (click)="onNoClick()">{{data.buttonTextAbort ? data.buttonTextAbort : "Abbrechen"}}</button>  <button  mat-raised-button color="accent" [mat-dialog-close]="data" cdkFocusInitial >{{data.buttonTextConfirm ? data.buttonTextConfirm : "Bestätigen"}}</button></div></div>'
     var COMPONENTS = [{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CenterPanelComponent', 'selector': 'app-center-panel'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'CreatingNewPostCardComponent', 'selector': 'app-creating-new-post-card'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForumComponent', 'selector': 'app-forum'},{'name': 'ForumThreadComponent', 'selector': 'app-forum-thread'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'InterestingMentorsComponent', 'selector': 'app-interesting-mentors'},{'name': 'JobProfilesComponent', 'selector': 'app-job-profiles'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LeftPanelComponent', 'selector': 'app-left-panel'},{'name': 'LeftSpacerComponent', 'selector': 'app-left-spacer'},{'name': 'LoginBoxComponent', 'selector': 'app-login-box'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'MainPanelComponent', 'selector': 'app-main-panel'},{'name': 'MentorSpotlightComponent', 'selector': 'app-mentor-spotlight'},{'name': 'MessageCardComponent', 'selector': 'app-message-card'},{'name': 'MissionComponent', 'selector': 'app-mission'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'PageSelectionComponent', 'selector': 'app-page-selection'},{'name': 'PostCardComponent', 'selector': 'app-post-card'},{'name': 'PrivacyComponent', 'selector': 'app-privacy'},{'name': 'ProfileCardComponent', 'selector': 'app-profile-card'},{'name': 'ProfileHeadComponent', 'selector': 'app-profile-head'},{'name': 'ProfileNewPostComponent', 'selector': 'app-profile-new-post'},{'name': 'ProfilePageComponent', 'selector': 'app-profile-page'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RatingComponent', 'selector': 'app-rating'},{'name': 'RelationsPageComponent', 'selector': 'app-relations-page'},{'name': 'RightPanelComponent', 'selector': 'app-right-panel-main'},{'name': 'RightPanelProfileComponent', 'selector': 'app-right-panel-profile'},{'name': 'RightSpacerComponent', 'selector': 'app-right-spacer'},{'name': 'SearchFilterSortComponent', 'selector': 'app-search-filter-sort'},{'name': 'SnackbarComponent', 'selector': 'app-snackbar'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'},{'name': 'ThreadOverviewComponent', 'selector': 'app-thread-overview'},{'name': 'UnauthorizedComponent', 'selector': 'app-unauthorized'},{'name': 'UserRatingsComponent', 'selector': 'app-user-ratings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DialogComponent'};

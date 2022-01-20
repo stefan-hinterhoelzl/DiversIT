@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>mainpage for Mentees, Mentors do not see this page</p>
+
+    </p>
 
 
     <p class="comment">
@@ -179,17 +186,19 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(firestore: <a href="../injectables/UserService.html" target="_self">UserService</a>, auth: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, rtdb: <a href="../injectables/ChatService.html" target="_self">ChatService</a>, observer: <a href="../injectables/ObserversService.html" target="_self">ObserversService</a>)</code>
+<code>constructor(auth: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, rtdb: <a href="../injectables/ChatService.html" target="_self">ChatService</a>, observer: <a href="../injectables/ObserversService.html" target="_self">ObserversService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/main/main.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/main/main.component.ts:30</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of MainComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -201,18 +210,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                <tr>
-                                                        <td>firestore</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
                                                 <tr>
                                                         <td>auth</td>
                                                   
@@ -287,14 +284,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/app/main/main.component.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/main/main.component.ts:71</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>logs the user out</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -324,14 +323,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/main/main.component.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/main/main.component.ts:50</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>lifecycle hook - unsubscribes userobject when component is destroyed</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -361,14 +362,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/main/main.component.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/main/main.component.ts:61</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>lifecyclehook - subsribes to currentuser when component is first initialized</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -403,10 +406,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/main/main.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/main/main.component.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>current user navigating the application</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -429,10 +438,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/main/main.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/main/main.component.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>subscription to said user which is globaly safed to unsubsribe when component gets destroyed</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -452,6 +467,15 @@ import { DiversITUser } from &#x27;../models/users.model&#x27;;
 import { ChatService } from &#x27;../services/chat.service&#x27;;
 import { ObserversService } from &#x27;../services/observers.service&#x27;;
 
+
+/**
+ * mainpage for Mentees, Mentors do not see this page
+ *
+ * @export
+ * @class MainComponent
+ * @implements {OnInit}
+ * @implements {OnDestroy}
+ */
 @Component({
   selector: &#x27;app-main&#x27;,
   templateUrl: &#x27;./main.component.html&#x27;,
@@ -459,16 +483,40 @@ import { ObserversService } from &#x27;../services/observers.service&#x27;;
 })
 export class MainComponent implements OnInit, OnDestroy {
 
+  /** current user navigating the application */
   currentUser: DiversITUser;
+  /** subscription to said user which is globaly safed to unsubsribe when component gets destroyed */
   currentUserSubscription: Subscription;
 
-  constructor(private firestore: UserService, private auth: AuthService, private rtdb: ChatService, private observer: ObserversService) { }
+
+  /**
+   * Creates an instance of MainComponent.
+   * @param {UserService} firestore 
+   * @param {AuthService} auth 
+   * @param {ChatService} rtdb 
+   * @param {ObserversService} observer
+   * @memberof MainComponent
+   */
+  constructor(private auth: AuthService, private rtdb: ChatService, private observer: ObserversService) { }
 
 
+
+  /**
+   * lifecycle hook - unsubscribes userobject when component is destroyed
+   *
+   * @memberof MainComponent
+   */
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe();
   }
 
+
+
+  /**
+   * lifecyclehook - subsribes to currentuser when component is first initialized
+   *
+   * @memberof MainComponent
+   */
   ngOnInit(): void {
     this.currentUserSubscription &#x3D; this.observer.currentUserStatus.subscribe((user) &#x3D;&gt; {
       if (user !&#x3D; null) {
@@ -478,6 +526,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   }
 
+  /** logs the user out */
   logout() {
     this.auth.logout();
   }

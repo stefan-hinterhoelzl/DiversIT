@@ -62,6 +62,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service to take care of authentication</p>
+
+            </p>
 
 
 
@@ -110,12 +117,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/auth.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/auth.service.ts:18</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of AuthService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -197,17 +206,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/app/services/auth.service.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/app/services/auth.service.ts:91</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>used to get the current signed in user</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>the current signed in user</p>
 
                     </div>
                 </td>
@@ -234,14 +251,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">src/app/services/auth.service.ts:48</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">src/app/services/auth.service.ts:76</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Signs the user out and navigates the user to the landingpage.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -271,14 +290,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/services/auth.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">src/app/services/auth.service.ts:40</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Authenticates a Firebase client using a popup-based OAuth authentication flow.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -289,6 +310,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -303,6 +325,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>string of provider. either facebook, google or github</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -334,16 +360,37 @@ import { UserService } from &#x27;./user.service&#x27;;
 
 
 
+/**
+ * Service to take care of authentication
+ *
+ * @export
+ * @class AuthService
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class AuthService {
 
+
+  /**
+   * Creates an instance of AuthService.
+   * @param {Router} router
+   * @param {UserService} firestore
+   * @param {SnackbarComponent} snackbar
+   * @memberof AuthService
+   */
   constructor(private router: Router, 
     private firestore: UserService, 
     private snackbar: SnackbarComponent) {}
 
 
+
+  /**
+   * Authenticates a Firebase client using a popup-based OAuth authentication flow.
+   *
+   * @param {string} socialProvider string of provider. either facebook, google or github
+   * @memberof AuthService
+   */
   socialLogin(socialProvider: string) {
 
     const auth &#x3D; getAuth();
@@ -373,6 +420,13 @@ export class AuthService {
     });
   }
 
+
+
+  /**
+   * Signs the user out and navigates the user to the landingpage.
+   *
+   * @memberof AuthService
+   */
   logout() {
     const auth &#x3D; getAuth();
     auth.signOut().then(()&#x3D;&gt; {
@@ -381,6 +435,13 @@ export class AuthService {
     });
   }
 
+
+  /**
+   * used to get the current signed in user
+   * 
+   * @return {*} the current signed in user 
+   * @memberof AuthService
+   */
   getAuthUserObject() {
     const auth &#x3D; getAuth();
     return auth.currentUser;

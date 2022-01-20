@@ -8,18 +8,44 @@ import { NotificationService } from '../services/notification.service';
 import { ObserversService } from '../services/observers.service';
 import { UserService } from '../services/user.service';
 
+
+/**
+ * Notifications class.
+ *
+ * @export
+ * @class NotificationsComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit {
+  /** list of all notifications */
   notifications: Notification[];
+  /** subscription to the notifications of the current user */
   notificationSubscription: Subscription;
+  /** the current user navigating the application */
   currentUser: DiversITUser;
 
+
+  /**
+   * Creates an instance of NotificationsComponent.
+   * @param {UserService} firestore
+   * @param {ObserversService} observer
+   * @param {ChatService} chatService
+   * @param {NotificationService} notificationService
+   * @memberof NotificationsComponent
+   */
   constructor(private firestore: UserService, private observer: ObserversService, private chatService: ChatService, private notificationService: NotificationService) { }
 
+
+  /**
+   * lifecycle hook - subscribes to the currentuser and the notifications of said user
+   *
+   * @memberof NotificationsComponent
+   */
   ngOnInit(): void {
     this.notificationSubscription = this.observer.notificationsOfUserStatus.subscribe((notifications: any) => {
       if(notifications != null)
@@ -30,6 +56,13 @@ export class NotificationsComponent implements OnInit {
     })
   }
 
+
+  /**
+   * Accepts the mentorship request. The Notification resembels the invitation to form a relationship to a mentor/mentee.
+   *
+   * @param {Notification} notification
+   * @memberof NotificationsComponent
+   */
   acceptMentorshipRequest(notification: Notification){
     console.log(this.currentUser)
     if(this.currentUser.role == 2) this.chatService.addRelationship(notification.fromUID, this.currentUser.uid);
@@ -47,6 +80,13 @@ export class NotificationsComponent implements OnInit {
     })
   }
 
+
+  /**
+   * declines the mentorship request. The Notification resembels the invitation to form a relationship to a mentor/mentee.
+   *
+   * @param {Notification} notification
+   * @memberof NotificationsComponent
+   */
   declineMentorshipRequest(notification: Notification){
     this.notificationService.deleteNotification(notification.uid)
   }

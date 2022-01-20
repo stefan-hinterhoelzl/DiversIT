@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This component does take care of the authentication process. Here the user will be displayed all possible Login options.</p>
+
+    </p>
 
 
 
@@ -154,12 +161,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/login-box/login-box.component.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/login-box/login-box.component.ts:16</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of LoginBoxComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -168,6 +177,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -182,6 +192,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>user authentication service of the webapplication</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -221,14 +235,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">src/app/login-box/login-box.component.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/login-box/login-box.component.ts:32</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>calls the login method in the authentication service</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -239,6 +255,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -253,6 +270,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>String representation of provider. e.g. google, github or facebook</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -279,6 +300,13 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { AuthService } from &#x27;../services/auth.service&#x27;;
 
+
+/**
+ * This component does take care of the authentication process. Here the user will be displayed all possible Login options. 
+ *
+ * @export
+ * @class LoginBoxComponent
+ */
 @Component({
   selector: &#x27;app-login-box&#x27;,
   templateUrl: &#x27;./login-box.component.html&#x27;,
@@ -286,14 +314,23 @@ import { AuthService } from &#x27;../services/auth.service&#x27;;
 })
 export class LoginBoxComponent {
 
+  /**
+   * Creates an instance of LoginBoxComponent.
+   * @param {AuthService} auth user authentication service of the webapplication
+   * @memberof LoginBoxComponent
+   */
   constructor(private auth: AuthService) { }
 
+
+  /**
+   * calls the login method in the authentication service
+   *
+   * @param {string} provider String representation of provider. e.g. google, github or facebook
+   * @memberof LoginBoxComponent
+   */
   socialLogin(provider: string) {
     this.auth.socialLogin(provider);
   }
-
-
-
 }
 </code></pre>
     </div>

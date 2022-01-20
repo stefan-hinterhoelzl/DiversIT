@@ -3,48 +3,54 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Chat, Message } from '../models/chat.model';
 import { Post } from '../models/post.model';
 import { DiversITUser } from '../models/users.model';
-
+ 
+/**
+ * Handles all the observers in this application. 
+ *
+ * @export
+ * @class ObserversService
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class ObserversService {
 
-  //Number of new Chat Messages
+  /** Number of new Chat Messages */
   number: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   numberStatus = this.number.asObservable();
 
-  //Messages of one Chat instance
+  /**Messages of one Chat instance */
   messages: BehaviorSubject<Message[]> = new BehaviorSubject<Message[]>([]);
   messagesStatus = this.messages.asObservable();
 
-  //Chats of one User
+  /** Chats of one User*/
   chats: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   chatStatus = this.chats.asObservable();
 
-  //The currently logged in user's document
+  /** The currently logged in user's document */
   currentUser: BehaviorSubject<DiversITUser> = new BehaviorSubject<DiversITUser>(null);
   currentUserStatus = this.currentUser.asObservable();
 
-  //The currently logged in user's Mentors
+  /** The currently logged in user's Mentors */
   currentUserMentors: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>([]);
   currentUserMentorsStatus = this.currentUserMentors.asObservable()
 
-  //The currently logged in user's Mentees
+  /** The currently logged in user's Mentees */
   currentUserMentees: BehaviorSubject<DiversITUser[]> = new BehaviorSubject<DiversITUser[]>([]);
   currentUserMenteesStatus = this.currentUserMentors.asObservable()
 
-  //The Posts of the currently loggedIn User
+  /** The Posts of the currently loggedIn User */
   currentUserPosts: BehaviorSubject<Post[]> = new BehaviorSubject<Post[]>(null);
   currentUserPostsStatus = this.currentUserPosts.asObservable()
 
-  //The Notifications of the currently loggedIn User
+  /** The Notifications of the currently loggedIn User */
   notificationsOfUser: BehaviorSubject<Notification[]> = new BehaviorSubject<Notification[]>(null);
   notificationsOfUserStatus = this.notificationsOfUser.asObservable()
 
   constructor() { }
 
 
-  //Static getters for the Behaviour Subjects
+  /** Static getters for the Behaviour Subjects */
   get getNumberValue(): number {
     return this.number.value;
   }

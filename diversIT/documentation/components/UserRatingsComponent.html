@@ -135,6 +135,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                         </ul>
@@ -287,6 +288,7 @@
                 <td class="col-md-4">
                     <a name="ngOnInit"></a>
                     <span class="name">
+                        <span class="modifier">Async</span>
                         <span ><b>ngOnInit</b></span>
                         <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -294,7 +296,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>ngOnInit()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
                 </td>
             </tr>
 
@@ -311,7 +314,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                 </td>
@@ -340,8 +343,8 @@ export class UserRatingsComponent implements OnInit {
 
   constructor(private ratingService: RatingService) { }
 
-  ngOnInit() {
-    this.ratingService.getDisplayedRatings().then((data) &#x3D;&gt; {
+  async ngOnInit() {
+    await this.ratingService.getDisplayedRatings().then((data) &#x3D;&gt; {
       this.ratings &#x3D; data.sort(() &#x3D;&gt; .5 - Math.random()).slice(0, this.numberOfRatings)
     });
   }
@@ -358,20 +361,18 @@ export class UserRatingsComponent implements OnInit {
     &lt;mat-accordion&gt;
         &lt;mat-expansion-panel *ngFor&#x3D;&quot;let rating of ratings&quot;&gt;
             &lt;mat-expansion-panel-header&gt;
-                &lt;mat-panel-title&gt;
+                &lt;mat-panel-title id&#x3D;&quot;stars&quot;&gt;
                     &lt;mat-icon *ngFor&#x3D;&quot;let star of [].constructor(rating.stars)&quot; class&#x3D;&quot;icon&quot; color&#x3D;&quot;accent&quot;&gt;star
                     &lt;/mat-icon&gt;
                     &lt;mat-icon *ngFor&#x3D;&quot;let star of [].constructor(5 - rating.stars)&quot; class&#x3D;&quot;icon&quot; color&#x3D;&quot;accent&quot;&gt;
-                        star_border
-                    &lt;/mat-icon&gt;
+                        star_border&lt;/mat-icon&gt;
                 &lt;/mat-panel-title&gt;
-                &lt;mat-panel-description&gt;
+                &lt;mat-panel-description id&#x3D;&quot;summary&quot;&gt;
                     {{rating.summary}}
                 &lt;/mat-panel-description&gt;
             &lt;/mat-expansion-panel-header&gt;
-            &lt;p&gt;{{rating.text}}&lt;/p&gt;
-            &lt;p&gt;– {{rating.username}}, {{rating.lastUpdated.toMillis() | date:&#x27;dd.MM.yyyy&#x27;}}&lt;/p&gt;
-            &lt;p&gt;&lt;/p&gt;
+            &lt;p id&#x3D;&quot;text&quot;&gt;{{rating.text}}&lt;/p&gt;
+            &lt;p id&#x3D;&quot;nameDate&quot;&gt;– {{rating.username}}, {{rating.lastUpdated.toMillis() | date:&#x27;dd.MM.yyyy&#x27;}}&lt;/p&gt;
         &lt;/mat-expansion-panel&gt;
     &lt;/mat-accordion&gt;
 &lt;/div&gt;</code></pre>
@@ -425,7 +426,7 @@ export class UserRatingsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container section-title">    <h2>Nutzererfahrungen</h2></div><div class="container">    <mat-accordion>        <mat-expansion-panel *ngFor="let rating of ratings">            <mat-expansion-panel-header>                <mat-panel-title>                    <mat-icon *ngFor="let star of [].constructor(rating.stars)" class="icon" color="accent">star                    </mat-icon>                    <mat-icon *ngFor="let star of [].constructor(5 - rating.stars)" class="icon" color="accent">                        star_border                    </mat-icon>                </mat-panel-title>                <mat-panel-description>                    {{rating.summary}}                </mat-panel-description>            </mat-expansion-panel-header>            <p>{{rating.text}}</p>            <p>– {{rating.username}}, {{rating.lastUpdated.toMillis() | date:\'dd.MM.yyyy\'}}</p>            <p></p>        </mat-expansion-panel>    </mat-accordion></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container section-title">    <h2>Nutzererfahrungen</h2></div><div class="container">    <mat-accordion>        <mat-expansion-panel *ngFor="let rating of ratings">            <mat-expansion-panel-header>                <mat-panel-title id="stars">                    <mat-icon *ngFor="let star of [].constructor(rating.stars)" class="icon" color="accent">star                    </mat-icon>                    <mat-icon *ngFor="let star of [].constructor(5 - rating.stars)" class="icon" color="accent">                        star_border</mat-icon>                </mat-panel-title>                <mat-panel-description id="summary">                    {{rating.summary}}                </mat-panel-description>            </mat-expansion-panel-header>            <p id="text">{{rating.text}}</p>            <p id="nameDate">– {{rating.username}}, {{rating.lastUpdated.toMillis() | date:\'dd.MM.yyyy\'}}</p>        </mat-expansion-panel>    </mat-accordion></div></div>'
     var COMPONENTS = [{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CenterPanelComponent', 'selector': 'app-center-panel'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'CreatingNewPostCardComponent', 'selector': 'app-creating-new-post-card'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForumComponent', 'selector': 'app-forum'},{'name': 'ForumThreadComponent', 'selector': 'app-forum-thread'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'InterestingMentorsComponent', 'selector': 'app-interesting-mentors'},{'name': 'JobProfilesComponent', 'selector': 'app-job-profiles'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LeftPanelComponent', 'selector': 'app-left-panel'},{'name': 'LeftSpacerComponent', 'selector': 'app-left-spacer'},{'name': 'LoginBoxComponent', 'selector': 'app-login-box'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'MainPanelComponent', 'selector': 'app-main-panel'},{'name': 'MentorSpotlightComponent', 'selector': 'app-mentor-spotlight'},{'name': 'MessageCardComponent', 'selector': 'app-message-card'},{'name': 'MissionComponent', 'selector': 'app-mission'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'PageSelectionComponent', 'selector': 'app-page-selection'},{'name': 'PostCardComponent', 'selector': 'app-post-card'},{'name': 'PrivacyComponent', 'selector': 'app-privacy'},{'name': 'ProfileCardComponent', 'selector': 'app-profile-card'},{'name': 'ProfileHeadComponent', 'selector': 'app-profile-head'},{'name': 'ProfileNewPostComponent', 'selector': 'app-profile-new-post'},{'name': 'ProfilePageComponent', 'selector': 'app-profile-page'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RatingComponent', 'selector': 'app-rating'},{'name': 'RelationsPageComponent', 'selector': 'app-relations-page'},{'name': 'RightPanelComponent', 'selector': 'app-right-panel-main'},{'name': 'RightPanelProfileComponent', 'selector': 'app-right-panel-profile'},{'name': 'RightSpacerComponent', 'selector': 'app-right-spacer'},{'name': 'SearchFilterSortComponent', 'selector': 'app-search-filter-sort'},{'name': 'SnackbarComponent', 'selector': 'app-snackbar'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'},{'name': 'ThreadOverviewComponent', 'selector': 'app-thread-overview'},{'name': 'UnauthorizedComponent', 'selector': 'app-unauthorized'},{'name': 'UserRatingsComponent', 'selector': 'app-user-ratings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'UserRatingsComponent'};

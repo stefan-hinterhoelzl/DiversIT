@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>a single thread of the forum</p>
+
+    </p>
 
 
     <p class="comment">
@@ -180,12 +187,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/forum-thread/forum-thread.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/forum-thread/forum-thread.component.ts:20</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of ForumThreadComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -194,6 +203,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -208,6 +218,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>initializes ActivatedRoute which allows to get the rout and load the appropriate content</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>forum</td>
@@ -220,6 +234,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>instance of the ForumService which is needed to get the required content.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -259,14 +277,18 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/app/forum-thread/forum-thread.component.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/forum-thread/forum-thread.component.ts:43</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>when the page is loaded, the route is inspected and the resulting id is
+sent to the forumservice which returns the question and all the answers to this thread.</p>
+<p>Furthermore, the view counter of this entry is increased by one after succesfully loading.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -301,7 +323,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/forum-thread/forum-thread.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/forum-thread/forum-thread.component.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -327,7 +349,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/forum-thread/forum-thread.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/forum-thread/forum-thread.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -353,7 +375,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/forum-thread/forum-thread.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/forum-thread/forum-thread.component.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -372,6 +394,14 @@ import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
 import { Answer, Thread } from &#x27;../models/forum.model&#x27;;
 import { ForumService } from &#x27;../services/forum.service&#x27;;
 
+
+/**
+ * a single thread of the forum
+ *
+ * @export
+ * @class ForumThreadComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-forum-thread&#x27;,
   templateUrl: &#x27;./forum-thread.component.html&#x27;,
@@ -379,21 +409,37 @@ import { ForumService } from &#x27;../services/forum.service&#x27;;
 })
 export class ForumThreadComponent implements OnInit {
 
+
+  /**
+   * Creates an instance of ForumThreadComponent.
+   * @param {ActivatedRoute} route initializes ActivatedRoute which allows to get the rout and load the appropriate content
+   * @param {ForumService} forum instance of the ForumService which is needed to get the required content.
+   * @memberof ForumThreadComponent
+   */
   constructor(private route: ActivatedRoute, private forum: ForumService) { }
 
   threadId: string;
   thread: Thread;
   answers: Answer[];
 
+
+  /**
+   * when the page is loaded, the route is inspected and the resulting id is 
+   * sent to the forumservice which returns the question and all the answers to this thread.
+   * 
+   * Furthermore, the view counter of this entry is increased by one after succesfully loading.
+   * @memberof ForumThreadComponent
+   */
   ngOnInit(): void {
     this.threadId &#x3D; this.route.snapshot.paramMap.get(&#x27;id&#x27;)
-    this.forum.getThreadByUID(this.threadId).then( (data: Thread) &#x3D;&gt; {
-        this.thread &#x3D; data
-      }
+    this.forum.getThreadByUID(this.threadId).then((data: Thread) &#x3D;&gt; {
+      this.thread &#x3D; data
+    }
     )
     this.forum.getAnswers(this.threadId).then((data: Answer[]) &#x3D;&gt; {
       this.answers &#x3D; data;
     })
+    this.forum.incrementThreadViews(this.threadId)
   }
 
 }

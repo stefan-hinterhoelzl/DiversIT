@@ -87,6 +87,9 @@
                             <li>
                                 <a href="#db" >db</a>
                             </li>
+                            <li>
+                                <a href="#functions" >functions</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -100,6 +103,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#alterDisplaySetting" >alterDisplaySetting</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#getAllRatings" >getAllRatings</a>
                             </li>
@@ -110,14 +116,6 @@
                             <li>
                                     <span class="modifier">Async</span>
                                 <a href="#getRatingForUserID" >getRatingForUserID</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#setDisplayFalse" >setDisplayFalse</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#setDisplayTrue" >setDisplayTrue</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -145,6 +143,82 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="alterDisplaySetting"></a>
+                    <span class="name">
+                        <span ><b>alterDisplaySetting</b></span>
+                        <a href="#alterDisplaySetting"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>alterDisplaySetting(rating: <a href="../interfaces/Rating.html" target="_self">Rating</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">src/app/services/rating.service.ts:111</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>alters the display setting for showing the rating on the landing page</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>rating</td>
+                                    <td>
+                                                <code><a href="../interfaces/Rating.html" target="_self" >Rating</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the rating to be altered</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getAllRatings"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -163,8 +237,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">src/app/services/rating.service.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/services/rating.service.ts:61</a></div>
                 </td>
             </tr>
 
@@ -210,8 +284,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/app/services/rating.service.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/services/rating.service.ts:94</a></div>
                 </td>
             </tr>
 
@@ -257,8 +331,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">src/app/services/rating.service.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/services/rating.service.ts:79</a></div>
                 </td>
             </tr>
 
@@ -318,152 +392,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="setDisplayFalse"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>setDisplayFalse</b></span>
-                        <a href="#setDisplayFalse"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>setDisplayFalse(rating: <a href="../interfaces/Rating.html" target="_self">Rating</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="109"
-                            class="link-to-prism">src/app/services/rating.service.ts:109</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>revokes the permission to display a specific rating on the landingpage</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>rating</td>
-                                    <td>
-                                                <code><a href="../interfaces/Rating.html" target="_self" >Rating</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="setDisplayTrue"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>setDisplayTrue</b></span>
-                        <a href="#setDisplayTrue"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>setDisplayTrue(rating: <a href="../interfaces/Rating.html" target="_self">Rating</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="127"
-                            class="link-to-prism">src/app/services/rating.service.ts:127</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>allows a rating to be displayed on the landingpage</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>rating</td>
-                                    <td>
-                                                <code><a href="../interfaces/Rating.html" target="_self" >Rating</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="updateRating"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -482,8 +410,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/app/services/rating.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/services/rating.service.ts:29</a></div>
                 </td>
             </tr>
 
@@ -562,13 +490,44 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/rating.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/rating.service.ts:18</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Firestore connection variable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="functions"></a>
+                    <span class="name">
+                        <span ><b>functions</b></span>
+                        <a href="#functions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>getFunctions(getApp())</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/services/rating.service.ts:20</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Firestore Functions variable</p>
 </div>
                 </td>
             </tr>
@@ -582,7 +541,9 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &quot;@angular/core&quot;
+import { getApp } from &quot;firebase/app&quot;;
 import { collection, doc, getDoc, getDocs, getFirestore, orderBy, query, serverTimestamp, setDoc, updateDoc, where } from &quot;firebase/firestore&quot;
+import { getFunctions, httpsCallable } from &quot;firebase/functions&quot;;
 import { Rating } from &quot;../models/rating.model&quot;
 
 /**
@@ -597,6 +558,8 @@ import { Rating } from &quot;../models/rating.model&quot;
 export class RatingService {
     /** Firestore connection variable */
     db &#x3D; getFirestore(); 
+    /** Firestore Functions variable */
+    functions &#x3D; getFunctions(getApp()) 
 
 
     /**
@@ -681,42 +644,18 @@ export class RatingService {
         return array;
     }
 
-
     /**
-     * revokes the permission to display a specific rating on the landingpage 
+     * alters the display setting for showing the rating on the landing page
      *
-     * @param {Rating} rating
-     * @returns {*}  
-     * @memberof RatingService
+     * @param rating the rating to be altered
+     * @returns
      */
-    async setDisplayFalse(rating: Rating) {
-        const q &#x3D; query(collection(this.db, &#x27;ratings&#x27;), where(&#x27;userID&#x27;, &#x27;&#x3D;&#x3D;&#x27;, rating.userID));
-        const querySnapshot &#x3D; await getDocs(q);
-        const docRef &#x3D; querySnapshot.docs[0].ref;
-
-        return updateDoc(docRef, {
-            displayOnLandingPage: false,
-        });
+    alterDisplaySetting(rating: Rating) {
+      const alterDisplaySettings &#x3D; httpsCallable(this.functions, &quot;alterDisplaySetting&quot;)
+      return alterDisplaySettings({userID: rating.userID, value: !rating.displayOnLandingPage})
     }
-
-
-    /**
-     * allows a rating to be displayed on the landingpage
-     *
-     * @param {Rating} rating
-     * @returns {*}  
-     * @memberof RatingService
-     */
-    async setDisplayTrue(rating: Rating) {
-        const q &#x3D; query(collection(this.db, &#x27;ratings&#x27;), where(&#x27;userID&#x27;, &#x27;&#x3D;&#x3D;&#x27;, rating.userID));
-        const querySnapshot &#x3D; await getDocs(q);
-        const docRef &#x3D; querySnapshot.docs[0].ref;
-
-        return updateDoc(docRef, {
-            displayOnLandingPage: true,
-        });
-    }
-}</code></pre>
+}
+</code></pre>
     </div>
 
 </div>

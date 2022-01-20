@@ -38,6 +38,14 @@ import { MatSliderModule } from '@angular/material/slider';
 
 
 
+
+
+/**
+ * Base file to load all angular material components which can be used to speed up production
+ * 
+ * For further documentation see the official {@link documentation https://material.angular.io/components/categories }
+ *
+ */
 const materialModules = [
   CdkTreeModule,
   MatAutocompleteModule,
@@ -75,7 +83,12 @@ const materialModules = [
   MatSliderModule,
   ClipboardModule,
 ];
-
+/**
+ * Base file to load all angular material components which can be used to speed up production
+ * 
+ * For further documentation see the official {@link documentation https://material.angular.io/components/categories }
+ *
+ */
 @NgModule({
   imports: [
     CommonModule,
@@ -86,5 +99,4 @@ const materialModules = [
   ],
 
 })
-
 export class AngularMaterialModule { }

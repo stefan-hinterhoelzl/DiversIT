@@ -21,38 +21,51 @@ import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 })
 export class ChatService {
 
+  /** realtime sdk database connection */
   database = getDatabase()
 
-  //to Update the Chatsarray in the user Field
+  /** to Update the Chatsarray in the user Field */
   firestore = getFirestore()
 
-  //Auth Instance to listen for auth changes
+  /** Auth Instance to listen for auth changes */
   auth = getAuth()
 
-  //functions
+  /** functions */
   functions = getFunctions(getApp());
 
 
+  /**
+   * Creates an instance of ChatService.
+   * @param {SnackbarComponent} snackbar
+   * @param {Router} router
+   * @param {ObserversService} observer
+   * @memberof ChatService
+   */
   constructor(private snackbar: SnackbarComponent, private router: Router, private observer: ObserversService) {
-    //comment this to remove emulator
-    //connectFunctionsEmulator(this.functions, "localhost", 5001);
   }
 
-
+  /** subscription to chat */
   chatsub;
+  /** list of all chat partners */
   currentChatPartners: DiversITUser[] = [];
-
+  /** number which keeps track of unread messages */
   lastamount: number = 0;
 
 
+
+  /**
+   * initializes the chats for mentees and mentors accordingly 
+   *
+   * @param {DiversITUser} user
+   * @memberof ChatService
+   */
   initializeChat(user: DiversITUser) {
     if (user.role == 2) this.currentChatPartners = this.observer.getCurrentUserMenteesValue;
     if (user.role == 3) this.currentChatPartners = this.observer.getCurrentUserMentorsValue;
-
-    console.log(this.currentChatPartners)
     this.getChatsOfUser(user)
   }
 
+  /** queries for all chats of the provided user */
   getChatsOfUser(user: DiversITUser) {
     if (this.chatsub != null) this.chatsub();
     const userChatsRef = query(ref(this.database, user.uid), orderByChild("lastMessageTime"));
@@ -155,6 +168,14 @@ export class ChatService {
   }
 
 
+
+  /**
+   * adds a relationship between a mentee and a mentor
+   *
+   * @param {string} mentee
+   * @param {string} mentor
+   * @memberof ChatService
+   */
   async addRelationship(mentee: string, mentor: string) {
     const createRelationship = httpsCallable(this.functions, 'createRelationship');
     createRelationship({ mentee: mentee, mentor: mentor }).then((result) => {
@@ -174,7 +195,7 @@ export class ChatService {
   }
 
 
-
+  /** deletes the chat instance between two users. Used when mentorship between a given mentee and a given mentor ends.  */
   async deleteChat(chat: Chat, currentUser: string) {
     //mentor and mentee chat objects
 
@@ -187,6 +208,13 @@ export class ChatService {
   }
 
 
+  /**
+   * initializes a chat between a mentee and a mentor
+   *
+   * @param {string} user id of current user navigating the application
+   * @param {string} recipient id of mentor/mentee with which chat should be created
+   * @memberof ChatService
+   */
   async createChat(user: string, recipient: string) {
     let currentUser = this.observer.getcurrenUserValue;
     let newkey = "";
@@ -212,6 +240,14 @@ export class ChatService {
 
 
 
+  /**
+   * adds a message to the realtimedatabase. 
+   *
+   * @param {Chat} chat the chat to which the message should be pushed.
+   * @param {string} text content of message
+   * @param {DiversITUser} sender user who sent the message
+   * @memberof ChatService
+   */
   sendMessage(chat: Chat, text: string, sender: DiversITUser) {
     const newMessageKey = push(child(ref(this.database), "messages")).key;
 
@@ -249,6 +285,14 @@ export class ChatService {
     });
   }
 
+  
+  /**
+   * queries for all messages of a chat
+   *
+   * @param {Chat} chat
+   * @return {*} 
+   * @memberof ChatService
+   */
   getMessages(chat: Chat) {
     const messagesRef = query(ref(this.database, "messages/" + chat.uid), orderByChild("timestamp"));
     return onValue(messagesRef, (snapshot) => {
@@ -266,6 +310,16 @@ export class ChatService {
   }
 
 
+
+  /**
+   *  opens the chatwindow and sets the status to online which can be seen by the according chat partner.
+   * This also resets the unread chat message counter to 0
+   *
+   * @param {Chat} chat
+   * @param {DiversITUser} user
+   * @return {*} 
+   * @memberof ChatService
+   */
   openChat(chat: Chat, user: DiversITUser) {
     const updates = {}
     updates[this.database, chat.recipientUser + "/" + chat.uid + "/currentlyOnline"] = true;
@@ -279,6 +333,13 @@ export class ChatService {
   }
 
 
+  /**
+   * sets the users state to offline for the chat partners and saves the last online time. 
+   * 
+   * @param chat 
+   * @param user 
+   * @returns 
+   */
   closeChat(chat: Chat, user: DiversITUser) {
     const updates = {}
     updates[this.database, chat.recipientUser + "/" + chat.uid + "/currentlyOnline"] = false;

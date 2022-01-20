@@ -120,6 +120,13 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#inputSelectValues" 
+>
+                                            inputSelectValues
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#inputValue" 
 >
                                             inputValue
@@ -137,6 +144,20 @@
                                         <a href="#placeholderForInputArea" 
 >
                                             placeholderForInputArea
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#placeholderForSelectName" 
+>
+                                            placeholderForSelectName
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#placeholderForSelectValues" 
+>
+                                            placeholderForSelectValues
                                         </a>
                                 </li>
                                 <li>
@@ -343,6 +364,50 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
+                                        <a name="inputSelectValues"></a>
+                                        <span class="name "><b>inputSelectValues</b>
+                                            <a href="#inputSelectValues">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>inputSelectValues:     <code>[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>[]</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>selected values</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
                                         <a name="inputValue"></a>
                                         <span class="name "><b>inputValue</b>
                                             <a href="#inputValue">
@@ -482,6 +547,94 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
+                                        <a name="placeholderForSelectName"></a>
+                                        <span class="name "><b>placeholderForSelectName</b>
+                                            <a href="#placeholderForSelectName">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>placeholderForSelectName:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>label for select</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="placeholderForSelectValues"></a>
+                                        <span class="name "><b>placeholderForSelectValues</b>
+                                            <a href="#placeholderForSelectValues">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>placeholderForSelectValues:     <code>[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>[]</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>select values</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
                                         <a name="text"></a>
                                         <span class="name "><b>text</b>
                                             <a href="#text">
@@ -554,6 +707,12 @@
     placeholderForInput?: string;
     /** value of the inputfiel */
     inputValue?: string;
+    /** label for select **/
+    placeholderForSelectName?: string;
+    /** select values **/
+    placeholderForSelectValues?: [];
+    /** selected values **/
+    inputSelectValues?: [];
     /** The value inside the button which confirmes the action */
     buttonTextConfirm?: string;
     /** the value of the button which aborts the dialog */

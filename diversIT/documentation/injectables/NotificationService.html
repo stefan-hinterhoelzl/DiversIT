@@ -62,6 +62,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>service class for all notification related firebase stuff.</p>
+
+            </p>
 
 
 
@@ -137,12 +144,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/notification.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/services/notification.service.ts:24</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of NotificationService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -151,6 +160,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -165,6 +175,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>object of the observerService</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -202,14 +216,27 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/app/services/notification.service.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/app/services/notification.service.ts:84</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>pushes a new Notification to a user. Called by e.g. requesting mentorship.</p>
+<p>this.notificationService.addNotification(<Notification>{
+fromName: this.currentUser.firstname + &quot; &quot; + this.currentUser.lastname,
+fromPhotoURL: this.currentUser.photoURL,
+fromUID: this.currentUser.uid,
+toUID: this.userOfProfile.uid,
+text: result.inputFieldValue !== undefined ? result.inputFieldValue : &quot;&quot;,
+type: 1, // Type: 1 = Anfrage (Buttons: Annehmen, Ablehnen); 2 = Info (Keine Buttons)
+when: null
+}).then((data) =&gt;
+//do stuff
+)</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -220,6 +247,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -234,11 +262,29 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>object of type Notification</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div>
+                        <b>Example :</b>
+                        <div>
+                            <pre class="line-numbers"><code class="language-html"> this.notificationService.addNotification(&lt;Notification&gt;{
+   fromName: this.currentUser.firstname + &amp;quot; &amp;quot; + this.currentUser.lastname,
+   fromPhotoURL: this.currentUser.photoURL,
+   fromUID: this.currentUser.uid,
+   toUID: this.userOfProfile.uid,
+   text: result.inputFieldValue !== undefined ? result.inputFieldValue : &amp;quot;&amp;quot;,
+   type: 1, // Type: 1 = Anfrage (Buttons: Annehmen, Ablehnen); 2 = Info (Keine Buttons)
+   when: null
+ }).then((data) =&amp;gt;
+   //do stuff
+ )</code></pre>
+                        </div>
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -273,14 +319,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">src/app/services/notification.service.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="123"
+                            class="link-to-prism">src/app/services/notification.service.ts:123</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>checks if a request for a mentorship already exists. Order of userIds does not matter.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -291,6 +339,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -305,6 +354,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>user id of first person. E.g. Mentor</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>uid2</td>
@@ -317,6 +370,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>user id of second person. E.g. Mentee</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -328,7 +385,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>the amount of existing requests. No requests have been sent, when the return value equals 0.</p>
+
                     </div>
                 </td>
             </tr>
@@ -356,14 +414,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">src/app/services/notification.service.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/app/services/notification.service.ts:110</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>deletes a Notification in firestore. Used when the user read the Notification and does not want it to be displayed anymore.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -374,6 +434,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -388,6 +449,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Id of Notification</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -427,14 +492,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/app/services/notification.service.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/services/notification.service.ts:50</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>creates listener for notifications and pushes new messages to the behavior subject.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -445,6 +512,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -459,6 +527,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>id of user for which notifications should be aquired and listened to</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -496,14 +568,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/services/notification.service.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/services/notification.service.ts:39</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>unsubscribes from Notifications when service is destroyed</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -537,10 +611,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/notification.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/services/notification.service.ts:22</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>connection to firestore</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -557,10 +637,16 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/notification.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/services/notification.service.ts:24</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>subscription object used to unsubscribe when service is destroyed</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -578,63 +664,129 @@ import { Notification } from &quot;../models/notification.model&quot;;
 import { ObserversService } from &quot;./observers.service&quot;;
 
 
+/**
+ * service class for all notification related firebase stuff.
+ *
+ * @export
+ * @class NotificationService
+ * @implements {OnDestroy}
+ */
 @Injectable({
     providedIn: &#x27;root&#x27;
   })
   export class NotificationService implements OnDestroy {
 
+    /** connection to firestore */
     db &#x3D; getFirestore();
+    /** subscription object used to unsubscribe when service is destroyed */
     unsubscribeFromNotifications;
+
+    /**
+     * Creates an instance of NotificationService.
+     * @param {ObserversService} observer object of the observerService
+     * @memberof NotificationService
+     */
     constructor(private observer: ObserversService) {}
 
+
+    /**
+     * unsubscribes from Notifications when service is destroyed
+     *
+     * @memberof NotificationService
+     */
     ngOnDestroy(): void {
       this.unsubscribeFromNotifications()
     }
 
-      async getNotificationsListener(userId: string){
-        const q &#x3D; query(collection(this.db, &quot;notifications&quot;), where(&quot;toUID&quot;, &quot;&#x3D;&#x3D;&quot;, userId));
-        this.unsubscribeFromNotifications &#x3D; onSnapshot(q, (querySnapshot) &#x3D;&gt; {
-          const notifications &#x3D; [];
-          querySnapshot.forEach((doc) &#x3D;&gt; {
-            notifications.push(doc.data())
-          });
-          console.log(notifications)
-          this.observer.notificationsOfUser.next(notifications)
-        })
-      }
 
-      async addNotification(notification: Notification){
-        const userReference &#x3D; collection(this.db, &#x27;notifications&#x27;)
+    /**
+     * creates listener for notifications and pushes new messages to the behavior subject.
+     *
+     * @param {string} userId id of user for which notifications should be aquired and listened to
+     * @memberof NotificationService
+     */
+    async getNotificationsListener(userId: string){
+      const q &#x3D; query(collection(this.db, &quot;notifications&quot;), where(&quot;toUID&quot;, &quot;&#x3D;&#x3D;&quot;, userId));
+      this.unsubscribeFromNotifications &#x3D; onSnapshot(q, (querySnapshot) &#x3D;&gt; {
+        const notifications &#x3D; [];
+        querySnapshot.forEach((doc) &#x3D;&gt; {
+          notifications.push(doc.data())
+        });
+        this.observer.notificationsOfUser.next(notifications)
+      })
+    }
 
-        const ref &#x3D; await addDoc(userReference, {
-          fromName: notification.fromName,
-          fromPhotoURL: notification.fromPhotoURL,
-          fromUID: notification.fromUID,
-          toUID: notification.toUID,
-          text: notification.text,
-          type: notification.type,
-          when: serverTimestamp(),
-          uid: null
-        })
 
-        await updateDoc(ref, {
-          uid: ref.id
-        })
-      }
 
-      async deleteNotification(notificationId: string) {
-        await deleteDoc(doc(this.db, &quot;notifications&quot;, notificationId))
-      }
+    /**
+     * pushes a new Notification to a user. Called by e.g. requesting mentorship.
+     *
+     * @param {Notification} notification object of type Notification
+     * @memberof NotificationService
+     * 
+     * @example
+     *
 
-      async checkIfMentorRequestHasAlreadyBeenSent(uid1: string, uid2: string){
-        let result: number &#x3D; 0;
-        const q1 &#x3D; query(collection(this.db, &quot;notifications&quot;), where(&quot;fromUID&quot;, &quot;&#x3D;&#x3D;&quot;, uid1), where(&quot;toUID&quot;, &quot;&#x3D;&#x3D;&quot;, uid2), where(&quot;type&quot;, &quot;&#x3D;&#x3D;&quot;, 1))
-        const q2 &#x3D; query(collection(this.db, &quot;notifications&quot;), where(&quot;fromUID&quot;, &quot;&#x3D;&#x3D;&quot;, uid2), where(&quot;toUID&quot;, &quot;&#x3D;&#x3D;&quot;, uid1), where(&quot;type&quot;, &quot;&#x3D;&#x3D;&quot;, 1))
-        const querySnapshot1 &#x3D; await getDocs(q1)
-        const querySnapshot2 &#x3D; await getDocs(q2)
+        this.notificationService.addNotification(&lt;Notification&gt;{
+          fromName: this.currentUser.firstname + &quot; &quot; + this.currentUser.lastname,
+          fromPhotoURL: this.currentUser.photoURL,
+          fromUID: this.currentUser.uid,
+          toUID: this.userOfProfile.uid,
+          text: result.inputFieldValue !&#x3D;&#x3D; undefined ? result.inputFieldValue : &quot;&quot;,
+          type: 1, // Type: 1 &#x3D; Anfrage (Buttons: Annehmen, Ablehnen); 2 &#x3D; Info (Keine Buttons)
+          when: null
+        }).then((data) &#x3D;&gt;
+          //do stuff
+        )
+     */
+    async addNotification(notification: Notification){
+      const userReference &#x3D; collection(this.db, &#x27;notifications&#x27;)
 
-        return querySnapshot1.size + querySnapshot2.size;
-      }
+      const ref &#x3D; await addDoc(userReference, {
+        fromName: notification.fromName,
+        fromPhotoURL: notification.fromPhotoURL,
+        fromUID: notification.fromUID,
+        toUID: notification.toUID,
+        text: notification.text,
+        type: notification.type,
+        when: serverTimestamp(),
+        uid: null
+      })
+
+      await updateDoc(ref, {
+        uid: ref.id
+      })
+    }
+
+
+    /**
+     * deletes a Notification in firestore. Used when the user read the Notification and does not want it to be displayed anymore. 
+     *
+     * @param {string} notificationId Id of Notification
+     * @memberof NotificationService
+     */
+    async deleteNotification(notificationId: string) {
+      await deleteDoc(doc(this.db, &quot;notifications&quot;, notificationId))
+    }
+
+    
+    /**
+     * checks if a request for a mentorship already exists. Order of userIds does not matter. 
+     *
+     * @param {string} uid1 user id of first person. E.g. Mentor
+     * @param {string} uid2 user id of second person. E.g. Mentee
+     * @return {*} the amount of existing requests. No requests have been sent, when the return value equals 0.
+     * @memberof NotificationService
+     */
+    async checkIfMentorRequestHasAlreadyBeenSent(uid1: string, uid2: string){
+      let result: number &#x3D; 0;
+      const q1 &#x3D; query(collection(this.db, &quot;notifications&quot;), where(&quot;fromUID&quot;, &quot;&#x3D;&#x3D;&quot;, uid1), where(&quot;toUID&quot;, &quot;&#x3D;&#x3D;&quot;, uid2), where(&quot;type&quot;, &quot;&#x3D;&#x3D;&quot;, 1))
+      const q2 &#x3D; query(collection(this.db, &quot;notifications&quot;), where(&quot;fromUID&quot;, &quot;&#x3D;&#x3D;&quot;, uid2), where(&quot;toUID&quot;, &quot;&#x3D;&#x3D;&quot;, uid1), where(&quot;type&quot;, &quot;&#x3D;&#x3D;&quot;, 1))
+      const querySnapshot1 &#x3D; await getDocs(q1)
+      const querySnapshot2 &#x3D; await getDocs(q2)
+
+      return querySnapshot1.size + querySnapshot2.size;
+    }
 
   }
 </code></pre>

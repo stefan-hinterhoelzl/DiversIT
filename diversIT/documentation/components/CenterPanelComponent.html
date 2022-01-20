@@ -581,8 +581,8 @@ export class CenterPanelComponent implements OnInit, OnDestroy {
   constructor(private firestore: UserService, private observer: ObserversService, private postService: PostsService) { }
 
   ngOnDestroy(): void {
-    this.usersub.unsubscribe();
-    this.initializeMenteeSub.unsubscribe();
+    if (this.usersub !&#x3D; null) this.usersub.unsubscribe();
+    if (this.initializeMenteeSub !&#x3D; null) this.initializeMenteeSub.unsubscribe();
   }
 
   currentUser: DiversITUser;
@@ -595,8 +595,8 @@ export class CenterPanelComponent implements OnInit, OnDestroy {
     this.usersub &#x3D; this.observer.currentUserStatus.subscribe((data) &#x3D;&gt; {
       if (data !&#x3D; null) {
         this.currentUser &#x3D; data
-        if(this.currentUser.role &#x3D;&#x3D; 3)this.initializeMentee()
-        else if(this.currentUser.role &#x3D;&#x3D; 2)this.initializeMentor()
+        if(this.currentUser.role &#x3D;&#x3D; 3) this.initializeMentee()
+        else if(this.currentUser.role &#x3D;&#x3D; 2) this.initializeMentor()
       }
     });
   }
@@ -645,9 +645,10 @@ export class CenterPanelComponent implements OnInit, OnDestroy {
         &lt;app-post-card *ngFor&#x3D;&quot;let post of posts&quot; [currentUser]&#x3D;&quot;currentUser&quot; postuid&#x3D;&quot;{{post.uid}}&quot; userid&#x3D; &quot;{{post.userID}}&quot; name&#x3D;&quot;{{post.userName}}&quot; profileImg&#x3D;&quot;{{post.userImgURL}}&quot; time&#x3D;&quot;{{post.timestamp.toMillis()}}&quot; content&#x3D;&quot;{{post.text}}&quot; contentImg&#x3D;&quot;{{post.photoURL}}&quot;&gt;&lt;/app-post-card&gt;
         &lt;app-post-card *ngIf&#x3D;&quot;posts.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; currentUser?.role &#x3D;&#x3D;&#x3D; 3&quot; content&#x3D;&quot;Du bist noch mit keinem Mentor vernetzt.&quot;&gt;&lt;/app-post-card&gt;
         &lt;app-post-card *ngIf&#x3D;&quot;posts.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; currentUser?.role &#x3D;&#x3D;&#x3D; 2&quot; content&#x3D;&quot;🚧 Work in progress. 🚧&quot;&gt;&lt;/app-post-card&gt;
-        &lt;app-post-card *ngIf&#x3D;&quot;posts.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; currentUser?.role &#x3D;&#x3D;&#x3D; 1&quot; content&#x3D;&quot;Du bist Admin. Kannst daher keine Verknüpfungen herstellen.&quot;&gt;&lt;/app-post-card&gt;
+        &lt;app-post-card routerLink&#x3D;&quot;/admin&quot; style&#x3D;&quot;cursor:pointer&quot; *ngIf&#x3D;&quot;posts.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; currentUser?.role &#x3D;&#x3D;&#x3D; 1&quot; content&#x3D;&quot;Du bist Admin. Kannst daher keine Verknüpfungen herstellen.&quot;&gt;&lt;/app-post-card&gt;
     &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -682,7 +683,7 @@ export class CenterPanelComponent implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="center-panel" style ="min-width: 100%;">    <div>        <app-post-card *ngFor="let post of posts" [currentUser]="currentUser" postuid="{{post.uid}}" userid= "{{post.userID}}" name="{{post.userName}}" profileImg="{{post.userImgURL}}" time="{{post.timestamp.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}"></app-post-card>        <app-post-card *ngIf="posts.length === 0 && currentUser?.role === 3" content="Du bist noch mit keinem Mentor vernetzt."></app-post-card>        <app-post-card *ngIf="posts.length === 0 && currentUser?.role === 2" content="🚧 Work in progress. 🚧"></app-post-card>        <app-post-card *ngIf="posts.length === 0 && currentUser?.role === 1" content="Du bist Admin. Kannst daher keine Verknüpfungen herstellen."></app-post-card>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="center-panel" style ="min-width: 100%;">    <div>        <app-post-card *ngFor="let post of posts" [currentUser]="currentUser" postuid="{{post.uid}}" userid= "{{post.userID}}" name="{{post.userName}}" profileImg="{{post.userImgURL}}" time="{{post.timestamp.toMillis()}}" content="{{post.text}}" contentImg="{{post.photoURL}}"></app-post-card>        <app-post-card *ngIf="posts.length === 0 && currentUser?.role === 3" content="Du bist noch mit keinem Mentor vernetzt."></app-post-card>        <app-post-card *ngIf="posts.length === 0 && currentUser?.role === 2" content="🚧 Work in progress. 🚧"></app-post-card>        <app-post-card routerLink="/admin" style="cursor:pointer" *ngIf="posts.length === 0 && currentUser?.role === 1" content="Du bist Admin. Kannst daher keine Verknüpfungen herstellen."></app-post-card>    </div></div></div>'
     var COMPONENTS = [{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CenterPanelComponent', 'selector': 'app-center-panel'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'CreatingNewPostCardComponent', 'selector': 'app-creating-new-post-card'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForumComponent', 'selector': 'app-forum'},{'name': 'ForumThreadComponent', 'selector': 'app-forum-thread'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'InterestingMentorsComponent', 'selector': 'app-interesting-mentors'},{'name': 'JobProfilesComponent', 'selector': 'app-job-profiles'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LeftPanelComponent', 'selector': 'app-left-panel'},{'name': 'LeftSpacerComponent', 'selector': 'app-left-spacer'},{'name': 'LoginBoxComponent', 'selector': 'app-login-box'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'MainPanelComponent', 'selector': 'app-main-panel'},{'name': 'MentorSpotlightComponent', 'selector': 'app-mentor-spotlight'},{'name': 'MessageCardComponent', 'selector': 'app-message-card'},{'name': 'MissionComponent', 'selector': 'app-mission'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'PageSelectionComponent', 'selector': 'app-page-selection'},{'name': 'PostCardComponent', 'selector': 'app-post-card'},{'name': 'PrivacyComponent', 'selector': 'app-privacy'},{'name': 'ProfileCardComponent', 'selector': 'app-profile-card'},{'name': 'ProfileHeadComponent', 'selector': 'app-profile-head'},{'name': 'ProfileNewPostComponent', 'selector': 'app-profile-new-post'},{'name': 'ProfilePageComponent', 'selector': 'app-profile-page'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RatingComponent', 'selector': 'app-rating'},{'name': 'RelationsPageComponent', 'selector': 'app-relations-page'},{'name': 'RightPanelComponent', 'selector': 'app-right-panel-main'},{'name': 'RightPanelProfileComponent', 'selector': 'app-right-panel-profile'},{'name': 'RightSpacerComponent', 'selector': 'app-right-spacer'},{'name': 'SearchFilterSortComponent', 'selector': 'app-search-filter-sort'},{'name': 'SnackbarComponent', 'selector': 'app-snackbar'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'},{'name': 'ThreadOverviewComponent', 'selector': 'app-thread-overview'},{'name': 'UnauthorizedComponent', 'selector': 'app-unauthorized'},{'name': 'UserRatingsComponent', 'selector': 'app-user-ratings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CenterPanelComponent'};

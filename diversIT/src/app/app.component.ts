@@ -1,14 +1,20 @@
 import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { UserService } from './services/user.service';
 import { DiversITUser } from './models/users.model';
 import { Location } from '@angular/common';
-import { ChatService } from './services/chat.service';
 import { ObserversService } from './services/observers.service';
 import { Subscription } from 'rxjs';
 import { LoadingService } from './services/loading.service';
 
+/**
+ * root file of the whole app. Main purpose is to load correct components and take care of routing through the application.
+ *
+ * @export
+ * @class AppComponent
+ * @implements {OnInit}
+ * @implements {OnDestroy}
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,10 +30,26 @@ export class AppComponent implements OnInit, OnDestroy {
   currentNotSubscription: Subscription;
   loading = this.loader.loading$;
 
-  constructor(private router: Router, private auth: AuthService, private firestore: UserService, private location: Location, private chat: ChatService, private observer: ObserversService, private loader: LoadingService) {
+
+
+  /**
+   * Creates an instance of AppComponent.
+   * @param {Router} router adds a router object to this file which is used for routing
+   * @param {AuthService} auth adding the authentication service to the application
+   * @param {Location} location
+   * @param {ObserversService} observer
+   * @param {LoadingService} loader
+   * @memberof AppComponent
+   */
+  constructor(private router: Router, private auth: AuthService, private location: Location, private observer: ObserversService, private loader: LoadingService) {
   }
 
 
+  /**
+   * unsubribes all subscriptions when maincomponent gets destroyed
+   *
+   * @memberof AppComponent
+   */
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe()
     this.currentChatSubscripton.unsubscribe()
@@ -35,6 +57,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
 
+  /**
+   * adds subscription for the currentuser navigating the application, the chat of said user and the notifications of the user. 
+   * 
+   * This is necessary as the badges with the unread notifications/chat messages are shown in the navbar
+   *
+   * @memberof AppComponent
+   */
   ngOnInit(): void {
     this.currentUserSubscription = this.observer.currentUserStatus.subscribe((data) => {
       this.currentUser = data;
@@ -50,18 +79,27 @@ export class AppComponent implements OnInit, OnDestroy {
     })
   }
 
+  /** return true or false, depending on the route of the page (true when the route ist /landing) */
   isLandingPage() {
     return this.router.url == '/landing';
   }
 
+  /** return true or false, depending on the route of the page */
   isLegalOrForumPage() {
     return this.router.url == '/impressum' || this.router.url == '/datenschutz' || this.router.url.startsWith('/forum');
   }
 
+  /** logs out the user, this will lead to a redirect if the currentuser is at a route which is guarded for only authenticated users. */
   logout() {
     this.auth.logout();
   }
 
+
+  /**
+   * activates by clicking on the home button(logo) 
+   * 
+   * navigates the user to /app. If the user is already there, the page will be refreshed
+   */
   diversIT() {
     if (this.router.url === '/app') {
       window.location.reload();
@@ -71,6 +109,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  /** navigates the user back. Used on pages which have no normal navbar.  */
   back() {
     this.location.back();
   }

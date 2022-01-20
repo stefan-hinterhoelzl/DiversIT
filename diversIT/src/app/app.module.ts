@@ -56,8 +56,15 @@ import { SearchFilterSortComponent } from './forum/search-filter-sort/search-fil
 import { PageSelectionComponent } from './forum/page-selection/page-selection.component';
 import { MessageCardComponent } from './forum-thread/message-card/message-card.component';
 
+/** instance of firebase */
 const app = initializeApp(environment.firebaseConfig);
 
+/**
+ * NgModules configure the injector and the compiler and help organize related things together.
+ *
+ * @export
+ * @class AppModule
+ */
 @NgModule({
   declarations: [
     AppComponent,
@@ -119,6 +126,5 @@ const app = initializeApp(environment.firebaseConfig);
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
   constructor(firestore: UserService, auth: AuthService, database: ChatService) { }
 }

@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+/**
+ * static content class for displaying the imprint of diverIT
+ *
+ * @export
+ * @class ImprintComponent
+ */
 @Component({
   selector: 'app-imprint',
   templateUrl: './imprint.component.html',
@@ -7,6 +13,10 @@ import { Component } from '@angular/core';
 })
 export class ImprintComponent {
 
+  /**
+   * Creates an instance of ImprintComponent.
+   * @memberof ImprintComponent
+   */
   constructor() { }
 
 }

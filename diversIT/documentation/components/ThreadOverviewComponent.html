@@ -195,6 +195,9 @@
                                 <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                             <li>
+                                <a href="#openDialogToCreateForum" >openDialogToCreateForum</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#setCurrentThreads" >setCurrentThreads</a>
                             </li>
@@ -259,12 +262,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(database: <a href="../injectables/ForumService.html" target="_self">ForumService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+<code>constructor(database: <a href="../injectables/ForumService.html" target="_self">ForumService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, dialog: <a href="../interfaces/Dialog.html" target="_self">MatDialog</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -305,6 +308,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/Dialog.html" target="_self" >MatDialog</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -337,7 +352,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:23</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -363,7 +378,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:19</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -389,7 +404,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:18</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -415,7 +430,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:22</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -441,7 +456,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:21</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -467,7 +482,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:20</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -491,7 +506,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:24</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -526,14 +541,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:89</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Change page number and threads which should be displayed</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -544,6 +561,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -558,6 +576,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>or decrease</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -595,14 +617,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:74</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:106</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Check if input thread matches the set filter criteria</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -613,6 +637,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -627,6 +652,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>current thread</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -638,7 +667,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>yes or no</p>
+
                     </div>
                 </td>
             </tr>
@@ -667,14 +697,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:52</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Determine first n (=numberOfShownThreads) threads ordered by input field orderByField</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -738,14 +770,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:67</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Determine next n (=numberOfShownThreads) threads</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -775,14 +809,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:102</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="144"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:144</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Open a thread / forum with a input Forum-Id</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -844,14 +880,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="123"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:123</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>LifeCycle-Method - changes have been made on the input values</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -913,14 +951,55 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:41</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>LifeCycle-Method - component initializied</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDialogToCreateForum"></a>
+                    <span class="name">
+                        <span ><b>openDialogToCreateForum</b></span>
+                        <a href="#openDialogToCreateForum"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openDialogToCreateForum()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:152</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Open a Dialog for creating a new forum</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -952,14 +1031,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:77</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Determine threads which should be displayed</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -999,7 +1080,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -1030,7 +1111,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -1056,7 +1137,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -1087,7 +1168,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -1118,7 +1199,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -1149,7 +1230,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -1180,7 +1261,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -1206,7 +1287,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/forum/thread-overview/thread-overview.component.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -1220,7 +1301,11 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from &#x27;@angular/core&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { serverTimestamp } from &#x27;firebase/firestore&#x27;;
+import { take } from &#x27;rxjs/operators&#x27;;
+import { DialogComponent } from &#x27;src/app/dialog/dialog.component&#x27;;
 import { Thread } from &#x27;src/app/models/forum.model&#x27;;
 import { ForumService } from &#x27;src/app/services/forum.service&#x27;;
 
@@ -1249,9 +1334,24 @@ export class ThreadOverviewComponent implements OnInit {
   orderField &#x3D; &quot;&quot;;
   resetPageNumCounter &#x3D; 1;
 
-  constructor(private database: ForumService, private router: Router) { }
+  constructor(private database: ForumService, private router: Router, private dialog: MatDialog) { }
 
-  private async getFirstThreads(orderByField: string){
+  /**
+   * LifeCycle-Method - component initializied
+   * @memberof ThreadOverviewComponent
+   */
+  ngOnInit(){
+    this.startIndex &#x3D; 0;
+    this.endIndex &#x3D; this.numberOfShownThreads;
+    this.getFirstThreads(&quot;created&quot;);
+  }
+
+  /**
+   * Determine first n (&#x3D;numberOfShownThreads) threads ordered by input field orderByField
+   * @param {string} orderByField
+   * @memberof ThreadOverviewComponent
+   */
+   private async getFirstThreads(orderByField: string){
     this.orderField &#x3D; orderByField;
     await this.database.getFirstThreads(this.numberOfShownThreads, this.orderField).then((data) &#x3D;&gt; {
       this.resetPageNumCounter++;
@@ -1262,18 +1362,20 @@ export class ThreadOverviewComponent implements OnInit {
     });
   }
 
-  ngOnInit(){
-    this.startIndex &#x3D; 0;
-    this.endIndex &#x3D; this.numberOfShownThreads;
-    this.getFirstThreads(&quot;created&quot;);
-  }
-
+  /**
+   * Determine next n (&#x3D;numberOfShownThreads) threads 
+   * @memberof ThreadOverviewComponent
+   */
   async getNextThreads() {
     await this.database.getNextThreads(this.numberOfShownThreads, this.orderField).then((data) &#x3D;&gt; {
       this.allThreads &#x3D; this.allThreads.concat(data);
     })
   }
 
+  /**
+   * Determine threads which should be displayed
+   * @memberof ThreadOverviewComponent
+   */
   private setCurrentThreads(){
     this.currentThreads &#x3D; [];
     for (let i &#x3D; this.startIndex; i &lt; this.endIndex; i++) {
@@ -1281,6 +1383,11 @@ export class ThreadOverviewComponent implements OnInit {
     }
   }
 
+  /**
+   * Change page number and threads which should be displayed
+   * @param {boolean} increase or decrease
+   * @memberof ThreadOverviewComponent
+   */
   private determineThreadsFromAndToIndex(increase: boolean) {
     if(increase) {
       this.startIndex +&#x3D; this.numberOfShownThreads;
@@ -1292,6 +1399,12 @@ export class ThreadOverviewComponent implements OnInit {
     this.setCurrentThreads();
   }
 
+  /**
+   * Check if input thread matches the set filter criteria
+   * @param {Thread} t current thread
+   * @return {*} yes or no
+   * @memberof ThreadOverviewComponent
+   */
   doesThreadMatchFilterCriteria(t: Thread){
     if(this.inputFilterText.length &gt; 0){
       if(t.title.toLowerCase().includes(this.inputFilterText.toLowerCase())) return true;
@@ -1304,6 +1417,11 @@ export class ThreadOverviewComponent implements OnInit {
     return false;
   }
 
+  /**
+   * LifeCycle-Method - changes have been made on the input values
+   * @param {SimpleChanges} changes
+   * @memberof ThreadOverviewComponent
+   */
   ngOnChanges(changes: SimpleChanges){
     if ((changes.inputFilterTypeNew !&#x3D; null) &amp;&amp; (changes.inputFilterTypeNew.currentValue &#x3D;&#x3D;&#x3D; true)) this.getFirstThreads(&quot;created&quot;);
     if ((changes.inputFilterTypeDiscussedALot !&#x3D; null) &amp;&amp; (changes.inputFilterTypeDiscussedALot.currentValue &#x3D;&#x3D;&#x3D; true)) this.getFirstThreads(&quot;numberOfAnswers&quot;);
@@ -1320,8 +1438,45 @@ export class ThreadOverviewComponent implements OnInit {
     }
   }
 
+  /**
+   * Open a thread / forum with a input Forum-Id
+   * @param {number} forumId
+   * @memberof ThreadOverviewComponent
+   */
   navigateToForumThread(forumId : number) {
     this.router.navigate([&#x27;/forum/&#x27; + forumId.toString()]);
+  }
+
+  /**
+   * Open a Dialog for creating a new forum 
+   * @memberof ThreadOverviewComponent
+   */
+  openDialogToCreateForum(){
+    const dialogRef &#x3D; this.dialog.open(DialogComponent, {
+      width: &quot;40%&quot;,
+      data: {
+        header: &quot;Neues Forum anlegen&quot;,
+        placeholderForInputArea: &quot;Forumstitel&quot;,
+        placeholderForInput: &quot;Forumstext&quot;,
+        placeholderForSelectName: &quot;Forumstags&quot;,
+        placeholderForSelectValues: [&#x27;HTL&#x27;, &#x27;HAK&#x27;, &#x27;BAKIP&#x27;, &#x27;Girls only&#x27;, &#x27;Freelance&#x27;, &#x27;Web&#x27;, &#x27;18-24 Jahre&#x27;],
+        buttonTextConfirm: &quot;Anlegen&quot;,
+        buttonTextAbort: &quot;Abbrechen&quot;,
+      },
+    });
+
+    dialogRef.afterClosed().pipe(take(1)).subscribe(result &#x3D;&gt; {      
+      if (result !&#x3D; null) {
+        this.database.createThread(&lt;Thread&gt;{
+          title: result.inputAreaValue,
+          text: result.inputValue,
+          tags: result.inputSelectValues,
+          created: serverTimestamp()
+        }).then(() &#x3D;&gt; {
+          window.location.reload()
+        })            
+      }
+    });
   }
 
 }</code></pre>
@@ -1329,6 +1484,12 @@ export class ThreadOverviewComponent implements OnInit {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;threadOverview&quot;&gt;
+    &lt;mat-card&gt;
+        &lt;button mat-mini-fab aria-label&#x3D;&quot;Forum anlegen&quot; (click)&#x3D;&quot;openDialogToCreateForum()&quot; color&#x3D;&quot;accent&quot;
+            style&#x3D;&quot;color:white;&quot;&gt;
+            &lt;mat-icon&gt;add&lt;/mat-icon&gt;
+        &lt;/button&gt;
+    &lt;/mat-card&gt;
     &lt;mat-card *ngFor&#x3D;&quot;let t of this.currentThreads&quot;
         [ngStyle]&#x3D;&quot;{&#x27;background-color&#x27;: doesThreadMatchFilterCriteria(t)? &#x27;#fde8ef&#x27; : &#x27;white&#x27;}&quot;&gt;
         &lt;div fxLayout&#x3D;&quot;row&quot;&gt;
@@ -1349,18 +1510,19 @@ export class ThreadOverviewComponent implements OnInit {
                 &lt;div class&#x3D;&quot;forumTitle&quot; (click)&#x3D;&quot;navigateToForumThread(t.uid)&quot;&gt;{{t.title}}&lt;/div&gt;
                 &lt;div fxLayout&#x3D;&quot;row&quot;&gt;
                     &lt;div fxFlex&#x3D;&quot;50&quot;&gt;
-                        &lt;mat-chip *ngFor&#x3D;&quot;let tag of t.tags&quot; color&#x3D;&quot;accent&quot; class&#x3D;&quot;small-chip&quot; selected&gt;{{tag}}&lt;/mat-chip&gt;
+                        &lt;mat-chip *ngFor&#x3D;&quot;let tag of t.tags&quot; color&#x3D;&quot;accent&quot; class&#x3D;&quot;small-chip&quot; selected&gt;{{tag}}
+                        &lt;/mat-chip&gt;
                     &lt;/div&gt;
                     &lt;div fxFlex class&#x3D;&quot;changedAtCreatedAt&quot;&gt;
-                        &lt;span *ngIf&#x3D;&quot;t.lastAnswer !&#x3D;&#x3D; null&quot;&gt;Letzter Antwort am: {{t.lastAnswerTime.toDate().toLocaleString()}} Uhr;&lt;/span&gt;
+                        &lt;span *ngIf&#x3D;&quot;t.lastAnswer !&#x3D;&#x3D; null&quot;&gt;Letzte Antwort am:
+                            {{t.lastAnswerTime.toDate().toLocaleString()}} Uhr; &lt;/span&gt;
                         &lt;span&gt;Erstellt am: {{t.created.toDate().toLocaleString()}}&lt;/span&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/mat-card&gt;
-&lt;/div&gt;
-</code></pre>
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -1442,7 +1604,7 @@ export class ThreadOverviewComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="threadOverview">    <mat-card *ngFor="let t of this.currentThreads"        [ngStyle]="{\'background-color\': doesThreadMatchFilterCriteria(t)? \'#fde8ef\' : \'white\'}">        <div fxLayout="row">            <!--Antworten-->            <div fxFlex="10" fxLayout="column">                <div class="answerInvocation">{{t.numberOfAnswers}}</div>                <div class="answerInvocationLabel">ANTWORTEN</div>            </div>            <!--Aufrufe-->            <div fxFlex="10" fxLayout="column">                <div class="answerInvocation">{{t.views}}</div>                <div class="answerInvocationLabel">AUFRUFE</div>            </div>            <!--Forumstitel mit Tags-->            <div fxFlex fxLayout="column" class="forumTitleWithTags">                <div class="forumTitle" (click)="navigateToForumThread(t.uid)">{{t.title}}</div>                <div fxLayout="row">                    <div fxFlex="50">                        <mat-chip *ngFor="let tag of t.tags" color="accent" class="small-chip" selected>{{tag}}</mat-chip>                    </div>                    <div fxFlex class="changedAtCreatedAt">                        <span *ngIf="t.lastAnswer !== null">Letzter Antwort am: {{t.lastAnswerTime.toDate().toLocaleString()}} Uhr;</span>                        <span>Erstellt am: {{t.created.toDate().toLocaleString()}}</span>                    </div>                </div>            </div>        </div>    </mat-card></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="threadOverview">    <mat-card>        <button mat-mini-fab aria-label="Forum anlegen" (click)="openDialogToCreateForum()" color="accent"            style="color:white;">            <mat-icon>add</mat-icon>        </button>    </mat-card>    <mat-card *ngFor="let t of this.currentThreads"        [ngStyle]="{\'background-color\': doesThreadMatchFilterCriteria(t)? \'#fde8ef\' : \'white\'}">        <div fxLayout="row">            <!--Antworten-->            <div fxFlex="10" fxLayout="column">                <div class="answerInvocation">{{t.numberOfAnswers}}</div>                <div class="answerInvocationLabel">ANTWORTEN</div>            </div>            <!--Aufrufe-->            <div fxFlex="10" fxLayout="column">                <div class="answerInvocation">{{t.views}}</div>                <div class="answerInvocationLabel">AUFRUFE</div>            </div>            <!--Forumstitel mit Tags-->            <div fxFlex fxLayout="column" class="forumTitleWithTags">                <div class="forumTitle" (click)="navigateToForumThread(t.uid)">{{t.title}}</div>                <div fxLayout="row">                    <div fxFlex="50">                        <mat-chip *ngFor="let tag of t.tags" color="accent" class="small-chip" selected>{{tag}}                        </mat-chip>                    </div>                    <div fxFlex class="changedAtCreatedAt">                        <span *ngIf="t.lastAnswer !== null">Letzte Antwort am:                            {{t.lastAnswerTime.toDate().toLocaleString()}} Uhr; </span>                        <span>Erstellt am: {{t.created.toDate().toLocaleString()}}</span>                    </div>                </div>            </div>        </div>    </mat-card></div></div>'
     var COMPONENTS = [{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CenterPanelComponent', 'selector': 'app-center-panel'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'CreatingNewPostCardComponent', 'selector': 'app-creating-new-post-card'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForumComponent', 'selector': 'app-forum'},{'name': 'ForumThreadComponent', 'selector': 'app-forum-thread'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'InterestingMentorsComponent', 'selector': 'app-interesting-mentors'},{'name': 'JobProfilesComponent', 'selector': 'app-job-profiles'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LeftPanelComponent', 'selector': 'app-left-panel'},{'name': 'LeftSpacerComponent', 'selector': 'app-left-spacer'},{'name': 'LoginBoxComponent', 'selector': 'app-login-box'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'MainPanelComponent', 'selector': 'app-main-panel'},{'name': 'MentorSpotlightComponent', 'selector': 'app-mentor-spotlight'},{'name': 'MessageCardComponent', 'selector': 'app-message-card'},{'name': 'MissionComponent', 'selector': 'app-mission'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'PageSelectionComponent', 'selector': 'app-page-selection'},{'name': 'PostCardComponent', 'selector': 'app-post-card'},{'name': 'PrivacyComponent', 'selector': 'app-privacy'},{'name': 'ProfileCardComponent', 'selector': 'app-profile-card'},{'name': 'ProfileHeadComponent', 'selector': 'app-profile-head'},{'name': 'ProfileNewPostComponent', 'selector': 'app-profile-new-post'},{'name': 'ProfilePageComponent', 'selector': 'app-profile-page'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RatingComponent', 'selector': 'app-rating'},{'name': 'RelationsPageComponent', 'selector': 'app-relations-page'},{'name': 'RightPanelComponent', 'selector': 'app-right-panel-main'},{'name': 'RightPanelProfileComponent', 'selector': 'app-right-panel-profile'},{'name': 'RightSpacerComponent', 'selector': 'app-right-spacer'},{'name': 'SearchFilterSortComponent', 'selector': 'app-search-filter-sort'},{'name': 'SnackbarComponent', 'selector': 'app-snackbar'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'},{'name': 'ThreadOverviewComponent', 'selector': 'app-thread-overview'},{'name': 'UnauthorizedComponent', 'selector': 'app-unauthorized'},{'name': 'UserRatingsComponent', 'selector': 'app-user-ratings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ThreadOverviewComponent'};

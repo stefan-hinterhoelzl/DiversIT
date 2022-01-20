@@ -3,17 +3,41 @@ import { Injectable } from "@angular/core";
 import { Answer, Thread } from '../models/forum.model';
 import { addDoc, collection, doc, getDocs, getFirestore, limit, orderBy, query, startAfter, updateDoc, where } from 'firebase/firestore';
 
+
+/**
+ * Service class which allows interaction with firebase and handles all forum related data transactions
+ *
+ * @export
+ * @class ForumService
+ */
 @Injectable({
     providedIn: 'root'
 })
 export class ForumService {
 
+    /** connection to Firestore */
     db = getFirestore();
+    /** keeps track of the last seen thread, necessary as we do use pagination */
     lastVisibleThread;
+    /** keeps track of the last seen answer, necessary as we do use pagination */
     lastVisibleAnswer;
 
+
+    /**
+     * Creates an instance of ForumService.
+     * @memberof ForumService
+     */
     constructor() { }
 
+    
+    /**
+     *
+     *
+     * @param {number} numberOfThreads the number of thread that should be gathered
+     * @param {string} orderByField the field the table should be ordered by. E.g. created
+     * @return {*}  {Promise<Thread[]>}
+     * @memberof ForumService
+     */
     async getFirstThreads(numberOfThreads: number, orderByField: string): Promise<Thread[]> {
         // Query the first page of docs
         const first = query(collection(this.db, "threads"),
@@ -36,12 +60,29 @@ export class ForumService {
     }
 
 
+    /**
+     * return a single thread based on the provided id
+     *
+     * @param {string} threadUID
+     * @return {*}  {Promise<Thread>}
+     * @memberof ForumService
+     */
     async getThreadByUID(threadUID: string): Promise<Thread> {
         const q = doc(this.db, "threads", threadUID)
         const docSnap = await getDoc(q)
         return docSnap.data() as Thread
     }
 
+
+    /**
+     * loads the next threads, uses the global variable to know where to continue
+     *
+     * @param {number} numberOfThreads amount of threads that should be loaded
+     * @param {string} orderByField the field the table should be ordered by. E.g. created. 
+     * It is advised to use the same ordering as on th method getFirstThreads
+     * @return {*}  {Promise<Thread[]>}
+     * @memberof ForumService
+     */
     async getNextThreads(numberOfThreads: number, orderByField: string): Promise<Thread[]> {
         // Construct a new query starting at this document,
         // get the next threads.
@@ -65,6 +106,14 @@ export class ForumService {
         return array;
     }
 
+
+    /**
+     * gets all answers to a certain thread
+     *
+     * @param {string} threadUID
+     * @return {*}  {Promise<Answer[]>}
+     * @memberof ForumService
+     */
     async getAnswers(threadUID: string): Promise<Answer[]> {
         const q = query(collection(this.db, "answers"),
             where("threadUID", "==", threadUID),
@@ -77,6 +126,15 @@ export class ForumService {
         return array;
     }
 
+
+    /**
+     * gets only a subset of all answers of a thread, ordered by creation date
+     *
+     * @param {string} threadUID thread id you want the answers from
+     * @param {number} numberOfAnswers number of answers to load
+     * @return {*}  {Promise<Answer[]>}
+     * @memberof ForumService
+     */
     async getFirstAnswers(threadUID: string, numberOfAnswers: number): Promise<Answer[]> {
         // Query the first page of docs
         const first = query(collection(this.db, "answers"),
@@ -99,6 +157,15 @@ export class ForumService {
         return array;
     }
 
+
+    /**
+     * get next set of answers, continues from the global set variable
+     *
+     * @param {string} threadUID id of thread id you want the answers from
+     * @param {number} numberOfAnswers amount of answers to return
+     * @return {*}  {Promise<Answer[]>}
+     * @memberof ForumService
+     */
     async getNextAnswers(threadUID: string, numberOfAnswers: number): Promise<Answer[]> {
         // Construct a new query starting at this document,
         // get the next threads.
@@ -123,6 +190,14 @@ export class ForumService {
         return array;
     }
 
+
+
+    /**
+     * does add a thread document to the threads collection in firestore 
+     *
+     * @param {Thread} thread object of type Thread
+     * @memberof ForumService
+     */
     async createThread(thread: Thread) {
 
         const docRef = collection(this.db, 'threads');
@@ -142,6 +217,14 @@ export class ForumService {
         });
     }
 
+
+
+    /**
+     *  does add a answer document to the answers collection in firestore 
+     *
+     * @param {Answer} answer
+     * @memberof ForumService
+     */
     async createAnswer(answer: Answer) {
 
         const docRef = collection(this.db, 'answers');
@@ -164,6 +247,14 @@ export class ForumService {
         });
     }
 
+
+
+    /**
+     * Updates a thread. It does increas the amount of views by one
+     *
+     * @param {string} threadUID
+     * @memberof ForumService
+     */
     async incrementThreadViews(threadUID: string) {
         const threadRef = doc(this.db, "threads", threadUID);
 
@@ -172,6 +263,7 @@ export class ForumService {
         });
     }
 
+    /** returns the total number of threads. */
     async getNumberOfThreads(): Promise<number> {
         const q = doc(this.db, "threads", "metadata")
         const docSnap = await getDoc(q)

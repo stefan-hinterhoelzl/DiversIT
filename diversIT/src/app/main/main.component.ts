@@ -8,6 +8,15 @@ import { DiversITUser } from '../models/users.model';
 import { ChatService } from '../services/chat.service';
 import { ObserversService } from '../services/observers.service';
 
+
+/**
+ * mainpage for Mentees, Mentors do not see this page
+ *
+ * @export
+ * @class MainComponent
+ * @implements {OnInit}
+ * @implements {OnDestroy}
+ */
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -15,16 +24,40 @@ import { ObserversService } from '../services/observers.service';
 })
 export class MainComponent implements OnInit, OnDestroy {
 
+  /** current user navigating the application */
   currentUser: DiversITUser;
+  /** subscription to said user which is globaly safed to unsubsribe when component gets destroyed */
   currentUserSubscription: Subscription;
 
-  constructor(private firestore: UserService, private auth: AuthService, private rtdb: ChatService, private observer: ObserversService) { }
+
+  /**
+   * Creates an instance of MainComponent.
+   * @param {UserService} firestore 
+   * @param {AuthService} auth 
+   * @param {ChatService} rtdb 
+   * @param {ObserversService} observer
+   * @memberof MainComponent
+   */
+  constructor(private auth: AuthService, private rtdb: ChatService, private observer: ObserversService) { }
 
 
+
+  /**
+   * lifecycle hook - unsubscribes userobject when component is destroyed
+   *
+   * @memberof MainComponent
+   */
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe();
   }
 
+
+
+  /**
+   * lifecyclehook - subsribes to currentuser when component is first initialized
+   *
+   * @memberof MainComponent
+   */
   ngOnInit(): void {
     this.currentUserSubscription = this.observer.currentUserStatus.subscribe((user) => {
       if (user != null) {
@@ -34,6 +67,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   }
 
+  /** logs the user out */
   logout() {
     this.auth.logout();
   }

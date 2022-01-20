@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Notifications class.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -186,12 +193,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/notifications/notifications.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/notifications/notifications.component.ts:30</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of NotificationsComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -289,14 +298,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/app/notifications/notifications.component.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/app/notifications/notifications.component.ts:66</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Accepts the mentorship request. The Notification resembels the invitation to form a relationship to a mentor/mentee.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -358,14 +369,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/app/notifications/notifications.component.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/app/notifications/notifications.component.ts:90</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>declines the mentorship request. The Notification resembels the invitation to form a relationship to a mentor/mentee.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -427,14 +440,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/app/notifications/notifications.component.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/notifications/notifications.component.ts:49</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>lifecycle hook - subscribes to the currentuser and the notifications of said user</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -469,10 +484,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/notifications/notifications.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/notifications/notifications.component.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>the current user navigating the application</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -495,10 +516,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/notifications/notifications.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/notifications/notifications.component.ts:26</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>list of all notifications</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -521,10 +548,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/notifications/notifications.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/notifications/notifications.component.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>subscription to the notifications of the current user</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -544,18 +577,44 @@ import { NotificationService } from &#x27;../services/notification.service&#x27;
 import { ObserversService } from &#x27;../services/observers.service&#x27;;
 import { UserService } from &#x27;../services/user.service&#x27;;
 
+
+/**
+ * Notifications class.
+ *
+ * @export
+ * @class NotificationsComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-notifications&#x27;,
   templateUrl: &#x27;./notifications.component.html&#x27;,
   styleUrls: [&#x27;./notifications.component.scss&#x27;]
 })
 export class NotificationsComponent implements OnInit {
+  /** list of all notifications */
   notifications: Notification[];
+  /** subscription to the notifications of the current user */
   notificationSubscription: Subscription;
+  /** the current user navigating the application */
   currentUser: DiversITUser;
 
+
+  /**
+   * Creates an instance of NotificationsComponent.
+   * @param {UserService} firestore
+   * @param {ObserversService} observer
+   * @param {ChatService} chatService
+   * @param {NotificationService} notificationService
+   * @memberof NotificationsComponent
+   */
   constructor(private firestore: UserService, private observer: ObserversService, private chatService: ChatService, private notificationService: NotificationService) { }
 
+
+  /**
+   * lifecycle hook - subscribes to the currentuser and the notifications of said user
+   *
+   * @memberof NotificationsComponent
+   */
   ngOnInit(): void {
     this.notificationSubscription &#x3D; this.observer.notificationsOfUserStatus.subscribe((notifications: any) &#x3D;&gt; {
       if(notifications !&#x3D; null)
@@ -566,6 +625,13 @@ export class NotificationsComponent implements OnInit {
     })
   }
 
+
+  /**
+   * Accepts the mentorship request. The Notification resembels the invitation to form a relationship to a mentor/mentee.
+   *
+   * @param {Notification} notification
+   * @memberof NotificationsComponent
+   */
   acceptMentorshipRequest(notification: Notification){
     console.log(this.currentUser)
     if(this.currentUser.role &#x3D;&#x3D; 2) this.chatService.addRelationship(notification.fromUID, this.currentUser.uid);
@@ -583,6 +649,13 @@ export class NotificationsComponent implements OnInit {
     })
   }
 
+
+  /**
+   * declines the mentorship request. The Notification resembels the invitation to form a relationship to a mentor/mentee.
+   *
+   * @param {Notification} notification
+   * @memberof NotificationsComponent
+   */
   declineMentorshipRequest(notification: Notification){
     this.notificationService.deleteNotification(notification.uid)
   }
