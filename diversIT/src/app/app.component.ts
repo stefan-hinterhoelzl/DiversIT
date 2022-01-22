@@ -77,6 +77,8 @@ export class AppComponent implements OnInit, OnDestroy {
       if (data != null)
         this.newNotifications = data.length
     })
+
+    //TODO: Add profilsettings check and Snackbar
   }
 
   /** return true or false, depending on the route of the page (true when the route ist /landing) */
