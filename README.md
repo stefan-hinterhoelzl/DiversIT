@@ -20,4 +20,14 @@ Starten der Angular-Web-App (ACHTUNG: Darauf achten dass man im Terminal im rich
 h) Node_Modules installieren --> npm install \
 i) Webserver starten --> ng serve (Default-Host: http://localhost:4200)
 
-<img src="https://gasdithub.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.svg?raw=true" alt="Darstellung der Komponentenhierarchie - Laden Fehlgeschlagen">
+## Dokumentation
+Die documentation kann gefunden werden unter ./diversIT/documentation.
+
+Zusätzlich ist in der folgenden Abbildung die Komponentenstruktur dargestellt.
+<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.svg?raw=true" alt="Darstellung der Komponentenhierarchie - Laden Fehlgeschlagen">
+
+Die Verbindung an die von Firebase bereitgestellten Services sieht wie folgt aus:
+<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-firebase-service-model.svg?raw=true" alt="Darstellung der DiversIT und Firebase Service verbindung - Laden Fehlgeschlagen">
+
+Schlussendlich wird in folgender Abbildung, das "Datenbankschema" der Firestore NoSQL Datenbank dargestellt.
+<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/firestore-schema.svg?raw=true" alt="Darstellung der DiversIT und Firebase Service verbindung - Laden Fehlgeschlagen">
