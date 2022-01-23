@@ -43,6 +43,7 @@ export class SearchComponent implements OnInit {
       this.currentUser = data;
     });
     this.computeMatchings()
+    this.sortArray();
     this.loading.hide();
   }
 
@@ -120,7 +121,13 @@ export class SearchComponent implements OnInit {
     if (this.textSearch.value != "") {
       this.mentors = this.mentors.filter((mentor) => {return (mentor.firstname.toLowerCase().includes(this.textSearch.value.toLowerCase()) || mentor.lastname.toLowerCase().includes(this.textSearch.value.toLowerCase()))})
     }
+    this.sortArray();
+  }
 
+  sortArray() {
+    this.mentors.sort((mentor1, mentor2) => {
+      return this.matchingValues[mentor2.uid] - this.matchingValues[mentor1.uid]
+    });
   }
 
 }
