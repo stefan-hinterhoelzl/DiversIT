@@ -1,0 +1,69 @@
+
+<div style = "width: 100%;">
+  <div class = "searchcard">
+    <mat-card style = "width: 100%;">
+      <mat-card-header>
+        <h2>Suchen und Filtern</h2>
+      </mat-card-header>
+      <div class = "card">
+        <mat-form-field appearance="outline">
+          <input [formControl] = "textSearch" type="text" matInput placeholder="Vorname, Nachname" (input) = "onFilterChanged($event)">
+          <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style ="margin-left: 1%;">
+          <mat-label>Geschlecht</mat-label>
+              <mat-select [formControl] ="genderControl" multiple (selectionChange)="onFilterChanged($event)">
+                  <mat-option *ngFor="let g of gender" [value]="g">{{g}}</mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style ="margin-left: 1%;">
+          <mat-label>Primärschulbildung</mat-label>
+              <mat-select [formControl] ="primaryControl" multiple (selectionChange)="onFilterChanged($event)">
+                  <mat-option *ngFor="let g of primaryEducation" [value]="g">{{g}}</mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style ="margin-left: 1%;">
+          <mat-label>Sekundarschulbildung</mat-label>
+              <mat-select [formControl] ="secondaryControl" multiple (selectionChange)="onFilterChanged($event)">
+                  <mat-option *ngFor="let g of secondaryEducation" [value]="g">{{g}}</mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style ="margin-left: 1%;">
+          <mat-label>Tertiäre Abschlüsse</mat-label>
+              <mat-select [formControl] ="universityControl" multiple (selectionChange)="onFilterChanged($event)">
+                  <mat-option *ngFor="let g of universityEducation" [value]="g">{{g}}</mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style ="margin-left: 1%;">
+          <mat-label>Beruf</mat-label>
+              <mat-select [formControl] ="jobControl" multiple (selectionChange)="onFilterChanged($event)">
+                  <mat-option *ngFor="let g of job" [value]="g">{{g}}</mat-option>
+              </mat-select>
+        </mat-form-field>
+    </div>
+    </mat-card>
+  </div>
+  <div class="container">
+    <div class="user-card" *ngFor="let mentor of mentors">
+      <div class="card-header">
+          <div *ngIf="showSpinner" class="spinner-container profile-image">
+              <mat-spinner color="accent"></mat-spinner>
+            </div>
+          <img (load)="imageLoaded()" src="{{mentor?.photoURL}}" onerror="this.onerror=null;this.src='./../../assets/Images/User-Placeholder.png';" class="profile-image" />
+          <h1>{{mentor?.firstname}} {{mentor?.lastname}}</h1>
+          <h2>{{matchingValues[mentor.uid]}} % Matching</h2>
+      </div>
+      <div class="card-content">
+          {{mentor?.job}} {{mentor?.job && mentor?.company? "bei" : ""}} {{mentor?.company}}
+      </div>
+      <div class="action-bar">
+          <button mat-raised-button color="accent" routerLink="/profile/{{mentor?.uid}}" >Profil ansehen</button>
+      </div>
+  </div>
+  </div>
+</div>

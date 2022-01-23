@@ -16,6 +16,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { MentorGuardService } from './services/redirectMentorGuard.service';
 import { RelationsPageComponent } from './relations-page/relations-page.component';
 import { ForumThreadComponent } from './forum-thread/forum-thread.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
 
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'app',
     component: MainComponent,
+    canActivate: [AuthguardService, MentorGuardService]
+  },
+  { path: 'search',
+    component: SearchComponent,
     canActivate: [AuthguardService, MentorGuardService]
   },
   {
