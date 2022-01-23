@@ -21,7 +21,7 @@ h) Node_Modules installieren --> npm install \
 i) Webserver starten --> ng serve (Default-Host: http://localhost:4200)
 
 ## Dokumentation
-Die documentation kann gefunden werden unter ./diversIT/documentation.
+Die Dokumentation kann gefunden werden im Verzeichnis ./diversIT/documentation/index.html.
 
 Zusätzlich ist in der folgenden Abbildung die Komponentenstruktur dargestellt.
 <img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.svg?raw=true" alt="Darstellung der Komponentenhierarchie - Laden Fehlgeschlagen">
