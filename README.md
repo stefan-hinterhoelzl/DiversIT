@@ -29,5 +29,5 @@ Zusätzlich ist in der folgenden Abbildung die Komponentenstruktur dargestellt.
 Die Verbindung an die von Firebase bereitgestellten Services sieht wie folgt aus:
 <img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-firebase-service-model.svg?raw=true" alt="Darstellung der DiversIT und Firebase Service verbindung - Laden Fehlgeschlagen">
 
-Schlussendlich wird in folgender Abbildung, das "Datenbankschema" der Firestore NoSQL Datenbank dargestellt.
-<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/firestore-schema.svg?raw=true" alt="Darstellung des Firestore 'Datebankschemas' - Laden Fehlgeschlagen">
+Schlussendlich wird in folgender Abbildung, das "Datenbankschema" der Firestore und Realtime Database NoSQL Datenbanken dargestellt.
+<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/firebase-schema.svg?raw=true" alt="Darstellung des Firestore 'Datebankschemas' - Laden Fehlgeschlagen">
