@@ -1,0 +1,26 @@
+TITLE:
+ADR008 - Choice of Continues Deployment
+
+
+STATUS:
+Accepted
+
+
+CONTEXT:
+As of now, the project does not have a continues Deployment. 
+To this date, this was not necessary and provided no added benefit, as no tests were in place.
+Now that a lot of tests are written, it does make sense, to automaticly test and forward changes from the github repository to the production website.
+
+
+DECISION:
+After comparing a lot of Continuous Deployment providers, we settled on GitHub Actions. 
+The free contingent seems sufficient for this project and implementation does not take alot of time.
+Furthermore, we decided to create a seperate branch, which starts the github Action. 
+This allows the developers to keep working without any changes and if needed, 
+a simple merge into the branch live-deployment fires of the github action and therefore, all the test, build and hosting steps. 
+
+
+CONSEQUENCES:
+The developers do not face any changes and have a very simple option to test and publish new changes. 
+A simple push to live-deployment takes care of testing and deploying the code correctly. 
+If a test fails, the website will not be published and all developers are notified via an email. 
