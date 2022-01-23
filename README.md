@@ -30,4 +30,4 @@ Die Verbindung an die von Firebase bereitgestellten Services sieht wie folgt aus
 <img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-firebase-service-model.svg?raw=true" alt="Darstellung der DiversIT und Firebase Service verbindung - Laden Fehlgeschlagen">
 
 Schlussendlich wird in folgender Abbildung, das "Datenbankschema" der Firestore NoSQL Datenbank dargestellt.
-<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/firestore-schema.svg?raw=true" alt="Darstellung der DiversIT und Firebase Service verbindung - Laden Fehlgeschlagen">
+<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/firestore-schema.svg?raw=true" alt="Darstellung des Firestore 'Datebankschemas' - Laden Fehlgeschlagen">
