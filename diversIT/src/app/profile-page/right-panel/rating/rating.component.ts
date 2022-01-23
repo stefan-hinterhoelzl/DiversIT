@@ -7,6 +7,14 @@ import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
 import { serverTimestamp } from 'firebase/firestore';
 import { RatingService } from 'src/app/services/rating.service';
 
+
+/**
+ * component of the profile page which also contains the star rating component
+ *
+ * @export
+ * @class RatingComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.component.html',
@@ -14,18 +22,35 @@ import { RatingService } from 'src/app/services/rating.service';
 })
 export class RatingComponent implements OnInit {
 
+  /** some input/output data from/to parent component */
   @Input() currentUser: DiversITUser;
   @Input() ownProfile: boolean;
   @Output() starCount = 5;
+
+  /** global variables */
   private rating: number;
   ratingForm: FormGroup;
   emailAdress = "diversit.plattform@gmail.com";
   displayForm = true;
   userRating: Rating;
 
+
+  /**
+   * Creates an instance of RatingComponent.
+   * @param {SnackbarComponent} snackbar
+   * @param {RatingService} ratingService
+   * @param {RouterModule} router
+   * @memberof RatingComponent
+   */
   constructor(private snackbar: SnackbarComponent, private ratingService: RatingService, private router: RouterModule) {
   }
 
+
+  /**
+   * lifecycle hook - creates a formgroup
+   *
+   * @memberof RatingComponent
+   */
   ngOnInit() {
     this.ratingForm = new FormGroup({
       summary: new FormControl('', Validators.required),
@@ -33,12 +58,19 @@ export class RatingComponent implements OnInit {
     });
   }
 
+  /** listens for changes of the input date from the parent and updates the rating form content if needed */
   ngOnChanges(changes: SimpleChanges) {
     if (changes.currentUser && changes.currentUser.currentValue) {
       this.prefillRating();
     }
   }
 
+
+  /**
+   * fills the rating form with requested data from database.
+   *
+   * @memberof RatingComponent
+   */
   async prefillRating() {
     await this.ratingService.getRatingForUserID(this.currentUser.uid).then((data) => {
       if (data != null) {
@@ -50,11 +82,13 @@ export class RatingComponent implements OnInit {
     })
   }
 
+  /** updates the global rating variable */
   onRatingChanged(rating: number) {
     console.log(rating);
     this.rating = rating;
   }
 
+  /** persists the formdata on the database. Either updates or inserts the rating entry. */
   saveRating() {
     if (this.isFormDataComplete()) {
       let ratingPayload = <Rating>{
@@ -76,6 +110,7 @@ export class RatingComponent implements OnInit {
     }
   }
 
+  /** check if form is valid */
   isFormDataComplete(): boolean {
     if (this.rating == null || this.rating == 0 || this.ratingForm.get('summary').value
       .trim() == '' || this.ratingForm.get('text').value.trim() == '') {
@@ -84,6 +119,7 @@ export class RatingComponent implements OnInit {
     } else return true;
   }
 
+  /** resets the form if needed */
   reset() {
     this.rating = null;
     this.ratingForm.reset();

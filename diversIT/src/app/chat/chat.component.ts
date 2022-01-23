@@ -51,6 +51,14 @@ export class ChatComponent implements OnInit, OnDestroy {
   constructor(private user: UserService, private _ngZone: NgZone, private database: ChatService, private route: ActivatedRoute, private router: Router, private observer: ObserversService) {
     this.textInput = new FormControl('', Validators.required);
    }
+  
+
+  /**
+   * unsubscribes from all subscription when being destroyed
+   *
+   * @return {*}  {Promise<void>}
+   * @memberof ChatComponent
+   */
   async ngOnDestroy(): Promise<void> {
     if (this.chatunsub != null) {
       await this.database.closeChat(this.activeChat, this.currentUser);
@@ -66,6 +74,7 @@ export class ChatComponent implements OnInit, OnDestroy {
         .subscribe(() => this.autosize.resizeToFitContent(true));
   }
 
+  /** when created, the current user is loaded with all it's chats.  */
   ngOnInit(): void {
     this.currentUserSubscription = this.observer.currentUserStatus.subscribe((data) => {
       if(data !== null) {
@@ -107,6 +116,16 @@ export class ChatComponent implements OnInit, OnDestroy {
     }
   }
 
+
+  /**
+   * called when the user clicks on a specific chat
+   * loads all necessary data for the visualisation (e.g. firstname lastname of chat participant) and
+   * sets own activity status to online for chat partner
+   * 
+   * @param {Chat} chat
+   * @return {*} 
+   * @memberof ChatComponent
+   */
   async openChat(chat: Chat) {
     if (this.activeChat != undefined && this.activeChat.uid === chat.uid) return;
     this.messagesVisible = false;
@@ -130,6 +149,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
 
+  /** takes the value of the chat inputbox and uses the database service to send and 
+   * persist the data on the real time database */
   sendMessage() {
     let trimmed = this.textInput.value.trim();
     if (trimmed != "") {
@@ -138,6 +159,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.textInput.setValue("");
   }
 
+  /** listens on every keystroke - if keystroke is the enter key, the message is sent to firebase. */
   onKeydown(event) {
     if (event.key === "Enter") {
       event.preventDefault()
@@ -146,22 +168,26 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
     
 
+  /** unsubscribes from the chat when windows is being unloaded*/
   @HostListener('window:beforeunload', ['$event'])
   async beforeUnloadHandler(event) {
     await this.database.closeChat(this.activeChat, this.currentUser);
     this.chatunsub();
   }
 
+  /** same method as above - this is in some cases additionally necessary */
   @HostListener('window:onunload', ['$event'])
   async onUnloadHandler(event) {
     await this.database.closeChat(this.activeChat, this.currentUser);
     this.chatunsub();
   }
 
+  /** adds the char of the exent to the textinput of the chatwindow */
   handleSelection(event) {
     this.textInput.setValue(this.textInput.value+event.char);
   }
 
+  /** routing which is called when the user clicks on the image or name of the chat partner */
   navigateToUser(id: string) {
     this.router.navigate(["/profile/"+id])
   }
