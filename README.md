@@ -21,6 +21,6 @@ h) Node_Modules installieren --> npm install \
 i) Webserver starten --> ng serve (Default-Host: http://localhost:4200)
 
 
-![Darstellung der Komponentenhierarchie - Laden Fehlgeschlagen ](https://github.com/stefan-hinterhoelzl/DiversIT/tree/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.svg?raw=true)
+![Darstellung der Komponentenhierarchie - Laden Fehlgeschlagen ](https://github.com/stefan-hinterhoelzl/DiversIT/tree/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.png?raw=true)
 
-<img src="https://github.com/stefan-hinterhoelzl/DiversIT/tree/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.svg?raw=true">
+<img src="https://github.com/stefan-hinterhoelzl/DiversIT/tree/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.png?raw=true">
