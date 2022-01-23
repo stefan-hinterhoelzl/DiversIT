@@ -1,4 +1,4 @@
-import { getDoc, increment } from '@firebase/firestore';
+import { getDoc, increment, serverTimestamp } from '@firebase/firestore';
 import { Injectable } from "@angular/core";
 import { Answer, Thread } from '../models/forum.model';
 import { addDoc, collection, doc, getDocs, getFirestore, limit, orderBy, query, startAfter, updateDoc, where } from 'firebase/firestore';
@@ -203,12 +203,12 @@ export class ForumService {
         const docRef = collection(this.db, 'threads');
         const ref = await addDoc(docRef, {
             uid: "",
-            created: thread.created,
+            created: serverTimestamp(),
             title: thread.title,
             text: thread.text,
             tags: thread.tags,
             numberOfAnswers: 0,
-            lastAnswerTime: thread.created,
+            lastAnswerTime: serverTimestamp(),
             views: 0,
         });
 
@@ -232,7 +232,7 @@ export class ForumService {
             uid: "",
             threadUID: answer.threadUID,
             text: answer.text,
-            timestamp: answer.timestamp,
+            timestamp: serverTimestamp()
         });
 
         await updateDoc(ref, {
@@ -243,7 +243,7 @@ export class ForumService {
 
         await updateDoc(threadRef, {
             numberOfAnswers: increment(1),
-            lastAnswerTime: answer.timestamp
+            lastAnswerTime: serverTimestamp()
         });
     }
 
