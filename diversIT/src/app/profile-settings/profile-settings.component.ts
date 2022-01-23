@@ -7,6 +7,15 @@ import { ObserversService } from '../services/observers.service';
 import { UserService } from '../services/user.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 
+
+/**
+ * Component of profile settings - does not have subcomponents
+ *
+ * @export
+ * @class ProfileSettingsComponent
+ * @implements {OnInit}
+ * @implements {OnDestroy}
+ */
 @Component({
   selector: 'app-profile-settings',
   templateUrl: './profile-settings.component.html',
@@ -17,20 +26,30 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy
 
 {
 
+
+  /**
+   * Creates an instance of ProfileSettingsComponent.
+   * @param {UserService} firestore
+   * @param {ObserversService} observer
+   * @param {SnackbarComponent} snackbar
+   * @param {Router} router
+   * @memberof ProfileSettingsComponent
+   */
   constructor(private firestore: UserService, private observer: ObserversService, private snackbar: SnackbarComponent, private router: Router) { }
 
-  // variables for possible values
+  /*variables for possible values*/
   gender = ['Männlich', 'Weiblich', 'Divers'];
   job = ['Schüler', 'Student', 'IT-Systemadministrator', 'IT-Techniker', 'UX-Designer', 'Software Engineer', 'Universitätsprofessor für Informatik', 'Scrum Master', 'DevOps Engineer', 'Product Owner'].sort();;
   primaryEducation = ['Hauptschule', 'Gymnasium'];
   secondaryEducation = ['Gymnasium', 'HAK', 'HTL'];
   universityEducation = ['Bachelorstudium', 'Masterstudium', 'Doktorat'];
 
-  // other variables
+  /** other variables */ 
   currentUserSubscription: Subscription;
   currentUser: DiversITUser;
   currentUserRoleText = 'Unbekannt';
 
+  /** form */
   profileSettingsForm = new FormGroup({
     role: new FormControl(''),
     email: new FormControl(''),
@@ -47,10 +66,12 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy
     universityEducation: new FormControl('')
   });
 
+  /** lifecycle hook - unsubscribes current user */
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe();
   }
 
+  /** lifecycle hook - subscribes to user, and prefills the form with the data of the user */
   ngOnInit(): void {
     this.currentUserSubscription = this.observer.currentUserStatus.subscribe((user) => {
       if (user != null) {
@@ -77,6 +98,8 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy
     });
   }
 
+  /** submits the form of the user - 
+   * therefore, it takes the data of the form, overwrites the user object and calls a service method to update the user on the database */
   onSubmit() {
     if (!this.profileSettingsForm.valid) {
       this.snackbar.openSnackBar("Formular nicht korrekt ausgefüllt.", "red-snackbar");

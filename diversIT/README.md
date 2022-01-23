@@ -1,31 +1,33 @@
-# Girlsonly
+## DiversIT Social Platform
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Aufrufbar unter: https://mintistcool-be74c.web.app/
 
-## Development server
+## Entwickler Installationsanleitung
+Was muss installiert werden um mitentwickelt zu können? (verwendeter Quelltext-Editor --> VS Code): \
+a) Node.js (https://nodejs.org/en/) \
+b) Angular CLI (in Commandline: npm install -g @angular/cli) \
+c) Visual Studio Code (https://code.visualstudio.com/) \
+d) git (https://git-scm.com/downloads) --> (user.email und user.name konfigurieren!) \
+d1) In Commandline: git config --global user.email "..." \
+d2) In Commandline: git config --global user.name "..." \
+\
+Speziell (Nur beim Auftreten von Fehlermeldungen dass eine Komponente nicht installiert ist): \
+e) Angular Devkit (in Commandline: npm install --save-dev @angular-devkit/build-angular) \
+f) Angular Compiler CLI (in Commandline: npm install --save-dev @angular/compiler-cli) \
+g) Angular Compiler (in Commandline: npm install --save-dev @angular/compiler) \
+\
+Starten der Angular-Web-App (ACHTUNG: Darauf achten dass man im Terminal im richtigen Ordner ist): \
+h) Node_Modules installieren --> npm install \
+i) Webserver starten --> ng serve (Default-Host: http://localhost:4200)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Dokumentation
+Hier kann die mittel Compodoc generierte Projektdokumentation eingesehen werden.
 
-## Code scaffolding
+Zusätzlich ist in der folgenden Abbildung die Komponentenstruktur dargestellt.
+<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.svg?raw=true" alt="Darstellung der Komponentenhierarchie - Laden Fehlgeschlagen" style="width: 100%">
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Die Verbindung an die von Firebase bereitgestellten Services sieht wie folgt aus:
+<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-firebase-service-model.svg?raw=true" alt="Darstellung der DiversIT und Firebase Service verbindung - Laden Fehlgeschlagen" style="width: 100%">
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Cypress.io](https://www.cypress.io/).
-
-## Running linter
-
-Run `ng lint` to execute the linting via [ESLint] (https://eslint.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Schlussendlich wird in folgender Abbildung, das "Datenbankschema" der Firestore NoSQL Datenbank dargestellt.
+<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/firestore-schema.svg?raw=true" alt="Darstellung des Firestore 'Datebankschemas' - Laden Fehlgeschlagen" style="width: 100%">

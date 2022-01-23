@@ -7,6 +7,14 @@ import { PostsService } from 'src/app/services/posts.service';
 import { UserService } from 'src/app/services/user.service';
 import { SnackbarComponent } from 'src/app/snackbar/snackbar.component';
 
+
+/**
+ * componet of profile page which doesn't contain other components
+ *
+ * @export
+ * @class ProfileNewPostComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-profile-new-post',
   templateUrl: './profile-new-post.component.html',
@@ -18,6 +26,12 @@ export class ProfileNewPostComponent implements OnInit {
 
   constructor(private userService: UserService, private snackbar: SnackbarComponent, private postService: PostsService) { }
 
+
+  /**
+   * creates a form on generation
+   *
+   * @memberof ProfileNewPostComponent
+   */
   ngOnInit(): void {
     this.postForm = new FormGroup({
       text: new FormControl(''),
@@ -26,6 +40,7 @@ export class ProfileNewPostComponent implements OnInit {
   }
 
 
+  /**takes the data of the form and creates a new post entry in the database. */
   addPost(){
     if((this.postForm.get('text').value !== null && this.postForm.get('text').value.trim() !== '') || (this.postForm.get('photoURL').value !== null && this.postForm.get('photoURL').value.trim() !== '')){
       let postPayload = <Post>{

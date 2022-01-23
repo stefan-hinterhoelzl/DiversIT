@@ -17,7 +17,6 @@ import { UserService } from './user.service';
 })
 export class AuthService {
 
-
   /**
    * Creates an instance of AuthService.
    * @param {Router} router
@@ -55,7 +54,6 @@ export class AuthService {
     signInWithPopup(auth, provider)
     .then((result) => {
       const user = result.user;
-      //Only on first Login
       this.firestore.UpdateUserAccount(user.uid, user.email, user.photoURL);
       let snackbarRef = this.snackbar.openSnackBar("Eingeloggt!", "green-snackbar");
     }).catch((error) => {

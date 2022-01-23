@@ -64,6 +64,13 @@
             </p>
 
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p> Class to guard specified routes from users who do not have the role admin.</p>
+
+                </p>
 
 
 
@@ -107,12 +114,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/adminguard.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/services/adminguard.service.ts:20</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of AdminguardService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -194,14 +203,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/services/adminguard.service.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/services/adminguard.service.ts:43</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Checks if user is authenticated. Redirects if route is guarded and user does not have the role admin.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -249,7 +260,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>{(boolean | UrlTree | Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt;)}</p>
+
                     </div>
                 </td>
             </tr>
@@ -268,15 +280,40 @@ import { DiversITUser } from &#x27;../models/users.model&#x27;;
 import { SnackbarComponent } from &#x27;../snackbar/snackbar.component&#x27;;
 import { UserService } from &#x27;./user.service&#x27;;
 
+
+/**
+ *  Class to guard specified routes from users who do not have the role admin.
+ *
+ * @export
+ * @class AdminguardService
+ * @implements {CanActivate}
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class AdminguardService implements CanActivate {
 
+
+  /**
+   * Creates an instance of AdminguardService.
+   * @param {Router} router
+   * @param {UserService} firestore
+   * @param {SnackbarComponent} snackbar
+   * @memberof AdminguardService
+   */
   constructor(private router: Router, private firestore: UserService, private snackbar: SnackbarComponent) { }
 
 
 
+
+  /**
+   * Checks if user is authenticated. Redirects if route is guarded and user does not have the role admin.
+   *
+   * @param {ActivatedRouteSnapshot} route
+   * @param {RouterStateSnapshot} state
+   * @return {*}  {(boolean | UrlTree | Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt;)}
+   * @memberof AdminguardService
+   */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
   boolean | UrlTree | Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt; {
     return new Promise((resolve, reject) &#x3D;&gt; {

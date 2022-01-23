@@ -1075,7 +1075,7 @@ It is advised to use the same ordering as on th method getFirstThreads</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { getDoc, increment } from &#x27;@firebase/firestore&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { getDoc, increment, serverTimestamp } from &#x27;@firebase/firestore&#x27;;
 import { Injectable } from &quot;@angular/core&quot;;
 import { Answer, Thread } from &#x27;../models/forum.model&#x27;;
 import { addDoc, collection, doc, getDocs, getFirestore, limit, orderBy, query, startAfter, updateDoc, where } from &#x27;firebase/firestore&#x27;;
@@ -1280,12 +1280,12 @@ export class ForumService {
         const docRef &#x3D; collection(this.db, &#x27;threads&#x27;);
         const ref &#x3D; await addDoc(docRef, {
             uid: &quot;&quot;,
-            created: thread.created,
+            created: serverTimestamp(),
             title: thread.title,
             text: thread.text,
             tags: thread.tags,
             numberOfAnswers: 0,
-            lastAnswerTime: thread.created,
+            lastAnswerTime: serverTimestamp(),
             views: 0,
         });
 
@@ -1309,7 +1309,7 @@ export class ForumService {
             uid: &quot;&quot;,
             threadUID: answer.threadUID,
             text: answer.text,
-            timestamp: answer.timestamp,
+            timestamp: serverTimestamp()
         });
 
         await updateDoc(ref, {
@@ -1320,7 +1320,7 @@ export class ForumService {
 
         await updateDoc(threadRef, {
             numberOfAnswers: increment(1),
-            lastAnswerTime: answer.timestamp
+            lastAnswerTime: serverTimestamp()
         });
     }
 

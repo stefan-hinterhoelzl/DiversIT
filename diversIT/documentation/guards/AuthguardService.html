@@ -64,6 +64,13 @@
             </p>
 
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>Class to guard specified routes from unauthorized users</p>
+
+                </p>
 
 
 
@@ -107,12 +114,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/authguard.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/authguard.service.ts:18</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of AuthguardService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -182,14 +191,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/app/services/authguard.service.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/services/authguard.service.ts:39</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> Checks if user is authenticated. Redirects if route is guarded and user is not logged in.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -237,7 +248,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>{(boolean | UrlTree | Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt;)}</p>
+
                     </div>
                 </td>
             </tr>
@@ -255,13 +267,37 @@ import { getAuth, onAuthStateChanged, User } from &#x27;@firebase/auth&#x27;;
 import { SnackbarComponent } from &#x27;../snackbar/snackbar.component&#x27;;
 
 
+/**
+ * Class to guard specified routes from unauthorized users
+ *
+ * @export
+ * @class AuthguardService
+ * @implements {CanActivate}
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class AuthguardService implements CanActivate {
 
+
+  /**
+   * Creates an instance of AuthguardService.
+   * @param {Router} router
+   * @param {SnackbarComponent} snackbar
+   * @memberof AuthguardService
+   */
   constructor(private router: Router, private snackbar: SnackbarComponent) { }
 
+
+
+  /**
+   *  Checks if user is authenticated. Redirects if route is guarded and user is not logged in.
+   *
+   * @param {ActivatedRouteSnapshot} route
+   * @param {RouterStateSnapshot} state
+   * @return {*}  {(boolean | UrlTree | Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt;)}
+   * @memberof AuthguardService
+   */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
   boolean | UrlTree | Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt; {
     return new Promise((resolve, reject) &#x3D;&gt; {
