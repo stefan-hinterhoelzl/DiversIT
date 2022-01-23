@@ -20,7 +20,4 @@ Starten der Angular-Web-App (ACHTUNG: Darauf achten dass man im Terminal im rich
 h) Node_Modules installieren --> npm install \
 i) Webserver starten --> ng serve (Default-Host: http://localhost:4200)
 
-
-![Darstellung der Komponentenhierarchie - Laden Fehlgeschlagen ](https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.png?raw=true)
-
-<img src="https://github.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.svg?raw=true">
+<img src="https://gasdithub.com/stefan-hinterhoelzl/DiversIT/blob/main/diversIT/src/assets/documentation/diversIT-Component-hierarchy.svg?raw=true" alt="Darstellung der Komponentenhierarchie - Laden Fehlgeschlagen">
