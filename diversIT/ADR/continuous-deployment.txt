@@ -1,5 +1,5 @@
 TITLE:
-ADR008 - Choice of Continues Deployment
+ADR008 - Choice of Continuous Deployment
 
 
 STATUS:
@@ -7,7 +7,7 @@ Accepted
 
 
 CONTEXT:
-As of now, the project does not have a continues Deployment. 
+As of now, the project does not have a continuous Deployment. 
 To this date, this was not necessary and provided no added benefit, as no tests were in place.
 Now that a lot of tests are written, it does make sense, to automaticly test and forward changes from the github repository to the production website.
 
