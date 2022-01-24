@@ -29,7 +29,7 @@ export class ForumService {
      */
     constructor() { }
 
-    
+
     /**
      *
      *
@@ -38,9 +38,12 @@ export class ForumService {
      * @return {*}  {Promise<Thread[]>}
      * @memberof ForumService
      */
-    async getFirstThreads(numberOfThreads: number, orderByField: string): Promise<Thread[]> {
+    async getFirstThreads(numberOfThreads: number, orderByField: string, filterText: string): Promise<Thread[]> {
         // Query the first page of docs
+        let arr = filterText.split(" ")
+        console.log(arr)
         const first = query(collection(this.db, "threads"),
+            where("keywords", "array-contains-any", arr),
             orderBy(orderByField, "desc"),
             limit(numberOfThreads));
         const documentSnapshots = await getDocs(first);
@@ -78,15 +81,17 @@ export class ForumService {
      * loads the next threads, uses the global variable to know where to continue
      *
      * @param {number} numberOfThreads amount of threads that should be loaded
-     * @param {string} orderByField the field the table should be ordered by. E.g. created. 
+     * @param {string} orderByField the field the table should be ordered by. E.g. created.
      * It is advised to use the same ordering as on th method getFirstThreads
      * @return {*}  {Promise<Thread[]>}
      * @memberof ForumService
      */
-    async getNextThreads(numberOfThreads: number, orderByField: string): Promise<Thread[]> {
+    async getNextThreads(numberOfThreads: number, orderByField: string, filterText: string): Promise<Thread[]> {
         // Construct a new query starting at this document,
         // get the next threads.
+        let arr = filterText.split(" ")
         const next = query(collection(this.db, "threads"),
+            where("keywords", "array-contains-any", arr),
             orderBy(orderByField, "desc"),
             startAfter(this.lastVisibleThread),
             limit(numberOfThreads));
@@ -193,7 +198,7 @@ export class ForumService {
 
 
     /**
-     * does add a thread document to the threads collection in firestore 
+     * does add a thread document to the threads collection in firestore
      *
      * @param {Thread} thread object of type Thread
      * @memberof ForumService
@@ -210,6 +215,7 @@ export class ForumService {
             numberOfAnswers: 0,
             lastAnswerTime: serverTimestamp(),
             views: 0,
+            keywords: thread.keywords
         });
 
         await updateDoc(ref, {
@@ -220,7 +226,7 @@ export class ForumService {
 
 
     /**
-     *  does add a answer document to the answers collection in firestore 
+     *  does add a answer document to the answers collection in firestore
      *
      * @param {Answer} answer
      * @memberof ForumService

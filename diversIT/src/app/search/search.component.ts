@@ -3,7 +3,7 @@ import { DiversITUser } from '../models/users.model';
 import { LoadingService } from '../services/loading.service';
 import { UserService } from '../services/user.service';
 import { ObserversService } from '../services/observers.service';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
 
   constructor(private userService: UserService, private loading: LoadingService, private observer: ObserversService) { }
 
+  mentorsOfUser: string[]
   mentors: DiversITUser[]
   savecopy: DiversITUser[] = []
   currentUser: DiversITUser
@@ -36,15 +37,18 @@ export class SearchComponent implements OnInit {
 
 
   async ngOnInit() {
-    this.loading.show();
     this.mentors = await this.userService.getAllMentorsPromise();
     this.mentors.forEach(val => this.savecopy.push(Object.assign({}, val)));
     this.observer.currentUserStatus.pipe(take(1)).subscribe((data:DiversITUser) => {
       this.currentUser = data;
     });
+
+    this.observer.currentUserMentorsStatus.pipe(take(1)).subscribe(data => {
+      this.mentorsOfUser = Array.from(data, (element) => element.uid)
+    });
+
     this.computeMatchings()
-    this.sortArray();
-    this.loading.hide();
+    this.sortandFilterArray();
   }
 
 
@@ -121,10 +125,16 @@ export class SearchComponent implements OnInit {
     if (this.textSearch.value != "") {
       this.mentors = this.mentors.filter((mentor) => {return (mentor.firstname.toLowerCase().includes(this.textSearch.value.toLowerCase()) || mentor.lastname.toLowerCase().includes(this.textSearch.value.toLowerCase()))})
     }
-    this.sortArray();
+    this.sortandFilterArray();
   }
 
-  sortArray() {
+  sortandFilterArray() {
+    this.mentors = this.mentors.filter((element) => {return !this.mentorsOfUser.includes(element.uid)})
+
+    if (this.currentUser.gender == "Männlich") {
+      this.mentors = this.mentors.filter((element) => {return !element.girlsOnlyMentor})
+    }
+
     this.mentors.sort((mentor1, mentor2) => {
       return this.matchingValues[mentor2.uid] - this.matchingValues[mentor1.uid]
     });

@@ -17,8 +17,8 @@ export class SearchFilterSortComponent implements OnInit {
   @Output() filterTagsEventEmitter = new EventEmitter<String[]>();
   @Output() filterTypeEventEmitter = new EventEmitter<String>();
 
-  sendFilterTextToParentItem(value: String) {
-    this.filterTextEventEmitter.emit(value);
+  sendFilterTextToParentItem(value: any) {
+    this.filterTextEventEmitter.emit(value.value.toLowerCase());
   }
 
   sendFilterTagsToParentItem(value: String[]) {
