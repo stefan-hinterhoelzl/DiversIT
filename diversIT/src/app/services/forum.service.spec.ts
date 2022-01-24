@@ -12,11 +12,13 @@ describe('ForumService', () => {
     title: "Dummy+EhGUrpsf6RVI7ewpJjtt",
     text: "Dies ist ein dummy text",
     tags: ["A","B","C"],
+    keywords: [""]
   } as Thread;
   let dummyThreadTwo = {
     title: "Dummy+EhGUrpsf6RVI7ewpJjuu",
     text: "Dies ist ein dummy text",
     tags: ["A","B","C"],
+    keywords: [""]
   } as Thread;
   let dummyAnswer = {
     threadUID: null,
