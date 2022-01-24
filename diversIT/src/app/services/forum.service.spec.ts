@@ -11,12 +11,12 @@ describe('ForumService', () => {
   let dummyThread = {
     title: "Dummy+EhGUrpsf6RVI7ewpJjtt",
     text: "Dies ist ein dummy text",
-    tags: ["A","B","C"],      
+    tags: ["A","B","C"],
   } as Thread;
   let dummyThreadTwo = {
     title: "Dummy+EhGUrpsf6RVI7ewpJjuu",
     text: "Dies ist ein dummy text",
-    tags: ["A","B","C"],      
+    tags: ["A","B","C"],
   } as Thread;
   let dummyAnswer = {
     threadUID: null,
@@ -54,7 +54,7 @@ describe('ForumService', () => {
             expect(data.numberOfAnswers).toEqual(0);
             expect(data.lastAnswerTime).toBeTruthy();
             expect(data.views).toEqual(0);
-        
+
             deleteThreadByTitle(dummyThread.title).then(() => {
                 getThreadByTitle(dummyThread.title).then((data) => {
                     expect(data).toBeNull();
@@ -64,11 +64,11 @@ describe('ForumService', () => {
         });
     });
   });
-  
+
   // getFirstThreads Test
   it('should get first created thread', done => {
     service.createThread(dummyThread).then(() => {
-      service.getFirstThreads(1, "created").then((returnedThreads) => {
+      service.getFirstThreads(1, "created", "").then((returnedThreads) => {
         getThreadByTitle(dummyThread.title).then((dummyThread) => {
           expect(returnedThreads).toBeTruthy();
           expect(returnedThreads.length).toEqual(1);
@@ -89,8 +89,8 @@ describe('ForumService', () => {
   it('should get first and second created thread', done => {
     service.createThread(dummyThread).then(() => {
       service.createThread(dummyThreadTwo).then(() => {
-        service.getFirstThreads(1, "created").then((firstReturnedThreads) => {
-          service.getNextThreads(1, "created").then((secondReturnedThreads) => {
+        service.getFirstThreads(1, "created", "").then((firstReturnedThreads) => {
+          service.getNextThreads(1, "created", "").then((secondReturnedThreads) => {
             getThreadByTitle(dummyThreadTwo.title).then((dummyThreadTwo) => {
               expect(firstReturnedThreads).toBeTruthy();
               expect(firstReturnedThreads.length).toEqual(1);
@@ -134,7 +134,7 @@ describe('ForumService', () => {
       })
     });
   });
-  
+
   // incrementThreadViews Test
   it('should increment thread views', done => {
     service.createThread(dummyThread).then(() => {
@@ -148,12 +148,12 @@ describe('ForumService', () => {
                 done();
               });
             });
-          });  
+          });
         });
       });
     });
   });
-  
+
   // Create Answer Test
   it('should create answer', done => {
     service.createThread(dummyThread).then(() => {
@@ -181,10 +181,10 @@ describe('ForumService', () => {
         });
       })
     });
-  }); 
+  });
 
 
-  /* 
+  /*
   // getAnwsers Test
   it('should get both dummy answers', done => {
     service.createThread(dummyThread).then(() => {
@@ -230,20 +230,20 @@ describe('ForumService', () => {
    */
   /**
    * Ermitteln eines Threads nach einem mitgegebenen Titel
-   * @param threadTitle 
-   * @returns 
+   * @param threadTitle
+   * @returns
    */
   async function getThreadByTitle (threadTitle: string) : Promise<Thread>  {
     const q = query(collection(service.db, "threads"),
         where("title", "==", threadTitle));
     const returnedThreads = await getDocs(q);
     if (returnedThreads.size < 1) return null;
-    return returnedThreads.docs[0].data() as Thread 
+    return returnedThreads.docs[0].data() as Thread
   }
   /**
    * Löschen eines Threads anhand eines mitgegeben Titels
-   * @param threadTitle 
-   * @returns 
+   * @param threadTitle
+   * @returns
    */
   async function deleteThreadByTitle (threadTitle: string)  {
     const q = query(collection(service.db, "threads"),
@@ -254,20 +254,20 @@ describe('ForumService', () => {
   }
   /**
    * Ermitteln einer Antwort eines Threads zu einem mitgegebenen Text
-   * @param answerText 
-   * @returns 
+   * @param answerText
+   * @returns
    */
   async function getAnswerByText (answerText: string) : Promise<Answer> {
     const q = query(collection(service.db, "answers"),
         where("text", "==", answerText));
     const returnedAnswers = await getDocs(q);
     if (returnedAnswers.size < 1) return null;
-    return returnedAnswers.docs[0].data() as Answer 
+    return returnedAnswers.docs[0].data() as Answer
   }
  /**
  * Löschen einer Antwort eines Threads anhand eines mitgegebenen Texts
- * @param answerText 
- * @returns 
+ * @param answerText
+ * @returns
  */
   async function deleteAnswerByText (answerText: string) {
     const q = query(collection(service.db, "answers"),
