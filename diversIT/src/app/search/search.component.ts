@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { ObserversService } from '../services/observers.service';
 import { map, take } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
+import { ArrayDataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-search',
@@ -20,7 +21,7 @@ export class SearchComponent implements OnInit {
   savecopy: DiversITUser[] = []
   currentUser: DiversITUser
   matchingValues = {}
-  showSpinner = true;
+  showSpinner:boolean[] = []
   gender = ['Männlich', 'Weiblich', 'Divers'];
   job = ['Schüler', 'Student', 'IT-Systemadministrator', 'IT-Techniker', 'UX-Designer', 'Software Engineer', 'Universitätsprofessor für Informatik', 'Scrum Master', 'DevOps Engineer', 'Product Owner'].sort();;
   primaryEducation = ['Hauptschule', 'Gymnasium'];
@@ -46,7 +47,6 @@ export class SearchComponent implements OnInit {
     this.observer.currentUserMentorsStatus.pipe(take(1)).subscribe(data => {
       this.mentorsOfUser = Array.from(data, (element) => element.uid)
     });
-
     this.computeMatchings()
     this.sortandFilterArray();
   }
@@ -88,8 +88,8 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  imageLoaded(){
-    this.showSpinner = false;
+  imageLoaded(i: number){
+    this.showSpinner[i] = false;
   }
 
   onFilterChanged(event: any) {
@@ -129,6 +129,7 @@ export class SearchComponent implements OnInit {
   }
 
   sortandFilterArray() {
+    this.showSpinner = [];
     this.mentors = this.mentors.filter((element) => {return !this.mentorsOfUser.includes(element.uid)})
 
     if (this.currentUser.gender == "Männlich") {
@@ -138,6 +139,11 @@ export class SearchComponent implements OnInit {
     this.mentors.sort((mentor1, mentor2) => {
       return this.matchingValues[mentor2.uid] - this.matchingValues[mentor1.uid]
     });
+
+    for (let i = 0; i < this.mentors.length; i++) {
+      this.showSpinner[i] = true;
+    }
+
   }
 
 }

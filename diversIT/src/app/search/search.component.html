@@ -49,12 +49,13 @@
     </mat-card>
   </div>
   <div class="container">
-    <div class="user-card" *ngFor="let mentor of mentors">
+    <div class="user-card" *ngFor="let mentor of mentors; let i = index">
       <div class="card-header">
-          <div *ngIf="showSpinner" class="spinner-container profile-image">
+          <div *ngIf="showSpinner[i] == true" class="spinner-container profile-image">
               <mat-spinner color="accent"></mat-spinner>
             </div>
-          <img (load)="imageLoaded()" src="{{mentor?.photoURL}}" onerror="this.onerror=null;this.src='./../../assets/Images/User-Placeholder.png';" class="profile-image" />
+          <img *ngIf="!showSpinner[i]"  (load)="imageLoaded(i)" src="{{mentor?.photoURL}}" onerror="this.onerror=null;this.src='./../../assets/Images/User-Placeholder.png';" class="profile-image" />
+          <img style = "display: none" (load)="imageLoaded(i)" src="{{mentor?.photoURL}}" onerror="this.onerror=null;this.src='./../../assets/Images/User-Placeholder.png';" class="profile-image" />
           <h1>{{mentor?.firstname}} {{mentor?.lastname}}</h1>
           <h2>{{matchingValues[mentor.uid]}} % Matching</h2>
       </div>
