@@ -293,7 +293,7 @@ describe('ForumService', () => {
    * Helper functions
    */
   /**
-   * Erstellen eines Test Threads
+   * Create test threads
    * @param thread
    * @returns
   */
@@ -319,7 +319,7 @@ describe('ForumService', () => {
   }
 
   /**
-   * Ermitteln eines Threads nach einem mitgegebenen Titel
+   * Gets the first thread with the given title
    * @param threadTitle
    * @returns
    */
@@ -332,7 +332,7 @@ describe('ForumService', () => {
   }
 
   /**
-   * Löschen eines Threads anhand eines mitgegeben Titels
+   * Deletes the first thread with the given title
    * @param threadTitle
    * @returns
    */
@@ -345,7 +345,7 @@ describe('ForumService', () => {
   }
 
   /**
-   * Ermitteln der Anzahl an Threads in der Datenbank
+   * Calculates the number of thread documents currently in the database
    * @returns
    */
   async function getThreadCount(): Promise<number> {
@@ -356,7 +356,7 @@ describe('ForumService', () => {
   }
 
   /**
-   * Erstellen einer Test Antwort
+   * Creates a test answer
    * @param answer
    * @returns
    */
@@ -377,7 +377,7 @@ describe('ForumService', () => {
   }
 
   /**
-   * Ermitteln einer Antwort eines Threads zu einem mitgegebenen Text
+   * Gets first answer with the given text
    * @param answerText
    * @returns
    */
@@ -390,7 +390,7 @@ describe('ForumService', () => {
   }
 
   /**
-   * Löschen einer Antwort eines Threads anhand eines mitgegebenen Texts
+   * Deletes first answer with the given text
    * @param answerText
    * @returns
    */
@@ -403,8 +403,8 @@ describe('ForumService', () => {
   }
 
   /**
-   * Helper Methode
-   * @param ms Millisekunden die gewartet werden soll
+   * Waits for the given amount of milliseconds
+   * @param ms milliseconds to wait
    */
   function wait(ms) {
     return new Promise((resolve) => {
