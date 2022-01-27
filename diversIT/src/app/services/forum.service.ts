@@ -1,4 +1,4 @@
-import { getDoc, increment } from '@firebase/firestore';
+import { getDoc, increment, serverTimestamp } from '@firebase/firestore';
 import { Injectable } from "@angular/core";
 import { Answer, Thread } from '../models/forum.model';
 import { addDoc, collection, doc, getDocs, getFirestore, limit, orderBy, query, startAfter, updateDoc, where } from 'firebase/firestore';
@@ -29,7 +29,7 @@ export class ForumService {
      */
     constructor() { }
 
-    
+
     /**
      *
      *
@@ -38,9 +38,12 @@ export class ForumService {
      * @return {*}  {Promise<Thread[]>}
      * @memberof ForumService
      */
-    async getFirstThreads(numberOfThreads: number, orderByField: string): Promise<Thread[]> {
+    async getFirstThreads(numberOfThreads: number, orderByField: string, filterText: string): Promise<Thread[]> {
         // Query the first page of docs
+        let arr = filterText.split(" ")
+        console.log(arr)
         const first = query(collection(this.db, "threads"),
+            where("keywords", "array-contains-any", arr),
             orderBy(orderByField, "desc"),
             limit(numberOfThreads));
         const documentSnapshots = await getDocs(first);
@@ -78,15 +81,17 @@ export class ForumService {
      * loads the next threads, uses the global variable to know where to continue
      *
      * @param {number} numberOfThreads amount of threads that should be loaded
-     * @param {string} orderByField the field the table should be ordered by. E.g. created. 
+     * @param {string} orderByField the field the table should be ordered by. E.g. created.
      * It is advised to use the same ordering as on th method getFirstThreads
      * @return {*}  {Promise<Thread[]>}
      * @memberof ForumService
      */
-    async getNextThreads(numberOfThreads: number, orderByField: string): Promise<Thread[]> {
+    async getNextThreads(numberOfThreads: number, orderByField: string, filterText: string): Promise<Thread[]> {
         // Construct a new query starting at this document,
         // get the next threads.
+        let arr = filterText.split(" ")
         const next = query(collection(this.db, "threads"),
+            where("keywords", "array-contains-any", arr),
             orderBy(orderByField, "desc"),
             startAfter(this.lastVisibleThread),
             limit(numberOfThreads));
@@ -126,74 +131,8 @@ export class ForumService {
         return array;
     }
 
-
     /**
-     * gets only a subset of all answers of a thread, ordered by creation date
-     *
-     * @param {string} threadUID thread id you want the answers from
-     * @param {number} numberOfAnswers number of answers to load
-     * @return {*}  {Promise<Answer[]>}
-     * @memberof ForumService
-     */
-    async getFirstAnswers(threadUID: string, numberOfAnswers: number): Promise<Answer[]> {
-        // Query the first page of docs
-        const first = query(collection(this.db, "answers"),
-            where("threadUID", "==", threadUID),
-            orderBy("timestamp", "desc"),
-            limit(numberOfAnswers));
-        const documentSnapshots = await getDocs(first);
-
-        // Get the last visible document
-        if (documentSnapshots.size > 0) {
-            this.lastVisibleAnswer = documentSnapshots.docs[documentSnapshots.docs.length - 1];
-            console.log("last", this.lastVisibleAnswer);
-        }
-
-        const querySnapshot = await getDocs(first);
-        let array: Answer[] = [];
-        querySnapshot.forEach((doc) => {
-            array.push(doc.data() as Answer)
-        });
-        return array;
-    }
-
-
-    /**
-     * get next set of answers, continues from the global set variable
-     *
-     * @param {string} threadUID id of thread id you want the answers from
-     * @param {number} numberOfAnswers amount of answers to return
-     * @return {*}  {Promise<Answer[]>}
-     * @memberof ForumService
-     */
-    async getNextAnswers(threadUID: string, numberOfAnswers: number): Promise<Answer[]> {
-        // Construct a new query starting at this document,
-        // get the next threads.
-        const next = query(collection(this.db, "answers"),
-            where("threadUID", "==", threadUID),
-            orderBy("timestamp", "desc"),
-            startAfter(this.lastVisibleAnswer),
-            limit(numberOfAnswers));
-
-        const querySnapshot = await getDocs(next);
-        let array: Answer[] = [];
-        querySnapshot.forEach((doc) => {
-            array.push(doc.data() as Answer)
-        });
-
-        // Get the last visible document
-        if (querySnapshot.size > 0) {
-            this.lastVisibleAnswer = querySnapshot.docs[querySnapshot.docs.length - 1];
-            console.log("last", this.lastVisibleAnswer);
-        }
-
-        return array;
-    }
-
-
-
-    /**
-     * does add a thread document to the threads collection in firestore 
+     * does add a thread document to the threads collection in firestore
      *
      * @param {Thread} thread object of type Thread
      * @memberof ForumService
@@ -203,13 +142,14 @@ export class ForumService {
         const docRef = collection(this.db, 'threads');
         const ref = await addDoc(docRef, {
             uid: "",
-            created: thread.created,
+            created: serverTimestamp(),
             title: thread.title,
             text: thread.text,
             tags: thread.tags,
             numberOfAnswers: 0,
-            lastAnswerTime: thread.created,
+            lastAnswerTime: serverTimestamp(),
             views: 0,
+            keywords: thread.keywords
         });
 
         await updateDoc(ref, {
@@ -220,7 +160,7 @@ export class ForumService {
 
 
     /**
-     *  does add a answer document to the answers collection in firestore 
+     *  does add a answer document to the answers collection in firestore
      *
      * @param {Answer} answer
      * @memberof ForumService
@@ -232,7 +172,7 @@ export class ForumService {
             uid: "",
             threadUID: answer.threadUID,
             text: answer.text,
-            timestamp: answer.timestamp,
+            timestamp: serverTimestamp()
         });
 
         await updateDoc(ref, {
@@ -243,7 +183,7 @@ export class ForumService {
 
         await updateDoc(threadRef, {
             numberOfAnswers: increment(1),
-            lastAnswerTime: answer.timestamp
+            lastAnswerTime: serverTimestamp()
         });
     }
 

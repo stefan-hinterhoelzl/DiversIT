@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>componet of profile page which doesn&#39;t contain other components</p>
+
+    </p>
 
 
     <p class="comment">
@@ -191,7 +198,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/profile-page/main-panel/profile-new-post/profile-new-post.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/profile-page/main-panel/profile-new-post/profile-new-post.component.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -271,7 +278,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/profile-page/main-panel/profile-new-post/profile-new-post.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/profile-page/main-panel/profile-new-post/profile-new-post.component.ts:24</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -305,14 +312,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/app/profile-page/main-panel/profile-new-post/profile-new-post.component.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/profile-page/main-panel/profile-new-post/profile-new-post.component.ts:44</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>takes the data of the form and creates a new post entry in the database.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -342,14 +351,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/app/profile-page/main-panel/profile-new-post/profile-new-post.component.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/profile-page/main-panel/profile-new-post/profile-new-post.component.ts:35</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>creates a form on generation</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -384,7 +395,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/profile-page/main-panel/profile-new-post/profile-new-post.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/profile-page/main-panel/profile-new-post/profile-new-post.component.ts:25</a></div>
                         </td>
                     </tr>
 
@@ -406,6 +417,14 @@ import { PostsService } from &#x27;src/app/services/posts.service&#x27;;
 import { UserService } from &#x27;src/app/services/user.service&#x27;;
 import { SnackbarComponent } from &#x27;src/app/snackbar/snackbar.component&#x27;;
 
+
+/**
+ * componet of profile page which doesn&#x27;t contain other components
+ *
+ * @export
+ * @class ProfileNewPostComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-profile-new-post&#x27;,
   templateUrl: &#x27;./profile-new-post.component.html&#x27;,
@@ -417,6 +436,12 @@ export class ProfileNewPostComponent implements OnInit {
 
   constructor(private userService: UserService, private snackbar: SnackbarComponent, private postService: PostsService) { }
 
+
+  /**
+   * creates a form on generation
+   *
+   * @memberof ProfileNewPostComponent
+   */
   ngOnInit(): void {
     this.postForm &#x3D; new FormGroup({
       text: new FormControl(&#x27;&#x27;),
@@ -425,6 +450,7 @@ export class ProfileNewPostComponent implements OnInit {
   }
 
 
+  /**takes the data of the form and creates a new post entry in the database. */
   addPost(){
     if((this.postForm.get(&#x27;text&#x27;).value !&#x3D;&#x3D; null &amp;&amp; this.postForm.get(&#x27;text&#x27;).value.trim() !&#x3D;&#x3D; &#x27;&#x27;) || (this.postForm.get(&#x27;photoURL&#x27;).value !&#x3D;&#x3D; null &amp;&amp; this.postForm.get(&#x27;photoURL&#x27;).value.trim() !&#x3D;&#x3D; &#x27;&#x27;)){
       let postPayload &#x3D; &lt;Post&gt;{

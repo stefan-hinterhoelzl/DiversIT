@@ -55,6 +55,7 @@ import { ThreadOverviewComponent } from './forum/thread-overview/thread-overview
 import { SearchFilterSortComponent } from './forum/search-filter-sort/search-filter-sort.component';
 import { PageSelectionComponent } from './forum/page-selection/page-selection.component';
 import { MessageCardComponent } from './forum-thread/message-card/message-card.component';
+import { SearchComponent } from './search/search.component';
 
 /** instance of firebase */
 const app = initializeApp(environment.firebaseConfig);
@@ -108,7 +109,8 @@ const app = initializeApp(environment.firebaseConfig);
     ThreadOverviewComponent,
     SearchFilterSortComponent,
     PageSelectionComponent,
-    MessageCardComponent
+    MessageCardComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

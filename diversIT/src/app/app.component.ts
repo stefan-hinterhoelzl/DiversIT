@@ -21,7 +21,7 @@ import { LoadingService } from './services/loading.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'mintistcool';
+  title = 'diversit';
   currentUser: DiversITUser;
   newMessages: number;
   newNotifications: number;
@@ -77,16 +77,18 @@ export class AppComponent implements OnInit, OnDestroy {
       if (data != null)
         this.newNotifications = data.length
     })
+
+    //TODO: Add profilsettings check and Snackbar
   }
 
   /** return true or false, depending on the route of the page (true when the route ist /landing) */
   isLandingPage() {
-    return this.router.url == '/landing';
+    return this.router.url.startsWith('/landing');
   }
 
   /** return true or false, depending on the route of the page */
   isLegalOrForumPage() {
-    return this.router.url == '/impressum' || this.router.url == '/datenschutz' || this.router.url.startsWith('/forum');
+    return this.router.url.startsWith('/impressum') || this.router.url.startsWith('/datenschutz') || this.router.url.startsWith('/forum');
   }
 
   /** logs out the user, this will lead to a redirect if the currentuser is at a route which is guarded for only authenticated users. */

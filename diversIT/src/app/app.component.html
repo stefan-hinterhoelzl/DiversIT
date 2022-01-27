@@ -12,7 +12,11 @@
             <mat-icon class="icon" id="info" color="accent">info</mat-icon>
             <label for="info" class="lable">Landingpage</label>
         </button>
-        <button mat-icon-button class="icon-label" style="margin-right: 30px;">
+        <button mat-icon-button class="icon-label" style="margin-right: 30px;" routerLink="/forum">
+          <mat-icon class="icon" id="info" color="accent"> textsms</mat-icon>
+          <label for="info" class="lable">Forum</label>
+      </button>
+        <button *ngIf = "currentUser?.role == 3" mat-icon-button class="icon-label" style="margin-right: 30px;" routerLink="/search">
             <mat-icon class="icon" id="search" color="accent">search</mat-icon>
             <label for="search" class="lable">Suche</label>
         </button>

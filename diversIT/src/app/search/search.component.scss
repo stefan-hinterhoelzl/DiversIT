@@ -1,0 +1,82 @@
+.container {
+  display: grid;
+  justify-items: stretch;
+  column-gap: 10px;
+  row-gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  width: 71%;
+  margin: 20px auto;
+}
+
+.user-card{
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 5px rgba(66, 66, 66, 0.404);
+}
+
+.card-header{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-image{
+  border-radius: 100%;
+  width: 30%;
+  margin-top: 20px;
+}
+
+.card-content{
+  text-align: center;
+  padding: 0px 10px;
+}
+
+.action-bar{
+  display:flex;
+  justify-content: center;
+  margin: 20px 0px;
+}
+
+.no-entries{
+  grid-column: 1 / span 4;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 5px rgba(66, 66, 66, 0.404);
+  text-align: center;
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.spinner-container {
+  width: 30%;
+
+  .mat-spinner {
+    width: 100% !important;
+  }
+
+  .mat-spinner ::ng-deep svg {
+    width: 100% !important;
+  }
+}
+
+.searchcard{
+  display: flex;
+  flex-direction: row;
+  width: 71%;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+
+
+.card{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-field{
+  margin: 0;
+}

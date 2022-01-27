@@ -206,8 +206,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="91"
-                            class="link-to-prism">src/app/services/auth.service.ts:91</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/app/services/auth.service.ts:89</a></div>
                 </td>
             </tr>
 
@@ -251,8 +251,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="76"
-                            class="link-to-prism">src/app/services/auth.service.ts:76</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/services/auth.service.ts:74</a></div>
                 </td>
             </tr>
 
@@ -290,8 +290,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">src/app/services/auth.service.ts:40</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/services/auth.service.ts:39</a></div>
                 </td>
             </tr>
 
@@ -371,7 +371,6 @@ import { UserService } from &#x27;./user.service&#x27;;
 })
 export class AuthService {
 
-
   /**
    * Creates an instance of AuthService.
    * @param {Router} router
@@ -409,7 +408,6 @@ export class AuthService {
     signInWithPopup(auth, provider)
     .then((result) &#x3D;&gt; {
       const user &#x3D; result.user;
-      //Only on first Login
       this.firestore.UpdateUserAccount(user.uid, user.email, user.photoURL);
       let snackbarRef &#x3D; this.snackbar.openSnackBar(&quot;Eingeloggt!&quot;, &quot;green-snackbar&quot;);
     }).catch((error) &#x3D;&gt; {

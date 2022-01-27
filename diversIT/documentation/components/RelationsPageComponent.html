@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component of relations page - does not have any subcomponents</p>
+
+    </p>
 
 
     <p class="comment">
@@ -183,12 +190,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/relations-page/relations-page.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/relations-page/relations-page.component.ts:20</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of RelationsPageComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -262,8 +271,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/app/relations-page/relations-page.component.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">src/app/relations-page/relations-page.component.ts:62</a></div>
                 </td>
             </tr>
 
@@ -299,14 +308,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/relations-page/relations-page.component.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/app/relations-page/relations-page.component.ts:41</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>lifecycle hook - subscribes to current user, to mentors of user, or mentees of user - depending on role.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -341,7 +352,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/relations-page/relations-page.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/relations-page/relations-page.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -367,7 +378,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/relations-page/relations-page.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/relations-page/relations-page.component.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -392,7 +403,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/relations-page/relations-page.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/relations-page/relations-page.component.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -410,6 +421,15 @@ import { DiversITUser } from &#x27;../models/users.model&#x27;;
 import { ObserversService } from &#x27;../services/observers.service&#x27;;
 import { UserService } from &#x27;../services/user.service&#x27;;
 
+
+
+/**
+ * Component of relations page - does not have any subcomponents
+ *
+ * @export
+ * @class RelationsPageComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-relations-page&#x27;,
   templateUrl: &#x27;./relations-page.component.html&#x27;,
@@ -417,11 +437,25 @@ import { UserService } from &#x27;../services/user.service&#x27;;
 })
 export class RelationsPageComponent implements OnInit {
 
+
+  /**
+   * Creates an instance of RelationsPageComponent.
+   * @param {UserService} userService
+   * @param {ObserversService} observerService
+   * @memberof RelationsPageComponent
+   */
   constructor(private userService: UserService, private observerService: ObserversService) { }
 
   mentorList: DiversITUser[];
   currentUser: DiversITUser;
   showSpinner &#x3D; true;
+
+
+  /**
+   * lifecycle hook - subscribes to current user, to mentors of user, or mentees of user - depending on role.
+   *
+   * @memberof RelationsPageComponent
+   */
   ngOnInit(){
     this.observerService.currentUserStatus.subscribe((data) &#x3D;&gt; {
       if(data &#x3D;&#x3D;&#x3D; null) return;
