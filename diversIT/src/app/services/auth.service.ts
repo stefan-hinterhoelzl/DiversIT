@@ -24,8 +24,8 @@ export class AuthService {
    * @param {SnackbarComponent} snackbar
    * @memberof AuthService
    */
-  constructor(private router: Router, 
-    private firestore: UserService, 
+  constructor(private router: Router,
+    private firestore: UserService,
     private snackbar: SnackbarComponent) {}
 
 
@@ -43,13 +43,13 @@ export class AuthService {
     let provider: any;
     if (socialProvider == "facebook") {
       provider = new FacebookAuthProvider();
-    } 
+    }
     else if (socialProvider == "google") {
       provider = new GoogleAuthProvider();
-    } 
+    }
     else if (socialProvider == "github") {
       provider = new GithubAuthProvider();
-    } 
+    }
 
     signInWithPopup(auth, provider)
     .then((result) => {
@@ -60,6 +60,9 @@ export class AuthService {
       const errorCode = error.code;
       if (errorCode == "auth/account-exists-with-different-credential") {
         this.snackbar.openSnackBar("Email existiert bereits.", "red-snackbar");
+      }
+      else {
+        this.snackbar.openSnackBar("Fehler beim Login", "red-snackbar");
       }
     });
   }
@@ -82,8 +85,8 @@ export class AuthService {
 
   /**
    * used to get the current signed in user
-   * 
-   * @return {*} the current signed in user 
+   *
+   * @return {*} the current signed in user
    * @memberof AuthService
    */
   getAuthUserObject() {
