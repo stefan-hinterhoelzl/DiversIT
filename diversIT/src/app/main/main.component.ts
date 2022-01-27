@@ -7,6 +7,7 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { DiversITUser } from '../models/users.model';
 import { ChatService } from '../services/chat.service';
 import { ObserversService } from '../services/observers.service';
+import { Router } from '@angular/router';
 
 
 /**
@@ -32,13 +33,13 @@ export class MainComponent implements OnInit, OnDestroy {
 
   /**
    * Creates an instance of MainComponent.
-   * @param {UserService} firestore 
-   * @param {AuthService} auth 
-   * @param {ChatService} rtdb 
+   * @param {UserService} firestore
+   * @param {AuthService} auth
+   * @param {ChatService} rtdb
    * @param {ObserversService} observer
    * @memberof MainComponent
    */
-  constructor(private auth: AuthService, private rtdb: ChatService, private observer: ObserversService) { }
+  constructor(private auth: AuthService, private rtdb: ChatService, private observer: ObserversService, private snackbar: SnackbarComponent, private router: Router) { }
 
 
 
@@ -63,6 +64,20 @@ export class MainComponent implements OnInit, OnDestroy {
       if (user != null) {
         this.currentUser = user;
       }
+
+      if (this.currentUser.company == ""
+      || this.currentUser.job == ""
+      || this.currentUser.primaryEducation == ""
+      || this.currentUser.secondaryEducation == ""
+      || this.currentUser.universityEducation == ""
+      || this.currentUser.gender == "") {
+        let ref = this.snackbar.openSnackBar("Vervollständigen Sie bitte Ihre Profilinformationen, um die Funktionstüchtigkeit der Matching Features zu garantieren!", null, "Profileinstellungen")
+
+        ref.onAction().subscribe(() => {
+          this.router.navigate(['profilesettings'])
+        })
+      }
+
     });
 
   }

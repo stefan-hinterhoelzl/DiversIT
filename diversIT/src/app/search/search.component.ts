@@ -7,13 +7,28 @@ import { map, take } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { ArrayDataSource } from '@angular/cdk/collections';
 
+
+/**
+ *Component for the search and filtering for mentors
+ *
+ * @export
+ * @class SearchComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
+
 export class SearchComponent implements OnInit {
 
+  /**
+   *constructor injecting the required services
+   * @param userService
+   * @param loading
+   * @param observer
+   */
   constructor(private userService: UserService, private loading: LoadingService, private observer: ObserversService) { }
 
   mentorsOfUser: string[]
@@ -37,7 +52,12 @@ export class SearchComponent implements OnInit {
 
 
 
-  async ngOnInit() {
+/**
+ *OnInit Method loading the required data from the database and running the match computings for all the mentors
+ *
+ * @memberof SearchComponent
+ */
+async ngOnInit() {
     this.mentors = await this.userService.getAllMentorsPromise();
     this.mentors.forEach(val => this.savecopy.push(Object.assign({}, val)));
     this.observer.currentUserStatus.pipe(take(1)).subscribe((data:DiversITUser) => {
@@ -51,8 +71,12 @@ export class SearchComponent implements OnInit {
     this.sortandFilterArray();
   }
 
-
-  computeMatchings() {
+/**
+ *Method to compute all the matching values for the mentors in the mentors array of the class
+ *
+ * @memberof SearchComponent
+ */
+computeMatchings() {
 
     //evaluate the matching for each mentor
     for (let i = 0; i<this.mentors.length; i++) {
@@ -88,10 +112,22 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  /**
+   *Helper Method to control the loading spinners per mentor card
+   *
+   * @param {number} i
+   * @memberof SearchComponent
+   */
   imageLoaded(i: number){
     this.showSpinner[i] = false;
   }
 
+  /**
+   *Method to change the filters once the user applied any filter
+   *Each filter is applied when one of them is used. If there is no value present in a filter, it is skipped
+   * @param {*} event
+   * @memberof SearchComponent
+   */
   onFilterChanged(event: any) {
     this.mentors = []
     this.savecopy.forEach(val => this.mentors.push(Object.assign({}, val)));
@@ -128,6 +164,13 @@ export class SearchComponent implements OnInit {
     this.sortandFilterArray();
   }
 
+  /**
+   *Method to sort the mentors by matching value in descending order
+   filters out girls ony mentors for men
+   filters out mentors who are already connected to the user
+   *
+   * @memberof SearchComponent
+   */
   sortandFilterArray() {
     this.showSpinner = [];
     this.mentors = this.mentors.filter((element) => {return !this.mentorsOfUser.includes(element.uid)})

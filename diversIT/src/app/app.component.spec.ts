@@ -15,8 +15,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      providers:[
-        {provide: SnackbarComponent, useValue: {}}
+      providers: [
+        { provide: SnackbarComponent, useValue: {} }
       ]
     }).compileComponents();
   });
@@ -27,9 +27,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'mintistcool'`, () => {
+  it(`should have as title 'diversit'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('mintistcool');
+    expect(app.title).toEqual('diversit');
   });
 });
