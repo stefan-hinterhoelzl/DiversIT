@@ -1,3 +1,6 @@
+import { initializeApp } from 'firebase/app';
+import { environment } from 'src/environments/environment';
+
 // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.
@@ -15,3 +18,5 @@
 
 // When a command from ./commands is ready to use, import with `import './commands'` syntax
 // import './commands';
+
+let app = initializeApp(environment.firebaseConfig);
