@@ -38,4 +38,14 @@ describe('Smoke test', () => {
     snackbar.should('be.visible');
     snackbar.should('have.text', 'Sie sind nicht eingeloggt! ');
   });
+
+  it('redirects to landing page on unauthenticated access to admin page', () => {
+    cy.visit('/admin');
+    cy.url().should('include', '/landing');
+    cy.get('app-navbar a').contains('DiversIT');
+
+    const snackbar = cy.get('simple-snack-bar');
+    snackbar.should('be.visible');
+    snackbar.should('have.text', 'Sie sind nicht eingeloggt! ');
+  });
 })
