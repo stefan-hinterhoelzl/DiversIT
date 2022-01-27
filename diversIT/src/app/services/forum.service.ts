@@ -41,7 +41,6 @@ export class ForumService {
     async getFirstThreads(numberOfThreads: number, orderByField: string, filterText: string): Promise<Thread[]> {
         // Query the first page of docs
         let arr = filterText.split(" ")
-        console.log(arr)
         const first = query(collection(this.db, "threads"),
             where("keywords", "array-contains-any", arr),
             orderBy(orderByField, "desc"),
@@ -51,12 +50,10 @@ export class ForumService {
         // Get the last visible document
         if (documentSnapshots.size > 0) {
             this.lastVisibleThread = documentSnapshots.docs[documentSnapshots.docs.length - 1];
-            console.log("last", this.lastVisibleThread);
         }
 
-        const querySnapshot = await getDocs(first);
         let array: Thread[] = [];
-        querySnapshot.forEach((doc) => {
+        documentSnapshots.forEach((doc) => {
             array.push(doc.data() as Thread)
         });
         return array;
@@ -105,7 +102,6 @@ export class ForumService {
         // Get the last visible document
         if (querySnapshot.size > 0) {
             this.lastVisibleThread = querySnapshot.docs[querySnapshot.docs.length - 1];
-            console.log("last", this.lastVisibleThread);
         }
 
         return array;
