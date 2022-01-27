@@ -87,4 +87,5 @@ export class MainComponent implements OnInit, OnDestroy {
     this.auth.logout();
   }
 
+
 }
