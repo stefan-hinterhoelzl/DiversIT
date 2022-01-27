@@ -12,7 +12,7 @@ describe('ForumService', () => {
   let dummyThread = {
     title: "Dummy+EhGUrpsf6RVI7ewpJjtt",
     text: "Dies ist ein dummy text",
-    tags: ["A","B","C"],
+    tags: ["A", "B", "C"],
     keywords: [""]
   } as Thread;
 
