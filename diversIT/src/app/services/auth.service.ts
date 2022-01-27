@@ -55,7 +55,7 @@ export class AuthService {
     .then((result) => {
       const user = result.user;
       this.firestore.UpdateUserAccount(user.uid, user.email, user.photoURL);
-      let snackbarRef = this.snackbar.openSnackBar("Eingeloggt!", "green-snackbar");
+      this.snackbar.openSnackBar("Eingeloggt!", "green-snackbar");
     }).catch((error) => {
       const errorCode = error.code;
       if (errorCode == "auth/account-exists-with-different-credential") {
